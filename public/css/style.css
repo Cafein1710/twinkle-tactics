@@ -1,0 +1,641 @@
+/* public/css/style.css */
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; user-select: none; }
+html, body { margin: 0; height: 100vh; overflow: hidden; background: #0f172a; color: #f8fafc; }
+
+/* SẢNH CHỜ */
+#lobby-screen {
+  display: flex; align-items: center; justify-content: center; height: 100vh;
+  background: radial-gradient(circle at top, #1e293b, #0f172a);
+}
+.lobby-box {
+  background: #1e293b; padding: 28px; border-radius: 14px;
+  border: 2px solid #334155; width: 410px; text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+input, button {
+  width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px;
+  border: 1px solid #475569; font-size: 14px;
+}
+input { background: #0f172a; color: #fff; text-align: center; }
+button {
+  background: #3b82f6; color: #fff; font-weight: bold;
+  cursor: pointer; border: none; transition: 0.18s;
+}
+button:hover { background: #2563eb; }
+button:disabled { background: #334155 !important; color: #64748b !important; cursor: not-allowed; }
+
+.code-copy-row {
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px;
+}
+.code-badge {
+  font-size: 28px; font-weight: bold; letter-spacing: 5px;
+  color: #facc15; background: #0f172a; padding: 8px 16px; border-radius: 8px;
+  border: 1px solid #334155;
+}
+.btn-copy-code {
+  width: auto; padding: 8px 12px; margin: 0; font-size: 12px;
+  background: #334155; color: #e2e8f0; border: 1px solid #64748b; border-radius: 6px;
+}
+.btn-copy-code:hover { background: #475569; border-color: #facc15; color: #facc15; }
+
+/* ICON MOOD CHUẨN UMA MUSUME */
+.uma-mood-pill {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 1px 6px 1px 3px; border-radius: 999px; font-size: 9.5px; font-weight: bold;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.uma-mood-icon { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }
+.mood-Great { background: linear-gradient(90deg, #db2777, #ec4899); color: #fff; }
+.mood-Good { background: linear-gradient(90deg, #ea580c, #f97316); color: #fff; }
+.mood-Normal { background: linear-gradient(90deg, #ca8a04, #eab308); color: #0f172a; }
+.mood-Bad { background: linear-gradient(90deg, #1d4ed8, #3b82f6); color: #fff; }
+.mood-Awful { background: linear-gradient(90deg, #6b21a8, #9333ea); color: #fff; }
+
+/* MAP HELPER MODAL */
+#map-zoom-modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.84); z-index: 1250;
+  align-items: center; justify-content: center; backdrop-filter: blur(5px);
+}
+.map-helper-card {
+  background: #131b2e; border: 1px solid #2e3c56; border-radius: 16px;
+  padding: 22px 26px; width: 880px; max-width: 96vw;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.85); color: #f8fafc;
+}
+.mh-header-row {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;
+}
+.mh-tag-group { display: flex; gap: 8px; align-items: center; }
+.mh-top-pill {
+  padding: 4px 12px; border-radius: 999px; font-size: 11.5px; font-weight: bold;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.mh-pill-turf { background: #0f3d2e; color: #34d399; border: 1px solid #059669; }
+.mh-pill-dirt { background: #451a03; color: #fb923c; border: 1px solid #d97706; }
+.mh-pill-turn { background: #172554; color: #93c5fd; border: 1px solid #2563eb; }
+.mh-pill-course { background: #2e1065; color: #d8b4fe; border: 1px solid #7e22ce; }
+
+.mh-chart-frame {
+  background: #0b101d; border-radius: 10px; overflow: hidden;
+  border: 1px solid #1e293b; position: relative;
+}
+.mh-elevation-row { width: 100%; height: 88px; position: relative; background: #0b101d; }
+.mh-slope-row {
+  position: relative; width: 100%; height: 34px; background: #1e132a;
+  border-top: 2px solid #65a30d; border-bottom: 2px solid #7e22ce;
+}
+.mh-segment-row { position: relative; width: 100%; height: 38px; background: #d8e6f3; }
+.mh-leg-row { position: relative; width: 100%; height: 36px; background: #1e293b; }
+.mh-ruler-row { position: relative; width: 100%; height: 36px; background: #dbe4ee; color: #1e293b; }
+.mh-block {
+  position: absolute; top: 0; height: 100%; display: flex; align-items: center;
+  justify-content: center; font-size: 11px; font-weight: bold; overflow: hidden;
+  white-space: nowrap;
+}
+.mh-bottom-badges { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.mh-cond-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 999px; font-size: 12px; font-weight: bold;
+}
+
+/* MÀN HÌNH REVEAL 7 MAP */
+#map-reveal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(11, 17, 32, 0.94); z-index: 1300;
+  flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  backdrop-filter: blur(6px);
+}
+.reveal-stage-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px;
+  width: 94vw; max-width: 1280px;
+}
+.reveal-map-card {
+  background: #1e293b; border: 2px solid #334155; border-radius: 10px;
+  padding: 14px 10px; min-height: 190px; display: flex; flex-direction: column;
+  justify-content: space-between; text-align: center;
+  opacity: 0; transform: translateY(35px) scale(0.88);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-map-card.revealed {
+  opacity: 1; transform: translateY(0) scale(1);
+  border-color: #38bdf8; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
+}
+.reveal-map-card.revealed.tiebreak-card {
+  border-color: #f43f5e; box-shadow: 0 10px 25px rgba(244, 63, 94, 0.35);
+}
+.reveal-spotlight-banner {
+  background: linear-gradient(90deg, #0f172a, #1e293b, #0f172a);
+  border: 2px solid #facc15; border-radius: 12px; padding: 14px 30px;
+  text-align: center; min-width: 500px;
+}
+
+/* MÀN HÌNH PRE-GAME (STEP-BY-STEP WIZARD) */
+#pregame-screen {
+  display: none; height: 100vh; padding: 10px;
+  grid-template-columns: 240px 1fr; gap: 12px;
+}
+.pregame-main {
+  background: #1e293b; border: 2px solid #334155; border-radius: 10px;
+  padding: 14px; overflow: hidden; display: flex; flex-direction: column; gap: 12px;
+}
+.pregame-stepper-bar {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #0f172a; padding: 10px 16px; border-radius: 10px;
+  border: 1px solid #334155; flex-shrink: 0;
+}
+.step-indicator {
+  display: flex; align-items: center; gap: 8px; padding: 6px 14px;
+  border-radius: 999px; font-size: 13px; font-weight: bold; color: #94a3b8;
+  background: #1e293b; border: 1px solid #334155; cursor: pointer; transition: 0.2s;
+}
+.step-indicator.active {
+  background: #172554; color: #facc15; border-color: #facc15;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.25);
+}
+.step-indicator.completed {
+  background: #064e3b; color: #34d399; border-color: #10b981;
+}
+.step-num {
+  width: 22px; height: 22px; border-radius: 50%; background: #334155;
+  color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 11px;
+}
+.step-indicator.active .step-num { background: #facc15; color: #0f172a; }
+.step-indicator.completed .step-num { background: #10b981; color: #0f172a; }
+.step-line { width: 45px; height: 2px; background: #334155; }
+
+.pregame-step-panel {
+  display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; overflow: hidden;
+}
+.full-step-grid {
+  flex: 1 !important; max-height: none !important; min-height: 0 !important;
+}
+
+.filter-bar {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  background: #0f172a; padding: 8px; border-radius: 8px; border: 1px solid #334155;
+  flex-shrink: 0;
+}
+.filter-btn {
+  width: auto; padding: 5px 10px; margin: 0; font-size: 12px;
+  background: #1e293b; border: 1px solid #475569; color: #cbd5e1;
+  display: inline-flex; align-items: center; gap: 5px; border-radius: 6px;
+}
+.filter-btn.active { background: #3b82f6; color: #fff; border-color: #93c5fd; }
+
+.uma-roster-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  overflow-y: auto; padding: 8px; background: #0b1120; border-radius: 8px;
+  border: 1px solid #334155; align-content: start;
+}
+.roster-item {
+  background: #162032; border: 2px solid #334155; border-radius: 8px;
+  padding: 6px 8px; display: flex; align-items: center; gap: 8px; cursor: pointer;
+  height: 64px;
+}
+.roster-item:hover { border-color: #64748b; }
+.roster-item.selected { border-color: #facc15; background: #172554; box-shadow: 0 0 10px rgba(250,204,21,0.35); }
+.uma-avatar {
+  width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+  background: #334155; border: 2px solid #64748b; flex-shrink: 0;
+}
+
+.spark-editor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1; overflow-y: auto; align-content: start; }
+.spark-card { background: #0f172a; border: 2px solid #475569; border-radius: 10px; padding: 12px; }
+.apt-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11.5px; padding: 4px 0; border-bottom: 1px solid #1e293b;
+}
+.apt-btn { width: 24px; height: 22px; padding: 0; margin: 0 1px; font-size: 12px; background: #334155; border-radius: 4px; }
+.rank-badge { display: inline-block; width: 22px; text-align: center; font-weight: bold; border-radius: 4px; padding: 1px 0; font-size: 11px; }
+.rank-S { background: #facc15; color: #000; }
+.rank-A { background: #f43f5e; color: #fff; }
+.rank-B { background: #ec4899; color: #fff; }
+.rank-C { background: #22c55e; color: #fff; }
+.rank-D, .rank-E, .rank-F, .rank-G { background: #475569; color: #cbd5e1; }
+
+.deck-pool-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  overflow-y: auto; padding: 8px; background: #0b1120; border-radius: 8px;
+  border: 1px solid #334155; align-content: start;
+}
+.deck-pool-card {
+  display: flex; align-items: center; gap: 8px; background: #1e293b;
+  padding: 6px; border-radius: 6px; border: 2px solid #334155; cursor: pointer; font-size: 11px;
+}
+.deck-pool-card.in-deck { border-color: #facc15; background: #162032; }
+
+/* BÀN ĐẤU CHÍNH */
+#game-screen {
+  display: none; height: 100vh; padding: 8px;
+  grid-template-columns: 225px 1fr 285px;
+  grid-template-rows: 48px 1fr; gap: 8px; overflow: hidden;
+}
+.top-stage-bar {
+  grid-column: 1 / 4; background: #1e293b; border: 2px solid #475569;
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 16px; font-size: 14px;
+}
+.left-column-wrapper { display: flex; flex-direction: column; gap: 8px; height: 100%; overflow: hidden; }
+.left-map-panel {
+  background: #1e293b; border: 2px dashed #64748b;
+  border-radius: 8px; padding: 8px; display: flex;
+  flex-direction: column; gap: 6px; overflow-y: auto; font-size: 11.5px; flex: 1;
+}
+.map-item {
+  background: #0f172a; padding: 6px 8px; border-radius: 6px;
+  border-left: 4px solid #38bdf8; cursor: pointer; transition: 0.15s;
+}
+.map-item:hover { background: #162032; border-left-color: #facc15; transform: translateX(3px); }
+.map-item.tiebreak { border-left-color: #f43f5e; }
+
+.discard-energy-zone {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px dashed #f59e0b; border-radius: 8px; padding: 10px;
+  text-align: center; transition: 0.2s; height: 112px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.discard-energy-zone.drop-target-hover {
+  border-style: solid; border-color: #facc15; background: #27272a;
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.55); transform: scale(1.03);
+}
+
+.battlefield-center { display: grid; grid-template-rows: 46% 52%; gap: 8px; overflow: hidden; }
+.player-section {
+  background: #1e293b; border: 2px solid #38bdf8; border-radius: 8px;
+  padding: 8px; display: flex; flex-direction: column; overflow: hidden;
+}
+.player-section.opponent { border-color: #ef4444; background: #161f30; }
+
+.uma-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 1; min-height: 0; }
+.uma-card-mini {
+  background: #0f172a; border: 2px solid #334155; border-radius: 8px; padding: 7px;
+  display: flex; flex-direction: column; justify-content: space-between; font-size: 11px;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; overflow: hidden;
+}
+.uma-card-mini.drop-target-hover {
+  border-color: #facc15 !important;
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.55);
+  transform: scale(1.025);
+}
+@keyframes cardSlamEffect {
+  0% { transform: scale(1.06); box-shadow: 0 0 22px #facc15; }
+  60% { transform: scale(0.99); }
+  100% { transform: scale(1); box-shadow: none; }
+}
+.slam-anim { animation: cardSlamEffect 0.35s ease-out; }
+
+.uma-board-top { display: flex; align-items: center; gap: 7px; }
+.uma-board-avatar {
+  width: 44px; height: 44px; border-radius: 8px; object-fit: cover;
+  border: 2px solid #facc15; background: #0f172a; flex-shrink: 0;
+}
+.unique-skill-badge {
+  background: #1e293b; padding: 2px 6px; border-radius: 4px; font-size: 10px;
+  border-left: 3px solid #facc15; margin-top: 2px; color: #fef08a; font-weight: bold;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.equipped-strip {
+  display: flex; gap: 5px; min-height: 32px; align-items: center;
+  background: #162032; padding: 3px 6px; border-radius: 5px; margin: 3px 0;
+}
+.mini-eq-wrapper { position: relative; width: 26px; height: 32px; flex-shrink: 0; }
+.mini-eq-icon {
+  width: 26px; height: 32px; border-radius: 4px; object-fit: cover;
+  border: 1px solid #94a3b8; cursor: context-menu; transition: 0.15s;
+}
+.mini-eq-icon:hover { transform: scale(1.18); border-color: #facc15; z-index: 5; }
+.mini-eq-icon.gold-awakened { border: 2px solid #facc15; box-shadow: 0 0 7px #facc15; }
+.mini-eq-type-badge {
+  position: absolute; bottom: -2px; right: -3px; width: 13px; height: 13px;
+  border-radius: 3px; border: 1px solid #0f172a; pointer-events: none;
+}
+
+/* Nút báo thu hồi thẻ chưa nâng Gold Skill về tay */
+.mini-eq-wrapper.recallable { cursor: pointer; }
+.mini-eq-wrapper.recallable::after {
+  content: '↩';
+  position: absolute; top: -5px; left: -4px; width: 13px; height: 13px;
+  background: #ef4444; color: #fff; font-size: 9px; font-weight: bold;
+  border-radius: 50%; display: none; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 6; box-shadow: 0 0 4px #000;
+}
+.mini-eq-wrapper.recallable:hover::after { display: flex; }
+
+/* ĐÃ MỞ RỘNG CHIỀU CAO ĐỂ HIỂN THỊ RÕ CẢ SKILL THẺ SUPPORT & GOLD POT */
+.skills-list-mini {
+  display: flex; flex-wrap: wrap; gap: 3px;
+  max-height: 54px; overflow-y: auto; padding: 1px 0;
+}
+.skill-pill {
+  font-size: 9.5px; padding: 1px 6px; border-radius: 3px;
+  background: #1e293b; color: #e2e8f0; border: 1px solid #475569;
+}
+.skill-pill.gold {
+  background: linear-gradient(90deg, #ca8a04, #eab308);
+  color: #000; font-weight: bold; border-color: #fef08a;
+}
+
+.stat-grid-mini {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px;
+  text-align: center; font-size: 11px; background: #162032;
+  padding: 5px 4px; border-radius: 6px; border: 1px solid #1e293b;
+}
+.stat-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.uma-stat-icon { width: 20px; height: 20px; border-radius: 4px; object-fit: contain; flex-shrink: 0; }
+
+/* CỘT PHẢI: NĂNG LƯỢNG, HÀNH TRANG ITEM & BÀI TRÊN TAY */
+.right-panel { display: flex; flex-direction: column; gap: 8px; overflow: hidden; font-size: 12px; }
+.energy-box { background: #1e293b; border: 2px solid #eab308; border-radius: 8px; padding: 8px; }
+.draggable-energy-orb {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #facc15; color: #fef08a;
+  font-size: 13.5px; font-weight: bold; padding: 7px; border-radius: 8px;
+  margin: 5px 0; cursor: grab; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
+}
+.draggable-energy-orb.used {
+  background: #1e293b; border-color: #475569; color: #64748b; cursor: not-allowed; box-shadow: none;
+}
+
+.inventory-box {
+  background: #1e293b; border: 2px solid #38bdf8;
+  border-radius: 8px; padding: 7px 8px;
+}
+.inventory-slots-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 5px;
+}
+.inv-slot {
+  background: #0f172a; border: 1.5px dashed #475569; border-radius: 6px;
+  height: 52px; padding: 4px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  position: relative; transition: 0.15s;
+}
+.inv-slot.filled { border-style: solid; cursor: grab; background: #162032; }
+.inv-slot.filled:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35);
+}
+.inv-item-icon { width: 22px; height: 22px; border-radius: 4px; }
+.inv-item-name {
+  font-size: 8.5px; font-weight: bold; color: #f8fafc;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; margin-top: 2px;
+}
+.inv-item-badge {
+  position: absolute; top: -5px; right: -4px; font-size: 8px; font-weight: bold;
+  padding: 1px 4px; border-radius: 4px; color: #0f172a;
+}
+
+.deck-box {
+  background: #1e293b; border: 2px solid #475569;
+  border-radius: 8px; padding: 8px; flex: 1;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.hand-list {
+  flex: 1; overflow-y: auto; display: flex; flex-direction: column;
+  gap: 6px; margin: 5px 0; padding: 4px 2px;
+}
+.support-card-item {
+  display: flex; align-items: center; gap: 8px; background: #0f172a;
+  padding: 5px 7px; border-radius: 7px; border-left: 5px solid #3b82f6;
+  font-size: 11px; cursor: grab;
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.16s ease;
+}
+.support-card-item:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+  background: #17233b;
+}
+.support-card-item.dragging-card { opacity: 0.65; transform: rotate(3deg) scale(1.05); cursor: grabbing; }
+.card-thumb-wrap { position: relative; width: 38px; height: 48px; flex-shrink: 0; }
+.support-card-icon {
+  width: 38px; height: 48px; border-radius: 5px; object-fit: cover;
+  background: #334155; border: 1px solid #64748b;
+}
+.card-type-corner {
+  position: absolute; top: -3px; right: -3px; width: 17px; height: 17px;
+  border-radius: 4px; border: 1px solid #0f172a; background: #0f172a;
+}
+.type-Speed { border-left-color: #38bdf8; }
+.type-Stamina { border-left-color: #fb7185; }
+.type-Power { border-left-color: #fb923c; }
+.type-Guts { border-left-color: #f472b6; }
+.type-Wit { border-left-color: #4ade80; }
+
+.skill-tag-label {
+  display: inline-block; font-size: 9px; font-weight: bold;
+  padding: 1px 4px; border-radius: 3px; margin-right: 4px;
+}
+.tag-white { background: #334155; color: #e2e8f0; }
+.tag-gold { background: #eab308; color: #0f172a; }
+
+.rest-token-btn {
+  background: #334155; color: #e2e8f0; padding: 7px; border-radius: 6px;
+  text-align: center; font-weight: bold; cursor: grab; border: 1px solid #64748b;
+}
+.rest-token-btn:hover { background: #475569; border-color: #facc15; color: #fff; }
+
+/* HIỆU ỨNG GLOBAL EVENT */
+#global-event-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 15, 29, 0.88); z-index: 1350;
+  align-items: center; justify-content: center; backdrop-filter: blur(6px);
+}
+.ge-stage-wrapper {
+  width: 680px; max-width: 95vw; display: flex; flex-direction: column;
+  align-items: center; position: relative;
+}
+.ge-card-spotlight {
+  display: flex; flex-direction: column; align-items: center;
+  transform: translateY(110px) scale(1.22);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+@keyframes palCardGlow {
+  0% { box-shadow: 0 0 20px #facc15, 0 0 45px #38bdf8; }
+  50% { box-shadow: 0 0 45px #fef08a, 0 0 90px #ec4899, 0 0 120px #38bdf8; }
+  100% { box-shadow: 0 0 25px #facc15, 0 0 50px #38bdf8; }
+}
+.ge-pal-card-art {
+  width: 150px; height: 200px; object-fit: cover; border-radius: 12px;
+  border: 3px solid #fef08a; background: #0f172a;
+  animation: palCardGlow 1.5s infinite ease-in-out;
+}
+.ge-stage-wrapper.slid-up .ge-card-spotlight {
+  transform: translateY(0) scale(0.92);
+}
+.ge-dialog-panel {
+  width: 100%; background: #1e293b; border: 2px solid #facc15;
+  border-radius: 14px; padding: 18px 22px; margin-top: 8px;
+  opacity: 0; transform: translateY(35px); pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+}
+.ge-stage-wrapper.slid-up .ge-dialog-panel {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.ge-choices-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.ge-choice-bar {
+  background: #0f172a; border: 2px solid #475569; border-radius: 10px;
+  padding: 11px 14px; cursor: pointer; transition: 0.16s; border-left-width: 7px;
+}
+.ge-choice-bar:hover { transform: translateX(6px); background: #172554; border-color: #facc15; }
+.ge-choice-bar.tone-green { border-left-color: #22c55e; }
+.ge-choice-bar.tone-yellow { border-left-color: #eab308; }
+.ge-choice-bar.tone-red { border-left-color: #f43f5e; }
+.ge-choice-title { font-size: 13.5px; font-weight: bold; color: #fff; }
+.ge-choice-preview { font-size: 11.5px; color: #cbd5e1; margin-top: 3px; }
+
+/* BANNER CHUYỂN LƯỢT */
+#turn-banner-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 1200; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+}
+.turn-banner-strip {
+  width: 100%; background: linear-gradient(90deg, rgba(15,23,42,0.92), rgba(30,41,59,0.98), rgba(15,23,42,0.92));
+  border-top: 3px solid #facc15; border-bottom: 3px solid #facc15;
+  padding: 22px 0; text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.85);
+  transform: translateX(-120%);
+}
+@keyframes slideLeftCenterRight {
+  0% { transform: translateX(-120%); opacity: 0.4; }
+  20% { transform: translateX(0%); opacity: 1; }
+  80% { transform: translateX(0%); opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0.4; }
+}
+.turn-banner-strip.animate-banner {
+  animation: slideLeftCenterRight 1.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+#action-toast {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.96); border: 2px solid #facc15; color: #fef08a;
+  padding: 10px 22px; border-radius: 6px; font-weight: bold; font-size: 13px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6); z-index: 900; display: none;
+}
+
+/* CÁC MODAL HỆ THỐNG */
+#skip-warning-modal, #card-choice-modal, #card-zoom-modal, #disconnect-modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.82); z-index: 1100; align-items: center; justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.choice-modal-box {
+  background: #1e293b; border: 2px solid #facc15; border-radius: 12px;
+  padding: 20px; width: 540px; max-width: 95vw;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.85);
+}
+.choice-option-card { background: #0f172a; border: 2px solid #334155; border-radius: 8px; padding: 12px; margin-top: 10px; }
+.eligible-target-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; max-height: 210px; overflow-y: auto; }
+.eligible-target-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: #162032; border: 2px solid #475569; border-radius: 8px; padding: 8px 10px;
+  cursor: pointer; transition: 0.15s;
+}
+.eligible-target-item:hover { border-color: #facc15; background: #1e293b; }
+.zoom-card-container {
+  background: #1e293b; border: 2px solid #facc15; border-radius: 12px;
+  padding: 20px; width: 390px; text-align: center;
+}
+.zoom-card-art {
+  width: 240px; height: 320px; object-fit: contain; border-radius: 8px;
+  background: #0f172a; border: 2px solid #475569; margin-bottom: 12px;
+}
+.modal-box {
+  background: #1e293b; border: 2px solid #f43f5e; padding: 25px; border-radius: 12px;
+  text-align: center; width: 380px;
+}
+/* =========================================================================
+   SCOREBOARD TRÊN THANH TRẠNG THÁI & GIAO DIỆN ĐUA GIẢ LẬP 6 UMA (RACE VIEWER)
+   ========================================================================= */
+.top-scoreboard-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: #0f172a; border: 1.5px solid #facc15; border-radius: 999px;
+  padding: 4px 14px; font-size: 13px; font-weight: bold;
+}
+
+#race-viewer-modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(8, 12, 24, 0.94); z-index: 1450;
+  align-items: center; justify-content: center; backdrop-filter: blur(6px);
+}
+.race-stadium-container {
+  background: #131c31; border: 2px solid #facc15; border-radius: 14px;
+  padding: 16px 20px; width: 1120px; max-width: 97vw; max-height: 96vh;
+  display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+}
+.rv-lanes-box {
+  display: flex; flex-direction: column; gap: 6px;
+  background: #0b1120; border: 1px solid #334155; border-radius: 10px; padding: 10px;
+}
+.rv-lane-row {
+  display: grid; grid-template-columns: 235px 1fr; gap: 10px; align-items: center;
+  background: #162032; border-radius: 8px; padding: 5px 8px; height: 52px;
+}
+.rv-lane-info { padding-left: 8px; display: flex; flex-direction: column; justify-content: center; }
+.rv-rank-badge {
+  font-size: 10px; font-weight: bold; padding: 1px 6px; border-radius: 4px;
+}
+.rv-hp-bar-bg {
+  width: 100%; height: 5px; background: #0f172a; border-radius: 3px; overflow: hidden; margin-top: 3px;
+}
+.rv-hp-bar-fill { height: 100%; transition: width 0.1s linear; }
+
+.rv-track-strip {
+  position: relative; width: 100%; height: 40px;
+  background: linear-gradient(90deg, #064e3b 0%, #065f46 66.6%, #047857 100%);
+  border-radius: 6px; border: 1px solid #334155; overflow: visible;
+}
+.rv-finish-line {
+  position: absolute; right: 3.5%; top: 0; width: 4px; height: 100%;
+  background: repeating-linear-gradient(0deg, #fff, #fff 4px, #ef4444 4px, #ef4444 8px);
+}
+.rv-runner-token {
+  position: absolute; top: 2px; width: 36px; height: 36px;
+  transition: left 0.085s linear; z-index: 5;
+}
+.rv-runner-avatar {
+  width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+  border: 2.5px solid #38bdf8; background: #0f172a; box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.rv-skill-popup {
+  position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, #ca8a04, #eab308); color: #000;
+  font-size: 9.5px; font-weight: bold; padding: 2px 7px; border-radius: 999px;
+  white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.8); z-index: 15;
+  border: 1px solid #fef08a;
+}
+
+/* KHUNG BÌNH LUẬN VIÊN A & B */
+.rv-commentary-box {
+  background: #090e1a; border: 2px solid #334155; border-radius: 10px;
+  height: 150px; overflow-y: auto; padding: 10px 14px;
+  display: flex; flex-direction: column; gap: 6px; font-size: 12.5px;
+}
+.rv-log-line {
+  padding: 4px 8px; border-radius: 6px; background: #111827; line-height: 1.4;
+  border-left: 3px solid #475569;
+}
+.rv-log-line.log-gold { border-left-color: #facc15; background: #1c1917; color: #fef08a; }
+.rv-log-line.log-unique { border-left-color: #ec4899; background: #2e1065; color: #fbcfe8; font-weight: bold; }
+.rv-log-line.log-warning { border-left-color: #f43f5e; color: #fda4af; }
+.rv-log-line.log-finish { border-left-color: #4ade80; background: #064e3b; color: #fff; font-weight: bold; }
+
+.rv-speaker-badge {
+  display: inline-block; padding: 1px 6px; border-radius: 4px;
+  font-size: 10.5px; font-weight: bold; margin-right: 6px;
+}
+.rv-speaker-badge.blv-a { background: #0284c7; color: #fff; }
+.rv-speaker-badge.blv-b { background: #e11d48; color: #fff; }
+
+.rv-podium-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px;
+}
+.rv-podium-row {
+  background: #0f172a; border: 1px solid #334155; border-radius: 8px;
+  padding: 6px 10px; display: flex; justify-content: space-between; align-items: center;
+}

@@ -1,0 +1,6924 @@
+[
+  {
+    "uid": "ssr_30126",
+    "baseId": "30126",
+    "name": "Yamanin Zephyr [To Winds Untraveled]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30126.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      201651,
+      202411,
+      202412
+    ],
+    "rawHintSkills": [
+      200192,
+      200302,
+      200342,
+      201042,
+      201052,
+      201072,
+      201112,
+      201532,
+      202412
+    ],
+    "whiteSkill": "Aspire",
+    "goldSkill": "Ambitious Breeze",
+    "desc": "SSR Guts Support. White: [Aspire] -> Gold Awakening: [Ambitious Breeze].",
+    "whiteSkillId": "202412",
+    "whiteSkillData": {
+      "skillId": "202412",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&order>=2&distance_diff_top<=5&distance_rate>=60&phase==1",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "202411",
+    "goldSkillData": {
+      "skillId": "202411",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&order>=2&distance_diff_top<=5&distance_rate>=60&phase==1",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30123",
+    "baseId": "30123",
+    "name": "Narita Brian [Glad Tidings]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30123.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      202482,
+      202471,
+      201641
+    ],
+    "rawHintSkills": [
+      200012,
+      200152,
+      200202,
+      200572,
+      200612,
+      201172,
+      202192,
+      202432,
+      202472,
+      202482
+    ],
+    "whiteSkill": "Latch On",
+    "goldSkill": "Hot Pursuit",
+    "desc": "SSR Power Support. White: [Latch On] -> Gold Awakening: [Hot Pursuit].",
+    "whiteSkillId": "202472",
+    "whiteSkillData": {
+      "skillId": "202472",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&distance_rate>=50&is_overtake==1@running_style==3&distance_rate>=50&is_overtake==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "202471",
+    "goldSkillData": {
+      "skillId": "202471",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&distance_rate>=50&is_overtake==1@running_style==3&distance_rate>=50&is_overtake==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30124",
+    "baseId": "30124",
+    "name": "Air Groove [Are You Merry?]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30124.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201432,
+      200472,
+      200591,
+      200502
+    ],
+    "rawHintSkills": [
+      200132,
+      200202,
+      200592,
+      200702,
+      201382,
+      201542,
+      201692,
+      202122
+    ],
+    "whiteSkill": "Position Pilfer",
+    "goldSkill": "Fast & Furious",
+    "desc": "SSR Wit Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
+    "whiteSkillId": "200592",
+    "whiteSkillData": {
+      "skillId": "200592",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200591",
+    "goldSkillData": {
+      "skillId": "200591",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30125",
+    "baseId": "30125",
+    "name": "Sakura Laurel [Don't Stop Anymore!]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30125.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201692,
+      202121,
+      200861
+    ],
+    "rawHintSkills": [
+      200172,
+      200202,
+      200212,
+      200742,
+      201182,
+      201222,
+      201422,
+      202072,
+      202422
+    ],
+    "whiteSkill": "Fearless",
+    "goldSkill": "Dauntless",
+    "desc": "SSR Stamina Support. White: [Fearless] -> Gold Awakening: [Dauntless].",
+    "whiteSkillId": "202122",
+    "whiteSkillData": {
+      "skillId": "202122",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&distance_rate_after_random==50&order_rate>=30&order_rate<=80",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "202121",
+    "goldSkillData": {
+      "skillId": "202121",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&distance_rate_after_random==50&order_rate>=30&order_rate<=80",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30122",
+    "baseId": "30122",
+    "name": "Eishin Flash [Danke Schön]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30122.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200592,
+      201383,
+      200292
+    ],
+    "rawHintSkills": [
+      200132,
+      201142,
+      201382,
+      201392,
+      201402,
+      201542,
+      202082
+    ],
+    "whiteSkill": "Position Pilfer",
+    "goldSkill": "Sharp Streak",
+    "desc": "SSR Speed Support. White: [Position Pilfer] -> Gold Awakening: [Sharp Streak].",
+    "whiteSkillId": "200592",
+    "whiteSkillData": {
+      "skillId": "200592",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201383",
+    "goldSkillData": {
+      "skillId": "201383",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30119",
+    "baseId": "30119",
+    "name": "Mejiro Ardan [Hopeful Petals Dancing in the Night]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30119.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200571,
+      200881
+    ],
+    "rawHintSkills": [
+      200022,
+      200572,
+      201142,
+      201322,
+      201532
+    ],
+    "whiteSkill": "Preferred Position",
+    "goldSkill": "Race Planner",
+    "desc": "SSR Speed Support. White: [Preferred Position] -> Gold Awakening: [Race Planner].",
+    "whiteSkillId": "200572",
+    "whiteSkillData": {
+      "skillId": "200572",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate<=50",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200571",
+    "goldSkillData": {
+      "skillId": "200571",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate<=50",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30120",
+    "baseId": "30120",
+    "name": "Yaeno Muteki [Pious Flame, Heavens Scorcher]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30120.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201352,
+      200022,
+      200721,
+      201112
+    ],
+    "rawHintSkills": [
+      200462,
+      200512,
+      200582,
+      200722,
+      201102,
+      201112,
+      201611
+    ],
+    "whiteSkill": "Up-Tempo",
+    "goldSkill": "Killer Tunes",
+    "desc": "SSR Guts Support. White: [Up-Tempo] -> Gold Awakening: [Killer Tunes].",
+    "whiteSkillId": "200722",
+    "whiteSkillData": {
+      "skillId": "200722",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200721",
+    "goldSkillData": {
+      "skillId": "200721",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30146",
+    "baseId": "30146",
+    "name": "Oguri Cap [Run Forth! Dash On! Ever Forward!]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30146.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201571,
+      202431,
+      200042
+    ],
+    "rawHintSkills": [
+      200222,
+      200332,
+      200492,
+      200572,
+      200722,
+      201312,
+      201322,
+      201342,
+      201352,
+      201702,
+      201902,
+      202432
+    ],
+    "whiteSkill": "Steady Gait",
+    "goldSkill": "Solid Strike",
+    "desc": "SSR Wit Support. White: [Steady Gait] -> Gold Awakening: [Solid Strike].",
+    "whiteSkillId": "202432",
+    "whiteSkillData": {
+      "skillId": "202432",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&running_style==2&phase_laterhalf_random==1&distance_diff_top<=10",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.05,
+          "rawModifier": 500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    },
+    "goldSkillId": "202431",
+    "goldSkillData": {
+      "skillId": "202431",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&running_style==2&phase_laterhalf_random==1&distance_diff_top<=10",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30118",
+    "baseId": "30118",
+    "name": "Symboli Kris S [A Win Foreshadowed]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30118.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200282,
+      202421,
+      200222
+    ],
+    "rawHintSkills": [
+      200352,
+      200602,
+      201172,
+      201202,
+      201392,
+      201412,
+      202122,
+      202422
+    ],
+    "whiteSkill": "Scramble",
+    "goldSkill": "Claw Forward",
+    "desc": "SSR Stamina Support. White: [Scramble] -> Gold Awakening: [Claw Forward].",
+    "whiteSkillId": "202422",
+    "whiteSkillData": {
+      "skillId": "202422",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&running_style==3&is_lastspurt==1&order_rate>=40",
+      "durationSec": 1.5,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.02,
+          "rawModifier": -200
+        }
+      ]
+    },
+    "goldSkillId": "202421",
+    "goldSkillData": {
+      "skillId": "202421",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&running_style==3&is_lastspurt==1&order_rate>=40",
+      "durationSec": 1.5,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.02,
+          "rawModifier": -200
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30145",
+    "baseId": "30145",
+    "name": "Tanino Gimlet [Welcome to Umayuru]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30145.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200631,
+      201552
+    ],
+    "rawHintSkills": [
+      200152,
+      200642,
+      200702,
+      201122,
+      202082,
+      202102
+    ],
+    "whiteSkill": "Masterful Gambit",
+    "goldSkill": "Sturm und Drang",
+    "desc": "SSR Power Support. White: [Masterful Gambit] -> Gold Awakening: [Sturm und Drang].",
+    "whiteSkillId": "200632",
+    "whiteSkillData": {
+      "skillId": "200632",
+      "rarity": 1,
+      "precondition": "phase==2&distance_diff_rate>=50",
+      "condition": "running_style==4&phase_firsthalf_random==3&is_lastspurt==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200631",
+    "goldSkillData": {
+      "skillId": "200631",
+      "rarity": 2,
+      "precondition": "phase==2&distance_diff_rate>=50",
+      "condition": "running_style==4&phase_firsthalf_random==3&is_lastspurt==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30115",
+    "baseId": "30115",
+    "name": "Mejiro Palmer [Moonlit Devil ♪]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30115.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201202,
+      201252,
+      200531,
+      200162
+    ],
+    "rawHintSkills": [
+      200532,
+      200552,
+      201192,
+      201282,
+      201522,
+      201601,
+      201631,
+      201661
+    ],
+    "whiteSkill": "Early Lead",
+    "goldSkill": "Taking the Lead",
+    "desc": "SSR Stamina Support. White: [Early Lead] -> Gold Awakening: [Taking the Lead].",
+    "whiteSkillId": "200532",
+    "whiteSkillData": {
+      "skillId": "200532",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200531",
+    "goldSkillData": {
+      "skillId": "200531",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30116",
+    "baseId": "30116",
+    "name": "Daitaku Helios [Sunlit Angel ♪]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30116.png",
+    "rawRareStuff": [
+      "se",
+      9
+    ],
+    "rawEventSkills": [
+      201242,
+      201611,
+      201652,
+      200302
+    ],
+    "rawHintSkills": [
+      200152,
+      200192,
+      200212,
+      201042,
+      201052,
+      201082,
+      201631,
+      201651,
+      202392
+    ],
+    "whiteSkill": "Front Runner Straightaways ○",
+    "goldSkill": "Perfect Spot!",
+    "desc": "SSR Speed Support. White: [Front Runner Straightaways ○] -> Gold Awakening: [Perfect Spot!].",
+    "whiteSkillId": "201242",
+    "whiteSkillData": {
+      "skillId": "201242",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201652",
+    "goldSkillData": {
+      "skillId": "201652",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "infront_near_lane_time>=3&accumulatetime>=10",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30117",
+    "baseId": "30117",
+    "name": "Shinko Windy [Onwards, Demon Queen Lackeys!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30117.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202282,
+      202341,
+      201072
+    ],
+    "rawHintSkills": [
+      200582,
+      200851,
+      200282,
+      200162,
+      202282,
+      202302,
+      202312,
+      202343,
+      202362
+    ],
+    "whiteSkill": "Muddy ◎",
+    "goldSkill": "Maestro of the Mud",
+    "desc": "SSR Guts Support. White: [Muddy ◎] -> Gold Awakening: [Maestro of the Mud].",
+    "whiteSkillId": "202342",
+    "whiteSkillData": {
+      "skillId": "202342",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "ground_type==2&ground_condition==3@ground_type==2&ground_condition==4",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 1,
+          "stat": "speedStat",
+          "value": 60,
+          "rawModifier": 600000
+        }
+      ]
+    },
+    "goldSkillId": "202341",
+    "goldSkillData": {
+      "skillId": "202341",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "ground_type==2&ground_condition==3@ground_type==2&ground_condition==4",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 1,
+          "stat": "speedStat",
+          "value": 60,
+          "rawModifier": 600000
+        },
+        {
+          "typeCode": 3,
+          "stat": "powerStat",
+          "value": 60,
+          "rawModifier": 600000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30114",
+    "baseId": "30114",
+    "name": "Daiichi Ruby [Ah, Such Majesty]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30114.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201392,
+      200652,
+      202401,
+      200672
+    ],
+    "rawHintSkills": [
+      200602,
+      200672,
+      200831,
+      200841,
+      200851,
+      201022,
+      201092,
+      201152,
+      201382,
+      201641,
+      202122
+    ],
+    "whiteSkill": "Leap Forward",
+    "goldSkill": "Lightning Surge",
+    "desc": "SSR Power Support. White: [Leap Forward] -> Gold Awakening: [Lightning Surge].",
+    "whiteSkillId": "202402",
+    "whiteSkillData": {
+      "skillId": "202402",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase>=2&order_rate>=50&is_overtake==1@distance_type==2&phase>=2&order_rate>=50&is_overtake==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "202401",
+    "goldSkillData": {
+      "skillId": "202401",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase>=2&order_rate>=50&is_overtake==1@distance_type==2&phase>=2&order_rate>=50&is_overtake==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30111",
+    "baseId": "30111",
+    "name": "Tokai Teio [Teio-Oo-Oo!!!]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30111.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200572,
+      200331,
+      201312
+    ],
+    "rawHintSkills": [
+      200282,
+      200332,
+      200452,
+      200492,
+      200502,
+      201142,
+      201322,
+      202132
+    ],
+    "whiteSkill": "Corner Adept ○",
+    "goldSkill": "Professor of Curvature",
+    "desc": "SSR Wit Support. White: [Corner Adept ○] -> Gold Awakening: [Professor of Curvature].",
+    "whiteSkillId": "200332",
+    "whiteSkillData": {
+      "skillId": "200332",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200331",
+    "goldSkillData": {
+      "skillId": "200331",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30112",
+    "baseId": "30112",
+    "name": "Twin Turbo [TT Ignition!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30112.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201661,
+      202391,
+      200532
+    ],
+    "rawHintSkills": [
+      200282,
+      200292,
+      200532,
+      200542,
+      201282,
+      201272,
+      202392
+    ],
+    "whiteSkill": "Mad Dash",
+    "goldSkill": "Givin' It 1000%",
+    "desc": "SSR Guts Support. White: [Mad Dash] -> Gold Awakening: [Givin' It 1000%].",
+    "whiteSkillId": "202392",
+    "whiteSkillData": {
+      "skillId": "202392",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase_firsthalf_random==1&running_style==1",
+      "durationSec": 2.7,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.04,
+          "rawModifier": -400
+        }
+      ]
+    },
+    "goldSkillId": "202391",
+    "goldSkillData": {
+      "skillId": "202391",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase_firsthalf_random==1&running_style==1",
+      "durationSec": 2.7,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.45,
+          "rawModifier": 4500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.04,
+          "rawModifier": -400
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30113",
+    "baseId": "30113",
+    "name": "Biwa Hayahide [Uchronia Architect]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30113.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200582,
+      201201,
+      200752
+    ],
+    "rawHintSkills": [
+      200052,
+      200162,
+      200262,
+      200222,
+      200562,
+      201202,
+      201312,
+      201532,
+      201611,
+      201902,
+      202192
+    ],
+    "whiteSkill": "Passing Pro",
+    "goldSkill": "VIP Pass",
+    "desc": "SSR Stamina Support. White: [Passing Pro] -> Gold Awakening: [VIP Pass].",
+    "whiteSkillId": "201202",
+    "whiteSkillData": {
+      "skillId": "201202",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&is_overtake==1&accumulatetime>=5",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201201",
+    "goldSkillData": {
+      "skillId": "201201",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&is_overtake==1&accumulatetime>=5",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30101",
+    "baseId": "30101",
+    "name": "Agnes Tachyon [Q≠0]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30101.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201312,
+      201162,
+      202371,
+      201542
+    ],
+    "rawHintSkills": [
+      200722,
+      201102,
+      201112,
+      201152,
+      201322,
+      201532,
+      201902,
+      202372
+    ],
+    "whiteSkill": "On the Attack",
+    "goldSkill": "Unstoppable",
+    "desc": "SSR Speed Support. White: [On the Attack] -> Gold Awakening: [Unstoppable].",
+    "whiteSkillId": "202372",
+    "whiteSkillData": {
+      "skillId": "202372",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase_random==1&running_style==2",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "202371",
+    "goldSkillData": {
+      "skillId": "202371",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase_random==1&running_style==2",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30121",
+    "baseId": "30121",
+    "name": "Mihono Bourbon [U & Me]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30121.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200542,
+      200711,
+      200432
+    ],
+    "rawHintSkills": [
+      200432,
+      200452,
+      200532,
+      201272,
+      201242,
+      201252
+    ],
+    "whiteSkill": "Rosy Outlook",
+    "goldSkill": "Trackblazer",
+    "desc": "SSR Speed Support. White: [Rosy Outlook] -> Gold Awakening: [Trackblazer].",
+    "whiteSkillId": "200712",
+    "whiteSkillData": {
+      "skillId": "200712",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order<=3",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200711",
+    "goldSkillData": {
+      "skillId": "200711",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order<=3",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30110",
+    "baseId": "30110",
+    "name": "Manhattan Cafe [It's on the House]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30110.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202071,
+      200142
+    ],
+    "rawHintSkills": [
+      200742,
+      201172,
+      201182,
+      201202,
+      201212,
+      201222,
+      201581
+    ],
+    "whiteSkill": "Free-Spirited",
+    "goldSkill": "Of Calm Mind",
+    "desc": "SSR Stamina Support. White: [Free-Spirited] -> Gold Awakening: [Of Calm Mind].",
+    "whiteSkillId": "202072",
+    "whiteSkillData": {
+      "skillId": "202072",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase_firsthalf_random==1&order_rate>=40&order_rate<=80",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.035,
+          "rawModifier": 350
+        },
+        {
+          "typeCode": 21,
+          "stat": "currentSpeed",
+          "value": -0.15,
+          "rawModifier": -1500
+        }
+      ]
+    },
+    "goldSkillId": "202071",
+    "goldSkillData": {
+      "skillId": "202071",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase_firsthalf_random==1&order_rate>=40&order_rate<=80",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.075,
+          "rawModifier": 750
+        },
+        {
+          "typeCode": 21,
+          "stat": "currentSpeed",
+          "value": -0.15,
+          "rawModifier": -1500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30107",
+    "baseId": "30107",
+    "name": "Maruzensky [Sentimental Flare ♪]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30107.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200432,
+      201271,
+      200532
+    ],
+    "rawHintSkills": [
+      200182,
+      200432,
+      200532,
+      201242,
+      201252,
+      201272,
+      201571,
+      201601,
+      201651,
+      201661
+    ],
+    "whiteSkill": "Leader's Pride",
+    "goldSkill": "Top Runner",
+    "desc": "SSR Speed Support. White: [Leader's Pride] -> Gold Awakening: [Top Runner].",
+    "whiteSkillId": "201272",
+    "whiteSkillData": {
+      "skillId": "201272",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&phase<=1&change_order_onetime>0&accumulatetime>=5@running_style==1&phase<=1&blocked_side_continuetime>=2&accumulatetime>=5",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201271",
+    "goldSkillData": {
+      "skillId": "201271",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&phase<=1&change_order_onetime>0&accumulatetime>=5@running_style==1&phase<=1&blocked_side_continuetime>=2&accumulatetime>=5",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30108",
+    "baseId": "30108",
+    "name": "Nakayama Festa [Trusting the Dice]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30108.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202031,
+      202032,
+      200042,
+      200052
+    ],
+    "rawHintSkills": [
+      200162,
+      200182,
+      200302,
+      200492,
+      200602,
+      200732,
+      201382,
+      201562,
+      201571,
+      201591,
+      201702,
+      202032
+    ],
+    "whiteSkill": "Risky Business",
+    "goldSkill": "Nothing Ventured",
+    "desc": "SSR Wit Support. White: [Risky Business] -> Gold Awakening: [Nothing Ventured].",
+    "whiteSkillId": "202032",
+    "whiteSkillData": {
+      "skillId": "202032",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_rate_after_random==50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.01,
+          "rawModifier": 100
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.04,
+          "rawModifier": -400
+        }
+      ]
+    },
+    "goldSkillId": "202031",
+    "goldSkillData": {
+      "skillId": "202031",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_rate_after_random==50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.018,
+          "rawModifier": 180
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.04,
+          "rawModifier": -400
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30109",
+    "baseId": "30109",
+    "name": "Sakura Chiyono O [A Good Heart Blossoms to Its Fullest]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30109.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201061,
+      201062,
+      200172
+    ],
+    "rawHintSkills": [
+      200182,
+      201032,
+      201052,
+      201312,
+      201322,
+      201532,
+      201902
+    ],
+    "whiteSkill": "Acceleration",
+    "goldSkill": "Step on the Gas!",
+    "desc": "SSR Guts Support. White: [Acceleration] -> Gold Awakening: [Step on the Gas!].",
+    "whiteSkillId": "201062",
+    "whiteSkillData": {
+      "skillId": "201062",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&distance_rate>=50&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201061",
+    "goldSkillData": {
+      "skillId": "201061",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&distance_rate>=50&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30105",
+    "baseId": "30105",
+    "name": "Special Week [Take Hold of Our Dreams!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30105.png",
+    "rawRareStuff": [
+      "5s"
+    ],
+    "rawEventSkills": [
+      202012,
+      200382,
+      201211,
+      200762
+    ],
+    "rawHintSkills": [
+      200012,
+      200042,
+      200142,
+      200202,
+      201172,
+      201212
+    ],
+    "whiteSkill": "Pressure",
+    "goldSkill": "Overwhelming Pressure",
+    "desc": "SSR Guts Support. White: [Pressure] -> Gold Awakening: [Overwhelming Pressure].",
+    "whiteSkillId": "201212",
+    "whiteSkillData": {
+      "skillId": "201212",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase==2&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "201211",
+    "goldSkillData": {
+      "skillId": "201211",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase==2&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30106",
+    "baseId": "30106",
+    "name": "Air Groove [Tailwind to My Goals]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30106.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202122,
+      202082,
+      200702,
+      201691,
+      200502
+    ],
+    "rawHintSkills": [
+      200931,
+      200941,
+      201382,
+      201442,
+      201692,
+      202122
+    ],
+    "whiteSkill": "Be Still",
+    "goldSkill": "Lie in Wait",
+    "desc": "SSR Power Support. White: [Be Still] -> Gold Awakening: [Lie in Wait].",
+    "whiteSkillId": "201692",
+    "whiteSkillData": {
+      "skillId": "201692",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201691",
+    "goldSkillData": {
+      "skillId": "201691",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30102",
+    "baseId": "30102",
+    "name": "El Condor Pasa [Twinkle in Your Eyes ∞]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30102.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200581,
+      200212
+    ],
+    "rawHintSkills": [
+      200132,
+      200572,
+      200582,
+      201122,
+      201312,
+      201532,
+      201902
+    ],
+    "whiteSkill": "Prepared to Pass",
+    "goldSkill": "Speed Star",
+    "desc": "SSR Guts Support. White: [Prepared to Pass] -> Gold Awakening: [Speed Star].",
+    "whiteSkillId": "200582",
+    "whiteSkillData": {
+      "skillId": "200582",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200581",
+    "goldSkillData": {
+      "skillId": "200581",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30103",
+    "baseId": "30103",
+    "name": "Matikanetannhauser [Machitan☆Adventure]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30103.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200462,
+      200901,
+      200461,
+      200831
+    ],
+    "rawHintSkills": [
+      200352,
+      200442,
+      200472,
+      200492,
+      200512,
+      201621
+    ],
+    "whiteSkill": "Ramp Up",
+    "goldSkill": "It's On!",
+    "desc": "SSR Wit Support. White: [Ramp Up] -> Gold Awakening: [It's On!].",
+    "whiteSkillId": "200462",
+    "whiteSkillData": {
+      "skillId": "200462",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&change_order_onetime<0",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200461",
+    "goldSkillData": {
+      "skillId": "200461",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&change_order_onetime<0",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30104",
+    "baseId": "30104",
+    "name": "Zenno Rob Roy [\"Rhodonite and the Dreamstone\"]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30104.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201432,
+      201362,
+      201121,
+      201102
+    ],
+    "rawHintSkills": [
+      200032,
+      200722,
+      201112,
+      201152,
+      201532,
+      201542
+    ],
+    "whiteSkill": "Hawkeye",
+    "goldSkill": "Clairvoyance",
+    "desc": "SSR Stamina Support. White: [Hawkeye] -> Gold Awakening: [Clairvoyance].",
+    "whiteSkillId": "201122",
+    "whiteSkillData": {
+      "skillId": "201122",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 10,
+          "rawModifier": 100000
+        }
+      ]
+    },
+    "goldSkillId": "201121",
+    "goldSkillData": {
+      "skillId": "201121",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 15,
+          "rawModifier": 150000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30053",
+    "baseId": "30053",
+    "name": "Taiki Shuttle [Hands Up, Crook!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30053.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201042,
+      200681,
+      202992,
+      200582
+    ],
+    "rawHintSkills": [
+      200162,
+      200682,
+      201032,
+      201052,
+      201062,
+      201082
+    ],
+    "whiteSkill": "Productive Plan",
+    "goldSkill": "Mile Maven",
+    "desc": "SSR Speed Support. White: [Productive Plan] -> Gold Awakening: [Mile Maven].",
+    "whiteSkillId": "200682",
+    "whiteSkillData": {
+      "skillId": "200682",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&phase_laterhalf_random==0&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200681",
+    "goldSkillData": {
+      "skillId": "200681",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&phase_laterhalf_random==0&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30098",
+    "baseId": "30098",
+    "name": "Haru Urara [Sunny Passion ♪]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30098.png",
+    "rawRareStuff": [
+      "heal",
+      "se",
+      8
+    ],
+    "rawEventSkills": [
+      201401,
+      200302
+    ],
+    "rawHintSkills": [],
+    "whiteSkill": "Fighter",
+    "goldSkill": "Hard Worker",
+    "desc": "SSR Power Support. White: [Fighter] -> Gold Awakening: [Hard Worker].",
+    "whiteSkillId": "201402",
+    "whiteSkillData": {
+      "skillId": "201402",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&is_overtake==1&accumulatetime>=5",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201401",
+    "goldSkillData": {
+      "skillId": "201401",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&is_overtake==1&accumulatetime>=5",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30099",
+    "baseId": "30099",
+    "name": "Ikuno Dictus [Beloved Orchid Bouquet]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30099.png",
+    "rawRareStuff": [
+      "me",
+      "se",
+      10
+    ],
+    "rawEventSkills": [
+      202151,
+      202152,
+      200781
+    ],
+    "rawHintSkills": [
+      200482,
+      200592,
+      201392,
+      201432,
+      201442,
+      201542,
+      201692
+    ],
+    "whiteSkill": "Full Throttle",
+    "goldSkill": "Keep Going!",
+    "desc": "SSR Stamina Support. White: [Full Throttle] -> Gold Awakening: [Keep Going!].",
+    "whiteSkillId": "202152",
+    "whiteSkillData": {
+      "skillId": "202152",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.02,
+          "rawModifier": -200
+        }
+      ]
+    },
+    "goldSkillId": "202151",
+    "goldSkillData": {
+      "skillId": "202151",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.45,
+          "rawModifier": 4500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.02,
+          "rawModifier": -200
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30100",
+    "baseId": "30100",
+    "name": "Rice Shower [Day I Dreamed Of]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30100.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200062,
+      201361,
+      200152
+    ],
+    "rawHintSkills": [
+      200742,
+      201322,
+      201342,
+      201372,
+      201532,
+      202012
+    ],
+    "whiteSkill": "Tactical Tweak",
+    "goldSkill": "Shatterproof",
+    "desc": "SSR Wit Support. White: [Tactical Tweak] -> Gold Awakening: [Shatterproof].",
+    "whiteSkillId": "201362",
+    "whiteSkillData": {
+      "skillId": "201362",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate>40",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201361",
+    "goldSkillData": {
+      "skillId": "201361",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate>40",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30097",
+    "baseId": "30097",
+    "name": "Mr. C.B. [Dear Mr. C.B.]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30097.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200352,
+      201512,
+      202021,
+      202022
+    ],
+    "rawHintSkills": [
+      200232,
+      200342,
+      200512,
+      200642,
+      201112,
+      201502,
+      201611
+    ],
+    "whiteSkill": "Early Start",
+    "goldSkill": "Daring Strike",
+    "desc": "SSR Wit Support. White: [Early Start] -> Gold Awakening: [Daring Strike].",
+    "whiteSkillId": "202022",
+    "whiteSkillData": {
+      "skillId": "202022",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&order_rate>=50",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "202021",
+    "goldSkillData": {
+      "skillId": "202021",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&order_rate>=50",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30094",
+    "baseId": "30094",
+    "name": "Bamboo Memory [Make These Feelings Reach You!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30094.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      200592,
+      202111,
+      202112,
+      200132
+    ],
+    "rawHintSkills": [
+      200292,
+      200512,
+      200612,
+      200672,
+      200702,
+      201032
+    ],
+    "whiteSkill": "Pumped",
+    "goldSkill": "Full of Vigor",
+    "desc": "SSR Guts Support. White: [Pumped] -> Gold Awakening: [Full of Vigor].",
+    "whiteSkillId": "202112",
+    "whiteSkillData": {
+      "skillId": "202112",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&is_finalcorner_random==1&order_rate>=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "202111",
+    "goldSkillData": {
+      "skillId": "202111",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&is_finalcorner_random==1&order_rate>=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30095",
+    "baseId": "30095",
+    "name": "Seeking the Pearl [Cheer that Changed the World]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30095.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200702,
+      202042,
+      202121,
+      202992,
+      201591
+    ],
+    "rawHintSkills": [
+      200152,
+      200582,
+      200602,
+      200652,
+      200692,
+      201442,
+      201532,
+      201542,
+      201902
+    ],
+    "whiteSkill": "Fearless",
+    "goldSkill": "Dauntless",
+    "desc": "SSR Speed Support. White: [Fearless] -> Gold Awakening: [Dauntless].",
+    "whiteSkillId": "202122",
+    "whiteSkillData": {
+      "skillId": "202122",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&distance_rate_after_random==50&order_rate>=30&order_rate<=80",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "202121",
+    "goldSkillData": {
+      "skillId": "202121",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&distance_rate_after_random==50&order_rate>=30&order_rate<=80",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30096",
+    "baseId": "30096",
+    "name": "Kawakami Princess [Go Go☆Princess!]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30096.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200731,
+      200732
+    ],
+    "rawHintSkills": [
+      200132,
+      200572,
+      201142,
+      201362
+    ],
+    "whiteSkill": "Steadfast",
+    "goldSkill": "Unyielding",
+    "desc": "SSR Power Support. White: [Steadfast] -> Gold Awakening: [Unyielding].",
+    "whiteSkillId": "200732",
+    "whiteSkillData": {
+      "skillId": "200732",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "200731",
+    "goldSkillData": {
+      "skillId": "200731",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30093",
+    "baseId": "30093",
+    "name": "Daiwa Scarlet [Number 1 Outfit]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30093.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202012,
+      200722,
+      201901,
+      200562
+    ],
+    "rawHintSkills": [
+      200282,
+      200572,
+      200582,
+      201322,
+      201342
+    ],
+    "whiteSkill": "Head-On",
+    "goldSkill": "Neck and Neck",
+    "desc": "SSR Power Support. White: [Head-On] -> Gold Awakening: [Neck and Neck].",
+    "whiteSkillId": "201902",
+    "whiteSkillData": {
+      "skillId": "201902",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_firsthalf_random==2&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201901",
+    "goldSkillData": {
+      "skillId": "201901",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_firsthalf_random==2&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30090",
+    "baseId": "30090",
+    "name": "Symboli Rudolf [Enchaînement]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30090.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201142,
+      202091,
+      200232
+    ],
+    "rawHintSkills": [
+      200831,
+      200861,
+      200891,
+      200921,
+      201102,
+      201112,
+      201152,
+      201702
+    ],
+    "whiteSkill": "Fighting Spirit",
+    "goldSkill": "Burning Soul",
+    "desc": "SSR Stamina Support. White: [Fighting Spirit] -> Gold Awakening: [Burning Soul].",
+    "whiteSkillId": "202092",
+    "whiteSkillData": {
+      "skillId": "202092",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase==1&order_rate<=80&order_rate>=30&blocked_side_continuetime>=2",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.005,
+          "rawModifier": 50
+        }
+      ]
+    },
+    "goldSkillId": "202091",
+    "goldSkillData": {
+      "skillId": "202091",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase==1&order_rate<=80&order_rate>=30&blocked_side_continuetime>=2",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.035,
+          "rawModifier": 350
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30091",
+    "baseId": "30091",
+    "name": "Sirius Symboli [Escorte Étoile]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30091.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201661,
+      201542,
+      202082,
+      202081,
+      201372
+    ],
+    "rawHintSkills": [
+      200162,
+      201112,
+      201382,
+      201641,
+      201692
+    ],
+    "whiteSkill": "Take the Chance",
+    "goldSkill": "From the Brink",
+    "desc": "SSR Wit Support. White: [Take the Chance] -> Gold Awakening: [From the Brink].",
+    "whiteSkillId": "202082",
+    "whiteSkillData": {
+      "skillId": "202082",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "202081",
+    "goldSkillData": {
+      "skillId": "202081",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30092",
+    "baseId": "30092",
+    "name": "Air Shakur [Mag!c Number]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30092.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      202102,
+      201452,
+      201491,
+      200472
+    ],
+    "rawHintSkills": [
+      200622,
+      200642,
+      200722,
+      201462,
+      201492
+    ],
+    "whiteSkill": "Levelheaded",
+    "goldSkill": "Serenity",
+    "desc": "SSR Speed Support. White: [Levelheaded] -> Gold Awakening: [Serenity].",
+    "whiteSkillId": "201492",
+    "whiteSkillData": {
+      "skillId": "201492",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==4&infront_near_lane_time>=1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201491",
+    "goldSkillData": {
+      "skillId": "201491",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==4&infront_near_lane_time>=1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30089",
+    "baseId": "30089",
+    "name": "Marvelous Sunday [A MORE MARVELOUS WORLD! ☆]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30089.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200761,
+      200052
+    ],
+    "rawHintSkills": [
+      200362,
+      200462,
+      200851,
+      200881,
+      201611
+    ],
+    "whiteSkill": "Extra Tank",
+    "goldSkill": "Adrenaline Rush",
+    "desc": "SSR Guts Support. White: [Extra Tank] -> Gold Awakening: [Adrenaline Rush].",
+    "whiteSkillId": "200762",
+    "whiteSkillData": {
+      "skillId": "200762",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&hp_per<=30",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200761",
+    "goldSkillData": {
+      "skillId": "200761",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&hp_per<=30",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        },
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30086",
+    "baseId": "30086",
+    "name": "Narita Top Road [Peachy Silhouette]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30086.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201532,
+      201212,
+      200154,
+      200722
+    ],
+    "rawHintSkills": [
+      200142,
+      200152,
+      200252,
+      200572,
+      200582,
+      201172,
+      201702
+    ],
+    "whiteSkill": "Pace Chaser Savvy ○",
+    "goldSkill": "Firm Course Menace",
+    "desc": "SSR Speed Support. White: [Pace Chaser Savvy ○] -> Gold Awakening: [Firm Course Menace].",
+    "whiteSkillId": "201532",
+    "whiteSkillData": {
+      "skillId": "201532",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 5,
+          "stat": "witStat",
+          "value": 40,
+          "rawModifier": 400000
+        },
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 5,
+          "rawModifier": 50000
+        }
+      ]
+    },
+    "goldSkillId": "200154",
+    "goldSkillData": {
+      "skillId": "200154",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "ground_condition==1",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 3,
+          "stat": "powerStat",
+          "value": 60,
+          "rawModifier": 600000
+        },
+        {
+          "typeCode": 1,
+          "stat": "speedStat",
+          "value": 60,
+          "rawModifier": 600000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30087",
+    "baseId": "30087",
+    "name": "Mejiro Bright [Little by Little]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30087.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202022,
+      201211,
+      200742
+    ],
+    "rawHintSkills": [
+      200012,
+      200762,
+      201202,
+      201212,
+      201222
+    ],
+    "whiteSkill": "Pressure",
+    "goldSkill": "Overwhelming Pressure",
+    "desc": "SSR Stamina Support. White: [Pressure] -> Gold Awakening: [Overwhelming Pressure].",
+    "whiteSkillId": "201212",
+    "whiteSkillData": {
+      "skillId": "201212",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase==2&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "201211",
+    "goldSkillData": {
+      "skillId": "201211",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase==2&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30088",
+    "baseId": "30088",
+    "name": "Satono Diamond [Special Dreamers!]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30088.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201631,
+      201692,
+      201691,
+      200851
+    ],
+    "rawHintSkills": [
+      200592,
+      201212,
+      201382,
+      201392,
+      201542,
+      201692
+    ],
+    "whiteSkill": "Be Still",
+    "goldSkill": "Lie in Wait",
+    "desc": "SSR Wit Support. White: [Be Still] -> Gold Awakening: [Lie in Wait].",
+    "whiteSkillId": "201692",
+    "whiteSkillData": {
+      "skillId": "201692",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201691",
+    "goldSkillData": {
+      "skillId": "201691",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30085",
+    "baseId": "30085",
+    "name": "Agnes Digital [A Fan's Joy]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30085.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201352,
+      200432,
+      201681,
+      201591,
+      200232,
+      200162
+    ],
+    "rawHintSkills": [
+      200022,
+      201032,
+      201382,
+      201591,
+      201682,
+      201702
+    ],
+    "whiteSkill": "Forward, March!",
+    "goldSkill": "Lead the Charge!",
+    "desc": "SSR Power Support. White: [Forward, March!] -> Gold Awakening: [Lead the Charge!].",
+    "whiteSkillId": "201682",
+    "whiteSkillData": {
+      "skillId": "201682",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "ground_type==2&phase_random==2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.025,
+          "rawModifier": 250
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201681",
+    "goldSkillData": {
+      "skillId": "201681",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "ground_type==2&phase_random==2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30082",
+    "baseId": "30082",
+    "name": "Nishino Flower [Little Cupcakes, Big Emotions]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30082.png",
+    "rawRareStuff": [
+      "ee",
+      "heal",
+      "se",
+      8
+    ],
+    "rawEventSkills": [
+      201052,
+      201341
+    ],
+    "rawHintSkills": [
+      200052,
+      200132,
+      200152,
+      200702,
+      201322
+    ],
+    "whiteSkill": "Straight Descent",
+    "goldSkill": "Determined Descent",
+    "desc": "SSR Wit Support. White: [Straight Descent] -> Gold Awakening: [Determined Descent].",
+    "whiteSkillId": "201342",
+    "whiteSkillData": {
+      "skillId": "201342",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&down_slope_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201341",
+    "goldSkillData": {
+      "skillId": "201341",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&down_slope_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30083",
+    "baseId": "30083",
+    "name": "Sakura Bakushin O [Super! Sonic! Flower Power!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30083.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      201601,
+      202041,
+      202042,
+      200672
+    ],
+    "rawHintSkills": [
+      200652,
+      200791,
+      200841,
+      200962,
+      200972,
+      200982,
+      200992,
+      201012
+    ],
+    "whiteSkill": "Light as a Feather",
+    "goldSkill": "In High Spirits",
+    "desc": "SSR Guts Support. White: [Light as a Feather] -> Gold Awakening: [In High Spirits].",
+    "whiteSkillId": "202042",
+    "whiteSkillData": {
+      "skillId": "202042",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase_laterhalf_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "202041",
+    "goldSkillData": {
+      "skillId": "202041",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase_laterhalf_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30084",
+    "baseId": "30084",
+    "name": "Tosen Jordan [My Way]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30084.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200381,
+      200382,
+      201562
+    ],
+    "rawHintSkills": [
+      200302,
+      200562,
+      200592,
+      201102,
+      201112,
+      201312
+    ],
+    "whiteSkill": "Straightaway Recovery",
+    "goldSkill": "Breath of Fresh Air",
+    "desc": "SSR Speed Support. White: [Straightaway Recovery] -> Gold Awakening: [Breath of Fresh Air].",
+    "whiteSkillId": "200382",
+    "whiteSkillData": {
+      "skillId": "200382",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&corner==0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200381",
+    "goldSkillData": {
+      "skillId": "200381",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&corner==0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30077",
+    "baseId": "30077",
+    "name": "Admire Vega [Lucky Star in the Sky]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30077.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200871,
+      202021,
+      200861
+    ],
+    "rawHintSkills": [
+      200632,
+      201152,
+      201452,
+      201492,
+      201502
+    ],
+    "whiteSkill": "Early Start",
+    "goldSkill": "Daring Strike",
+    "desc": "SSR Power Support. White: [Early Start] -> Gold Awakening: [Daring Strike].",
+    "whiteSkillId": "202022",
+    "whiteSkillData": {
+      "skillId": "202022",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&order_rate>=50",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "202021",
+    "goldSkillData": {
+      "skillId": "202021",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&order_rate>=50",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.25,
+          "rawModifier": 2500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30078",
+    "baseId": "30078",
+    "name": "Matikanefukukitaru [Touching Sleeves Is Good Luck! ♪]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30078.png",
+    "rawRareStuff": [
+      "5s",
+      "ee"
+    ],
+    "rawEventSkills": [
+      201561,
+      201562
+    ],
+    "rawHintSkills": [
+      200092,
+      200482,
+      200781,
+      201392,
+      201422,
+      201562,
+      201571
+    ],
+    "whiteSkill": "Lucky Seven",
+    "goldSkill": "Super Lucky Seven",
+    "desc": "SSR Speed Support. White: [Lucky Seven] -> Gold Awakening: [Super Lucky Seven].",
+    "whiteSkillId": "201562",
+    "whiteSkillData": {
+      "skillId": "201562",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "random_lot==50&post_number==7",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 1,
+          "stat": "speedStat",
+          "value": 40,
+          "rawModifier": 400000
+        },
+        {
+          "typeCode": 2,
+          "stat": "staminaStat",
+          "value": 40,
+          "rawModifier": 400000
+        },
+        {
+          "typeCode": 3,
+          "stat": "powerStat",
+          "value": 40,
+          "rawModifier": 400000
+        }
+      ]
+    },
+    "goldSkillId": "201561",
+    "goldSkillData": {
+      "skillId": "201561",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "random_lot==50&post_number==7",
+      "durationSec": -0.0001,
+      "effects": [
+        {
+          "typeCode": 1,
+          "stat": "speedStat",
+          "value": 60,
+          "rawModifier": 600000
+        },
+        {
+          "typeCode": 2,
+          "stat": "staminaStat",
+          "value": 60,
+          "rawModifier": 600000
+        },
+        {
+          "typeCode": 3,
+          "stat": "powerStat",
+          "value": 60,
+          "rawModifier": 600000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30079",
+    "baseId": "30079",
+    "name": "Meisho Doto [Leaping into the Unknown]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30079.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201112,
+      200721,
+      201322
+    ],
+    "rawHintSkills": [
+      200142,
+      200152,
+      200252,
+      200302,
+      201122,
+      201382,
+      201621
+    ],
+    "whiteSkill": "Up-Tempo",
+    "goldSkill": "Killer Tunes",
+    "desc": "SSR Stamina Support. White: [Up-Tempo] -> Gold Awakening: [Killer Tunes].",
+    "whiteSkillId": "200722",
+    "whiteSkillData": {
+      "skillId": "200722",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200721",
+    "goldSkillData": {
+      "skillId": "200721",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30076",
+    "baseId": "30076",
+    "name": "Silence Suzuka [Searching for Unseen Sights]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30076.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200711,
+      200022
+    ],
+    "rawHintSkills": [
+      200432,
+      200532,
+      200542,
+      200552,
+      200712,
+      201242,
+      201252,
+      201522,
+      201272
+    ],
+    "whiteSkill": "Rosy Outlook",
+    "goldSkill": "Trackblazer",
+    "desc": "SSR Speed Support. White: [Rosy Outlook] -> Gold Awakening: [Trackblazer].",
+    "whiteSkillId": "200712",
+    "whiteSkillData": {
+      "skillId": "200712",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order<=3",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200711",
+    "goldSkillData": {
+      "skillId": "200711",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order<=3",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30075",
+    "baseId": "30075",
+    "name": "Manhattan Cafe [My Solo Spun in Spiraling Runs]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30075.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201182,
+      201221,
+      200142
+    ],
+    "rawHintSkills": [
+      200162,
+      200232,
+      201172,
+      201202,
+      201222,
+      201581
+    ],
+    "whiteSkill": "Stamina Eater",
+    "goldSkill": "Stamina Siphon",
+    "desc": "SSR Stamina Support. White: [Stamina Eater] -> Gold Awakening: [Stamina Siphon].",
+    "whiteSkillId": "201222",
+    "whiteSkillData": {
+      "skillId": "201222",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&order>=5",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.005,
+          "rawModifier": -50
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201221",
+    "goldSkillData": {
+      "skillId": "201221",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&order>=5",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": -0.01,
+          "rawModifier": -100
+        },
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.035,
+          "rawModifier": 350
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30072",
+    "baseId": "30072",
+    "name": "Mayano Top Gun [Party Formation]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30072.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201902,
+      200282,
+      201281,
+      200362
+    ],
+    "rawHintSkills": [
+      200142,
+      200332,
+      200362,
+      200382,
+      200492,
+      200502
+    ],
+    "whiteSkill": "Moxie",
+    "goldSkill": "Restless",
+    "desc": "SSR Speed Support. White: [Moxie] -> Gold Awakening: [Restless].",
+    "whiteSkillId": "201282",
+    "whiteSkillData": {
+      "skillId": "201282",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&slope==1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201281",
+    "goldSkillData": {
+      "skillId": "201281",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&slope==1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30073",
+    "baseId": "30073",
+    "name": "Narita Taishin [Strict Shopper]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30073.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201142,
+      201202,
+      200621,
+      200622,
+      201212
+    ],
+    "rawHintSkills": [
+      200442,
+      200482,
+      200622,
+      200632,
+      201462,
+      201512,
+      201641
+    ],
+    "whiteSkill": "Standing By",
+    "goldSkill": "Sleeping Lion",
+    "desc": "SSR Wit Support. White: [Standing By] -> Gold Awakening: [Sleeping Lion].",
+    "whiteSkillId": "200622",
+    "whiteSkillData": {
+      "skillId": "200622",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&distance_diff_rate>=75",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200621",
+    "goldSkillData": {
+      "skillId": "200621",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==1&distance_diff_rate>=75",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30074",
+    "baseId": "30074",
+    "name": "Marvelous Sunday [Dazzling Day in the Snow]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30074.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200222,
+      200591,
+      200592,
+      200052
+    ],
+    "rawHintSkills": [
+      200362,
+      200462,
+      200851,
+      200881,
+      201611
+    ],
+    "whiteSkill": "Position Pilfer",
+    "goldSkill": "Fast & Furious",
+    "desc": "SSR Power Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
+    "whiteSkillId": "200592",
+    "whiteSkillData": {
+      "skillId": "200592",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200591",
+    "goldSkillData": {
+      "skillId": "200591",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30071",
+    "baseId": "30071",
+    "name": "Daitaku Helios [Make! Some! NOISE!]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30071.png",
+    "rawRareStuff": [
+      "ee",
+      "se",
+      9
+    ],
+    "rawEventSkills": [
+      200532,
+      201322,
+      200541,
+      200542,
+      200302
+    ],
+    "rawHintSkills": [
+      200462,
+      200562,
+      201042,
+      201052,
+      201082,
+      201631,
+      201651
+    ],
+    "whiteSkill": "Fast-Paced",
+    "goldSkill": "Escape Artist",
+    "desc": "SSR Power Support. White: [Fast-Paced] -> Gold Awakening: [Escape Artist].",
+    "whiteSkillId": "200542",
+    "whiteSkillData": {
+      "skillId": "200542",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&phase_random==1&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200541",
+    "goldSkillData": {
+      "skillId": "200541",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&phase_random==1&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30068",
+    "baseId": "30068",
+    "name": "Curren Chan [Cutie Pie with Shining Eyes]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30068.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201022,
+      201661,
+      201001,
+      201002,
+      201012
+    ],
+    "rawHintSkills": [
+      200652,
+      200911,
+      200962,
+      201002,
+      201372
+    ],
+    "whiteSkill": "Meticulous Measures",
+    "goldSkill": "Perfect Prep!",
+    "desc": "SSR Wit Support. White: [Meticulous Measures] -> Gold Awakening: [Perfect Prep!].",
+    "whiteSkillId": "201002",
+    "whiteSkillData": {
+      "skillId": "201002",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==1",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.025,
+          "rawModifier": 250
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201001",
+    "goldSkillData": {
+      "skillId": "201001",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==1",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30069",
+    "baseId": "30069",
+    "name": "Narita Brian [The Whistling Arrow's Taunt]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30069.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200722,
+      200361,
+      201641
+    ],
+    "rawHintSkills": [
+      200012,
+      200572,
+      200612,
+      200752,
+      201102,
+      201112,
+      201172,
+      201352
+    ],
+    "whiteSkill": "Straightaway Adept",
+    "goldSkill": "Beeline Burst",
+    "desc": "SSR Stamina Support. White: [Straightaway Adept] -> Gold Awakening: [Beeline Burst].",
+    "whiteSkillId": "200362",
+    "whiteSkillData": {
+      "skillId": "200362",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200361",
+    "goldSkillData": {
+      "skillId": "200361",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30070",
+    "baseId": "30070",
+    "name": "Yukino Bijin [Dancing Light into the Night]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30070.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200242,
+      201661,
+      200341,
+      200342
+    ],
+    "rawHintSkills": [
+      200042,
+      200202,
+      200732,
+      201112
+    ],
+    "whiteSkill": "Corner Acceleration ○",
+    "goldSkill": "Corner Connoisseur",
+    "desc": "SSR Guts Support. White: [Corner Acceleration ○] -> Gold Awakening: [Corner Connoisseur].",
+    "whiteSkillId": "200342",
+    "whiteSkillData": {
+      "skillId": "200342",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200341",
+    "goldSkillData": {
+      "skillId": "200341",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30043",
+    "baseId": "30043",
+    "name": "Nakayama Festa [43, 8, 1]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30043.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201591,
+      201701,
+      201702,
+      200042,
+      200052
+    ],
+    "rawHintSkills": [
+      200162,
+      200302,
+      200602,
+      200612,
+      200732,
+      201382,
+      201442,
+      201562,
+      201702
+    ],
+    "whiteSkill": "All I've Got",
+    "goldSkill": "Come What May",
+    "desc": "SSR Stamina Support. White: [All I've Got] -> Gold Awakening: [Come What May].",
+    "whiteSkillId": "201702",
+    "whiteSkillData": {
+      "skillId": "201702",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&is_last_straight==1&order_rate>=20&order_rate<=60&phase>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201701",
+    "goldSkillData": {
+      "skillId": "201701",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&is_last_straight==1&order_rate>=20&order_rate<=60&phase>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30064",
+    "baseId": "30064",
+    "name": "Tamamo Cross [Beware! Halloween Night!]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30064.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200162,
+      201411,
+      200482
+    ],
+    "rawHintSkills": [
+      200712,
+      200811,
+      200901,
+      201112,
+      201132,
+      201142,
+      201412
+    ],
+    "whiteSkill": "1,500,000 CC",
+    "goldSkill": "15,000,000 CC",
+    "desc": "SSR Power Support. White: [1,500,000 CC] -> Gold Awakening: [15,000,000 CC].",
+    "whiteSkillId": "201412",
+    "whiteSkillData": {
+      "skillId": "201412",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&up_slope_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201411",
+    "goldSkillData": {
+      "skillId": "201411",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&up_slope_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30065",
+    "baseId": "30065",
+    "name": "Zenno Rob Roy [Magical Heroine]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30065.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200012,
+      200022,
+      201691,
+      201102
+    ],
+    "rawHintSkills": [
+      200362,
+      200452,
+      200492,
+      200502,
+      201332,
+      201432,
+      201532,
+      201542
+    ],
+    "whiteSkill": "Be Still",
+    "goldSkill": "Lie in Wait",
+    "desc": "SSR Speed Support. White: [Be Still] -> Gold Awakening: [Lie in Wait].",
+    "whiteSkillId": "201692",
+    "whiteSkillData": {
+      "skillId": "201692",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201691",
+    "goldSkillData": {
+      "skillId": "201691",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30066",
+    "baseId": "30066",
+    "name": "Mihono Bourbon [The Ghost Finds Halloween Magic]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30066.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201282,
+      200531,
+      200432
+    ],
+    "rawHintSkills": [
+      200242,
+      200532,
+      201242,
+      201252
+    ],
+    "whiteSkill": "Early Lead",
+    "goldSkill": "Taking the Lead",
+    "desc": "SSR Wit Support. White: [Early Lead] -> Gold Awakening: [Taking the Lead].",
+    "whiteSkillId": "200532",
+    "whiteSkillData": {
+      "skillId": "200532",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200531",
+    "goldSkillData": {
+      "skillId": "200531",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30063",
+    "baseId": "30063",
+    "name": "Ikuno Dictus [Warm Heart, Soft Steps]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30063.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      200502,
+      201431,
+      200781
+    ],
+    "rawHintSkills": [
+      200442,
+      200482,
+      201122,
+      201432,
+      201442
+    ],
+    "whiteSkill": "Studious",
+    "goldSkill": "The Bigger Picture",
+    "desc": "SSR Guts Support. White: [Studious] -> Gold Awakening: [The Bigger Picture].",
+    "whiteSkillId": "201432",
+    "whiteSkillData": {
+      "skillId": "201432",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 5,
+          "rawModifier": 50000
+        }
+      ]
+    },
+    "goldSkillId": "201431",
+    "goldSkillData": {
+      "skillId": "201431",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 15,
+          "rawModifier": 150000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30034",
+    "baseId": "30034",
+    "name": "Rice Shower [Happiness Just around the Bend]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30034.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201202,
+      200351,
+      200152
+    ],
+    "rawHintSkills": [
+      200062,
+      200272,
+      200742,
+      200801,
+      200861,
+      200871,
+      201342,
+      201372,
+      201581
+    ],
+    "whiteSkill": "Corner Recovery ○",
+    "goldSkill": "Swinging Maestro",
+    "desc": "SSR Power Support. White: [Corner Recovery ○] -> Gold Awakening: [Swinging Maestro].",
+    "whiteSkillId": "200352",
+    "whiteSkillData": {
+      "skillId": "200352",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&corner!=0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200351",
+    "goldSkillData": {
+      "skillId": "200351",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&corner!=0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30062",
+    "baseId": "30062",
+    "name": "Silence Suzuka [Winning Dream]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30062.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201352,
+      201142,
+      200431,
+      200022
+    ],
+    "rawHintSkills": [
+      200432,
+      200532,
+      200542,
+      200552,
+      200712,
+      201242,
+      201252,
+      201522,
+      201272
+    ],
+    "whiteSkill": "Focus",
+    "goldSkill": "Concentration",
+    "desc": "SSR Stamina Support. White: [Focus] -> Gold Awakening: [Concentration].",
+    "whiteSkillId": "200432",
+    "whiteSkillData": {
+      "skillId": "200432",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "always==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 10,
+          "stat": "effect_10",
+          "value": 0.9,
+          "rawModifier": 9000
+        }
+      ]
+    },
+    "goldSkillId": "200431",
+    "goldSkillData": {
+      "skillId": "200431",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "always==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 10,
+          "stat": "effect_10",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30054",
+    "baseId": "30054",
+    "name": "Nice Nature [Daring to Dream]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30054.png",
+    "rawRareStuff": [
+      "heal",
+      "me"
+    ],
+    "rawEventSkills": [
+      200601,
+      200462
+    ],
+    "rawHintSkills": [
+      200122,
+      200342,
+      200442,
+      200502,
+      200911,
+      201162,
+      201422,
+      201442
+    ],
+    "whiteSkill": "Slick Surge",
+    "goldSkill": "On Your Left!",
+    "desc": "SSR Wit Support. White: [Slick Surge] -> Gold Awakening: [On Your Left!].",
+    "whiteSkillId": "200602",
+    "whiteSkillData": {
+      "skillId": "200602",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200601",
+    "goldSkillData": {
+      "skillId": "200601",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30045",
+    "baseId": "30045",
+    "name": "Sweep Tosho [It's All Mine!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30045.png",
+    "rawRareStuff": [
+      "se",
+      8
+    ],
+    "rawEventSkills": [
+      200642,
+      201501
+    ],
+    "rawHintSkills": [
+      200452,
+      200771,
+      200781,
+      201162,
+      201472,
+      201482,
+      201651
+    ],
+    "whiteSkill": "Strategist",
+    "goldSkill": "Crusader",
+    "desc": "SSR Speed Support. White: [Strategist] -> Gold Awakening: [Crusader].",
+    "whiteSkillId": "201502",
+    "whiteSkillData": {
+      "skillId": "201502",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 5,
+          "rawModifier": 50000
+        }
+      ]
+    },
+    "goldSkillId": "201501",
+    "goldSkillData": {
+      "skillId": "201501",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==4&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 15,
+          "rawModifier": 150000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30046",
+    "baseId": "30046",
+    "name": "Winning Ticket [Full-Blown Tantrum]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30046.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201571,
+      201412,
+      201102,
+      200272,
+      201401,
+      201392
+    ],
+    "rawHintSkills": [
+      200152,
+      200222,
+      200592,
+      200602,
+      200612
+    ],
+    "whiteSkill": "Fighter",
+    "goldSkill": "Hard Worker",
+    "desc": "SSR Stamina Support. White: [Fighter] -> Gold Awakening: [Hard Worker].",
+    "whiteSkillId": "201402",
+    "whiteSkillData": {
+      "skillId": "201402",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&is_overtake==1&accumulatetime>=5",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201401",
+    "goldSkillData": {
+      "skillId": "201401",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&is_overtake==1&accumulatetime>=5",
+      "durationSec": 4,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30047",
+    "baseId": "30047",
+    "name": "Daiwa Scarlet [Mini☆Vacation]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30047.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200571,
+      200572,
+      200562
+    ],
+    "rawHintSkills": [
+      200282,
+      200572,
+      200582,
+      200712,
+      200722,
+      201052
+    ],
+    "whiteSkill": "Preferred Position",
+    "goldSkill": "Race Planner",
+    "desc": "SSR Power Support. White: [Preferred Position] -> Gold Awakening: [Race Planner].",
+    "whiteSkillId": "200572",
+    "whiteSkillData": {
+      "skillId": "200572",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate<=50",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200571",
+    "goldSkillData": {
+      "skillId": "200571",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate<=50",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30044",
+    "baseId": "30044",
+    "name": "Narita Brian [Two Pieces]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30044.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      201361,
+      201641
+    ],
+    "rawHintSkills": [
+      200012,
+      200572,
+      200612,
+      200752,
+      201102,
+      201112,
+      201172,
+      201352
+    ],
+    "whiteSkill": "Tactical Tweak",
+    "goldSkill": "Shatterproof",
+    "desc": "SSR Speed Support. White: [Tactical Tweak] -> Gold Awakening: [Shatterproof].",
+    "whiteSkillId": "201362",
+    "whiteSkillData": {
+      "skillId": "201362",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate>40",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "201361",
+    "goldSkillData": {
+      "skillId": "201361",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1&order_rate>40",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.3,
+          "rawModifier": 3000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30048",
+    "baseId": "30048",
+    "name": "Mejiro Ryan [Winning Pitch]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30048.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      201532,
+      200731,
+      200472
+    ],
+    "rawHintSkills": [
+      200162,
+      200232,
+      200722,
+      201102
+    ],
+    "whiteSkill": "Steadfast",
+    "goldSkill": "Unyielding",
+    "desc": "SSR Guts Support. White: [Steadfast] -> Gold Awakening: [Unyielding].",
+    "whiteSkillId": "200732",
+    "whiteSkillData": {
+      "skillId": "200732",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "200731",
+    "goldSkillData": {
+      "skillId": "200731",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30055",
+    "baseId": "30055",
+    "name": "Seiun Sky [Paint the Sky Red]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30055.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200801,
+      201191,
+      201192
+    ],
+    "rawHintSkills": [
+      200252,
+      200302,
+      200771,
+      200811,
+      200881,
+      201611
+    ],
+    "whiteSkill": "Keeping the Lead",
+    "goldSkill": "Vanguard Spirit",
+    "desc": "SSR Wit Support. White: [Keeping the Lead] -> Gold Awakening: [Vanguard Spirit].",
+    "whiteSkillId": "201192",
+    "whiteSkillData": {
+      "skillId": "201192",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&bashin_diff_behind>=1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201191",
+    "goldSkillData": {
+      "skillId": "201191",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&bashin_diff_behind>=1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30056",
+    "baseId": "30056",
+    "name": "King Halo [Tonight, We Waltz]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30056.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201022,
+      201591,
+      200672,
+      200671,
+      200512
+    ],
+    "rawHintSkills": [
+      200152,
+      200222,
+      200262,
+      200352,
+      200662,
+      200672
+    ],
+    "whiteSkill": "Gap Closer",
+    "goldSkill": "Blinding Flash",
+    "desc": "SSR Power Support. White: [Gap Closer] -> Gold Awakening: [Blinding Flash].",
+    "whiteSkillId": "200672",
+    "whiteSkillData": {
+      "skillId": "200672",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "200671",
+    "goldSkillData": {
+      "skillId": "200671",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30057",
+    "baseId": "30057",
+    "name": "Gold Ship [That Time I Became the Strongest]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30057.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      201172,
+      200752,
+      200751,
+      200272,
+      200052
+    ],
+    "rawHintSkills": [
+      200622,
+      200642,
+      200752,
+      201212,
+      201232,
+      201472,
+      201482,
+      201502,
+      201512,
+      201552,
+      201581,
+      201591,
+      201601,
+      201631
+    ],
+    "whiteSkill": "Inside Scoop",
+    "goldSkill": "Innate Experience",
+    "desc": "SSR Speed Support. White: [Inside Scoop] -> Gold Awakening: [Innate Experience].",
+    "whiteSkillId": "200752",
+    "whiteSkillData": {
+      "skillId": "200752",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&is_finalcorner==1&corner!=0&lane_type==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200751",
+    "goldSkillData": {
+      "skillId": "200751",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&is_finalcorner==1&corner!=0&lane_type==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30042",
+    "baseId": "30042",
+    "name": "Bamboo Memory [Head-on Fight!]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30042.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      200282,
+      200512,
+      200521,
+      200911,
+      200611,
+      200612,
+      200132
+    ],
+    "rawHintSkills": [
+      200292,
+      200362,
+      200672,
+      201032,
+      201062,
+      201382
+    ],
+    "whiteSkill": "Outer Swell",
+    "goldSkill": "Rising Dragon",
+    "desc": "SSR Power Support. White: [Outer Swell] -> Gold Awakening: [Rising Dragon].",
+    "whiteSkillId": "200612",
+    "whiteSkillData": {
+      "skillId": "200612",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&is_finalcorner==1&corner!=0&is_behind_in==1&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200611",
+    "goldSkillData": {
+      "skillId": "200611",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&is_finalcorner==1&corner!=0&is_behind_in==1&change_order_onetime<0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30039",
+    "baseId": "30039",
+    "name": "Kawakami Princess [Princess Bride]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30039.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201152,
+      200451,
+      200732
+    ],
+    "rawHintSkills": [
+      200132,
+      200572,
+      201142,
+      201362
+    ],
+    "whiteSkill": "Prudent Positioning",
+    "goldSkill": "Center Stage",
+    "desc": "SSR Speed Support. White: [Prudent Positioning] -> Gold Awakening: [Center Stage].",
+    "whiteSkillId": "200452",
+    "whiteSkillData": {
+      "skillId": "200452",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        }
+      ]
+    },
+    "goldSkillId": "200451",
+    "goldSkillData": {
+      "skillId": "200451",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.045,
+          "rawModifier": 450
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30040",
+    "baseId": "30040",
+    "name": "Hishi Akebono [Who Wants the First Bite?]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30040.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200212,
+      201352,
+      200672,
+      201261,
+      201262,
+      200652
+    ],
+    "rawHintSkills": [
+      200212,
+      200552,
+      200972,
+      200992,
+      201002,
+      201352
+    ],
+    "whiteSkill": "Dodging Danger",
+    "goldSkill": "Sixth Sense",
+    "desc": "SSR Guts Support. White: [Dodging Danger] -> Gold Awakening: [Sixth Sense].",
+    "whiteSkillId": "201262",
+    "whiteSkillData": {
+      "skillId": "201262",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&phase==0&blocked_front_continuetime>=1@running_style==1&phase==0&blocked_side_continuetime>=1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.025,
+          "rawModifier": 250
+        },
+        {
+          "typeCode": 35,
+          "stat": "effect_35",
+          "value": 0.5,
+          "rawModifier": 5000
+        }
+      ]
+    },
+    "goldSkillId": "201261",
+    "goldSkillData": {
+      "skillId": "201261",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&phase==0&blocked_front_continuetime>=1@running_style==1&phase==0&blocked_side_continuetime>=1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        },
+        {
+          "typeCode": 35,
+          "stat": "effect_35",
+          "value": 0.5,
+          "rawModifier": 5000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30041",
+    "baseId": "30041",
+    "name": "Mejiro Dober [My Thoughts, My Desires]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30041.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201431,
+      201072
+    ],
+    "rawHintSkills": [
+      200062,
+      200212,
+      200722,
+      200732,
+      201542
+    ],
+    "whiteSkill": "Studious",
+    "goldSkill": "The Bigger Picture",
+    "desc": "SSR Wit Support. White: [Studious] -> Gold Awakening: [The Bigger Picture].",
+    "whiteSkillId": "201432",
+    "whiteSkillData": {
+      "skillId": "201432",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 5,
+          "rawModifier": 50000
+        }
+      ]
+    },
+    "goldSkillId": "201431",
+    "goldSkillData": {
+      "skillId": "201431",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 8,
+          "stat": "effect_8",
+          "value": 15,
+          "rawModifier": 150000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30038",
+    "baseId": "30038",
+    "name": "Sakura Chiyono O [Peak Sakura Season]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30038.png",
+    "rawRareStuff": [
+      "heal"
+    ],
+    "rawEventSkills": [
+      200562,
+      201102,
+      200581,
+      200172
+    ],
+    "rawHintSkills": [
+      200732,
+      201052,
+      201112,
+      201532
+    ],
+    "whiteSkill": "Prepared to Pass",
+    "goldSkill": "Speed Star",
+    "desc": "SSR Stamina Support. White: [Prepared to Pass] -> Gold Awakening: [Speed Star].",
+    "whiteSkillId": "200582",
+    "whiteSkillData": {
+      "skillId": "200582",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200581",
+    "goldSkillData": {
+      "skillId": "200581",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30032",
+    "baseId": "30032",
+    "name": "Yaeno Muteki [Fiery Discipline]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30032.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200891,
+      200911,
+      201661,
+      200461,
+      201112
+    ],
+    "rawHintSkills": [
+      200462,
+      200512,
+      200582,
+      200722,
+      201611
+    ],
+    "whiteSkill": "Ramp Up",
+    "goldSkill": "It's On!",
+    "desc": "SSR Power Support. White: [Ramp Up] -> Gold Awakening: [It's On!].",
+    "whiteSkillId": "200462",
+    "whiteSkillData": {
+      "skillId": "200462",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&change_order_onetime<0",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200461",
+    "goldSkillData": {
+      "skillId": "200461",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&change_order_onetime<0",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30033",
+    "baseId": "30033",
+    "name": "Winning Ticket [Dreams Do Come True!]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30033.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200511,
+      201392
+    ],
+    "rawHintSkills": [
+      200152,
+      200222,
+      200592,
+      200602,
+      200612
+    ],
+    "whiteSkill": "Homestretch Haste",
+    "goldSkill": "In Body and Mind",
+    "desc": "SSR Power Support. White: [Homestretch Haste] -> Gold Awakening: [In Body and Mind].",
+    "whiteSkillId": "200512",
+    "whiteSkillData": {
+      "skillId": "200512",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200511",
+    "goldSkillData": {
+      "skillId": "200511",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30031",
+    "baseId": "30031",
+    "name": "Yukino Bijin [Hometown Cheers]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30031.png",
+    "rawRareStuff": [
+      "heal",
+      "me"
+    ],
+    "rawEventSkills": [
+      200252,
+      201352,
+      200491,
+      200342
+    ],
+    "rawHintSkills": [
+      200042,
+      200202,
+      200732,
+      201112
+    ],
+    "whiteSkill": "Nimble Navigator",
+    "goldSkill": "No Stopping Me!",
+    "desc": "SSR Wit Support. White: [Nimble Navigator] -> Gold Awakening: [No Stopping Me!].",
+    "whiteSkillId": "200492",
+    "whiteSkillData": {
+      "skillId": "200492",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "infront_near_lane_time>=1&is_lastspurt==1&hp_per>=1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        },
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.005,
+          "rawModifier": 50
+        }
+      ]
+    },
+    "goldSkillId": "200491",
+    "goldSkillData": {
+      "skillId": "200491",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "infront_near_lane_time>=1&is_lastspurt==1&hp_per>=1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        },
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.025,
+          "rawModifier": 250
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30028",
+    "baseId": "30028",
+    "name": "Kitasan Black [Fire at My Heels]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30028.png",
+    "rawRareStuff": [
+      "se",
+      10
+    ],
+    "rawEventSkills": [
+      200362,
+      200331
+    ],
+    "rawHintSkills": [
+      200332,
+      200352,
+      200382,
+      200432,
+      200762,
+      201182,
+      201242,
+      201262
+    ],
+    "whiteSkill": "Corner Adept ○",
+    "goldSkill": "Professor of Curvature",
+    "desc": "SSR Speed Support. White: [Corner Adept ○] -> Gold Awakening: [Professor of Curvature].",
+    "whiteSkillId": "200332",
+    "whiteSkillData": {
+      "skillId": "200332",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200331",
+    "goldSkillData": {
+      "skillId": "200331",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30029",
+    "baseId": "30029",
+    "name": "Satono Diamond [The Will to Overtake]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30029.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201702,
+      200441,
+      200851
+    ],
+    "rawHintSkills": [
+      200152,
+      200212,
+      200841,
+      201112,
+      201152,
+      201422,
+      201432
+    ],
+    "whiteSkill": "Lay Low",
+    "goldSkill": "Iron Will",
+    "desc": "SSR Stamina Support. White: [Lay Low] -> Gold Awakening: [Iron Will].",
+    "whiteSkillId": "200442",
+    "whiteSkillData": {
+      "skillId": "200442",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase<=1&accumulatetime>=5&blocked_front_continuetime>=1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        },
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200441",
+    "goldSkillData": {
+      "skillId": "200441",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase<=1&accumulatetime>=5&blocked_front_continuetime>=1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        },
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30030",
+    "baseId": "30030",
+    "name": "Matikanetannhauser [Just Keep Going]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30030.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200481,
+      200482,
+      200831
+    ],
+    "rawHintSkills": [
+      200442,
+      200472,
+      200732,
+      200742,
+      201402
+    ],
+    "whiteSkill": "Calm in a Crowd",
+    "goldSkill": "Unruffled",
+    "desc": "SSR Guts Support. White: [Calm in a Crowd] -> Gold Awakening: [Unruffled].",
+    "whiteSkillId": "200482",
+    "whiteSkillData": {
+      "skillId": "200482",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&is_surrounded==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200481",
+    "goldSkillData": {
+      "skillId": "200481",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&is_surrounded==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30027",
+    "baseId": "30027",
+    "name": "Mejiro Palmer [Go Ahead and Laugh]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30027.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201242,
+      200472,
+      201522,
+      201192,
+      201191,
+      201641,
+      200162
+    ],
+    "rawHintSkills": [
+      200042,
+      200052,
+      200532,
+      200542,
+      200871,
+      201282,
+      201631
+    ],
+    "whiteSkill": "Keeping the Lead",
+    "goldSkill": "Vanguard Spirit",
+    "desc": "SSR Guts Support. White: [Keeping the Lead] -> Gold Awakening: [Vanguard Spirit].",
+    "whiteSkillId": "201192",
+    "whiteSkillData": {
+      "skillId": "201192",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&bashin_diff_behind>=1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "201191",
+    "goldSkillData": {
+      "skillId": "201191",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1&bashin_diff_behind>=1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30026",
+    "baseId": "30026",
+    "name": "Twin Turbo [Turbo Booooost!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30026.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201272,
+      200532,
+      200531,
+      200692
+    ],
+    "rawHintSkills": [
+      200282,
+      200292,
+      200532,
+      200542,
+      201272,
+      201282
+    ],
+    "whiteSkill": "Early Lead",
+    "goldSkill": "Taking the Lead",
+    "desc": "SSR Speed Support. White: [Early Lead] -> Gold Awakening: [Taking the Lead].",
+    "whiteSkillId": "200532",
+    "whiteSkillData": {
+      "skillId": "200532",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200531",
+    "goldSkillData": {
+      "skillId": "200531",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&always==1",
+      "durationSec": 1.2,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30001",
+    "baseId": "30001",
+    "name": "Special Week [The Brightest Star in Japan!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30001.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201142,
+      201342,
+      200512,
+      200511,
+      200762
+    ],
+    "rawHintSkills": [
+      200162,
+      200232,
+      200512,
+      200612,
+      200732,
+      201352,
+      201542
+    ],
+    "whiteSkill": "Homestretch Haste",
+    "goldSkill": "In Body and Mind",
+    "desc": "SSR Guts Support. White: [Homestretch Haste] -> Gold Awakening: [In Body and Mind].",
+    "whiteSkillId": "200512",
+    "whiteSkillData": {
+      "skillId": "200512",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200511",
+    "goldSkillData": {
+      "skillId": "200511",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30002",
+    "baseId": "30002",
+    "name": "Silence Suzuka [Beyond This Shining Moment]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30002.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201302,
+      200432,
+      200551,
+      200022
+    ],
+    "rawHintSkills": [
+      200432,
+      200532,
+      200542,
+      200552,
+      200712,
+      201242,
+      201252,
+      201522,
+      201272
+    ],
+    "whiteSkill": "Final Push",
+    "goldSkill": "Unrestrained",
+    "desc": "SSR Speed Support. White: [Final Push] -> Gold Awakening: [Unrestrained].",
+    "whiteSkillId": "200552",
+    "whiteSkillData": {
+      "skillId": "200552",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&is_finalcorner_random==1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200551",
+    "goldSkillData": {
+      "skillId": "200551",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&is_finalcorner_random==1&order==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30003",
+    "baseId": "30003",
+    "name": "Tokai Teio [Dream Big!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30003.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200371,
+      201312
+    ],
+    "rawHintSkills": [
+      200452,
+      200492,
+      200502,
+      201132,
+      201142,
+      201332
+    ],
+    "whiteSkill": "Straightaway Acceleration",
+    "goldSkill": "Rushing Gale!",
+    "desc": "SSR Speed Support. White: [Straightaway Acceleration] -> Gold Awakening: [Rushing Gale!].",
+    "whiteSkillId": "200372",
+    "whiteSkillData": {
+      "skillId": "200372",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200371",
+    "goldSkillData": {
+      "skillId": "200371",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        },
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30004",
+    "baseId": "30004",
+    "name": "Gold Ship [Breakaway Battleship]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30004.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      202022,
+      201552,
+      200341,
+      202032,
+      200052
+    ],
+    "rawHintSkills": [
+      200622,
+      200642,
+      200752,
+      201212,
+      201232,
+      201472,
+      201482,
+      201502,
+      201512,
+      201552,
+      201581,
+      201591,
+      201601,
+      201631
+    ],
+    "whiteSkill": "Corner Acceleration ○",
+    "goldSkill": "Corner Connoisseur",
+    "desc": "SSR Stamina Support. White: [Corner Acceleration ○] -> Gold Awakening: [Corner Connoisseur].",
+    "whiteSkillId": "200342",
+    "whiteSkillData": {
+      "skillId": "200342",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200341",
+    "goldSkillData": {
+      "skillId": "200341",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "all_corner_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30005",
+    "baseId": "30005",
+    "name": "Vodka [Wild Rider]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30005.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200702,
+      200381,
+      200492
+    ],
+    "rawHintSkills": [
+      200032,
+      200362,
+      200372,
+      200382,
+      200512,
+      200602,
+      200702,
+      201032,
+      201102
+    ],
+    "whiteSkill": "Straightaway Recovery",
+    "goldSkill": "Breath of Fresh Air",
+    "desc": "SSR Power Support. White: [Straightaway Recovery] -> Gold Awakening: [Breath of Fresh Air].",
+    "whiteSkillId": "200382",
+    "whiteSkillData": {
+      "skillId": "200382",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&corner==0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200381",
+    "goldSkillData": {
+      "skillId": "200381",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&corner==0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30006",
+    "baseId": "30006",
+    "name": "Grass Wonder [Fairest Fleur]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30006.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201152,
+      201542,
+      200701,
+      200801,
+      200292
+    ],
+    "rawHintSkills": [
+      200042,
+      200282,
+      200512,
+      200592,
+      200602,
+      200702,
+      200871,
+      201152
+    ],
+    "whiteSkill": "Updrafters",
+    "goldSkill": "Furious Feat",
+    "desc": "SSR Guts Support. White: [Updrafters] -> Gold Awakening: [Furious Feat].",
+    "whiteSkillId": "200702",
+    "whiteSkillData": {
+      "skillId": "200702",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200701",
+    "goldSkillData": {
+      "skillId": "200701",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30007",
+    "baseId": "30007",
+    "name": "El Condor Pasa [Champion's Passion]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30007.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      200562,
+      200721,
+      200212
+    ],
+    "rawHintSkills": [
+      200132,
+      200212,
+      200582,
+      200722,
+      201102,
+      201122,
+      201312
+    ],
+    "whiteSkill": "Up-Tempo",
+    "goldSkill": "Killer Tunes",
+    "desc": "SSR Power Support. White: [Up-Tempo] -> Gold Awakening: [Killer Tunes].",
+    "whiteSkillId": "200722",
+    "whiteSkillData": {
+      "skillId": "200722",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200721",
+    "goldSkillData": {
+      "skillId": "200721",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&phase_random==1&order_rate<=50",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30008",
+    "baseId": "30008",
+    "name": "Seiun Sky [Foolproof Plan]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30008.png",
+    "rawRareStuff": [
+      "ee"
+    ],
+    "rawEventSkills": [
+      201262,
+      201292,
+      200542,
+      200541,
+      201192
+    ],
+    "rawHintSkills": [
+      200252,
+      200302,
+      200771,
+      200811,
+      200881,
+      201611
+    ],
+    "whiteSkill": "Fast-Paced",
+    "goldSkill": "Escape Artist",
+    "desc": "SSR Stamina Support. White: [Fast-Paced] -> Gold Awakening: [Escape Artist].",
+    "whiteSkillId": "200542",
+    "whiteSkillData": {
+      "skillId": "200542",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&phase_random==1&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200541",
+    "goldSkillData": {
+      "skillId": "200541",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&phase_random==1&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30009",
+    "baseId": "30009",
+    "name": "Tamamo Cross [Split the Sky, White Lightning!]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30009.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201611,
+      200591,
+      200482
+    ],
+    "rawHintSkills": [
+      200712,
+      200811,
+      200901,
+      201112,
+      201132,
+      201142,
+      201412
+    ],
+    "whiteSkill": "Position Pilfer",
+    "goldSkill": "Fast & Furious",
+    "desc": "SSR Stamina Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
+    "whiteSkillId": "200592",
+    "whiteSkillData": {
+      "skillId": "200592",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200591",
+    "goldSkillData": {
+      "skillId": "200591",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "durationSec": 2.4,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30010",
+    "baseId": "30010",
+    "name": "Fine Motion [Wave of Gratitude]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30010.png",
+    "rawRareStuff": [
+      "se",
+      10
+    ],
+    "rawEventSkills": [
+      200581,
+      200582,
+      200332
+    ],
+    "rawHintSkills": [
+      200012,
+      200192,
+      200262,
+      200372,
+      200492
+    ],
+    "whiteSkill": "Prepared to Pass",
+    "goldSkill": "Speed Star",
+    "desc": "SSR Wit Support. White: [Prepared to Pass] -> Gold Awakening: [Speed Star].",
+    "whiteSkillId": "200582",
+    "whiteSkillData": {
+      "skillId": "200582",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200581",
+    "goldSkillData": {
+      "skillId": "200581",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&is_finalcorner_random==1&order_rate<=50",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30011",
+    "baseId": "30011",
+    "name": "Ines Fujin [Watch My Star Fly!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30011.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201281,
+      201282,
+      200542
+    ],
+    "rawHintSkills": [
+      200732,
+      201082,
+      201282,
+      201651,
+      201661
+    ],
+    "whiteSkill": "Moxie",
+    "goldSkill": "Restless",
+    "desc": "SSR Guts Support. White: [Moxie] -> Gold Awakening: [Restless].",
+    "whiteSkillId": "201282",
+    "whiteSkillData": {
+      "skillId": "201282",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==1&slope==1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201281",
+    "goldSkillData": {
+      "skillId": "201281",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==1&slope==1&accumulatetime>=10",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30012",
+    "baseId": "30012",
+    "name": "Winning Ticket [BNWinner!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30012.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201402,
+      200601,
+      201392
+    ],
+    "rawHintSkills": [
+      200152,
+      200222,
+      200592,
+      200602,
+      200612
+    ],
+    "whiteSkill": "Slick Surge",
+    "goldSkill": "On Your Left!",
+    "desc": "SSR Guts Support. White: [Slick Surge] -> Gold Awakening: [On Your Left!].",
+    "whiteSkillId": "200602",
+    "whiteSkillData": {
+      "skillId": "200602",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200601",
+    "goldSkillData": {
+      "skillId": "200601",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==3&phase_firsthalf_random==2&order_rate>=40",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30013",
+    "baseId": "30013",
+    "name": "Air Shakur [7 More Centimeters]",
+    "type": "Wit",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30013.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      201512,
+      200642,
+      200731,
+      200472
+    ],
+    "rawHintSkills": [
+      201212,
+      201492,
+      201502
+    ],
+    "whiteSkill": "Steadfast",
+    "goldSkill": "Unyielding",
+    "desc": "SSR Wit Support. White: [Steadfast] -> Gold Awakening: [Unyielding].",
+    "whiteSkillId": "200732",
+    "whiteSkillData": {
+      "skillId": "200732",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.05,
+          "rawModifier": 500
+        }
+      ]
+    },
+    "goldSkillId": "200731",
+    "goldSkillData": {
+      "skillId": "200731",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==3&is_finalcorner==1&overtake_target_time>=2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        },
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.1,
+          "rawModifier": 1000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30014",
+    "baseId": "30014",
+    "name": "Gold City [Run(my)way]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30014.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200502,
+      200691,
+      201422
+    ],
+    "rawHintSkills": [
+      200082,
+      200692,
+      201062
+    ],
+    "whiteSkill": "Watchful Eye",
+    "goldSkill": "Keen Eye",
+    "desc": "SSR Speed Support. White: [Watchful Eye] -> Gold Awakening: [Keen Eye].",
+    "whiteSkillId": "200692",
+    "whiteSkillData": {
+      "skillId": "200692",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&phase_laterhalf_random==0&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        },
+        {
+          "typeCode": 21,
+          "stat": "currentSpeed",
+          "value": -0.05,
+          "rawModifier": -500
+        }
+      ]
+    },
+    "goldSkillId": "200691",
+    "goldSkillData": {
+      "skillId": "200691",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&phase_laterhalf_random==0&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        },
+        {
+          "typeCode": 21,
+          "stat": "currentSpeed",
+          "value": -0.2,
+          "rawModifier": -2000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30015",
+    "baseId": "30015",
+    "name": "Sakura Bakushin O [Eat Fast! Yum Fast!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30015.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200651,
+      200672
+    ],
+    "rawHintSkills": [
+      200652,
+      200791,
+      200841,
+      200962,
+      200972,
+      200982,
+      200992,
+      201012
+    ],
+    "whiteSkill": "Sprinting Gear",
+    "goldSkill": "Turbo Sprint",
+    "desc": "SSR Speed Support. White: [Sprinting Gear] -> Gold Awakening: [Turbo Sprint].",
+    "whiteSkillId": "200652",
+    "whiteSkillData": {
+      "skillId": "200652",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200651",
+    "goldSkillData": {
+      "skillId": "200651",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase_random==2",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30016",
+    "baseId": "30016",
+    "name": "Super Creek [Piece of Mind]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30016.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200351,
+      200742
+    ],
+    "rawHintSkills": [
+      200152,
+      200352,
+      200462,
+      200512,
+      200881
+    ],
+    "whiteSkill": "Corner Recovery ○",
+    "goldSkill": "Swinging Maestro",
+    "desc": "SSR Stamina Support. White: [Corner Recovery ○] -> Gold Awakening: [Swinging Maestro].",
+    "whiteSkillId": "200352",
+    "whiteSkillData": {
+      "skillId": "200352",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&corner!=0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200351",
+    "goldSkillData": {
+      "skillId": "200351",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&corner!=0",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30017",
+    "baseId": "30017",
+    "name": "Smart Falcon [My Umadol Way! ☆]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30017.png",
+    "rawRareStuff": [
+      "ee",
+      "me"
+    ],
+    "rawEventSkills": [
+      201601,
+      200432,
+      201672,
+      200452,
+      200451,
+      200552
+    ],
+    "rawHintSkills": [
+      200162,
+      200222,
+      200262,
+      200352,
+      200952,
+      201292,
+      201302,
+      201522
+    ],
+    "whiteSkill": "Prudent Positioning",
+    "goldSkill": "Center Stage",
+    "desc": "SSR Power Support. White: [Prudent Positioning] -> Gold Awakening: [Center Stage].",
+    "whiteSkillId": "200452",
+    "whiteSkillData": {
+      "skillId": "200452",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.035,
+          "rawModifier": 350
+        }
+      ]
+    },
+    "goldSkillId": "200451",
+    "goldSkillData": {
+      "skillId": "200451",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase_random==0",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 28,
+          "stat": "laneSpeed",
+          "value": 0.045,
+          "rawModifier": 450
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30018",
+    "baseId": "30018",
+    "name": "Nishino Flower [Even the Littlest Bud]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30018.png",
+    "rawRareStuff": [
+      "me",
+      "se",
+      8
+    ],
+    "rawEventSkills": [
+      200992,
+      200361,
+      200362
+    ],
+    "rawHintSkills": [
+      200052,
+      200132,
+      200152,
+      200702,
+      201322
+    ],
+    "whiteSkill": "Straightaway Adept",
+    "goldSkill": "Beeline Burst",
+    "desc": "SSR Speed Support. White: [Straightaway Adept] -> Gold Awakening: [Beeline Burst].",
+    "whiteSkillId": "200362",
+    "whiteSkillData": {
+      "skillId": "200362",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.15,
+          "rawModifier": 1500
+        }
+      ]
+    },
+    "goldSkillId": "200361",
+    "goldSkillData": {
+      "skillId": "200361",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "straight_random==1",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30019",
+    "baseId": "30019",
+    "name": "Haru Urara [Urara's Day Off!]",
+    "type": "Guts",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30019.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200481,
+      200302
+    ],
+    "rawHintSkills": [],
+    "whiteSkill": "Calm in a Crowd",
+    "goldSkill": "Unruffled",
+    "desc": "SSR Guts Support. White: [Calm in a Crowd] -> Gold Awakening: [Unruffled].",
+    "whiteSkillId": "200482",
+    "whiteSkillData": {
+      "skillId": "200482",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "phase==1&is_surrounded==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200481",
+    "goldSkillData": {
+      "skillId": "200481",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "phase==1&is_surrounded==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30020",
+    "baseId": "30020",
+    "name": "Biko Pegasus [Double Carrot Punch!]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30020.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200991,
+      200962
+    ],
+    "rawHintSkills": [
+      200262,
+      200662,
+      200672,
+      200682,
+      200702,
+      201002,
+      201022
+    ],
+    "whiteSkill": "Countermeasure",
+    "goldSkill": "Plan X",
+    "desc": "SSR Speed Support. White: [Countermeasure] -> Gold Awakening: [Plan X].",
+    "whiteSkillId": "200992",
+    "whiteSkillData": {
+      "skillId": "200992",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==1&phase_laterhalf_random==1&order>=2&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200991",
+    "goldSkillData": {
+      "skillId": "200991",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==1&phase_laterhalf_random==1&order>=2&order_rate<=50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30022",
+    "baseId": "30022",
+    "name": "Mejiro McQueen [Your Team Ace]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30022.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200741,
+      200742,
+      200532
+    ],
+    "rawHintSkills": [
+      200062,
+      200162,
+      200232,
+      200332,
+      200362,
+      200562,
+      200582,
+      200742,
+      200752,
+      200762
+    ],
+    "whiteSkill": "Deep Breaths",
+    "goldSkill": "Cooldown",
+    "desc": "SSR Stamina Support. White: [Deep Breaths] -> Gold Awakening: [Cooldown].",
+    "whiteSkillId": "200742",
+    "whiteSkillData": {
+      "skillId": "200742",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200741",
+    "goldSkillData": {
+      "skillId": "200741",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&phase_random==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30023",
+    "baseId": "30023",
+    "name": "Rice Shower [Showered in Joy]",
+    "type": "Stamina",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30023.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      200762,
+      200761,
+      200152
+    ],
+    "rawHintSkills": [
+      200062,
+      200272,
+      200742,
+      200801,
+      200861,
+      200871,
+      201342,
+      201372,
+      201581
+    ],
+    "whiteSkill": "Extra Tank",
+    "goldSkill": "Adrenaline Rush",
+    "desc": "SSR Stamina Support. White: [Extra Tank] -> Gold Awakening: [Adrenaline Rush].",
+    "whiteSkillId": "200762",
+    "whiteSkillData": {
+      "skillId": "200762",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==4&hp_per<=30",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "200761",
+    "goldSkillData": {
+      "skillId": "200761",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==4&hp_per<=30",
+      "durationSec": 1.8,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        },
+        {
+          "typeCode": 27,
+          "stat": "targetSpeed",
+          "value": 0.35,
+          "rawModifier": 3500
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30024",
+    "baseId": "30024",
+    "name": "Oguri Cap [Get Lots of Hugs for Me]",
+    "type": "Power",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30024.png",
+    "rawRareStuff": [
+      "me"
+    ],
+    "rawEventSkills": [
+      200562,
+      200612,
+      200701,
+      200042
+    ],
+    "rawHintSkills": [
+      200222,
+      200332,
+      200342,
+      200432,
+      200492,
+      200512,
+      200722,
+      201062,
+      201352,
+      201601
+    ],
+    "whiteSkill": "Updrafters",
+    "goldSkill": "Furious Feat",
+    "desc": "SSR Power Support. White: [Updrafters] -> Gold Awakening: [Furious Feat].",
+    "whiteSkillId": "200702",
+    "whiteSkillData": {
+      "skillId": "200702",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "distance_type==2&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.2,
+          "rawModifier": 2000
+        }
+      ]
+    },
+    "goldSkillId": "200701",
+    "goldSkillData": {
+      "skillId": "200701",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "distance_type==2&phase_random==2&order_rate>50",
+      "durationSec": 3,
+      "effects": [
+        {
+          "typeCode": 31,
+          "stat": "acceleration",
+          "value": 0.4,
+          "rawModifier": 4000
+        }
+      ]
+    }
+  },
+  {
+    "uid": "ssr_30025",
+    "baseId": "30025",
+    "name": "Special Week [The Setting Sun and Rising Stars]",
+    "type": "Speed",
+    "icon": "https://gametora.com/images/umamusume/supports/tex_support_card_30025.png",
+    "rawRareStuff": [],
+    "rawEventSkills": [
+      201621,
+      201352,
+      201351,
+      200762
+    ],
+    "rawHintSkills": [
+      200162,
+      200232,
+      200512,
+      200612,
+      200732,
+      201352,
+      201542
+    ],
+    "whiteSkill": "Hydrate",
+    "goldSkill": "Gourmand",
+    "desc": "SSR Speed Support. White: [Hydrate] -> Gold Awakening: [Gourmand].",
+    "whiteSkillId": "201352",
+    "whiteSkillData": {
+      "skillId": "201352",
+      "rarity": 1,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.015,
+          "rawModifier": 150
+        }
+      ]
+    },
+    "goldSkillId": "201351",
+    "goldSkillData": {
+      "skillId": "201351",
+      "rarity": 2,
+      "precondition": "",
+      "condition": "running_style==2&phase_random==1",
+      "durationSec": 2,
+      "effects": [
+        {
+          "typeCode": 9,
+          "stat": "healHpRatio",
+          "value": 0.055,
+          "rawModifier": 550
+        }
+      ]
+    }
+  }
+]

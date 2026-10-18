@@ -1,0 +1,8544 @@
+[
+  {
+    "id": 10101,
+    "courseId": "10101",
+    "trackId": 10001,
+    "trackName": "Sapporo",
+    "name": "Sapporo 1200m",
+    "famousRace": "Keeneland Cup (G3)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 400,
+        "length": 275,
+        "end": 675
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 675,
+        "length": 259,
+        "end": 934
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 934,
+        "end": 1200,
+        "length": 266
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10502,
+    "courseId": "10502",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 1600m (Outer)",
+    "famousRace": "Yasuda Kinen (G1)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 2,
+        "start": 50,
+        "length": 450,
+        "end": 500
+      },
+      {
+        "index": 2,
+        "cornerNumber": 3,
+        "start": 700,
+        "length": 350,
+        "end": 1050
+      },
+      {
+        "index": 3,
+        "cornerNumber": 4,
+        "start": 1050,
+        "length": 240,
+        "end": 1290
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 1290,
+        "end": 1600,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 300,
+        "length": 300,
+        "end": 600,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1425,
+        "length": 110,
+        "end": 1535,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10504,
+    "courseId": "10504",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 2000m (Inner)",
+    "famousRace": "Tenno Sho (Autumn) (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 375,
+        "length": 250,
+        "end": 625
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 625,
+        "length": 250,
+        "end": 875
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1200,
+        "length": 250,
+        "end": 1450
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1450,
+        "length": 240,
+        "end": 1690
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 375,
+        "length": 375
+      },
+      {
+        "index": 2,
+        "start": 875,
+        "end": 1200,
+        "length": 325
+      },
+      {
+        "index": 3,
+        "start": 1690,
+        "end": 2000,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 125,
+        "length": 110,
+        "end": 235,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 325,
+        "length": 200,
+        "end": 525,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 625,
+        "length": 400,
+        "end": 1025,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1825,
+        "length": 110,
+        "end": 1935,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10506,
+    "courseId": "10506",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 2500m (Inner)",
+    "famousRace": "Meguro Kinen (G2)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 2500,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina",
+      "Guts"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 417
+      },
+      "mid": {
+        "start": 417,
+        "end": 1667
+      },
+      "late": {
+        "start": 1667,
+        "end": 2083
+      },
+      "spurt": {
+        "start": 2083,
+        "end": 2500
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 100,
+        "length": 146,
+        "end": 246
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 246,
+        "length": 250,
+        "end": 496
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 875,
+        "length": 250,
+        "end": 1125
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1125,
+        "length": 250,
+        "end": 1375
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1700,
+        "length": 250,
+        "end": 1950
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1950,
+        "length": 240,
+        "end": 2190
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 496,
+        "end": 875,
+        "length": 379
+      },
+      {
+        "index": 2,
+        "start": 1375,
+        "end": 1700,
+        "length": 325
+      },
+      {
+        "index": 3,
+        "start": 2190,
+        "end": 2500,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 621,
+        "length": 110,
+        "end": 731,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 825,
+        "length": 200,
+        "end": 1025,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1125,
+        "length": 400,
+        "end": 1525,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 2325,
+        "length": 110,
+        "end": 2435,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10511,
+    "courseId": "10511",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 2500m (Dirt)",
+    "famousRace": "Tokyo Long Championship (2500m)",
+    "surface": "Dirt",
+    "distanceType": "Long",
+    "length": 2500,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 417
+      },
+      "mid": {
+        "start": 417,
+        "end": 1667
+      },
+      "late": {
+        "start": 1667,
+        "end": 2083
+      },
+      "spurt": {
+        "start": 2083,
+        "end": 2500
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 300,
+        "length": 200,
+        "end": 500
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 500,
+        "length": 200,
+        "end": 700
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1050,
+        "length": 200,
+        "end": 1250
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1250,
+        "length": 200,
+        "end": 1450
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1800,
+        "length": 200,
+        "end": 2000
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2000,
+        "length": 192,
+        "end": 2192
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 700,
+        "end": 1050,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1450,
+        "end": 1800,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2192,
+        "end": 2500,
+        "length": 308
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10601,
+    "courseId": "10601",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 1400m",
+    "famousRace": "Nakayama Sprint Championship (1400m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina",
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 350,
+        "length": 275,
+        "end": 625
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 625,
+        "length": 250,
+        "end": 875
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 350,
+        "length": 350
+      },
+      {
+        "index": 2,
+        "start": 875,
+        "end": 1400,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 125,
+        "length": 75,
+        "end": 200,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 250,
+        "length": 250,
+        "end": 500,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 950,
+        "length": 150,
+        "end": 1100,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10602,
+    "courseId": "10602",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 1600m",
+    "famousRace": "New Zealand Trophy (G2)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina",
+      "Guts"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 550,
+        "length": 275,
+        "end": 825
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 825,
+        "length": 250,
+        "end": 1075
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 550,
+        "length": 550
+      },
+      {
+        "index": 2,
+        "start": 1075,
+        "end": 1600,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 325,
+        "length": 75,
+        "end": 400,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 450,
+        "length": 250,
+        "end": 700,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1150,
+        "length": 150,
+        "end": 1300,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10604,
+    "courseId": "10604",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 2000m",
+    "famousRace": "Satsuki Sho (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 2,
+        "start": 200,
+        "length": 200,
+        "end": 400
+      },
+      {
+        "index": 2,
+        "cornerNumber": 3,
+        "start": 950,
+        "length": 275,
+        "end": 1225
+      },
+      {
+        "index": 3,
+        "cornerNumber": 4,
+        "start": 1225,
+        "length": 250,
+        "end": 1475
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 400,
+        "end": 950,
+        "length": 550
+      },
+      {
+        "index": 2,
+        "start": 1475,
+        "end": 2000,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 725,
+        "length": 75,
+        "end": 800,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 850,
+        "length": 250,
+        "end": 1100,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1550,
+        "length": 150,
+        "end": 1700,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10606,
+    "courseId": "10606",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 2500m (Inner)",
+    "famousRace": "Arima Kinen (G1)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 2500,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "openingEnd": 417,
+      "middleEnd": 1667,
+      "finalEnd": 2083
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 325,
+        "length": 250,
+        "end": 575
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 575,
+        "length": 325,
+        "end": 900
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1350,
+        "length": 275,
+        "end": 1625
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1625,
+        "length": 250,
+        "end": 1875
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 325,
+        "length": 325
+      },
+      {
+        "index": 2,
+        "start": 900,
+        "end": 1350,
+        "length": 450
+      },
+      {
+        "index": 3,
+        "start": 1875,
+        "end": 2400,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 40,
+        "end": 40,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1125,
+        "length": 75,
+        "end": 1200,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1250,
+        "length": 250,
+        "end": 1500,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1950,
+        "length": 150,
+        "end": 2100,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Winter"
+  },
+  {
+    "id": 10701,
+    "courseId": "10701",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1200m",
+    "famousRace": "Takamatsunomiya Kinen (G1)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 300,
+        "length": 250,
+        "end": 550
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 550,
+        "length": 238,
+        "end": 788
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 788,
+        "end": 1200,
+        "length": 412
+      }
+    ],
+    "slopes": [
+      {
+        "start": 100,
+        "length": 775,
+        "end": 875,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 875,
+        "length": 100,
+        "end": 975,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10708,
+    "courseId": "10708",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1800m (Dirt)",
+    "famousRace": "Champions Cup (G1 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 270,
+        "length": 165,
+        "end": 435
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 435,
+        "length": 165,
+        "end": 600
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1000,
+        "length": 200,
+        "end": 1200
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1200,
+        "length": 190,
+        "end": 1390
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 270,
+        "length": 270
+      },
+      {
+        "index": 2,
+        "start": 600,
+        "end": 1000,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1390,
+        "end": 1800,
+        "length": 410
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 50,
+        "end": 50,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 825,
+        "length": 600,
+        "end": 1425,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1425,
+        "length": 150,
+        "end": 1575,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Winter"
+  },
+  {
+    "id": 10802,
+    "courseId": "10802",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1400m (Inner)",
+    "famousRace": "Swan Stakes (G2)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 520,
+        "length": 275,
+        "end": 795
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 795,
+        "length": 277,
+        "end": 1072
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 520,
+        "length": 520
+      },
+      {
+        "index": 2,
+        "start": 1072,
+        "end": 1400,
+        "length": 328
+      }
+    ],
+    "slopes": [
+      {
+        "start": 320,
+        "length": 175,
+        "end": 495,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 620,
+        "length": 150,
+        "end": 770,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10805,
+    "courseId": "10805",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1600m (Outer)",
+    "famousRace": "Mile Championship (G1)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 700,
+        "length": 250,
+        "end": 950
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 950,
+        "length": 247,
+        "end": 1197
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 200,
+        "end": 700,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 1197,
+        "end": 1600,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 450,
+        "length": 100,
+        "end": 550,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 550,
+        "length": 225,
+        "end": 775,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 775,
+        "length": 150,
+        "end": 925,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10806,
+    "courseId": "10806",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1800m (Outer)",
+    "famousRace": "Kyoto Shimbun Hai (G2)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 900,
+        "length": 250,
+        "end": 1150
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 1150,
+        "length": 247,
+        "end": 1397
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 400,
+        "end": 900,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 1397,
+        "end": 1800,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 650,
+        "length": 100,
+        "end": 750,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 750,
+        "length": 225,
+        "end": 975,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 975,
+        "length": 150,
+        "end": 1125,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10809,
+    "courseId": "10809",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 2400m (Outer)",
+    "famousRace": "Kyoto Daishoten (G2)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 600,
+        "length": 200,
+        "end": 800
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 800,
+        "length": 200,
+        "end": 1000
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1500,
+        "length": 250,
+        "end": 1750
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1750,
+        "length": 247,
+        "end": 1997
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 600,
+        "length": 600
+      },
+      {
+        "index": 2,
+        "start": 1000,
+        "end": 1500,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 1997,
+        "end": 2400,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 1250,
+        "length": 100,
+        "end": 1350,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1350,
+        "length": 225,
+        "end": 1575,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 1575,
+        "length": 150,
+        "end": 1725,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10810,
+    "courseId": "10810",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 3000m (Outer)",
+    "famousRace": "Kikuka Sho (G1)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 3000,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power",
+      "Wit"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 500
+      },
+      "mid": {
+        "start": 500,
+        "end": 2000
+      },
+      "late": {
+        "start": 2000,
+        "end": 2500
+      },
+      "spurt": {
+        "start": 2500,
+        "end": 3000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 261,
+        "length": 250,
+        "end": 511
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 511,
+        "length": 250,
+        "end": 761
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1250,
+        "length": 200,
+        "end": 1450
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1450,
+        "length": 200,
+        "end": 1650
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 2100,
+        "length": 250,
+        "end": 2350
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2350,
+        "length": 247,
+        "end": 2597
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 261,
+        "length": 261
+      },
+      {
+        "index": 2,
+        "start": 761,
+        "end": 1250,
+        "length": 489
+      },
+      {
+        "index": 3,
+        "start": 1650,
+        "end": 2100,
+        "length": 450
+      },
+      {
+        "index": 4,
+        "start": 2597,
+        "end": 3000,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 11,
+        "length": 100,
+        "end": 111,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 111,
+        "length": 225,
+        "end": 336,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 336,
+        "length": 150,
+        "end": 486,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      },
+      {
+        "start": 1850,
+        "length": 100,
+        "end": 1950,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1950,
+        "length": 225,
+        "end": 2175,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 2175,
+        "length": 150,
+        "end": 2325,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": true,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10901,
+    "courseId": "10901",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1200m (Inner)",
+    "famousRace": "Centaur Stakes (G2)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 250,
+        "length": 300,
+        "end": 550
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 550,
+        "length": 294,
+        "end": 844
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 250,
+        "length": 250
+      },
+      {
+        "index": 2,
+        "start": 844,
+        "end": 1200,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 400,
+        "length": 595,
+        "end": 995,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1000,
+        "length": 125,
+        "end": 1125,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10902,
+    "courseId": "10902",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1400m (Inner)",
+    "famousRace": "Hanshin Cup (G2)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 450,
+        "length": 300,
+        "end": 750
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 750,
+        "length": 294,
+        "end": 1044
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 450,
+        "length": 450
+      },
+      {
+        "index": 2,
+        "start": 1044,
+        "end": 1400,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 600,
+        "length": 595,
+        "end": 1195,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1200,
+        "length": 125,
+        "end": 1325,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Winter"
+  },
+  {
+    "id": 10904,
+    "courseId": "10904",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1800m (Outer)",
+    "famousRace": "Rose Stakes (G2)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 650,
+        "length": 350,
+        "end": 1000
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 1000,
+        "length": 327,
+        "end": 1327
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 650,
+        "length": 650
+      },
+      {
+        "index": 2,
+        "start": 1327,
+        "end": 1800,
+        "length": 473
+      }
+    ],
+    "slopes": [
+      {
+        "start": 1150,
+        "length": 400,
+        "end": 1550,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1605,
+        "length": 120,
+        "end": 1725,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10906,
+    "courseId": "10906",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 2200m (Inner)",
+    "famousRace": "Takarazuka Kinen (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2200,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 367
+      },
+      "mid": {
+        "start": 367,
+        "end": 1467
+      },
+      "late": {
+        "start": 1467,
+        "end": 1833
+      },
+      "spurt": {
+        "start": 1833,
+        "end": 2200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 520,
+        "length": 190,
+        "end": 710
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 710,
+        "length": 190,
+        "end": 900
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1250,
+        "length": 300,
+        "end": 1550
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1550,
+        "length": 294,
+        "end": 1844
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 520,
+        "length": 520
+      },
+      {
+        "index": 2,
+        "start": 900,
+        "end": 1250,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1844,
+        "end": 2200,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 290,
+        "end": 290,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 295,
+        "length": 125,
+        "end": 420,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1400,
+        "length": 595,
+        "end": 1995,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 2000,
+        "length": 125,
+        "end": 2125,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10908,
+    "courseId": "10908",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 2600m (Outer)",
+    "famousRace": "Hanshin Turf Stakes (2600m)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 2600,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 433
+      },
+      "mid": {
+        "start": 433,
+        "end": 1733
+      },
+      "late": {
+        "start": 1733,
+        "end": 2167
+      },
+      "spurt": {
+        "start": 2167,
+        "end": 2600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 570,
+        "length": 190,
+        "end": 760
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 760,
+        "length": 190,
+        "end": 950
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1450,
+        "length": 350,
+        "end": 1800
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1800,
+        "length": 327,
+        "end": 2127
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 570,
+        "length": 570
+      },
+      {
+        "index": 2,
+        "start": 950,
+        "end": 1450,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 2127,
+        "end": 2600,
+        "length": 473
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 315,
+        "end": 315,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 370,
+        "length": 120,
+        "end": 490,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1950,
+        "length": 400,
+        "end": 2350,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 2405,
+        "length": 120,
+        "end": 2525,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11103,
+    "courseId": "11103",
+    "trackId": 10101,
+    "trackName": "Oi",
+    "name": "Oi 2000m (Dirt)",
+    "famousRace": "Tokyo Daishoten (G1 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 500,
+        "length": 150,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 650,
+        "length": 150,
+        "end": 800
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1300,
+        "length": 150,
+        "end": 1450
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1450,
+        "length": 164,
+        "end": 1614
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 800,
+        "end": 1300,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 1614,
+        "end": 2000,
+        "length": 386
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Winter"
+  },
+  {
+    "id": 10103,
+    "courseId": "10103",
+    "trackId": 10001,
+    "trackName": "Sapporo",
+    "name": "Sapporo 1800m",
+    "famousRace": "Sapporo Mile Championship (1800m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 175,
+        "length": 275,
+        "end": 450
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 450,
+        "length": 275,
+        "end": 725
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1000,
+        "length": 275,
+        "end": 1275
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1275,
+        "length": 259,
+        "end": 1534
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 175,
+        "length": 175
+      },
+      {
+        "index": 2,
+        "start": 725,
+        "end": 1000,
+        "length": 275
+      },
+      {
+        "index": 3,
+        "start": 1534,
+        "end": 1800,
+        "length": 266
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10104,
+    "courseId": "10104",
+    "trackId": 10001,
+    "trackName": "Sapporo",
+    "name": "Sapporo 2000m",
+    "famousRace": "Sapporo Kinen (G2)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 375,
+        "length": 275,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 650,
+        "length": 275,
+        "end": 925
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1200,
+        "length": 275,
+        "end": 1475
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1475,
+        "length": 259,
+        "end": 1734
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 375,
+        "length": 375
+      },
+      {
+        "index": 2,
+        "start": 925,
+        "end": 1200,
+        "length": 275
+      },
+      {
+        "index": 3,
+        "start": 1734,
+        "end": 2000,
+        "length": 266
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10108,
+    "courseId": "10108",
+    "trackId": 10001,
+    "trackName": "Sapporo",
+    "name": "Sapporo 2400m (Dirt)",
+    "famousRace": "Sapporo Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 200,
+        "length": 230,
+        "end": 430
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 430,
+        "length": 230,
+        "end": 660
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 940,
+        "length": 230,
+        "end": 1170
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1170,
+        "length": 230,
+        "end": 1400
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1680,
+        "length": 230,
+        "end": 1910
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1910,
+        "length": 226,
+        "end": 2136
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 200,
+        "length": 200
+      },
+      {
+        "index": 2,
+        "start": 660,
+        "end": 940,
+        "length": 280
+      },
+      {
+        "index": 3,
+        "start": 1408,
+        "end": 1680,
+        "length": 272
+      },
+      {
+        "index": 4,
+        "start": 2136,
+        "end": 2400,
+        "length": 264
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10202,
+    "courseId": "10202",
+    "trackId": 10002,
+    "trackName": "Hakodate",
+    "name": "Hakodate 1200m",
+    "famousRace": "Hakodate Sprint Stakes (G3)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 510,
+        "length": 220,
+        "end": 730
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 730,
+        "length": 208,
+        "end": 938
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 510,
+        "length": 510
+      },
+      {
+        "index": 2,
+        "start": 938,
+        "end": 1200,
+        "length": 262
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 755,
+        "end": 755,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10203,
+    "courseId": "10203",
+    "trackId": 10002,
+    "trackName": "Hakodate",
+    "name": "Hakodate 1800m",
+    "famousRace": "Hakodate Mile Championship (1800m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 320,
+        "length": 220,
+        "end": 540
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 540,
+        "length": 220,
+        "end": 760
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1110,
+        "length": 220,
+        "end": 1330
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1330,
+        "length": 208,
+        "end": 1538
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 320,
+        "length": 320
+      },
+      {
+        "index": 2,
+        "start": 760,
+        "end": 1110,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1538,
+        "end": 1800,
+        "length": 262
+      }
+    ],
+    "slopes": [
+      {
+        "start": 220,
+        "length": 200,
+        "end": 420,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 665,
+        "length": 720,
+        "end": 1385,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": true,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10204,
+    "courseId": "10204",
+    "trackId": 10002,
+    "trackName": "Hakodate",
+    "name": "Hakodate 2000m",
+    "famousRace": "Hakodate Kinen (G3)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 520,
+        "length": 220,
+        "end": 740
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 740,
+        "length": 220,
+        "end": 960
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1310,
+        "length": 220,
+        "end": 1530
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1530,
+        "length": 208,
+        "end": 1738
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 520,
+        "length": 520
+      },
+      {
+        "index": 2,
+        "start": 960,
+        "end": 1310,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1738,
+        "end": 2000,
+        "length": 262
+      }
+    ],
+    "slopes": [
+      {
+        "start": 420,
+        "length": 200,
+        "end": 620,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 865,
+        "length": 720,
+        "end": 1585,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": true,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10208,
+    "courseId": "10208",
+    "trackId": 10002,
+    "trackName": "Hakodate",
+    "name": "Hakodate 2400m (Dirt)",
+    "famousRace": "Hakodate Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 292,
+        "length": 190,
+        "end": 482
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 482,
+        "length": 190,
+        "end": 672
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1040,
+        "length": 190,
+        "end": 1230
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1230,
+        "length": 190,
+        "end": 1420
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1770,
+        "length": 190,
+        "end": 1960
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1960,
+        "length": 180,
+        "end": 2140
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 292,
+        "length": 292
+      },
+      {
+        "index": 2,
+        "start": 672,
+        "end": 1040,
+        "length": 368
+      },
+      {
+        "index": 3,
+        "start": 1420,
+        "end": 1770,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2140,
+        "end": 2400,
+        "length": 260
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Summer"
+  },
+  {
+    "id": 10302,
+    "courseId": "10302",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1200m (Inner)",
+    "famousRace": "Fukushima Sprint Championship (1200m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 450,
+        "length": 200,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 650,
+        "length": 192,
+        "end": 842
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 450,
+        "length": 450
+      },
+      {
+        "index": 2,
+        "start": 842,
+        "end": 1200,
+        "length": 358
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10303,
+    "courseId": "10303",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1400m (Inner)",
+    "famousRace": "Fukushima Sprint Championship (1400m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 650,
+        "length": 200,
+        "end": 850
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 850,
+        "length": 192,
+        "end": 1042
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 650,
+        "length": 650
+      },
+      {
+        "index": 2,
+        "start": 1042,
+        "end": 1400,
+        "length": 358
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10304,
+    "courseId": "10304",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1600m (Outer)",
+    "famousRace": "Fukushima Mile Championship (1600m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "Outer",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 550,
+        "length": 200,
+        "end": 750
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 750,
+        "length": 192,
+        "end": 942
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 550,
+        "length": 550
+      },
+      {
+        "index": 2,
+        "start": 942,
+        "end": 1600,
+        "length": 658
+      }
+    ],
+    "slopes": [
+      {
+        "start": 250,
+        "length": 350,
+        "end": 600,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 600,
+        "length": 300,
+        "end": 900,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10305,
+    "courseId": "10305",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1800m (Outer)",
+    "famousRace": "Fukushima Mile Championship (1800m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "Outer",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 750,
+        "length": 200,
+        "end": 950
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 950,
+        "length": 192,
+        "end": 1142
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 750,
+        "length": 750
+      },
+      {
+        "index": 2,
+        "start": 1142,
+        "end": 1800,
+        "length": 658
+      }
+    ],
+    "slopes": [
+      {
+        "start": 450,
+        "length": 350,
+        "end": 800,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 800,
+        "length": 300,
+        "end": 1100,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10306,
+    "courseId": "10306",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 2000m (Inner)",
+    "famousRace": "Fukushima Medium Championship (2000m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina",
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 420,
+        "length": 200,
+        "end": 620
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 620,
+        "length": 200,
+        "end": 820
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1250,
+        "length": 200,
+        "end": 1450
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1450,
+        "length": 192,
+        "end": 1642
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 420,
+        "length": 420
+      },
+      {
+        "index": 2,
+        "start": 820,
+        "end": 1250,
+        "length": 430
+      },
+      {
+        "index": 3,
+        "start": 1642,
+        "end": 2000,
+        "length": 358
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10307,
+    "courseId": "10307",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 2000m (Outer)",
+    "famousRace": "Fukushima Medium Championship (2000m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "Outer",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina",
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 950,
+        "length": 200,
+        "end": 1150
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 1150,
+        "length": 192,
+        "end": 1342
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 950,
+        "length": 950
+      },
+      {
+        "index": 2,
+        "start": 1342,
+        "end": 2000,
+        "length": 658
+      }
+    ],
+    "slopes": [
+      {
+        "start": 650,
+        "length": 350,
+        "end": 1000,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 1000,
+        "length": 300,
+        "end": 1300,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10308,
+    "courseId": "10308",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 2200m (Inner)",
+    "famousRace": "Fukushima Medium Championship (2200m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2200,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 367
+      },
+      "mid": {
+        "start": 367,
+        "end": 1467
+      },
+      "late": {
+        "start": 1467,
+        "end": 1833
+      },
+      "spurt": {
+        "start": 1833,
+        "end": 2200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 650,
+        "length": 200,
+        "end": 850
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 850,
+        "length": 200,
+        "end": 1050
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1450,
+        "length": 200,
+        "end": 1650
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1650,
+        "length": 192,
+        "end": 1842
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 650,
+        "length": 650
+      },
+      {
+        "index": 2,
+        "start": 1050,
+        "end": 1450,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1842,
+        "end": 2200,
+        "length": 358
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10309,
+    "courseId": "10309",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 2400m (Inner)",
+    "famousRace": "Fukushima Medium Championship (2400m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "Inner",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 810,
+        "length": 200,
+        "end": 1010
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 1010,
+        "length": 200,
+        "end": 1210
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1650,
+        "length": 200,
+        "end": 1850
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1850,
+        "length": 192,
+        "end": 2042
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 810,
+        "length": 810
+      },
+      {
+        "index": 2,
+        "start": 1210,
+        "end": 1650,
+        "length": 440
+      },
+      {
+        "index": 3,
+        "start": 2042,
+        "end": 2400,
+        "length": 358
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10310,
+    "courseId": "10310",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1200m (Dirt)",
+    "famousRace": "Fukushima Sprint Championship (1200m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 540,
+        "length": 160,
+        "end": 700
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 700,
+        "length": 147,
+        "end": 847
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 540,
+        "length": 540
+      },
+      {
+        "index": 2,
+        "start": 847,
+        "end": 1200,
+        "length": 353
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10311,
+    "courseId": "10311",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 1800m (Dirt)",
+    "famousRace": "Fukushima Mile Championship (1800m)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Wit"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 400,
+        "length": 160,
+        "end": 560
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 560,
+        "length": 160,
+        "end": 720
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1140,
+        "length": 160,
+        "end": 1300
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1300,
+        "length": 147,
+        "end": 1447
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 720,
+        "end": 1140,
+        "length": 420
+      },
+      {
+        "index": 3,
+        "start": 1447,
+        "end": 1800,
+        "length": 353
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10312,
+    "courseId": "10312",
+    "trackId": 10003,
+    "trackName": "Fukushima",
+    "name": "Fukushima 2500m (Dirt)",
+    "famousRace": "Fukushima Long Championship (2500m)",
+    "surface": "Dirt",
+    "distanceType": "Long",
+    "length": 2500,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 417
+      },
+      "mid": {
+        "start": 417,
+        "end": 1667
+      },
+      "late": {
+        "start": 1667,
+        "end": 2083
+      },
+      "spurt": {
+        "start": 2083,
+        "end": 2500
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 380,
+        "length": 160,
+        "end": 540
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 540,
+        "length": 160,
+        "end": 700
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1120,
+        "length": 160,
+        "end": 1280
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1280,
+        "length": 160,
+        "end": 1440
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1850,
+        "length": 160,
+        "end": 2010
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2010,
+        "length": 160,
+        "end": 2170
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 380,
+        "length": 380
+      },
+      {
+        "index": 2,
+        "start": 700,
+        "end": 1120,
+        "length": 420
+      },
+      {
+        "index": 3,
+        "start": 1440,
+        "end": 1850,
+        "length": 410
+      },
+      {
+        "index": 4,
+        "start": 2170,
+        "end": 2500,
+        "length": 330
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10401,
+    "courseId": "10401",
+    "trackId": 10004,
+    "trackName": "Niigata",
+    "name": "Niigata 1200m",
+    "famousRace": "Niigata Sprint Championship (1200m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 420,
+        "length": 300,
+        "end": 720
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 720,
+        "length": 188,
+        "end": 908
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 420,
+        "length": 420
+      },
+      {
+        "index": 2,
+        "start": 908,
+        "end": 1200,
+        "length": 292
+      }
+    ],
+    "slopes": [
+      {
+        "start": 180,
+        "length": 100,
+        "end": 280,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10402,
+    "courseId": "10402",
+    "trackId": 10004,
+    "trackName": "Niigata",
+    "name": "Niigata 1800m",
+    "famousRace": "Niigata Mile Championship (1800m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 330,
+        "length": 200,
+        "end": 530
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 530,
+        "length": 200,
+        "end": 730
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1020,
+        "length": 300,
+        "end": 1320
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1320,
+        "length": 188,
+        "end": 1508
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 330,
+        "length": 330
+      },
+      {
+        "index": 2,
+        "start": 730,
+        "end": 1020,
+        "length": 290
+      },
+      {
+        "index": 3,
+        "start": 1508,
+        "end": 1800,
+        "length": 292
+      }
+    ],
+    "slopes": [
+      {
+        "start": 780,
+        "length": 100,
+        "end": 880,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10403,
+    "courseId": "10403",
+    "trackId": 10004,
+    "trackName": "Niigata",
+    "name": "Niigata 2000m",
+    "famousRace": "Niigata Medium Championship (2000m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 530,
+        "length": 200,
+        "end": 730
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 730,
+        "length": 200,
+        "end": 930
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1220,
+        "length": 300,
+        "end": 1520
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1520,
+        "length": 188,
+        "end": 1708
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 530,
+        "length": 530
+      },
+      {
+        "index": 2,
+        "start": 930,
+        "end": 1220,
+        "length": 290
+      },
+      {
+        "index": 3,
+        "start": 1708,
+        "end": 2000,
+        "length": 292
+      }
+    ],
+    "slopes": [
+      {
+        "start": 980,
+        "length": 100,
+        "end": 1080,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10407,
+    "courseId": "10407",
+    "trackId": 10004,
+    "trackName": "Niigata",
+    "name": "Niigata 2400m (Dirt)",
+    "famousRace": "Niigata Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 310,
+        "length": 210,
+        "end": 520
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 520,
+        "length": 160,
+        "end": 680
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1060,
+        "length": 170,
+        "end": 1230
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1230,
+        "length": 170,
+        "end": 1400
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1750,
+        "length": 210,
+        "end": 1960
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1960,
+        "length": 145,
+        "end": 2105
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 310,
+        "length": 310
+      },
+      {
+        "index": 2,
+        "start": 680,
+        "end": 1060,
+        "length": 380
+      },
+      {
+        "index": 3,
+        "start": 1400,
+        "end": 1750,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2105,
+        "end": 2400,
+        "length": 295
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10501,
+    "courseId": "10501",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 1200m (Outer)",
+    "famousRace": "Tokyo Sprint Championship (1200m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 300,
+        "length": 350,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 650,
+        "length": 240,
+        "end": 890
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 890,
+        "end": 1200,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 200,
+        "end": 200,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1025,
+        "length": 110,
+        "end": 1135,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10503,
+    "courseId": "10503",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 1800m (Inner)",
+    "famousRace": "Mainichi Okan (G2)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 175,
+        "length": 250,
+        "end": 425
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 425,
+        "length": 250,
+        "end": 675
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1000,
+        "length": 250,
+        "end": 1250
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1250,
+        "length": 240,
+        "end": 1490
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 175,
+        "length": 175
+      },
+      {
+        "index": 2,
+        "start": 675,
+        "end": 1000,
+        "length": 325
+      },
+      {
+        "index": 3,
+        "start": 1490,
+        "end": 1800,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 1,
+        "length": 35,
+        "end": 36,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 125,
+        "length": 200,
+        "end": 325,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 425,
+        "length": 400,
+        "end": 825,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1625,
+        "length": 110,
+        "end": 1735,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10505,
+    "courseId": "10505",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 2200m (Outer)",
+    "famousRace": "Tokyo Medium Championship (2200m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2200,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina",
+      "Guts"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 367
+      },
+      "mid": {
+        "start": 367,
+        "end": 1467
+      },
+      "late": {
+        "start": 1467,
+        "end": 1833
+      },
+      "spurt": {
+        "start": 1833,
+        "end": 2200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 403,
+        "length": 247,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 650,
+        "length": 450,
+        "end": 1100
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1300,
+        "length": 350,
+        "end": 1650
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1650,
+        "length": 240,
+        "end": 1890
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 403,
+        "length": 403
+      },
+      {
+        "index": 2,
+        "start": 1890,
+        "end": 2200,
+        "length": 310
+      }
+    ],
+    "slopes": [
+      {
+        "start": 153,
+        "length": 110,
+        "end": 263,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 353,
+        "length": 200,
+        "end": 553,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 900,
+        "length": 300,
+        "end": 1200,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 2025,
+        "length": 110,
+        "end": 2135,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10508,
+    "courseId": "10508",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 1200m (Dirt)",
+    "famousRace": "Tokyo Sprint Championship (1200m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 500,
+        "length": 200,
+        "end": 700
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 700,
+        "length": 192,
+        "end": 892
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 892,
+        "end": 1200,
+        "length": 308
+      }
+    ],
+    "slopes": [
+      {
+        "start": 175,
+        "length": 175,
+        "end": 350,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1000,
+        "length": 175,
+        "end": 1175,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10509,
+    "courseId": "10509",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 1800m (Dirt)",
+    "famousRace": "Tokyo Mile Championship (1800m)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 350,
+        "length": 200,
+        "end": 550
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 550,
+        "length": 200,
+        "end": 750
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1100,
+        "length": 200,
+        "end": 1300
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1300,
+        "length": 192,
+        "end": 1492
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 350,
+        "length": 350
+      },
+      {
+        "index": 2,
+        "start": 750,
+        "end": 1100,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1492,
+        "end": 1800,
+        "length": 308
+      }
+    ],
+    "slopes": [
+      {
+        "start": 100,
+        "length": 175,
+        "end": 275,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 350,
+        "length": 175,
+        "end": 525,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 775,
+        "length": 175,
+        "end": 950,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1600,
+        "length": 175,
+        "end": 1775,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10510,
+    "courseId": "10510",
+    "trackId": 10005,
+    "trackName": "Tokyo",
+    "name": "Tokyo 2400m (Dirt)",
+    "famousRace": "Tokyo Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 200,
+        "length": 200,
+        "end": 400
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 400,
+        "length": 200,
+        "end": 600
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 950,
+        "length": 200,
+        "end": 1150
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1150,
+        "length": 200,
+        "end": 1350
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1700,
+        "length": 200,
+        "end": 1900
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1900,
+        "length": 192,
+        "end": 2092
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 200,
+        "length": 200
+      },
+      {
+        "index": 2,
+        "start": 600,
+        "end": 950,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1350,
+        "end": 1700,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2092,
+        "end": 2400,
+        "length": 308
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10603,
+    "courseId": "10603",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 1800m",
+    "famousRace": "Nakayama Kinen (G2)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 2,
+        "start": 75,
+        "length": 250,
+        "end": 325
+      },
+      {
+        "index": 2,
+        "cornerNumber": 3,
+        "start": 750,
+        "length": 275,
+        "end": 1025
+      },
+      {
+        "index": 3,
+        "cornerNumber": 4,
+        "start": 1025,
+        "length": 250,
+        "end": 1275
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 325,
+        "end": 750,
+        "length": 425
+      },
+      {
+        "index": 2,
+        "start": 1275,
+        "end": 1800,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 525,
+        "length": 75,
+        "end": 600,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 650,
+        "length": 250,
+        "end": 900,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1350,
+        "length": 150,
+        "end": 1500,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10607,
+    "courseId": "10607",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 2500m",
+    "famousRace": "Arima Kinen (G1)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 2500,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 417
+      },
+      "mid": {
+        "start": 417,
+        "end": 1667
+      },
+      "late": {
+        "start": 1667,
+        "end": 2083
+      },
+      "spurt": {
+        "start": 2083,
+        "end": 2500
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 425,
+        "length": 250,
+        "end": 675
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 675,
+        "length": 325,
+        "end": 1000
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1450,
+        "length": 275,
+        "end": 1725
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1725,
+        "length": 250,
+        "end": 1975
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 425,
+        "length": 425
+      },
+      {
+        "index": 2,
+        "start": 1000,
+        "end": 1450,
+        "length": 450
+      },
+      {
+        "index": 3,
+        "start": 1975,
+        "end": 2500,
+        "length": 525
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 140,
+        "end": 140,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1225,
+        "length": 75,
+        "end": 1300,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1350,
+        "length": 250,
+        "end": 1600,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 2050,
+        "length": 150,
+        "end": 2200,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Winter"
+  },
+  {
+    "id": 10610,
+    "courseId": "10610",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 1400m (Dirt)",
+    "famousRace": "Nakayama Sprint Championship (1400m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 450,
+        "length": 225,
+        "end": 675
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 675,
+        "length": 224,
+        "end": 899
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 450,
+        "length": 450
+      },
+      {
+        "index": 2,
+        "start": 899,
+        "end": 1400,
+        "length": 501
+      }
+    ],
+    "slopes": [
+      {
+        "start": 375,
+        "length": 200,
+        "end": 575,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 900,
+        "length": 250,
+        "end": 1150,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": true,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10611,
+    "courseId": "10611",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 1600m (Dirt)",
+    "famousRace": "Nakayama Mile Championship (1600m)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Speed",
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 650,
+        "length": 225,
+        "end": 875
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 875,
+        "length": 224,
+        "end": 1099
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 650,
+        "length": 650
+      },
+      {
+        "index": 2,
+        "start": 1099,
+        "end": 1600,
+        "length": 501
+      }
+    ],
+    "slopes": [
+      {
+        "start": 575,
+        "length": 200,
+        "end": 775,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1100,
+        "length": 250,
+        "end": 1350,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10613,
+    "courseId": "10613",
+    "trackId": 10006,
+    "trackName": "Nakayama",
+    "name": "Nakayama 2400m (Dirt)",
+    "famousRace": "Nakayama Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 4,
+        "start": 500,
+        "length": 250,
+        "end": 750
+      },
+      {
+        "index": 2,
+        "cornerNumber": 1,
+        "start": 750,
+        "length": 250,
+        "end": 1000
+      },
+      {
+        "index": 3,
+        "cornerNumber": 2,
+        "start": 1450,
+        "length": 225,
+        "end": 1675
+      },
+      {
+        "index": 4,
+        "cornerNumber": 3,
+        "start": 1675,
+        "length": 225,
+        "end": 1900
+      },
+      {
+        "index": 5,
+        "cornerNumber": 4,
+        "start": 2348,
+        "length": 500,
+        "end": 2848
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 1000,
+        "end": 1450,
+        "length": 450
+      },
+      {
+        "index": 3,
+        "start": 1900,
+        "end": 2400,
+        "length": 500
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10702,
+    "courseId": "10702",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1400m",
+    "famousRace": "Chukyo Sprint Championship (1400m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 500,
+        "length": 250,
+        "end": 750
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 750,
+        "length": 238,
+        "end": 988
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 988,
+        "end": 1400,
+        "length": 412
+      }
+    ],
+    "slopes": [
+      {
+        "start": 300,
+        "length": 775,
+        "end": 1075,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1075,
+        "length": 100,
+        "end": 1175,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10703,
+    "courseId": "10703",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1600m",
+    "famousRace": "Chukyo Kinen (G3)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 2,
+        "start": 150,
+        "length": 150,
+        "end": 300
+      },
+      {
+        "index": 2,
+        "cornerNumber": 3,
+        "start": 700,
+        "length": 250,
+        "end": 950
+      },
+      {
+        "index": 3,
+        "cornerNumber": 4,
+        "start": 950,
+        "length": 238,
+        "end": 1188
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 300,
+        "end": 700,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 1188,
+        "end": 1600,
+        "length": 412
+      }
+    ],
+    "slopes": [
+      {
+        "start": 500,
+        "length": 775,
+        "end": 1275,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1275,
+        "length": 100,
+        "end": 1375,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Summer"
+  },
+  {
+    "id": 10704,
+    "courseId": "10704",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 2000m",
+    "famousRace": "Kinko Sho (G2)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 300,
+        "length": 200,
+        "end": 500
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 500,
+        "length": 200,
+        "end": 700
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1100,
+        "length": 250,
+        "end": 1350
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1350,
+        "length": 238,
+        "end": 1588
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 700,
+        "end": 1100,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1588,
+        "end": 2000,
+        "length": 412
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 50,
+        "end": 50,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 900,
+        "length": 775,
+        "end": 1675,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1675,
+        "length": 100,
+        "end": 1775,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10705,
+    "courseId": "10705",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 2200m",
+    "famousRace": "Tokai TV Hai (G2)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2200,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [
+      "Stamina"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 367
+      },
+      "mid": {
+        "start": 367,
+        "end": 1467
+      },
+      "late": {
+        "start": 1467,
+        "end": 1833
+      },
+      "spurt": {
+        "start": 1833,
+        "end": 2200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 500,
+        "length": 200,
+        "end": 700
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 700,
+        "length": 200,
+        "end": 900
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1300,
+        "length": 250,
+        "end": 1550
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1550,
+        "length": 238,
+        "end": 1788
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 900,
+        "end": 1300,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1788,
+        "end": 2200,
+        "length": 412
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 150,
+        "end": 150,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 150,
+        "length": 100,
+        "end": 250,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1100,
+        "length": 775,
+        "end": 1875,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1875,
+        "length": 100,
+        "end": 1975,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Winter"
+  },
+  {
+    "id": 10706,
+    "courseId": "10706",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1200m (Dirt)",
+    "famousRace": "Chukyo Sprint Championship (1200m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 400,
+        "length": 200,
+        "end": 600
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 600,
+        "length": 190,
+        "end": 790
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 790,
+        "end": 1200,
+        "length": 410
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Spring"
+  },
+  {
+    "id": 10707,
+    "courseId": "10707",
+    "trackId": 10007,
+    "trackName": "Chukyo",
+    "name": "Chukyo 1400m (Dirt)",
+    "famousRace": "Procyon Stakes (G3 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 2,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 600,
+        "length": 200,
+        "end": 800
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 800,
+        "length": 190,
+        "end": 990
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 600,
+        "length": 600
+      },
+      {
+        "index": 2,
+        "start": 990,
+        "end": 1400,
+        "length": 410
+      }
+    ],
+    "slopes": [
+      {
+        "start": 425,
+        "length": 600,
+        "end": 1025,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      },
+      {
+        "start": 1025,
+        "length": 150,
+        "end": 1175,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Left",
+    "season": "Summer"
+  },
+  {
+    "id": 10801,
+    "courseId": "10801",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1200m (Inner)",
+    "famousRace": "Silk Road Stakes (G3)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 320,
+        "length": 275,
+        "end": 595
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 595,
+        "length": 277,
+        "end": 872
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 320,
+        "length": 320
+      },
+      {
+        "index": 2,
+        "start": 872,
+        "end": 1200,
+        "length": 328
+      }
+    ],
+    "slopes": [
+      {
+        "start": 120,
+        "length": 175,
+        "end": 295,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 420,
+        "length": 150,
+        "end": 570,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Winter"
+  },
+  {
+    "id": 10803,
+    "courseId": "10803",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1400m (Outer)",
+    "famousRace": "Swan Stakes (G2)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 500,
+        "length": 250,
+        "end": 750
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 750,
+        "length": 247,
+        "end": 997
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 997,
+        "end": 1400,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 250,
+        "length": 100,
+        "end": 350,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 350,
+        "length": 225,
+        "end": 575,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 575,
+        "length": 150,
+        "end": 725,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10804,
+    "courseId": "10804",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1600m (Inner)",
+    "famousRace": "Mile Championship (G1)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 720,
+        "length": 275,
+        "end": 995
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 995,
+        "length": 277,
+        "end": 1272
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 200,
+        "end": 720,
+        "length": 520
+      },
+      {
+        "index": 2,
+        "start": 1272,
+        "end": 1600,
+        "length": 328
+      }
+    ],
+    "slopes": [
+      {
+        "start": 520,
+        "length": 175,
+        "end": 695,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 820,
+        "length": 150,
+        "end": 970,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10807,
+    "courseId": "10807",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 2000m (Inner)",
+    "famousRace": "Shuka Sho (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 400,
+        "length": 185,
+        "end": 585
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 585,
+        "length": 185,
+        "end": 770
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1120,
+        "length": 275,
+        "end": 1395
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1395,
+        "length": 277,
+        "end": 1672
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 770,
+        "end": 1120,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1672,
+        "end": 2000,
+        "length": 328
+      }
+    ],
+    "slopes": [
+      {
+        "start": 970,
+        "length": 175,
+        "end": 1145,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1270,
+        "length": 150,
+        "end": 1420,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10808,
+    "courseId": "10808",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 2200m (Outer)",
+    "famousRace": "Queen Elizabeth II Cup (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2200,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 367
+      },
+      "mid": {
+        "start": 367,
+        "end": 1467
+      },
+      "late": {
+        "start": 1467,
+        "end": 1833
+      },
+      "spurt": {
+        "start": 1833,
+        "end": 2200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 400,
+        "length": 200,
+        "end": 600
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 600,
+        "length": 200,
+        "end": 800
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1300,
+        "length": 250,
+        "end": 1550
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1550,
+        "length": 247,
+        "end": 1797
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 800,
+        "end": 1300,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 1797,
+        "end": 2200,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 1050,
+        "length": 100,
+        "end": 1150,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1150,
+        "length": 225,
+        "end": 1375,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 1375,
+        "length": 150,
+        "end": 1525,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10811,
+    "courseId": "10811",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 3200m (Outer)",
+    "famousRace": "Tenno Sho (Spring) (G1)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 3200,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 533
+      },
+      "mid": {
+        "start": 533,
+        "end": 2133
+      },
+      "late": {
+        "start": 2133,
+        "end": 2667
+      },
+      "spurt": {
+        "start": 2667,
+        "end": 3200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 458,
+        "length": 250,
+        "end": 708
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 708,
+        "length": 250,
+        "end": 958
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1450,
+        "length": 200,
+        "end": 1650
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1650,
+        "length": 200,
+        "end": 1850
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 2300,
+        "length": 250,
+        "end": 2550
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2550,
+        "length": 247,
+        "end": 2797
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 458,
+        "length": 458
+      },
+      {
+        "index": 2,
+        "start": 958,
+        "end": 1450,
+        "length": 492
+      },
+      {
+        "index": 3,
+        "start": 1850,
+        "end": 2300,
+        "length": 450
+      },
+      {
+        "index": 4,
+        "start": 2797,
+        "end": 3200,
+        "length": 403
+      }
+    ],
+    "slopes": [
+      {
+        "start": 208,
+        "length": 100,
+        "end": 308,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 308,
+        "length": 225,
+        "end": 533,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 533,
+        "length": 150,
+        "end": 683,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      },
+      {
+        "start": 2050,
+        "length": 100,
+        "end": 2150,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 2150,
+        "length": 225,
+        "end": 2375,
+        "slopePerMil": 10000,
+        "slopePercent": 1,
+        "type": "uphill"
+      },
+      {
+        "start": 2375,
+        "length": 150,
+        "end": 2525,
+        "slopePerMil": -20000,
+        "slopePercent": -2,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": true,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10812,
+    "courseId": "10812",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1200m (Dirt)",
+    "famousRace": "Kyoto Sprint Championship (1200m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 400,
+        "length": 225,
+        "end": 625
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 625,
+        "length": 246,
+        "end": 871
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 400,
+        "length": 400
+      },
+      {
+        "index": 2,
+        "start": 871,
+        "end": 1200,
+        "length": 329
+      }
+    ],
+    "slopes": [
+      {
+        "start": 175,
+        "length": 200,
+        "end": 375,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 475,
+        "length": 200,
+        "end": 675,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10813,
+    "courseId": "10813",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1400m (Dirt)",
+    "famousRace": "Kyoto Sprint Championship (1400m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 600,
+        "length": 225,
+        "end": 825
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 825,
+        "length": 246,
+        "end": 1071
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 100,
+        "end": 600,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 1071,
+        "end": 1400,
+        "length": 329
+      }
+    ],
+    "slopes": [
+      {
+        "start": 375,
+        "length": 200,
+        "end": 575,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 675,
+        "length": 200,
+        "end": 875,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10814,
+    "courseId": "10814",
+    "trackId": 10008,
+    "trackName": "Kyoto",
+    "name": "Kyoto 1800m (Dirt)",
+    "famousRace": "Miyako Stakes (G3 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 300,
+        "length": 150,
+        "end": 450
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 450,
+        "length": 150,
+        "end": 600
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1000,
+        "length": 225,
+        "end": 1225
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1225,
+        "length": 246,
+        "end": 1471
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 600,
+        "end": 1000,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1471,
+        "end": 1800,
+        "length": 329
+      }
+    ],
+    "slopes": [
+      {
+        "start": 775,
+        "length": 200,
+        "end": 975,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1075,
+        "length": 200,
+        "end": 1275,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10903,
+    "courseId": "10903",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1600m (Outer)",
+    "famousRace": "Oka Sho (G1)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1600,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 267
+      },
+      "mid": {
+        "start": 267,
+        "end": 1067
+      },
+      "late": {
+        "start": 1067,
+        "end": 1333
+      },
+      "spurt": {
+        "start": 1333,
+        "end": 1600
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 450,
+        "length": 350,
+        "end": 800
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 800,
+        "length": 327,
+        "end": 1127
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 450,
+        "length": 450
+      },
+      {
+        "index": 2,
+        "start": 1127,
+        "end": 1600,
+        "length": 473
+      }
+    ],
+    "slopes": [
+      {
+        "start": 950,
+        "length": 400,
+        "end": 1350,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1405,
+        "length": 120,
+        "end": 1525,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10905,
+    "courseId": "10905",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 2000m (Inner)",
+    "famousRace": "Osaka Hai (G1)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Guts"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 320,
+        "length": 190,
+        "end": 510
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 510,
+        "length": 190,
+        "end": 700
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1050,
+        "length": 300,
+        "end": 1350
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1350,
+        "length": 294,
+        "end": 1644
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 320,
+        "length": 320
+      },
+      {
+        "index": 2,
+        "start": 700,
+        "end": 1050,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1644,
+        "end": 2000,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 90,
+        "end": 90,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 95,
+        "length": 125,
+        "end": 220,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1200,
+        "length": 595,
+        "end": 1795,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1800,
+        "length": 125,
+        "end": 1925,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10907,
+    "courseId": "10907",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 2400m (Outer)",
+    "famousRace": "Kobe Shimbun Hai (G2)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "Outer",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 370,
+        "length": 190,
+        "end": 560
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 560,
+        "length": 190,
+        "end": 750
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1250,
+        "length": 350,
+        "end": 1600
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1600,
+        "length": 327,
+        "end": 1927
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 370,
+        "length": 370
+      },
+      {
+        "index": 2,
+        "start": 750,
+        "end": 1250,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 1927,
+        "end": 2400,
+        "length": 473
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 115,
+        "end": 115,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 170,
+        "length": 120,
+        "end": 290,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 1750,
+        "length": 400,
+        "end": 2150,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 2205,
+        "length": 120,
+        "end": 2325,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Outer",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10909,
+    "courseId": "10909",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 3000m (Inner)",
+    "famousRace": "Hanshin Daishoten (G2)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 3000,
+    "courseTag": "Inner",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 500
+      },
+      "mid": {
+        "start": 500,
+        "end": 2000
+      },
+      "late": {
+        "start": 2000,
+        "end": 2500
+      },
+      "spurt": {
+        "start": 2500,
+        "end": 3000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 345,
+        "length": 300,
+        "end": 645
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 645,
+        "length": 294,
+        "end": 939
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1320,
+        "length": 190,
+        "end": 1510
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1510,
+        "length": 190,
+        "end": 1700
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 2050,
+        "length": 300,
+        "end": 2350
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2350,
+        "length": 294,
+        "end": 2644
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 345,
+        "length": 345
+      },
+      {
+        "index": 2,
+        "start": 939,
+        "end": 1320,
+        "length": 381
+      },
+      {
+        "index": 3,
+        "start": 1700,
+        "end": 2050,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2644,
+        "end": 3000,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 495,
+        "length": 595,
+        "end": 1090,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1095,
+        "length": 125,
+        "end": 1220,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 2200,
+        "length": 595,
+        "end": 2795,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 2800,
+        "length": 125,
+        "end": 2925,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Inner",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10910,
+    "courseId": "10910",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1200m (Dirt)",
+    "famousRace": "Hanshin Sprint Championship (1200m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 350,
+        "length": 250,
+        "end": 600
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 600,
+        "length": 248,
+        "end": 848
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 350,
+        "length": 350
+      },
+      {
+        "index": 2,
+        "start": 848,
+        "end": 1200,
+        "length": 352
+      }
+    ],
+    "slopes": [
+      {
+        "start": 200,
+        "length": 800,
+        "end": 1000,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1000,
+        "length": 125,
+        "end": 1125,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10911,
+    "courseId": "10911",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1400m (Dirt)",
+    "famousRace": "Hanshin Sprint Championship (1400m)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 233
+      },
+      "mid": {
+        "start": 233,
+        "end": 933
+      },
+      "late": {
+        "start": 933,
+        "end": 1167
+      },
+      "spurt": {
+        "start": 1167,
+        "end": 1400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 550,
+        "length": 250,
+        "end": 800
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 800,
+        "length": 248,
+        "end": 1048
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 550,
+        "length": 550
+      },
+      {
+        "index": 2,
+        "start": 1048,
+        "end": 1400,
+        "length": 352
+      }
+    ],
+    "slopes": [
+      {
+        "start": 400,
+        "length": 800,
+        "end": 1200,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1200,
+        "length": 125,
+        "end": 1325,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10912,
+    "courseId": "10912",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 1800m (Dirt)",
+    "famousRace": "Antares Stakes (G3 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 300,
+        "length": 150,
+        "end": 450
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 450,
+        "length": 150,
+        "end": 600
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 950,
+        "length": 250,
+        "end": 1200
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1200,
+        "length": 248,
+        "end": 1448
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 600,
+        "end": 950,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1448,
+        "end": 1800,
+        "length": 352
+      }
+    ],
+    "slopes": [
+      {
+        "start": 75,
+        "length": 125,
+        "end": 200,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 800,
+        "length": 800,
+        "end": 1600,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1600,
+        "length": 125,
+        "end": 1725,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 10913,
+    "courseId": "10913",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 2000m (Dirt)",
+    "famousRace": "Sirius Stakes (G3 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Stamina",
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 500,
+        "length": 150,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 650,
+        "length": 150,
+        "end": 800
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1150,
+        "length": 250,
+        "end": 1400
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1400,
+        "length": 248,
+        "end": 1648
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 800,
+        "end": 1150,
+        "length": 350
+      },
+      {
+        "index": 3,
+        "start": 1648,
+        "end": 2000,
+        "length": 352
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 275,
+        "end": 275,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 275,
+        "length": 125,
+        "end": 400,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      },
+      {
+        "start": 1000,
+        "length": 800,
+        "end": 1800,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1800,
+        "length": 125,
+        "end": 1925,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 10914,
+    "courseId": "10914",
+    "trackId": 10009,
+    "trackName": "Hanshin",
+    "name": "Hanshin 3200m (Out→In)",
+    "famousRace": "Hanshin Long Championship (3200m)",
+    "surface": "Turf",
+    "distanceType": "Long",
+    "length": 3200,
+    "courseTag": "Out→In",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 533
+      },
+      "mid": {
+        "start": 533,
+        "end": 2133
+      },
+      "late": {
+        "start": 2133,
+        "end": 2667
+      },
+      "spurt": {
+        "start": 2667,
+        "end": 3200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 370,
+        "length": 350,
+        "end": 720
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 720,
+        "length": 350,
+        "end": 1070
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1520,
+        "length": 190,
+        "end": 1710
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1710,
+        "length": 190,
+        "end": 1900
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 2250,
+        "length": 300,
+        "end": 2550
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 2550,
+        "length": 294,
+        "end": 2844
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 370,
+        "length": 370
+      },
+      {
+        "index": 2,
+        "start": 1070,
+        "end": 1520,
+        "length": 450
+      },
+      {
+        "index": 3,
+        "start": 1900,
+        "end": 2250,
+        "length": 350
+      },
+      {
+        "index": 4,
+        "start": 2844,
+        "end": 3200,
+        "length": 356
+      }
+    ],
+    "slopes": [
+      {
+        "start": 870,
+        "length": 400,
+        "end": 1270,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 1325,
+        "length": 120,
+        "end": 1445,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      },
+      {
+        "start": 2400,
+        "length": 595,
+        "end": 2995,
+        "slopePerMil": -10000,
+        "slopePercent": -1,
+        "type": "downhill"
+      },
+      {
+        "start": 3000,
+        "length": 125,
+        "end": 3125,
+        "slopePerMil": 20000,
+        "slopePercent": 2,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Out→In",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11001,
+    "courseId": "11001",
+    "trackId": 10010,
+    "trackName": "Kokura",
+    "name": "Kokura 1200m",
+    "famousRace": "Kokura Sprint Championship (1200m)",
+    "surface": "Turf",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Speed"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 500,
+        "length": 205,
+        "end": 705
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 705,
+        "length": 202,
+        "end": 907
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 907,
+        "end": 1200,
+        "length": 293
+      }
+    ],
+    "slopes": [
+      {
+        "start": 0,
+        "length": 60,
+        "end": 60,
+        "slopePerMil": -15000,
+        "slopePercent": -1.5,
+        "type": "downhill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11002,
+    "courseId": "11002",
+    "trackId": 10010,
+    "trackName": "Kokura",
+    "name": "Kokura 1800m",
+    "famousRace": "Kokura Mile Championship (1800m)",
+    "surface": "Turf",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 290,
+        "length": 205,
+        "end": 495
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 495,
+        "length": 205,
+        "end": 700
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1100,
+        "length": 205,
+        "end": 1305
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1305,
+        "length": 202,
+        "end": 1507
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 290,
+        "length": 290
+      },
+      {
+        "index": 2,
+        "start": 700,
+        "end": 1100,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1507,
+        "end": 1800,
+        "length": 293
+      }
+    ],
+    "slopes": [
+      {
+        "start": 280,
+        "length": 255,
+        "end": 535,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11003,
+    "courseId": "11003",
+    "trackId": 10010,
+    "trackName": "Kokura",
+    "name": "Kokura 2000m",
+    "famousRace": "Kokura Medium Championship (2000m)",
+    "surface": "Turf",
+    "distanceType": "Medium",
+    "length": 2000,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 333
+      },
+      "mid": {
+        "start": 333,
+        "end": 1333
+      },
+      "late": {
+        "start": 1333,
+        "end": 1667
+      },
+      "spurt": {
+        "start": 1667,
+        "end": 2000
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 490,
+        "length": 205,
+        "end": 695
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 695,
+        "length": 205,
+        "end": 900
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1300,
+        "length": 205,
+        "end": 1505
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1505,
+        "length": 202,
+        "end": 1707
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 490,
+        "length": 490
+      },
+      {
+        "index": 2,
+        "start": 900,
+        "end": 1300,
+        "length": 400
+      },
+      {
+        "index": 3,
+        "start": 1707,
+        "end": 2000,
+        "length": 293
+      }
+    ],
+    "slopes": [
+      {
+        "start": 480,
+        "length": 255,
+        "end": 735,
+        "slopePerMil": 15000,
+        "slopePercent": 1.5,
+        "type": "uphill"
+      }
+    ],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11007,
+    "courseId": "11007",
+    "trackId": 10010,
+    "trackName": "Kokura",
+    "name": "Kokura 2400m (Dirt)",
+    "famousRace": "Kokura Medium Championship (2400m)",
+    "surface": "Dirt",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 400
+      },
+      "mid": {
+        "start": 400,
+        "end": 1600
+      },
+      "late": {
+        "start": 1600,
+        "end": 2000
+      },
+      "spurt": {
+        "start": 2000,
+        "end": 2400
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 312,
+        "length": 180,
+        "end": 492
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 492,
+        "length": 180,
+        "end": 672
+      },
+      {
+        "index": 3,
+        "cornerNumber": 1,
+        "start": 1040,
+        "length": 180,
+        "end": 1220
+      },
+      {
+        "index": 4,
+        "cornerNumber": 2,
+        "start": 1220,
+        "length": 180,
+        "end": 1400
+      },
+      {
+        "index": 5,
+        "cornerNumber": 3,
+        "start": 1760,
+        "length": 180,
+        "end": 1940
+      },
+      {
+        "index": 6,
+        "cornerNumber": 4,
+        "start": 1940,
+        "length": 169,
+        "end": 2109
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 312,
+        "length": 312
+      },
+      {
+        "index": 2,
+        "start": 672,
+        "end": 1040,
+        "length": 368
+      },
+      {
+        "index": 3,
+        "start": 1400,
+        "end": 1760,
+        "length": 360
+      },
+      {
+        "index": 4,
+        "start": 2109,
+        "end": 2400,
+        "length": 291
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Straight",
+    "lateStartOnUphill": false,
+    "isCurated": false,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Spring"
+  },
+  {
+    "id": 11101,
+    "courseId": "11101",
+    "trackId": 10101,
+    "trackName": "Oi",
+    "name": "Oi 1200m (Dirt)",
+    "famousRace": "JBC Sprint (G1 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Sprint",
+    "length": 1200,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Guts",
+      "Wit"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 200
+      },
+      "mid": {
+        "start": 200,
+        "end": 800
+      },
+      "late": {
+        "start": 800,
+        "end": 1000
+      },
+      "spurt": {
+        "start": 1000,
+        "end": 1200
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 3,
+        "start": 500,
+        "length": 150,
+        "end": 650
+      },
+      {
+        "index": 2,
+        "cornerNumber": 4,
+        "start": 650,
+        "length": 164,
+        "end": 814
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 500,
+        "length": 500
+      },
+      {
+        "index": 2,
+        "start": 814,
+        "end": 1200,
+        "length": 386
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Fall"
+  },
+  {
+    "id": 11102,
+    "courseId": "11102",
+    "trackId": 10101,
+    "trackName": "Oi",
+    "name": "Oi 1800m (Dirt)",
+    "famousRace": "JBC Ladies' Classic (G1 Dirt)",
+    "surface": "Dirt",
+    "distanceType": "Mile",
+    "length": 1800,
+    "courseTag": "",
+    "turnCode": 1,
+    "thresholdStats": [
+      "Power"
+    ],
+    "phases": {
+      "early": {
+        "start": 0,
+        "end": 300
+      },
+      "mid": {
+        "start": 300,
+        "end": 1200
+      },
+      "late": {
+        "start": 1200,
+        "end": 1500
+      },
+      "spurt": {
+        "start": 1500,
+        "end": 1800
+      }
+    },
+    "corners": [
+      {
+        "index": 1,
+        "cornerNumber": 1,
+        "start": 300,
+        "length": 150,
+        "end": 450
+      },
+      {
+        "index": 2,
+        "cornerNumber": 2,
+        "start": 450,
+        "length": 150,
+        "end": 600
+      },
+      {
+        "index": 3,
+        "cornerNumber": 3,
+        "start": 1100,
+        "length": 150,
+        "end": 1250
+      },
+      {
+        "index": 4,
+        "cornerNumber": 4,
+        "start": 1250,
+        "length": 164,
+        "end": 1414
+      }
+    ],
+    "straights": [
+      {
+        "index": 1,
+        "start": 0,
+        "end": 300,
+        "length": 300
+      },
+      {
+        "index": 2,
+        "start": 600,
+        "end": 1100,
+        "length": 500
+      },
+      {
+        "index": 3,
+        "start": 1414,
+        "end": 1800,
+        "length": 386
+      }
+    ],
+    "slopes": [],
+    "lateStartSegment": "Corner",
+    "lateStartOnUphill": false,
+    "isCurated": true,
+    "courseVariant": "Main",
+    "turn": "Right",
+    "season": "Fall"
+  }
+]

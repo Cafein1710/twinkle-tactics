@@ -1,0 +1,433 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Twinkle Tactics: Card Derby</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body oncontextmenu="return false;">
+
+  <!-- BANNER CHUYỂN LƯỢT -->
+  <div id="turn-banner-overlay">
+    <div id="turn-banner-strip" class="turn-banner-strip">
+      <div id="turn-banner-title" style="font-size:26px; font-weight:bold; color:#facc15; letter-spacing:2px;"></div>
+      <div id="turn-banner-sub" style="font-size:14px; color:#e2e8f0; margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <!-- OVERLAY SỰ KIỆN GLOBAL EVENT (THẺ PAL/GROUP PHÁT SÁNG RỒI TRƯỢT LÊN TRÊN) -->
+  <div id="global-event-overlay">
+    <div id="ge-stage-box" class="ge-stage-wrapper">
+      <div class="ge-card-spotlight">
+        <img id="ge-pal-card-img" class="ge-pal-card-art" src="" alt="Pal/Group Event Card">
+        <div id="ge-char-tag" style="margin-top:8px; background:#0f172a; border:1px solid #facc15; color:#fef08a; padding:3px 12px; border-radius:999px; font-size:11.5px; font-weight:bold;"></div>
+      </div>
+
+      <div class="ge-dialog-panel">
+        <div style="font-size:11px; color:#38bdf8; font-weight:bold; letter-spacing:1.5px;">GLOBAL SUPPORT EVENT (LƯỢT 3 / 6 / 9)</div>
+        <h3 id="ge-event-title" style="margin:4px 0 6px; color:#facc15; font-size:20px;"></h3>
+        <p id="ge-event-lore" style="margin:0; font-size:13px; color:#e2e8f0; line-height:1.45; background:#0f172a; padding:10px; border-radius:8px; border-left:3px solid #38bdf8;"></p>
+        <div class="ge-choices-list" id="ge-choices-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÀN HÌNH CÔNG BỐ 7 MAP KỊCH TÍNH -->
+  <div id="map-reveal-overlay">
+    <div style="text-align:center;">
+      <div style="font-size:13px; color:#38bdf8; font-weight:bold; letter-spacing:2px;">CHAMPIONS TURF SERIES</div>
+      <h2 style="margin:4px 0 0; color:#facc15; font-size:26px;">CÔNG BỐ 7 CHẶNG ĐUA QUYẾT ĐỊNH</h2>
+    </div>
+    <div class="reveal-spotlight-banner">
+      <div id="reveal-current-slot" style="font-size:14px; color:#94a3b8; font-weight:bold;">ĐANG QUAY SÂN ĐUA...</div>
+      <div id="reveal-current-name" style="font-size:28px; font-weight:bold; color:#fff; margin:6px 0;">---</div>
+      <div id="reveal-current-meta" style="font-size:14px; color:#facc15;">---</div>
+    </div>
+    <div class="reveal-stage-grid" id="reveal-cards-container"></div>
+    <button id="btn-skip-reveal" style="width:260px; background:#475569; margin-top:8px;">
+      Bỏ Qua Hiệu Ứng (Vào Chọn Đội Hình)
+    </button>
+  </div>
+
+  <!-- MODAL MAP HELPER -->
+  <div id="map-zoom-modal" onclick="this.style.display='none'">
+    <div class="map-helper-card" onclick="event.stopPropagation()">
+      <div class="mh-header-row">
+        <div>
+          <div style="font-size:12px; color:#64748b; font-weight:bold; letter-spacing:2px;">MAP HELPER</div>
+          <h2 id="mh-title" style="margin:4px 0; font-size:26px; color:#fff;">Nakayama 2500m</h2>
+          <div id="mh-subtitle" style="font-size:14px; color:#94a3b8;">Nakayama Turf course - Right</div>
+        </div>
+        <div class="mh-tag-group" id="mh-top-badges"></div>
+      </div>
+
+      <div class="mh-chart-frame">
+        <div class="mh-elevation-row" id="mh-elevation-container"></div>
+        <div class="mh-slope-row" id="mh-slope-row"></div>
+        <div class="mh-segment-row" id="mh-segment-row"></div>
+        <div class="mh-leg-row" id="mh-leg-row"></div>
+        <div class="mh-ruler-row" id="mh-ruler-row"></div>
+      </div>
+
+      <div class="mh-bottom-badges" id="mh-bottom-badges"></div>
+    </div>
+  </div>
+
+  <!-- MODAL MÔ PHỎNG ĐUA 6 UMA TRỰC QUAN & BÌNH LUẬN VIÊN A/B -->
+  <div id="race-viewer-modal">
+    <div class="race-stadium-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #334155; padding-bottom:8px;">
+        <div>
+          <h3 id="rv-header-title" style="margin:0; color:#facc15; font-size:20px;">MAP 1: TOKYO 2400M</h3>
+          <div id="rv-header-meta" style="font-size:12px; color:#94a3b8; margin-top:2px;"></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <span id="rv-distance-counter" style="font-size:12.5px; color:#38bdf8; font-weight:bold; margin-right:10px;">0m / 2000m</span>
+          <button id="btn-race-spd-1" class="filter-btn active" onclick="setRacePlaybackSpeed(1)">1x</button>
+          <button id="btn-race-spd-2" class="filter-btn" onclick="setRacePlaybackSpeed(2)">2x</button>
+          <button id="btn-race-spd-4" class="filter-btn" onclick="setRacePlaybackSpeed(4)">4x</button>
+          <button class="filter-btn" style="background:#f59e0b; color:#000; font-weight:bold;" onclick="skipToRaceEnd()">Xem Kết Quả Ngay</button>
+        </div>
+      </div>
+
+      <!-- Thanh 4 giai đoạn đường đua -->
+      <div class="mh-leg-row" id="rv-course-phases-bar" style="height:24px; border-radius:6px; overflow:hidden; position:relative;"></div>
+
+      <!-- 6 Làn chạy hiển thị 6 Icon Uma -->
+      <div class="rv-lanes-box" id="rv-lanes-container"></div>
+
+      <!-- Khung Log Bình luận viên A & B -->
+      <div>
+        <div style="font-size:11.5px; color:#facc15; font-weight:bold; margin-bottom:4px;">
+          TƯỜNG THUẬT TRỰC TIẾP & NHẬT KÝ KỸ NĂNG (BLV A: Chuyên môn • BLV B: Đường đua)
+        </div>
+        <div class="rv-commentary-feed rv-commentary-box" id="rv-commentary-feed"></div>
+      </div>
+
+      <!-- Bảng Kết quả & Điểm số sau khi cán đích -->
+      <div id="rv-post-race-panel" style="display:none; background:#1e293b; border:2px solid #10b981; border-radius:10px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div id="rv-score-summary" style="font-size:14px;"></div>
+          <button id="btn-confirm-race-next" style="width:280px; background:#10b981; margin:0;">
+            Xác Nhận Kết Quả & Tiếp Tục (0/2)
+          </button>
+        </div>
+        <div class="rv-podium-grid" id="rv-podium-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="action-toast"></div>
+
+  <!-- MODAL NHẮC NHỞ KHI BẤM KẾT THÚC LƯỢT MÀ CHƯA TRAIN / REST -->
+  <div id="skip-warning-modal">
+    <div class="modal-box" style="border-color:#facc15; width:430px;">
+      <h3 style="color:#facc15; margin-top:0;">NHẮC NHỞ HÀNH ĐỘNG</h3>
+      <p style="font-size:14px; color:#e2e8f0; line-height:1.5;">
+        Bạn vẫn chưa sử dụng <b>Năng lượng Huấn luyện (Train)</b> hoặc <b>Nghỉ ngơi (Active Rest)</b> trong lượt này.<br>
+        Bạn có chắc chắn muốn bỏ qua hành động và kết thúc lượt không?
+      </p>
+      <div style="display:flex; gap:10px; margin-top:16px;">
+        <button style="background:#3b82f6;" onclick="document.getElementById('skip-warning-modal').style.display='none'">Quay Lại</button>
+        <button style="background:#ef4444;" id="btn-force-end-turn">Vẫn Kết Thúc Lượt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL LỰA CHỌN: TRANG BỊ THẺ vs GOLD AWAKENING -->
+  <div id="card-choice-modal" onclick="this.style.display='none'">
+    <div class="choice-modal-box" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #334155; padding-bottom:10px;">
+        <h3 style="margin:0; color:#facc15;" id="choice-modal-header">Sử Dụng Support Card</h3>
+        <span style="font-size:12px; color:#94a3b8; cursor:pointer; font-weight:bold;" onclick="document.getElementById('card-choice-modal').style.display='none'">[ĐÓNG]</span>
+      </div>
+      <div id="choice-dragged-card-preview" style="display:flex; align-items:center; gap:12px; background:#0f172a; padding:10px; border-radius:8px; margin-top:10px;"></div>
+
+      <div class="choice-option-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+          <div>
+            <strong style="color:#38bdf8; font-size:14px;">1. Trang Bị Thẻ Hỗ Trợ (Equip Support)</strong>
+            <div id="choice-equip-desc" style="font-size:12px; color:#cbd5e1; margin-top:3px;"></div>
+          </div>
+          <button id="btn-confirm-equip" style="width:150px; background:#3b82f6; margin:0;">Trang Bị Thẻ</button>
+        </div>
+      </div>
+
+      <div class="choice-option-card" style="border-color:#eab308;">
+        <strong style="color:#facc15; font-size:14px;">2. Gold Awakening (Nâng Cấp Kỹ Năng Vàng)</strong>
+        <div style="font-size:12px; color:#cbd5e1; margin-top:2px;">
+          Tiêu hao thẻ vừa kéo để thực hiện <b>Gold Awakening</b> cho 1 trong các thẻ đủ điều kiện bên dưới:
+        </div>
+        <div class="eligible-target-list" id="choice-eligible-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CHUỘT PHẢI XEM FULL ART CARD -->
+  <div id="card-zoom-modal" onclick="this.style.display='none'">
+    <div class="zoom-card-container" onclick="event.stopPropagation()">
+      <img id="zoom-img" class="zoom-card-art" src="" alt="Card Full Art">
+      <h3 id="zoom-title" style="margin:0 0 6px; color:#facc15; font-size:16px;"></h3>
+      <div id="zoom-type" style="font-size:13px; color:#38bdf8; font-weight:bold; margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:6px;"></div>
+      <div style="background:#0f172a; padding:10px; border-radius:8px; text-align:left; font-size:13px;">
+        <div style="margin-bottom:6px;"><span class="skill-tag-label tag-white">WHITE</span> <span id="zoom-white"></span></div>
+        <div style="margin-bottom:8px; color:#facc15;"><span class="skill-tag-label tag-gold">GOLD</span> <strong id="zoom-gold"></strong></div>
+        <div id="zoom-desc" style="color:#94a3b8; font-size:12px; border-top:1px solid #1e293b; padding-top:6px;"></div>
+      </div>
+      <button style="margin-top:12px; background:#475569;" onclick="document.getElementById('card-zoom-modal').style.display='none'">Đóng</button>
+    </div>
+  </div>
+
+  <!-- MODAL CHUỘT PHẢI VÀO ICON UMA XEM FULL THÔNG TIN NHƯ GAMETORA -->
+  <div id="uma-zoom-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.84); z-index:1280; align-items:center; justify-content:center; backdrop-filter:blur(5px);" onclick="this.style.display='none'">
+    <div style="background:#1e293b; border:2px solid #facc15; border-radius:14px; padding:20px; width:680px; max-width:95vw; max-height:92vh; overflow-y:auto; box-shadow:0 20px 50px rgba(0,0,0,0.85);" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #334155; padding-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <img id="uz-avatar" style="width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid #facc15; background:#0f172a;" src="">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h3 id="uz-name" style="margin:0; font-size:20px; color:#fff;">Uma Name</h3>
+              <span id="uz-mood-wrap"></span>
+            </div>
+            <div id="uz-style-selector" style="margin-top:6px;"></div>
+          </div>
+        </div>
+        <button style="width:auto; padding:6px 14px; background:#475569; margin:0;" onclick="document.getElementById('uma-zoom-modal').style.display='none'">Đóng</button>
+      </div>
+
+      <div id="uz-stats-bar" class="stat-grid-mini" style="margin:12px 0; padding:8px;"></div>
+      <div id="uz-aptitudes-table" style="margin-bottom:12px;"></div>
+      <div id="uz-skills-section"></div>
+    </div>
+  </div>
+
+  <!-- MODAL MẤT KẾT NỐI -->
+  <div id="disconnect-modal">
+    <div class="modal-box">
+      <h3 id="modal-title" style="color:#f43f5e; margin-top:0;">MẤT KẾT NỐI</h3>
+      <p id="modal-desc" style="font-size:14px; color:#cbd5e1;">Đối thủ đã mất kết nối...</p>
+      <div id="countdown-timer" style="font-size:32px; font-weight:bold; color:#facc15; margin:10px 0;">30s</div>
+      <button id="btn-modal-ok" style="display:none; background:#3b82f6;" onclick="location.reload()">Về Sảnh Chính</button>
+    </div>
+  </div>
+
+  <!-- 1. SẢNH CHỜ -->
+  <div id="lobby-screen">
+    <div class="lobby-box">
+      <h2 style="margin-top:0; color:#facc15;">TWINKLE TACTICS: CARD DERBY</h2>
+      <input type="text" id="player-name" placeholder="Nhập tên Trainer..." value="Trainer">
+      <button id="btn-create">Tạo Phòng Mới</button>
+      <div id="created-code-area" style="display:none; margin-top:10px;">
+        <div style="font-size:13px; color:#94a3b8;">Mã phòng 6 ký tự của bạn:</div>
+        <div class="code-copy-row">
+          <div class="code-badge" id="display-room-code">------</div>
+          <button class="btn-copy-code" onclick="copyRoomCodeToClipboard(document.getElementById('display-room-code').innerText, this)">
+            Copy Code
+          </button>
+        </div>
+        <div style="font-size:13px; color:#38bdf8; margin-top:6px;">Đang chờ đối thủ vào phòng...</div>
+      </div>
+      <hr style="border-color:#334155; margin: 16px 0;">
+      <input type="text" id="join-code-input" maxlength="6" placeholder="Nhập mã 6 ký tự (VD: A8K2P9)" style="text-transform:uppercase;">
+      <button id="btn-join" style="background:#10b981;">Vào Phòng Đấu</button>
+      <p id="lobby-error" style="color:#f43f5e; font-size:13px;"></p>
+    </div>
+  </div>
+
+  <!-- 2. MÀN HÌNH PRE-GAME (HIỂN THỊ TỪNG BƯỚC 1 -> 2 -> 3) -->
+  <div id="pregame-screen">
+    <div class="left-map-panel" id="pregame-map-list"></div>
+    <div class="pregame-main">
+
+      <div class="pregame-stepper-bar">
+        <div class="step-indicator active" id="step-tab-1" onclick="goToPreGameStep(1)">
+          <span class="step-num">1</span>
+          <span>Chọn 3 Uma Chủ Lực</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" id="step-tab-2" onclick="goToPreGameStep(2)">
+          <span class="step-num">2</span>
+          <span>Phân Bổ 18 Spark Hồng</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" id="step-tab-3" onclick="goToPreGameStep(3)">
+          <span class="step-num">3</span>
+          <span>Xây Dựng Deck 40 SSR</span>
+        </div>
+      </div>
+
+      <!-- BƯỚC 1: CHỌN 3 UMA CHỦ LỰC -->
+      <div id="pregame-step-1" class="pregame-step-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-shrink:0;">
+          <div>
+            <h3 style="margin:0; color:#facc15;">BƯỚC 1 / 3: Chọn 3 Uma Chủ Lực (<span id="selected-count">0</span>/3) — Pool: <span id="uma-total-count">0</span> Uma</h3>
+            <span style="font-size:12px; color:#94a3b8;">Click trái để chọn Uma | Chuột phải vào Uma để xem chi tiết Pot Skills | Click vào Map bên trái để mở Map Helper</span>
+          </div>
+          <button style="width:220px; background:#3b82f6; margin:0;" onclick="goToPreGameStep(2)">
+            Tiếp Tục: Chọn Spark Hồng →
+          </button>
+        </div>
+
+        <div class="filter-bar" id="uma-filter-bar">
+          <button class="filter-btn active" onclick="setUmaFilter('ALL')">Tất Cả</button>
+          <button class="filter-btn" onclick="setUmaFilter('Turf')">Turf (A)</button>
+          <button class="filter-btn" onclick="setUmaFilter('Dirt')">Dirt (A/B)</button>
+          <button class="filter-btn" onclick="setUmaFilter('Sprint')">Sprint</button>
+          <button class="filter-btn" onclick="setUmaFilter('Mile')">Mile</button>
+          <button class="filter-btn" onclick="setUmaFilter('Medium')">Medium</button>
+          <button class="filter-btn" onclick="setUmaFilter('Long')">Long</button>
+          <input type="text" id="uma-search-input" placeholder="Tìm tên Uma..." oninput="renderPreGameUI()" style="width:160px; padding:5px 8px; margin:0 0 0 auto; font-size:12px;">
+          <button class="filter-btn" onclick="document.getElementById('uma-search-input').value=''; renderPreGameUI();">Xóa Tìm</button>
+        </div>
+
+        <div class="uma-roster-grid full-step-grid" id="uma-pool-container"></div>
+      </div>
+
+      <!-- BƯỚC 2: PHÂN BỔ 18 SPARK HỒNG -->
+      <div id="pregame-step-2" class="pregame-step-panel" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-shrink:0;">
+          <div>
+            <h3 style="margin:0; color:#facc15;">BƯỚC 2 / 3: Phân Bổ 18 Spark Hồng / Uma</h3>
+            <span style="font-size:12px; color:#94a3b8;">Nâng tối đa bậc A đầu trận. Cộng thêm Spark vào thuộc tính bậc A giúp tăng tỉ lệ nổ Kế thừa lên S ở Năm 2 & 3 (8% / Spark)</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button style="width:140px; background:#475569; margin:0;" onclick="goToPreGameStep(1)">
+              ← Chọn Lại Uma
+            </button>
+            <button style="width:200px; background:#3b82f6; margin:0;" onclick="goToPreGameStep(3)">
+              Tiếp Tục: Chọn Deck →
+            </button>
+          </div>
+        </div>
+
+        <div class="spark-editor-grid" id="spark-editor-container" style="margin-top:8px;"></div>
+      </div>
+
+      <!-- BƯỚC 3: CHỌN BỘ BÀI 40 LÁ SSR -->
+      <div id="pregame-step-3" class="pregame-step-panel" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; flex-shrink:0;">
+          <div>
+            <h3 style="margin:0; color:#facc15;">BƯỚC 3 / 3: Chọn Bộ Bài Hỗ Trợ SSR (<span id="deck-selected-count">40</span>/40 lá)</h3>
+            <div id="deck-type-breakdown" style="font-size:12px; color:#94a3b8; margin-top:2px;"></div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button style="width:140px; background:#475569; margin:0;" onclick="goToPreGameStep(2)">
+              ← Sửa Lại Spark
+            </button>
+            <button id="btn-lock-pregame" style="width:240px; background:#10b981; margin:0;">
+              Chốt Đội Hình & Vào Trận
+            </button>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-shrink:0;">
+          <div class="filter-bar" id="card-filter-bar" style="flex:1;"></div>
+          <div style="display:flex; gap:6px;">
+            <button style="width:auto; padding:7px 12px; font-size:12px; background:#3b82f6; margin:0;" onclick="applyDeckPreset('balanced40')">Chọn Nhanh 40 SSR Cân Bằng</button>
+            <button style="width:auto; padding:7px 12px; font-size:12px; background:#ef4444; margin:0;" onclick="applyDeckPreset('clear')">Xóa Chọn Lại</button>
+          </div>
+        </div>
+
+        <div class="deck-pool-grid full-step-grid" id="deck-pool-container"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. BÀN ĐẤU CHÍNH (ĐÃ FIX THANH TOP-STAGE-BAR DUY NHẤT) -->
+  <div id="game-screen">
+    <div class="top-stage-bar">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <strong>Phòng:</strong>
+        <span id="ui-room-code" style="color:#facc15; font-weight:bold; letter-spacing:1px;"></span>
+        <button class="btn-copy-code" style="padding:3px 8px; font-size:11px;" onclick="copyRoomCodeToClipboard(document.getElementById('ui-room-code').innerText, this)">
+          Copy
+        </button>
+      </div>
+
+      <div class="top-scoreboard-pill">
+        <span style="color:#38bdf8;">BẠN: <b id="ui-my-score">0</b> PTS</span>
+        <span style="color:#64748b;">vs</span>
+        <span style="color:#f43f5e;">ĐỐI THỦ: <b id="ui-opp-score">0</b> PTS</span>
+        <span style="font-size:11px; color:#facc15;">(Đích: 25 PTS)</span>
+      </div>
+
+      <div id="ui-stage-title" style="font-size:14px; font-weight:bold;">Giai đoạn: Năm 1 - Lượt 1/10</div>
+      <div>
+        <button id="btn-request-turn" style="width:auto; padding:6px 12px; background:#f59e0b; font-size:13px; margin:0;">
+          Kết Thúc Lượt (<span id="ui-ready-count">0</span>/2)
+        </button>
+      </div>
+    </div>
+
+    <div class="left-column-wrapper">
+      <div class="left-map-panel" id="ui-map-list"></div>
+      <div class="discard-energy-zone" id="bottom-left-discard-zone">
+        <strong style="color:#facc15; font-size:12px;">Ô BỎ BÀI ĐỔI NĂNG LƯỢNG</strong>
+        <p style="margin:4px 0 0; font-size:11px; color:#cbd5e1; line-height:1.35;">
+          Kéo thả 1 lá bài từ tay vào ô này để bỏ bài và đổi <b>Training Energy</b> sang hệ tương ứng
+        </p>
+      </div>
+    </div>
+
+    <div class="battlefield-center">
+      <div class="player-section opponent">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12px; color:#f87171; font-weight:bold;">
+          <span>ĐỐI THỦ: <span id="ui-opp-name">Đang chờ...</span> <span id="ui-opp-status" style="color:#4ade80;">(Online)</span></span>
+          <span>Bài trên tay: <span id="ui-opp-hand-count">0</span> | Deck: <span id="ui-opp-deck-count">35</span></span>
+        </div>
+        <div class="uma-row" id="ui-opp-umas"></div>
+      </div>
+
+      <div class="player-section">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12px; color:#38bdf8; font-weight:bold;">
+          <span>BẠN (TRAINER) — Click trái vào thẻ gắn trên Uma để thu hồi về tay</span>
+          <span>Chuột phải vào Uma / Map / Thẻ để xem chi tiết</span>
+        </div>
+        <div class="uma-row" id="ui-my-umas"></div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="energy-box" id="energy-drop-zone">
+        <div style="font-size:11px; color:#94a3b8;">Kéo Năng lượng bên dưới thả vào Uma để Huấn luyện:</div>
+        <div id="ui-current-energy" class="draggable-energy-orb" draggable="true">---</div>
+        <div style="font-size:12px; display:flex; align-items:center; gap:6px;">
+          <span>Tiếp theo:</span> <span id="ui-next-energy" style="display:inline-flex; align-items:center; gap:4px; font-weight:bold; color:#38bdf8;">---</span>
+        </div>
+      </div>
+
+      <!-- Ô HÀNH TRANG VẬT PHẨM -->
+      <div class="inventory-box">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:11.5px; color:#38bdf8;">Hành Trang Item (<span id="ui-inventory-count">0/3</span>)</strong>
+          <span id="ui-megaphone-active" style="display:none; font-size:9.5px; background:#a855f7; color:#fff; padding:1px 6px; border-radius:4px; font-weight:bold;">Loa x1.5 Active!</span>
+        </div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">Kéo thả Item vào Uma hoặc Click dùng (Không tốn lượt)</div>
+        <div class="inventory-slots-grid" id="ui-inventory-slots"></div>
+      </div>
+
+      <div class="deck-box">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:12px;">Bài Trên Tay (Hand)</strong>
+          <span style="font-size:11px; color:#facc15;">Deck: <strong id="ui-deck-count">35</strong>/40</span>
+        </div>
+        <div class="hand-list" id="ui-hand-list"></div>
+        <div id="draggable-rest-token" class="rest-token-btn" draggable="true">
+          ACTIVE REST (Kéo thả vào Uma)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/icons.js"></script>
+  <script src="/js/map-helper.js"></script>
+  <script src="/js/events.js"></script>
+  <script src="/js/uma-modal.js"></script>
+  <script src="/js/race-viewer.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/audio.js"></script>
+</body>
+</html>
