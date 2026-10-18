@@ -1,4 +1,4 @@
-// server.js - Twinkle Tactics: Card Derby (Đã chuẩn hóa toàn bộ Cự ly & Giải đấu G1/G2 trong Map Pool)
+// server.js - Twinkle Tactics: Card Derby (Full Backend: Đã chuẩn hóa dữ liệu Map, Thẻ SSR, Mùa giải & 6-Uma Race Simulation)
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -25,6 +25,28 @@ let UMA_POOL = [];
 let SSR_SUPPORT_POOL = [];
 let MAP_POOL = [];
 
+// Hàm đọc file JSON an toàn (tự động tìm trong cả thư mục data/ và thư mục gốc)
+function loadJsonFile(filenames, defaultVal) {
+  for (const fname of filenames) {
+    const fullPath = path.join(__dirname, fname);
+    if (fs.existsSync(fullPath)) {
+      try {
+        const raw = fs.readFileSync(fullPath, 'utf8');
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+        if (parsed && typeof parsed === 'object') {
+          const foundArray = Object.values(parsed.data || parsed.list || parsed).find(val => Array.isArray(val));
+          if (foundArray) return foundArray;
+        }
+        return parsed;
+      } catch (err) {
+        console.error(`[WARN] Lỗi đọc file ${fname}:`, err.message);
+      }
+    }
+  }
+  return defaultVal;
+}
+
 // Phân loại cự ly chuẩn Uma Musume theo số mét thực tế
 function getCanonicalDistanceType(lengthMeters) {
   const len = Number(lengthMeters) || 2000;
@@ -39,11 +61,10 @@ function resolveCanonicalRaceAndSeason(map) {
   const track = String(map.trackName || map.name || '').split(' ')[0].trim();
   const surf = map.surface === 'Dirt' ? 'Dirt' : 'Turf';
   const len = Number(map.length) || 2000;
-  const tag = String(map.courseTag || map.courseVariant || '').toLowerCase();
   const key = `${track}_${surf}_${len}`;
 
   const CANONICAL_G1_G2 = {
-    // NAKAYAMA
+    // NAKAYAMA (105xx - Rẽ phải)
     'Nakayama_Turf_1200': { race: 'Sprinters Stakes (G1)', season: 'Fall', isCurated: true },
     'Nakayama_Turf_1600': { race: 'New Zealand Trophy (G2)', season: 'Spring', isCurated: false },
     'Nakayama_Turf_1800': { race: 'Nakayama Kinen (G2)', season: 'Spring', isCurated: false },
@@ -54,7 +75,7 @@ function resolveCanonicalRaceAndSeason(map) {
     'Nakayama_Dirt_1200': { race: 'Capella Stakes (G3 Dirt)', season: 'Winter', isCurated: false },
     'Nakayama_Dirt_1800': { race: 'March Stakes (G3 Dirt)', season: 'Spring', isCurated: true },
 
-    // TOKYO
+    // TOKYO (106xx - Rẽ trái)
     'Tokyo_Turf_1400': { race: 'Keio Hai Spring Cup (G2)', season: 'Spring', isCurated: true },
     'Tokyo_Turf_1600': { race: 'Yasuda Kinen (G1)', season: 'Spring', isCurated: true },
     'Tokyo_Turf_1800': { race: 'Mainichi Okan (G2)', season: 'Fall', isCurated: false },
@@ -66,7 +87,7 @@ function resolveCanonicalRaceAndSeason(map) {
     'Tokyo_Dirt_1600': { race: 'February Stakes (G1 Dirt)', season: 'Winter', isCurated: true },
     'Tokyo_Dirt_2100': { race: 'Unicorn Stakes (G3 Dirt)', season: 'Summer', isCurated: false },
 
-    // KYOTO
+    // KYOTO (108xx - Rẽ phải)
     'Kyoto_Turf_1200': { race: 'Silk Road Stakes (G3)', season: 'Winter', isCurated: false },
     'Kyoto_Turf_1400': { race: 'Swan Stakes (G2)', season: 'Fall', isCurated: false },
     'Kyoto_Turf_1600': { race: 'Mile Championship (G1)', season: 'Fall', isCurated: true },
@@ -79,7 +100,7 @@ function resolveCanonicalRaceAndSeason(map) {
     'Kyoto_Dirt_1800': { race: 'Miyako Stakes (G3 Dirt)', season: 'Fall', isCurated: true },
     'Kyoto_Dirt_1900': { race: 'Heian Stakes (G3 Dirt)', season: 'Spring', isCurated: false },
 
-    // HANSHIN
+    // HANSHIN (109xx - Rẽ phải)
     'Hanshin_Turf_1200': { race: 'Centaur Stakes (G2)', season: 'Fall', isCurated: false },
     'Hanshin_Turf_1400': { race: 'Hanshin Cup (G2)', season: 'Winter', isCurated: true },
     'Hanshin_Turf_1600': { race: 'Oka Sho (G1)', season: 'Spring', isCurated: true },
@@ -92,7 +113,7 @@ function resolveCanonicalRaceAndSeason(map) {
     'Hanshin_Dirt_1800': { race: 'Antares Stakes (G3 Dirt)', season: 'Spring', isCurated: true },
     'Hanshin_Dirt_2000': { race: 'Sirius Stakes (G3 Dirt)', season: 'Fall', isCurated: false },
 
-    // CHUKYO
+    // CHUKYO (107xx - Rẽ trái)
     'Chukyo_Turf_1200': { race: 'Takamatsunomiya Kinen (G1)', season: 'Spring', isCurated: true },
     'Chukyo_Turf_1600': { race: 'Chukyo Kinen (G3)', season: 'Summer', isCurated: false },
     'Chukyo_Turf_2000': { race: 'Kinko Sho (G2)', season: 'Spring', isCurated: true },
@@ -100,7 +121,7 @@ function resolveCanonicalRaceAndSeason(map) {
     'Chukyo_Dirt_1400': { race: 'Procyon Stakes (G3 Dirt)', season: 'Summer', isCurated: false },
     'Chukyo_Dirt_1800': { race: 'Champions Cup (G1 Dirt)', season: 'Winter', isCurated: true },
 
-    // OI (TOKYO CITY KEIBA)
+    // OI (111xx / 112xx - Rẽ phải)
     'Oi_Dirt_1200': { race: 'JBC Sprint (G1 Dirt)', season: 'Fall', isCurated: true },
     'Oi_Dirt_1800': { race: 'JBC Ladies\' Classic (G1 Dirt)', season: 'Fall', isCurated: true },
     'Oi_Dirt_2000': { race: 'Tokyo Daishoten (G1 Dirt)', season: 'Winter', isCurated: true },
@@ -128,7 +149,7 @@ function resolveCanonicalRaceAndSeason(map) {
 }
 
 function sanitizeAndFixMapsPool(rawMaps) {
-  // Bảng mã trường đua chuẩn theo đúng cơ sở dữ liệu gốc của Uma Musume (Cygames / GameTora)
+  // Bảng mã trường đua chuẩn theo đúng cơ sở dữ liệu gốc của Cygames / GameTora:
   // 103 = Niigata, 104 = Fukushima, 105 = Nakayama (Rẽ phải), 106 = Tokyo (Rẽ trái)
   const TRACK_BY_PREFIX = {
     101: { trackName: 'Sapporo', turnCode: 1, turn: 'Right' },
@@ -145,7 +166,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
     112: { trackName: 'Oi', turnCode: 1, turn: 'Right' }
   };
 
-  // Loại bỏ bản map giả (courseId 10506 có straight[0].end === 350) nếu có
   const cleanRaw = (rawMaps || []).filter(m => {
     if (m.courseId === 10506 && m.straights && m.straights[0] && m.straights[0].end === 350) {
       return false;
@@ -158,7 +178,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
     const prefix = Math.floor(cid / 100);
     const meta = TRACK_BY_PREFIX[prefix];
 
-    // 1. Khôi phục độ dài thực tế (length) dựa trên điểm kết thúc của đoạn đường cuối cùng
     const maxSegEnd = Math.max(
       0,
       ...(m.straights || []).map(s => Number(s.end) || 0),
@@ -166,7 +185,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
     );
     const trueLen = (maxSegEnd >= 1000) ? maxSegEnd : (Number(m.length) || 2000);
 
-    // 2. Xác định đúng tên trường đua và hướng rẽ từ courseId gốc
     const track = meta ? meta.trackName : String(m.trackName || 'Tokyo').trim();
     let tCode = meta ? meta.turnCode : (Number(m.turnCode) || 1);
     let turnStr = meta ? meta.turn : (tCode === 2 ? 'Left' : 'Right');
@@ -175,7 +193,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
       turnStr = 'Straight';
     }
 
-    // 3. Khôi phục địa hình gốc chuẩn GameTora cho Nakayama 2500m (105xx) và Tokyo 2500m (106xx)
     if (track === 'Nakayama' && m.surface === 'Turf' && trueLen === 2500) {
       m.corners = [
         { start: 100, end: 248, cornerNumber: 3 },
@@ -218,7 +235,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
       m.thresholdStats = ['Stamina'];
     }
 
-    // 4. Xác định chính xác vòng sân Inner / Outer
     let courseTag = '';
     if (m.surface === 'Turf') {
       if (track === 'Nakayama') {
@@ -246,7 +262,6 @@ function sanitizeAndFixMapsPool(rawMaps) {
       }
     }
 
-    // 5. Tạo tên hiển thị chuẩn xác
     const surfSuffix = m.surface === 'Dirt' ? ' (Dirt)' : '';
     const tagSuffix = (courseTag && courseTag !== 'Main') ? ` (${courseTag})` : '';
     const cleanName = `${track} ${trueLen}m${tagSuffix}${surfSuffix}`;
@@ -287,39 +302,99 @@ function sanitizeAndFixMapsPool(rawMaps) {
   return fixedMaps;
 }
 
-function loadGameDatabase() {
-  try {
-    const rawUmas = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'umas.json'), 'utf-8'));
-    const rawSupports = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'supports.json'), 'utf-8'));
-    const rawMaps = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'maps.json'), 'utf-8'));
+// Chuẩn hóa danh sách Thẻ SSR: Sửa lỗi kỹ năng trắng của Helios SPD (Perfect Spot -> Slipstream),
+// Air Groove Wit (30124 - Fast & Furious -> Position Pilfer Velo Mid) và Eishin Flash (30122 - Sharp Streak Velo Mid)
+function sanitizeAndFixSupportsPool(rawSupports) {
+  return (rawSupports || []).map(card => {
+    const cid = String(card.baseId || card.id || card.uid || '');
+    const cName = String(card.name || '').toLowerCase();
+    const gName = String(card.goldSkill || '').toLowerCase();
 
-    UMA_POOL = rawUmas.map(u => {
-      const cid = String(u.id || '');
-      const charaId = String(u.charaId || cid.slice(0, 4));
-      return {
-        ...u,
-        charaId,
-        icon: u.icon || ('https://gametora.com/images/umamusume/characters/thumb/chara_stand_' + charaId + '_' + cid + '.png'),
-        fallbackIcon: u.fallbackIcon || ('https://gametora.com/images/umamusume/characters/thumb/chara_stand_' + charaId + '_' + charaId + '01.png')
+    if (
+      gName.includes('perfect spot') ||
+      gName.includes('playtime\'s over') ||
+      (cName.includes('helios') && card.type === 'Speed')
+    ) {
+      card.whiteSkill = 'Slipstream';
+      card.whiteSkillData = {
+        condition: 'phase==1',
+        durationSec: 3.0,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.15 }]
       };
-    });
-
-    SSR_SUPPORT_POOL = rawSupports;
-    MAP_POOL = sanitizeAndFixMapsPool(rawMaps);
-
-    // Lưu đè bản Map đã chuẩn hóa vào lại data/maps.json để dữ liệu trên đĩa luôn sạch chuẩn
-    try {
-      fs.writeFileSync(path.join(DATA_DIR, 'maps.json'), JSON.stringify(MAP_POOL, null, 2), 'utf-8');
-    } catch (writeErr) {
-      // Bỏ qua nếu file đang bị khóa đọc
+      card.goldSkillData = {
+        condition: 'phase==1',
+        durationSec: 3.0,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.35 }]
+      };
     }
 
-    console.log(`Đã nạp ${UMA_POOL.length} Uma, ${SSR_SUPPORT_POOL.length} thẻ SSR và ${MAP_POOL.length} Sân đua chuẩn (Đã chuẩn hóa Arima Kinen 2500m & hệ thống G1).`);
-  } catch (err) {
-    console.error('Chưa tìm thấy dữ liệu trong data/. Hãy chạy: node sync-glb-data.js trước!', err);
-    process.exit(1);
-  }
+    if (cid.includes('30124') || gName.includes('fast & furious') || gName.includes('fast and furious')) {
+      if (!card.whiteSkill || card.whiteSkill.toLowerCase().includes('accel')) {
+        card.whiteSkill = 'Position Pilfer';
+      }
+      card.whiteSkillData = {
+        condition: 'running_style==3&phase==1',
+        durationSec: 2.4,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.15 }]
+      };
+      card.goldSkillData = {
+        condition: 'running_style==3&phase==1',
+        durationSec: 2.4,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.35 }]
+      };
+    }
+
+    if (cid.includes('30122') || cid.endsWith('0122') || gName.includes('sharp streak')) {
+      card.whiteSkillData = {
+        condition: 'running_style==3&phase==1',
+        durationSec: 2.4,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.15 }]
+      };
+      card.goldSkillData = {
+        condition: 'running_style==3&phase==1',
+        durationSec: 2.4,
+        effects: [{ typeCode: 27, stat: 'targetSpeed', value: 0.35 }]
+      };
+    }
+
+    return card;
+  });
 }
+
+function loadGameDatabase() {
+  const rawUmas = loadJsonFile(['data/umas.json', 'umas.json', 'data/uma_data.json', 'uma_data.json'], []);
+  const rawSupports = loadJsonFile(['data/supports.json', 'supports.json', 'data/support_data.json', 'support_data.json'], []);
+  const rawMaps = loadJsonFile(['data/maps.json', 'maps.json', 'data/map_data.json', 'map_data.json'], []);
+
+  UMA_POOL = rawUmas.map(u => {
+    const cid = String(u.id || '');
+    const charaId = String(u.charaId || cid.slice(0, 4));
+    return {
+      ...u,
+      charaId,
+      icon: u.icon || ('https://gametora.com/images/umamusume/characters/thumb/chara_stand_' + charaId + '_' + cid + '.png'),
+      fallbackIcon: u.fallbackIcon || ('https://gametora.com/images/umamusume/characters/thumb/chara_stand_' + charaId + '_' + charaId + '01.png')
+    };
+  });
+
+  SSR_SUPPORT_POOL = sanitizeAndFixSupportsPool(rawSupports);
+  MAP_POOL = sanitizeAndFixMapsPool(rawMaps);
+
+  try {
+    if (SSR_SUPPORT_POOL.length > 0 && fs.existsSync(path.join(DATA_DIR, 'supports.json'))) {
+      fs.writeFileSync(path.join(DATA_DIR, 'supports.json'), JSON.stringify(SSR_SUPPORT_POOL, null, 2), 'utf-8');
+    }
+    if (MAP_POOL.length > 0 && fs.existsSync(path.join(DATA_DIR, 'maps.json'))) {
+      fs.writeFileSync(path.join(DATA_DIR, 'maps.json'), JSON.stringify(MAP_POOL, null, 2), 'utf-8');
+    }
+  } catch (writeErr) {
+    // Bỏ qua nếu file đang khóa
+  }
+
+  console.log(`Đã nạp ${UMA_POOL.length} Uma, ${SSR_SUPPORT_POOL.length} thẻ SSR và ${MAP_POOL.length} Sân đua chuẩn.`);
+}
+
+// BẮT BUỘC GỌI HÀM NẠP DỮ LIỆU KHI KHỞI ĐỘNG SERVER
 loadGameDatabase();
 
 const rooms = {};
@@ -364,7 +439,6 @@ function generateSevenMaps() {
   const distanceCount = { Sprint: 0, Mile: 0, Medium: 0, Long: 0 };
   let dirtCount = 0;
 
-  // Vòng 1: Chọn từ Curated Pool đảm bảo cân bằng tối đa 2 map mỗi cự ly và tối đa 1 sân Dirt
   for (const map of shuffledPool) {
     if (selectedMaps.length === 7) break;
     if (usedNames.has(map.name)) continue;
@@ -387,7 +461,6 @@ function generateSevenMaps() {
     });
   }
 
-  // Vòng 2: Nếu vẫn chưa đủ 7 map (ví dụ thiếu Long từ curated), lấy bổ sung từ toàn bộ MAP_POOL
   if (selectedMaps.length < 7) {
     for (const map of shuffleArray(MAP_POOL)) {
       if (selectedMaps.length === 7) break;
@@ -1231,5 +1304,5 @@ io.on('connection', (socket) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Twinkle Tactics: Card Derby đang chạy tại cổng ${PORT}`);
+  console.log(`Twinkle Tactics: Card Derby đang chạy tại http://localhost:${PORT}`);
 });

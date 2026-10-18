@@ -150,33 +150,25 @@
     "desc": "SSR Wit Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
     "whiteSkillId": "200592",
     "whiteSkillData": {
-      "skillId": "200592",
-      "rarity": 1,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.15,
-          "rawModifier": 1500
+          "value": 0.15
         }
       ]
     },
     "goldSkillId": "200591",
     "goldSkillData": {
-      "skillId": "200591",
-      "rarity": 2,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.35,
-          "rawModifier": 3500
+          "value": 0.35
         }
       ]
     }
@@ -280,33 +272,25 @@
     "desc": "SSR Speed Support. White: [Position Pilfer] -> Gold Awakening: [Sharp Streak].",
     "whiteSkillId": "200592",
     "whiteSkillData": {
-      "skillId": "200592",
-      "rarity": 1,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.15,
-          "rawModifier": 1500
+          "value": 0.15
         }
       ]
     },
     "goldSkillId": "201383",
     "goldSkillData": {
-      "skillId": "201383",
-      "rarity": 2,
-      "precondition": "",
-      "condition": "running_style==3&straight_random==1",
-      "durationSec": 3,
+      "condition": "running_style==3&phase==1",
+      "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.35,
-          "rawModifier": 3500
+          "value": 0.35
         }
       ]
     }
@@ -712,38 +696,30 @@
       201651,
       202392
     ],
-    "whiteSkill": "Front Runner Straightaways ○",
+    "whiteSkill": "Slipstream",
     "goldSkill": "Perfect Spot!",
     "desc": "SSR Speed Support. White: [Front Runner Straightaways ○] -> Gold Awakening: [Perfect Spot!].",
     "whiteSkillId": "201242",
     "whiteSkillData": {
-      "skillId": "201242",
-      "rarity": 1,
-      "precondition": "",
-      "condition": "running_style==1&straight_random==1",
+      "condition": "phase==1",
       "durationSec": 3,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.15,
-          "rawModifier": 1500
+          "value": 0.15
         }
       ]
     },
     "goldSkillId": "201652",
     "goldSkillData": {
-      "skillId": "201652",
-      "rarity": 2,
-      "precondition": "",
-      "condition": "infront_near_lane_time>=3&accumulatetime>=10",
+      "condition": "phase==1",
       "durationSec": 3,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.35,
-          "rawModifier": 3500
+          "value": 0.35
         }
       ]
     }
@@ -3450,33 +3426,25 @@
     "desc": "SSR Power Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
     "whiteSkillId": "200592",
     "whiteSkillData": {
-      "skillId": "200592",
-      "rarity": 1,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.15,
-          "rawModifier": 1500
+          "value": 0.15
         }
       ]
     },
     "goldSkillId": "200591",
     "goldSkillData": {
-      "skillId": "200591",
-      "rarity": 2,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.35,
-          "rawModifier": 3500
+          "value": 0.35
         }
       ]
     }
@@ -6003,33 +5971,25 @@
     "desc": "SSR Stamina Support. White: [Position Pilfer] -> Gold Awakening: [Fast & Furious].",
     "whiteSkillId": "200592",
     "whiteSkillData": {
-      "skillId": "200592",
-      "rarity": 1,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.15,
-          "rawModifier": 1500
+          "value": 0.15
         }
       ]
     },
     "goldSkillId": "200591",
     "goldSkillData": {
-      "skillId": "200591",
-      "rarity": 2,
-      "precondition": "",
-      "condition": "running_style==3&phase_random==1&order_rate>=40",
+      "condition": "running_style==3&phase==1",
       "durationSec": 2.4,
       "effects": [
         {
           "typeCode": 27,
           "stat": "targetSpeed",
-          "value": 0.35,
-          "rawModifier": 3500
+          "value": 0.35
         }
       ]
     }

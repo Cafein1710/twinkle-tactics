@@ -1,4 +1,4 @@
-// public/js/app.js - Điều khiển luồng trận đấu, Cẩm nang Hướng dẫn, Liên hệ Discord (cafe_1710), Pre-game & Race Viewer
+// public/js/app.js - Điều khiển luồng trận đấu, Cẩm nang Hướng dẫn Toàn diện, Tag Kỹ năng GameTora & Liên hệ Discord
 
 const socket = io();
 let currentRoomCode = '';
@@ -25,8 +25,385 @@ if (!sessionToken) {
 
 const RANKS = ['G', 'F', 'E', 'D', 'C', 'B', 'A', 'S'];
 
+// BẢNG ĐỐI CHIẾU CẶP KỸ NĂNG VÀNG <-> TRẮNG ĐỂ ƯU TIÊN KỸ NĂNG VÀNG TRÊN GIAO DIỆN & ĐƯỜNG ĐUA
+const GOLD_TO_WHITE_PAIRS_UI = {
+  'professor of curvature': 'corner adept',
+  'beeline burst': 'straightaway adept',
+  'swinging maestro': 'corner recovery',
+  'breath of fresh air': 'straightaway recovery',
+  'corner connoisseur': 'corner acceleration',
+  'rushing gale!': 'straightaway acceleration',
+  'rushing gale': 'straightaway acceleration',
+  'no stopping me!': 'nimble navigator',
+  'no stopping me': 'nimble navigator',
+  'on your left!': 'slick surge',
+  'on your left': 'slick surge',
+  'encroaching shadow': 'straightaway spurt',
+  'it\'s on!': 'ramp up',
+  'it\'s on': 'ramp up',
+  'playtime\'s over!': 'slipstream',
+  'playtime\'s over': 'slipstream',
+  'perfect spot': 'slipstream',
+  'fast & furious': 'position pilfer',
+  'fast and furious': 'position pilfer',
+  'sharp streak': 'sharp gaze',
+  'killer tunes': 'up-tempo',
+  'escape artist': 'fast-paced',
+  'unrestrained': 'final push',
+  'top runner': 'early lead',
+  'taking the lead': 'early lead',
+  'vanguard spirit': 'lead the charge',
+  'speed star': 'prepared to pass',
+  'gourmand': 'hydrate',
+  'race planner': 'preferred position',
+  'go-home specialist': 'after-school stroll',
+  'concentration': 'focus',
+  'in body and mind': 'homestretch haste',
+  'cooldown': 'deep breaths',
+  'furious feat': 'updrafters',
+  'rising dragon': 'outer swell',
+  'sprint turbo': 'sprint acceleration',
+  'plan x': 'countermeasure',
+  'mile maven': 'shifting gears',
+  'speed eater': 'gear shift',
+  'clairvoyance': 'hawk eye',
+  'mystifying murmur': 'charming',
+  'dazzling disorientation': 'flustered',
+  'nothing ventured': 'daredevil',
+  'givin\' it 1000%': 'mad dash',
+  'trackblazer': 'rosy outlook',
+  'lie in wait': 'be still',
+  'calm and collected': 'stamina siphon',
+  'sleeping lion': 'stamina siphon',
+  'indomitable': 'pace strategy',
+  'iron will': 'blocked front',
+  'big-sisterly': 'competitive spirit',
+  'dancer in the dirt': 'dirt adept',
+  'super lucky seven': 'lucky seven'
+};
+
+function normalizeSkillBaseNameUI(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/\s*[◯◎○●★☆!！]+\s*$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isWhiteSupersededByOwnedGoldUI(whiteSkillName, ownedGoldBaseNamesSet) {
+  const wNorm = normalizeSkillBaseNameUI(whiteSkillName);
+  if (!wNorm) return false;
+  if (ownedGoldBaseNamesSet.has(wNorm)) return true;
+  for (const goldKey of ownedGoldBaseNamesSet) {
+    const mappedWhite = GOLD_TO_WHITE_PAIRS_UI[goldKey];
+    if (mappedWhite && (wNorm === mappedWhite || wNorm.includes(mappedWhite) || mappedWhite.includes(wNorm))) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // =========================================================================
-// HỆ THỐNG CẨM NANG HƯỚNG DẪN TÂN THỦ & HUY HIỆU LIÊN HỆ DISCORD (cafe_1710)
+// BỘ NHẬN DIỆN TAG (STYLE / DISTANCE / DIRT) & CÔNG DỤNG KỸ NĂNG CHUẨN GAMETORA
+// =========================================================================
+function getSkillGameToraMeta(skillName, mechanicsObj) {
+  const name = String(skillName || '').trim();
+  const lower = name.toLowerCase();
+  const m = mechanicsObj || {};
+  const fullCond = `${m.precondition || ''}&${m.condition || ''}`;
+  const rawEffects = m.effects || [];
+
+  if (lower.includes('slipstream') || lower.includes('playtime\'s over') || lower.includes('perfect spot')) {
+    return {
+      name,
+      parenText: '',
+      roleShort: 'Velo•Mid',
+      roleColor: '#38bdf8',
+      tooltip: `${name}\n• Công dụng: Tăng Tốc độ mục tiêu (Target Velocity) tại Giữa chặng (Middle Leg).\n• Dùng chung cho mọi Chiến thuật & Cự ly`
+    };
+  }
+
+  if (lower.includes('stamina siphon') || lower.includes('stamina eater') || lower.includes('siphon')) {
+    return {
+      name,
+      parenText: '',
+      roleShort: 'Heal•Debuff',
+      roleColor: '#34d399',
+      tooltip: `${name}\n• Công dụng: Hồi +3.5% Thể lực cho bản thân đồng thời rút -5.0% Thể lực của đối thủ tại Giữa chặng (Middle Leg).\n• Dùng chung cho mọi Chiến thuật & Cự ly`
+    };
+  }
+
+  if (
+    lower.includes('fast & furious') || lower.includes('fast and furious') ||
+    lower.includes('position pilfer') || lower.includes('sharp streak') ||
+    lower.includes('sharp gaze') || lower.includes('knifelike')
+  ) {
+    return {
+      name,
+      parenText: '(Late)',
+      roleShort: 'Velo•Mid',
+      roleColor: '#38bdf8',
+      tooltip: `${name} (Late)\n• Công dụng: Tăng Tốc độ mục tiêu (Target Velocity) tại Giữa chặng (Middle Leg).\n• Yêu cầu: Late`
+    };
+  }
+
+  let styleTag = null;
+  let distTag = null;
+  let surfTag = null;
+
+  const styleMatch = fullCond.match(/running_style==(\d)/);
+  if (styleMatch) {
+    styleTag = { 1: 'Front', 2: 'Pace', 3: 'Late', 4: 'End' }[Number(styleMatch[1])] || null;
+  }
+  const distMatch = fullCond.match(/distance_type==(\d)/);
+  if (distMatch) {
+    distTag = { 1: 'Sprint', 2: 'Mile', 3: 'Medium', 4: 'Long' }[Number(distMatch[1])] || null;
+  }
+  const surfMatch = fullCond.match(/ground_type==(\d)/);
+  if (surfMatch && Number(surfMatch[1]) === 2) {
+    surfTag = 'Dirt';
+  }
+
+  if (!styleTag) {
+    if (
+      lower.includes('front runner') || lower.includes('escape artist') || lower.includes('unrestrained') ||
+      lower.includes('fast-paced') || lower.includes('final push') || lower.includes('lead the charge') ||
+      lower.includes('top runner') || lower.includes('vanguard spirit') || lower.includes('angling and scheming') ||
+      lower.includes('view from the lead') || lower.includes('g00 1st') || lower.includes('sparkling showtime') ||
+      lower.includes('turbulent gale') || lower.includes('charting the course') || lower.includes('early lead') ||
+      lower.includes('sparkly☆stardom') || lower.includes('taking the lead') || lower.includes('keep the lead') ||
+      lower.includes('second wind') || lower.includes('frontline') || lower.includes('dodging danger')
+    ) {
+      styleTag = 'Front';
+    } else if (
+      lower.includes('pace chaser') || lower.includes('gourmand') || lower.includes('hydrate') ||
+      lower.includes('speed star') || lower.includes('prepare to pass') || lower.includes('prepared to pass') ||
+      lower.includes('race planner') || lower.includes('killer tunes') || lower.includes('up-tempo') ||
+      lower.includes('shrewd step') || lower.includes('keen eye') || lower.includes('teio step') ||
+      lower.includes('duty of dignity') || lower.includes('blue rose closer') || lower.includes('u=ma2') ||
+      lower.includes('victoria por plancha') || lower.includes('stalker') || lower.includes('head-on')
+    ) {
+      styleTag = 'Pace';
+    } else if (
+      lower.includes('late surger') || lower.includes('on your left') || lower.includes('slick surge') ||
+      lower.includes('rising dragon') || lower.includes('pump some iron') || lower.includes('get moving') ||
+      lower.includes('furious feat') || lower.includes('updrafters') || lower.includes('xceleration') ||
+      lower.includes('focused mind') || lower.includes('i can win sometimes') || lower.includes('blazing pride') ||
+      lower.includes('between the lines') || lower.includes('outer swell') || lower.includes('1,500,000 cc') ||
+      lower.includes('relax')
+    ) {
+      styleTag = 'Late';
+    } else if (
+      lower.includes('end closer') || lower.includes('encroaching shadow') || lower.includes('straightaway spurt') ||
+      lower.includes('go-home specialist') || lower.includes('after-school stroll') || lower.includes('sleeping lion') ||
+      lower.includes('nemesis') || lower.includes('warning shot') || lower.includes('one-on-one') ||
+      lower.includes('strong heart') || lower.includes('visionary') || lower.includes('masterful gambit') ||
+      lower.includes('stormy seas')
+    ) {
+      styleTag = 'End';
+    }
+  }
+
+  if (!distTag) {
+    if (
+      lower.includes('sprint ') || lower.includes('sprinter') || lower.includes('sprint turbo') ||
+      lower.includes('poise and preparation') || lower.includes('plan x') || lower.includes('countermeasure') ||
+      lower.includes('huge lead') || lower.includes('breathless') || lower.includes('blinding flash')
+    ) {
+      distTag = 'Sprint';
+    } else if (
+      lower.includes('mile ') || lower.includes('miler') || lower.includes('mile maven') ||
+      lower.includes('gear shift') || lower.includes('speed eater') || lower.includes('changing gears') ||
+      lower.includes('shifting gears') || lower.includes('furious feat') || lower.includes('updrafters')
+    ) {
+      distTag = 'Mile';
+    } else if (
+      lower.includes('medium ') || lower.includes('clairvoyance') || lower.includes('mystifying murmur') ||
+      lower.includes('thunderbolt step') || lower.includes('lightning step') || lower.includes('tempest')
+    ) {
+      distTag = 'Medium';
+    } else if (
+      lower.includes('long ') || lower.includes('stayer') || lower.includes('cooldown') ||
+      lower.includes('deep breaths') || lower.includes('vanguard spirit') || lower.includes('lead the charge') ||
+      lower.includes('inward experience') || lower.includes('passing pro') || lower.includes('pressure')
+    ) {
+      distTag = 'Long';
+    }
+  }
+
+  if (!surfTag && (lower.includes('dirt') || lower.includes('sand') || lower.includes('dancer in the dirt'))) {
+    surfTag = 'Dirt';
+  }
+
+  const restrictionParts = [styleTag, distTag, surfTag].filter(Boolean);
+  const parenText = restrictionParts.length > 0 ? `(${restrictionParts.join('/')})` : '';
+
+  let zoneShort = '';
+  let zoneFull = 'Giữa chặng (Mid-Race)';
+  if (
+    lower.includes('homestretch') || lower.includes('in body and mind') ||
+    lower.includes('straightaway spurt') || lower.includes('encroaching shadow') ||
+    fullCond.includes('is_last_straight==1')
+  ) {
+    zoneShort = 'Final Straight';
+    zoneFull = 'Đoạn thẳng cuối (Final Straight)';
+  } else if (
+    lower.includes('corner') || lower.includes('curvature') || lower.includes('maestro') ||
+    lower.includes('prudent') || lower.includes('angling and scheming') ||
+    lower.includes('pump some iron') || lower.includes('get moving') ||
+    lower.includes('red shift') || lower.includes('shooting for victory') ||
+    lower.includes('unrestrained') || lower.includes('final push') ||
+    fullCond.includes('corner!=0') || fullCond.includes('corner_random') ||
+    fullCond.includes('all_corner_random') || fullCond.includes('is_finalcorner==1')
+  ) {
+    zoneShort = 'Corner';
+    zoneFull = 'Khúc cua (Corner)';
+  } else if (
+    lower.includes('straightaway') || lower.includes('beeline') ||
+    lower.includes('rushing gale') ||
+    fullCond.includes('straight_random==1')
+  ) {
+    zoneShort = 'Straight';
+    zoneFull = 'Đoạn thẳng (Straightaway)';
+  } else if (lower.includes('uphill') || lower.includes('highlander') || lower.includes('mountain climber') || fullCond.includes('slope==1')) {
+    zoneShort = 'Uphill';
+    zoneFull = 'Dốc lên (Uphill)';
+  } else if (lower.includes('downhill') || lower.includes('descender') || fullCond.includes('slope==2')) {
+    zoneShort = 'Downhill';
+    zoneFull = 'Dốc xuống (Downhill)';
+  }
+
+  const passiveStatEffects = rawEffects.filter(e => [1, 2, 3, 4, 5].includes(Number(e.typeCode)));
+  const isGreenByKeyword =
+    lower.includes('runner ◯') || lower.includes('runner ◎') ||
+    lower.includes('spring runner') || lower.includes('summer runner') || lower.includes('fall runner') || lower.includes('winter runner') ||
+    lower.includes('right-handed') || lower.includes('left-handed') ||
+    lower.includes('standard distance') || lower.includes('non-standard distance') ||
+    lower.includes('firm conditions') || lower.includes('wet conditions') ||
+    lower.includes('racecourse') || lower.includes('savvy') ||
+    lower.includes('sunny days') || lower.includes('cloudy days') || lower.includes('rainy days') || lower.includes('snowy days') ||
+    lower.includes('lone wolf') || lower.includes('competitive spirit') || lower.includes('target in sight') ||
+    lower.includes('inner post') || lower.includes('outer post') || lower.includes('sympathy') ||
+    lower.includes('lucky seven') || lower.includes('super lucky seven') || lower.includes('thoroughbred');
+
+  let roleShort = 'Velo';
+  let roleColor = '#38bdf8';
+  let fullDesc = '';
+
+  if (passiveStatEffects.length > 0 || isGreenByKeyword) {
+    roleShort = 'Passive';
+    roleColor = '#4ade80';
+    fullDesc = 'Kỹ năng Xanh lá (Passive): Kích hoạt ngay lúc mở cổng (0.0s), cộng thẳng chỉ số cố định xuyên suốt trận đấu.';
+  } else if (lower.includes('focus') || lower.includes('concentration') || lower.includes('gate')) {
+    roleShort = 'Gate';
+    roleColor = '#a855f7';
+    fullDesc = 'Kỹ năng Xuất phát (Gate): Tối ưu phản xạ lúc mở cổng, tăng gia tốc đầu trận và miễn nhiễm Late Start.';
+  } else if (lower.includes('nothing ventured') || lower.includes('daredevil') || lower.includes('carefree')) {
+    roleShort = 'Gacha Velo';
+    roleColor = '#f97316';
+    fullDesc = 'Tăng mạnh Tốc độ mục tiêu (Velocity) ở Final Leg kèm Gacha Thể lực (60% tốn 0% HP | 30% -2% HP | 10% -4% HP).';
+  } else {
+    const hpEffect = rawEffects.find(e => e.stat === 'healHpRatio' || e.typeCode === 9);
+    const hasPositiveMove = rawEffects.some(e => (e.stat === 'targetSpeed' || e.stat === 'acceleration' || e.typeCode === 27 || e.typeCode === 31) && Number(e.value) > 0);
+    const isTrueHeal = (hpEffect && Number(hpEffect.value) > 0) ||
+      lower.includes('recovery') || lower.includes('maestro') || lower.includes('gourmand') ||
+      lower.includes('hydrate') || lower.includes('breath of fresh air') || lower.includes('cooldown') ||
+      lower.includes('deep breaths') || lower.includes('race planner') || lower.includes('go-home') ||
+      lower.includes('stroll') || lower.includes('rest') || lower.includes('relax') ||
+      lower.includes('indomitable') || lower.includes('lay low') || lower.includes('iron will') ||
+      lower.includes('calm and collected') || lower.includes('pure heart') || lower.includes('sleeping lion') ||
+      lower.includes('be still') || lower.includes('lie in wait') || lower.includes('rosy outlook') ||
+      lower.includes('trackblazer') || lower.includes('heal');
+
+    const hasNegativeSpeed = rawEffects.some(e => (e.stat === 'targetSpeed' || e.typeCode === 27) && Number(e.value) < 0) ||
+      lower.includes('murmur') || lower.includes('tether') || lower.includes('hesitant') || lower.includes('flustered') || lower.includes('subdue');
+
+    const hasAccelCode = rawEffects.some(e => (e.stat === 'acceleration' || e.typeCode === 31) && Number(e.value) > 0);
+    const hasVeloCode = rawEffects.some(e => (e.stat === 'targetSpeed' || e.typeCode === 27) && Number(e.value) > 0);
+    const hasAccel = (hasAccelCode && !hasVeloCode) ||
+      lower.includes('acceleration') || lower.includes('connoisseur') ||
+      lower.includes('pump some iron') || lower.includes('get moving') ||
+      lower.includes('angling and scheming') || lower.includes('no stopping me') || lower.includes('nimble navigator') ||
+      lower.includes('on your left') || lower.includes('slick surge') || lower.includes('furious feat') ||
+      lower.includes('updrafters') || lower.includes('rushing gale') || lower.includes('sprint turbo') ||
+      lower.includes('encroaching shadow') || lower.includes('straightaway spurt') || lower.includes('charting the course') ||
+      lower.includes('plan x') || lower.includes('red shift') ||
+      lower.includes('shooting for victory') || lower.includes('unrestrained') || lower.includes('final push') ||
+      lower.includes('early lead') || lower.includes('taking the lead') || lower.includes('groundwork') ||
+      lower.includes('head-on') || lower.includes('lightning step') || lower.includes('thunderbolt step');
+
+    if (hpEffect && Number(hpEffect.value) < 0 && hasPositiveMove) {
+      roleShort = 'Recoil Velo';
+      roleColor = '#fb923c';
+      fullDesc = 'Tiêu hao một phần nhỏ Thể lực bản thân để bứt tốc độ mục tiêu (Velocity) mạnh mẽ.';
+    } else if (isTrueHeal) {
+      roleShort = zoneShort ? `Heal•${zoneShort}` : 'Heal';
+      roleColor = '#34d399';
+      fullDesc = `Hồi phục Thể lực (Stamina Recovery) tại ${zoneFull}.`;
+    } else if (hasNegativeSpeed) {
+      roleShort = 'Debuff';
+      roleColor = '#f43f5e';
+      fullDesc = 'Kỹ năng Debuff: Làm giảm tốc độ và tiêu hao thể lực của Uma đối phương.';
+    } else if (hasAccel) {
+      const isOpening = lower.includes('early lead') || lower.includes('taking the lead') || lower.includes('groundwork') || fullCond.includes('phase==0');
+      const accZone = isOpening ? 'Opening' : (zoneShort || 'Final Leg');
+      roleShort = `Accel•${accZone}`;
+      roleColor = '#fb923c';
+      fullDesc = isOpening
+        ? 'Tăng mạnh Gia tốc (Acceleration) ngay chặng đầu (Opening Leg).'
+        : (zoneShort
+            ? `Tăng mạnh Gia tốc (Acceleration) ở Final Leg — Chỉ kích hoạt tại ${zoneFull}.`
+            : 'Tăng mạnh Gia tốc (Acceleration) ngay đầu Final Leg (Accel Zone 2/3 quãng đường).');
+    } else {
+      const veloZone = zoneShort || ((fullCond.includes('phase>=2') || fullCond.includes('phase==2') || fullCond.includes('is_lastspurt')) ? 'Final' : 'Mid');
+      roleShort = `Velo•${veloZone}`;
+      roleColor = '#38bdf8';
+      fullDesc = `Tăng Tốc độ mục tiêu (Target Velocity) tại ${zoneShort ? zoneFull : (veloZone === 'Final' ? 'Chặng cuối (Final Leg)' : 'Giữa chặng (Middle Leg)')}.`;
+    }
+  }
+
+  const reqSummary = restrictionParts.length > 0
+    ? `Yêu cầu: ${restrictionParts.join(' / ')}`
+    : 'Dùng chung cho mọi Chiến thuật & Cự ly';
+
+  return {
+    name,
+    parenText,
+    roleShort,
+    roleColor,
+    tooltip: `${name} ${parenText}\n• Công dụng: ${fullDesc}\n• ${reqSummary}`
+  };
+}
+
+function findSkillMechanicsByName(skillName) {
+  if (!skillName) return null;
+  const target = String(skillName).trim().toLowerCase();
+  for (const c of (supportPool || [])) {
+    if (String(c.whiteSkill || '').trim().toLowerCase() === target) return c.whiteSkillData || c.whiteMechanics || null;
+    if (String(c.goldSkill || '').trim().toLowerCase() === target) return c.goldSkillData || c.goldMechanics || null;
+  }
+  for (const u of (umaPool || [])) {
+    if (String(u.uniqueSkill || '').trim().toLowerCase() === target) return u.uniqueSkillData || null;
+    for (const p of (u.potSkills || [])) {
+      if (String(p.name || '').trim().toLowerCase() === target) return p.mechanics || null;
+    }
+  }
+  return null;
+}
+
+function formatSkillInlineHTML(skillName, mechanicsObj, showRoleBadge = true) {
+  const meta = getSkillGameToraMeta(skillName, mechanicsObj || findSkillMechanicsByName(skillName));
+  const parenSpan = meta.parenText
+    ? ` <span style="color:#f472b6; font-weight:700; font-size:0.92em;">${meta.parenText}</span>`
+    : '';
+  const roleSpan = showRoleBadge
+    ? ` <span style="display:inline-block; padding:0px 4px; border-radius:3px; background:rgba(15,23,42,0.75); border:1px solid ${meta.roleColor}; color:${meta.roleColor}; font-size:8.5px; font-weight:700; vertical-align:middle;">${meta.roleShort}</span>`
+    : '';
+  return `<span title="${meta.tooltip.replace(/"/g, '&quot;')}">${meta.name}${parenSpan}${roleSpan}</span>`;
+}
+
+// =========================================================================
+// HỆ THỐNG CẨM NANG HƯỚNG DẪN TOÀN DIỆN (ĐÃ BỔ SUNG MOOD TUỘT SAU ĐUA & CÁC CƠ CHẾ ẨN)
 // =========================================================================
 const GAME_GUIDE_SECTIONS = [
   {
@@ -36,10 +413,10 @@ const GAME_GUIDE_SECTIONS = [
     content: `
       <p><strong>Twinkle Tactics: Card Derby</strong> là trò chơi chiến thuật đối kháng thời gian thực (1v1), kết hợp giữa quy trình huấn luyện nhân vật của <em>Uma Musume: Pretty Derby</em> và cơ chế xây dựng, vận hành bộ bài hỗ trợ (Support Deck).</p>
 
-      <h4>Mục Tiêu Chiến Thắng</h4>
+      <h4>Mục Tiêu Chiến Thắng & Bảng Điểm</h4>
       <ul>
         <li>Mỗi người chơi quản lý một đội hình gồm <strong>3 Uma chủ lực</strong>, trải qua <strong>3 Năm huấn luyện</strong> (Junior, Classic, Senior).</li>
-        <li>Cuối mỗi năm (sau lượt huấn luyện thứ 10), toàn bộ 6 Uma của hai người chơi sẽ bước vào tranh tài trực tiếp trên <strong>2 chặng đua liên tiếp</strong>.</li>
+        <li>Cuối mỗi năm (sau lượt huấn luyện thứ 10), toàn bộ 6 Uma của hai người chơi sẽ bước vào tranh tài trực tiếp trên <strong>2 chặng đua liên tiếp</strong> (Năm 1 đua Map 1 và Map 2; Năm 2 đua Map 3 và Map 4; Năm 3 đua Map 5 và Map 6).</li>
         <li>Cơ chế tính điểm mỗi chặng đua:
           <ul>
             <li><strong>Hạng 1:</strong> Cộng 4 điểm</li>
@@ -48,7 +425,14 @@ const GAME_GUIDE_SECTIONS = [
             <li><strong>Hạng 4 đến Hạng 6:</strong> 0 điểm</li>
           </ul>
         </li>
-        <li>Người chơi đầu tiên đạt hoặc vượt mốc <strong>25 điểm</strong> (và có điểm số cao hơn đối thủ) sẽ giành chiến thắng chung cuộc. Nếu sau 6 chặng đua chính thức vẫn chưa có ai chạm mốc 25 điểm hoặc hai bên hòa điểm, trận đấu sẽ bước vào <strong>Chặng 7 (Tie-break)</strong> để phân định thắng thua.</li>
+        <li>Người chơi đầu tiên đạt hoặc vượt mốc <strong>25 điểm</strong> (và có điểm số cao hơn đối thủ) sẽ giành chiến thắng chung cuộc. Nếu sau 6 chặng đua chính thức vẫn chưa có ai chạm mốc 25 điểm hoặc hai bên bằng điểm nhau, trận đấu sẽ bước vào <strong>Chặng 7 (Tie-break)</strong> để phân định thắng thua.</li>
+      </ul>
+
+      <h4>Cơ Chế Suy Giảm Tâm Trạng (Mood) Sau Mỗi Kỳ Đua</h4>
+      <ul>
+        <li>Các cấp độ Tâm trạng (Mood) theo thứ tự từ thấp đến cao gồm: <strong>Awful, Bad, Normal, Good, Great</strong>. Tâm trạng tác động trực tiếp đến hiệu suất thi đấu của toàn bộ chỉ số trên đường đua.</li>
+        <li><strong>Tuột Mood khi chuyển năm:</strong> Sau khi hoàn thành 2 chặng đua cuối Năm 1 (bước sang Năm 2) và cuối Năm 2 (bước sang Năm 3), toàn bộ 3 Uma sẽ được đưa tỷ lệ chấn thương (Fail Rate) về 0%, nhưng <strong>Tâm trạng (Mood) của cả 3 Uma sẽ tự động bị giảm đi 1 bậc</strong> do tiêu hao sức lực sau giải đấu.</li>
+        <li><strong>Tuột Mood trước trận Tie-break:</strong> Nếu trận đấu phải kéo dài sang Chặng 7 (Tie-break), cả 3 Uma của hai đội cũng sẽ <strong>bị giảm ngay 1 bậc Mood trước khi bước vào cổng xuất phát Tie-break</strong>. Người chơi cần lưu ý duy trì Mood cao hoặc giữ lại vật phẩm hồi Mood cho giai đoạn cuối trận.</li>
       </ul>
 
       <div class="guide-diff-box">
@@ -60,13 +444,20 @@ const GAME_GUIDE_SECTIONS = [
   {
     id: 'pregame',
     menuTitle: '2. Giai Đoạn Chuẩn Bị',
-    heading: 'Giai Đoạn Chuẩn Bị Trước Trận (Pre-Game)',
+    heading: 'Giai Đoạn Chuẩn Bị Trước Trận & Quy Tắc Sân Đua',
     content: `
-      <p>Ngay khi hai người chơi vào phòng, hệ thống sẽ công bố danh sách <strong>7 Sân đua</strong> của trận đấu (gồm 6 chặng chính thức chia đều cho 3 năm và 1 chặng Tie-break). Bạn có thể nhấp chuột vào bất kỳ sân nào ở cột bên trái để mở bảng phân tích địa hình (Map Helper) nhằm kiểm tra cự ly, mặt sân, mùa giải và vị trí các con dốc.</p>
+      <p>Ngay khi hai người chơi vào phòng, hệ thống sẽ công bố danh sách <strong>7 Sân đua</strong> của trận đấu. Bạn có thể nhấp chuột trái hoặc chuột phải vào bất kỳ sân nào ở cột bên trái để mở bảng phân tích địa hình (Map Helper).</p>
+
+      <h4>Quy Tắc Tạo Sân & Cơ Chế Ẩn Tình Trạng Sân</h4>
+      <ul>
+        <li><strong>Sự cân bằng trong 7 Sân đua:</strong> Hệ thống luôn chọn 7 sân sao cho mỗi loại cự ly (Sprint, Mile, Medium, Long) xuất hiện <strong>tối đa 2 lần</strong>, và mặt sân đất (Dirt) xuất hiện <strong>tối đa 1 lần</strong> trong suốt trận đấu.</li>
+        <li><strong>Mở khóa dần Tình trạng mặt sân (Firm / Good / Soft / Heavy):</strong> Ở đầu trận (Năm 1), bạn chỉ nhìn thấy tình trạng mặt sân của <strong>Map 1 và Map 2</strong>; các sân từ Map 3 trở đi được ẩn dưới ký hiệu <strong>???</strong>. Khi bước sang Năm 2, hệ thống sẽ mở khóa tình trạng sân của <strong>Map 3 và Map 4</strong>; khi bước sang Năm 3 sẽ mở khóa toàn bộ các sân còn lại.</li>
+        <li><strong>Chỉ số Thưởng Địa hình (Stat Bonus / Threshold):</strong> Trong bảng Map Helper của mỗi sân có ghi chú mục <em>STAT BONUS</em> (ví dụ: Speed, Stamina hoặc Power). Nếu nhân vật của bạn có chỉ số tương ứng đạt mốc khá (từ 350 trở lên) hoặc mốc cao (từ 600 trở lên), nhân vật đó sẽ được nhận thêm phần trăm tốc độ cộng thưởng trên sân đua đó.</li>
+      </ul>
 
       <h4>Quy Trình 3 Bước Chuẩn Bị</h4>
       <ul>
-        <li><strong>Bước 1 — Chọn 3 Uma Chủ Lực:</strong> Lựa chọn 3 nhân vật phù hợp với các cự ly xuất hiện trong danh sách 7 sân đua. Bạn có thể nhấp chuột phải vào từng nhân vật để xem chi tiết chỉ số cơ bản, kỹ năng độc quyền (Unique Skill) và các kỹ năng tiềm năng có sẵn (Pot Skills).</li>
+        <li><strong>Bước 1 — Chọn 3 Uma Chủ Lực:</strong> Lựa chọn 3 nhân vật phù hợp với các cự ly xuất hiện trong danh sách 7 sân đua. Nhấp chuột phải vào từng nhân vật để xem chi tiết chỉ số cơ bản, kỹ năng độc quyền (Unique Skill) và các kỹ năng tiềm năng có sẵn (Pot Skills).</li>
         <li><strong>Bước 2 — Phân Bổ 18 Spark Hồng:</strong> Mỗi nhân vật được cấp 18 điểm Spark Hồng để nâng cấp bậc thích nghi Mặt sân, Cự ly hoặc Chiến thuật chạy. Trước khi trận đấu bắt đầu, Spark Hồng có thể nâng bậc thích nghi tối đa lên mức <strong>A</strong> (1 Spark tăng 1 bậc, 4 Spark tăng 2 bậc, 7 Spark tăng 3 bậc, 10 Spark tăng 4 bậc).</li>
         <li><strong>Bước 3 — Xây Dựng Bộ Bài 40 Thẻ SSR:</strong> Chọn đủ 40 thẻ Hỗ trợ (Support Cards) từ kho thẻ. Mỗi hệ chỉ số (Speed, Stamina, Power, Guts, Wit) được phép lấy tối đa 12 thẻ.</li>
       </ul>
@@ -74,8 +465,8 @@ const GAME_GUIDE_SECTIONS = [
       <div class="guide-diff-box">
         <div class="guide-diff-title">Điểm Tinh Chỉnh So Với Bản Gốc</div>
         <ul>
-          <li><strong>Cơ chế Kế thừa (Inheritance):</strong> Thay vì chọn ngựa bố mẹ có sẵn, bạn trực tiếp phân bổ 18 điểm Spark Hồng cho từng nhân vật. Mỗi điểm Spark được gán vào một hạng mục sẽ mang lại 8% xác suất đột phá hạng mục đó lên <strong>Bậc S</strong> trong sự kiện Kế thừa vào đầu Năm 2 và Năm 3.</li>
-          <li><strong>Bộ bài Hỗ trợ 40 lá:</strong> Thay vì chỉ mang 6 thẻ hỗ trợ cố định như bản gốc, bạn xây dựng một bộ bài 40 lá để rút dần qua từng lượt, tạo chiều sâu chiến thuật tương tự các trò chơi thẻ bài đối kháng.</li>
+          <li><strong>Đột phá Bậc S nhờ Spark Hồng:</strong> Thay vì chọn ngựa bố mẹ có sẵn, bạn trực tiếp phân bổ 18 điểm Spark Hồng cho từng nhân vật. Mỗi điểm Spark được gán vào một hạng mục sẽ mang lại 8% xác suất đột phá hạng mục đó lên <strong>Bậc S</strong> trong sự kiện Kế thừa vào đầu Năm 2 và Năm 3.</li>
+          <li><strong>Bộ bài Hỗ trợ 40 lá:</strong> Thay vì chỉ mang 6 thẻ hỗ trợ cố định như bản gốc, bạn xây dựng một bộ bài 40 lá để rút dần qua từng lượt (khởi đầu Năm 1 với 5 lá bài trên tay), tạo chiều sâu chiến thuật tương tự các trò chơi thẻ bài đối kháng.</li>
         </ul>
       </div>
     `
@@ -83,22 +474,35 @@ const GAME_GUIDE_SECTIONS = [
   {
     id: 'training',
     menuTitle: '3. Giai Đoạn Huấn Luyện',
-    heading: 'Giai Đoạn Huấn Luyện & Quản Lý Lượt (Năm 1 – Năm 3)',
+    heading: 'Giai Đoạn Huấn Luyện, Túi Năng Lượng & Quản Lý Thể Lực',
     content: `
-      <p>Mỗi năm bao gồm <strong>10 lượt huấn luyện</strong>. Cấp độ cơ sở huấn luyện sẽ tự động tăng dần theo từng năm để đẩy nhanh tốc độ tăng trưởng chỉ số: Năm 1 tương ứng <strong>Lv.1</strong>, Năm 2 tương ứng <strong>Lv.3</strong>, và Năm 3 đạt mức tối đa <strong>Lv.5</strong>.</p>
+      <p>Mỗi năm bao gồm <strong>10 lượt huấn luyện</strong>. Cấp độ cơ sở huấn luyện tự động tăng dần theo từng năm: Năm 1 tương ứng <strong>Lv.1</strong>, Năm 2 tương ứng <strong>Lv.3</strong>, và Năm 3 đạt mức tối đa <strong>Lv.5</strong>.</p>
 
-      <h4>Các Thao Tác Chính Trong Một Lượt</h4>
+      <h4>Quy Luật Túi Năng Lượng 10 Lượt (Yearly Energy Bag)</h4>
       <ul>
-        <li><strong>Huấn luyện bằng Năng lượng (Training Energy):</strong> Mỗi lượt, hệ thống cấp cho bạn 1 viên Năng lượng thuộc một hệ chỉ số nhất định (Speed, Stamina, Power, Guts hoặc Wit). Kéo thả viên năng lượng này vào 1 trong 3 Uma để huấn luyện nhân vật đó.</li>
-        <li><strong>Bỏ bài đổi hệ Năng lượng (Discard for Energy):</strong> Nếu hệ năng lượng của lượt hiện tại không phù hợp với kế hoạch, bạn có thể kéo 1 thẻ bài trên tay thả vào ô chuyển đổi ở góc dưới bên trái để đổi viên năng lượng sang đúng hệ của thẻ bài vừa bỏ.</li>
-        <li><strong>Nghỉ ngơi chủ động (Active Rest):</strong> Thay vì huấn luyện, bạn có thể kéo biểu tượng Nghỉ ngơi vào 1 Uma. Thao tác này tiêu tốn viên năng lượng của lượt đó nhưng giúp nhân vật đưa tỷ lệ thất bại (Fail Rate) về 0%, tăng 1 bậc tâm trạng (Mood) và giúp bạn rút thêm 1 thẻ bài từ bộ bài.</li>
-        <li><strong>Trại hè (Summer Camp):</strong> Diễn ra cố định vào <strong>Lượt 7 và Lượt 8 của Năm 2 và Năm 3</strong>. Trong thời gian Trại hè, hiệu quả tăng chỉ số khi huấn luyện được nhân thêm 1.5 lần và lệnh Nghỉ ngơi tăng liền 2 bậc Mood.</li>
+        <li>Năng lượng huấn luyện mỗi lượt không xuất hiện ngẫu nhiên vô hạn mà được rút ra từ một <strong>Túi 10 viên cân bằng cho mỗi năm</strong>, bao gồm đúng: <strong>2 Speed, 2 Stamina, 2 Power, 2 Guts và 2 Wit</strong> được xáo trộn thứ tự.</li>
+        <li>Nhờ thông báo <em>Tiếp theo</em> ở góc phải màn hình và quy luật túi 10 viên này, bạn hoàn toàn có thể dự đoán trước các hệ năng lượng còn lại sẽ xuất hiện trong những lượt cuối năm.</li>
+        <li><strong>Bỏ bài đổi hệ Năng lượng (Discard for Energy):</strong> Nếu viên năng lượng hiện tại không đúng hệ bạn cần, hãy kéo 1 thẻ bài từ trên tay thả vào ô chuyển đổi ở góc dưới bên trái để đổi viên năng lượng của lượt đó sang đúng hệ của thẻ bài vừa bỏ.</li>
       </ul>
 
-      <div class="guide-diff-box">
-        <div class="guide-diff-title">Điểm Tinh Chỉnh So Với Bản Gốc</div>
-        <p>Mỗi lượt bạn chỉ có 1 hành động chính (Huấn luyện hoặc Nghỉ ngơi) áp dụng cho 1 nhân vật được chọn. Tuy nhiên, việc gắn thẻ Hỗ trợ, thu hồi thẻ và sử dụng Vật phẩm không tiêu tốn năng lượng, cho phép bạn thực hiện nhiều thao tác chuẩn bị trước khi kéo viên năng lượng vào nhân vật.</p>
-      </div>
+      <h4>Cơ Chế Luân Phiên Thể Lực & Đặc Quyền Của Hệ Wit</h4>
+      <ul>
+        <li><strong>Tăng chỉ số chính và phụ:</strong> Tập Speed tăng thêm Power; tập Stamina tăng thêm Guts; tập Power tăng thêm Stamina; tập Guts tăng thêm cả Speed và Power; tập Wit tăng thêm Speed.</li>
+        <li><strong>Hồi phục thụ động cho 2 Uma dự bị:</strong> Mỗi khi bạn kéo năng lượng huấn luyện cho 1 Uma, <strong>2 Uma còn lại không tập luyện trong lượt đó sẽ tự động được giảm tỷ lệ thất bại (Fail Rate)</strong> (giảm 10% nếu Fail Rate đang từ 20% trở lên, hoặc giảm 5% nếu dưới 20%). Luân phiên tập luyện giữa 3 nhân vật sẽ giúp bạn hạn chế phải dùng lệnh Nghỉ ngơi.</li>
+        <li><strong>Đặc quyền khi tập luyện hệ Wit (Trí tuệ):</strong>
+          <ul>
+            <li>Huấn luyện hệ Wit <strong>an toàn tuyệt đối (không bao giờ thất bại)</strong> ngay cả khi nhân vật đang có tỷ lệ Fail Rate cao.</li>
+            <li>Giúp nhân vật được tập <strong>giảm ngay 5% Fail Rate</strong> thay vì bị tăng thêm mệt mỏi.</li>
+            <li>Đặc biệt, nếu nhân vật được tập Wit đang trang bị ít nhất 1 thẻ Hỗ trợ hệ Wit trên người, bạn sẽ được <strong>rút thêm 1 thẻ bài từ bộ bài</strong>.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Nghỉ Ngơi Chủ Động (Active Rest) & Trại Hè (Summer Camp)</h4>
+      <ul>
+        <li><strong>Nghỉ ngơi chủ động (Active Rest):</strong> Kéo thanh Nghỉ ngơi ở góc dưới bên phải thả vào 1 Uma (tiêu tốn viên năng lượng của lượt đó) để đưa Fail Rate của nhân vật về 0%, tăng 1 bậc Mood và rút thêm 1 thẻ bài từ bộ bài.</li>
+        <li><strong>Trại hè (Summer Camp):</strong> Diễn ra cố định vào <strong>Lượt 7 và Lượt 8 của Năm 2 và Năm 3</strong>. Trong 2 lượt Trại hè, hiệu quả tăng chỉ số khi huấn luyện được nhân 1.5 lần, và nếu dùng lệnh Nghỉ ngơi sẽ tăng liền 2 bậc Mood.</li>
+      </ul>
     `
   },
   {
@@ -106,16 +510,17 @@ const GAME_GUIDE_SECTIONS = [
     menuTitle: '4. Thẻ Hỗ Trợ & Kỹ Năng',
     heading: 'Cơ Chế Thẻ Hỗ Trợ, Thức Tỉnh Kỹ Năng & Thu Hồi Thẻ',
     content: `
-      <p>Thẻ Hỗ trợ (Support Cards) đóng vai trò kép: vừa gia tăng lượng chỉ số nhận được khi huấn luyện, vừa là nguồn cung cấp kỹ năng trực tiếp cho Uma.</p>
+      <p>Thẻ Hỗ trợ (Support Cards) đóng vai trò kép: vừa nhân mạnh lượng chỉ số nhận được khi huấn luyện cùng hệ, vừa truyền dạy trực tiếp kỹ năng cho Uma. Giới hạn bài cầm trên tay là <strong>9 lá</strong> khi rút tự nhiên (và tối đa <strong>10 lá</strong> khi thu hồi thẻ từ nhân vật về tay).</p>
 
-      <h4>Trang Bị Thẻ & Cộng Hưởng (Rainbow Training)</h4>
+      <h4>Trang Bị Thẻ, Cộng Hưởng (Rainbow) & Ưu Tiên Kỹ Năng Vàng</h4>
       <ul>
         <li>Mỗi Uma có tối đa <strong>5 ô trang bị thẻ hỗ trợ</strong> (không được trang bị 2 thẻ trùng tên trên cùng một nhân vật).</li>
-        <li>Khi kéo một thẻ từ tay thả vào Uma ở chế độ <strong>Trang bị (Equip)</strong>, nhân vật đó lập tức học được <strong>Kỹ năng Trắng (White Skill)</strong> của thẻ.</li>
-        <li>Khi bạn huấn luyện một chỉ số trùng với hệ của các thẻ đang gắn trên nhân vật, hiệu ứng <strong>Cộng hưởng (Rainbow)</strong> sẽ kích hoạt, cộng thêm lượng lớn chỉ số tương ứng với số lượng thẻ cùng hệ đang trang bị.</li>
+        <li>Khi kéo một thẻ từ tay thả vào Uma ở chế độ <strong>Trang bị (Equip)</strong>, nhân vật đó lập tức nhận được <strong>Kỹ năng Trắng (White Skill)</strong> của thẻ.</li>
+        <li>Khi huấn luyện một chỉ số trùng với hệ của các thẻ đang gắn trên nhân vật, hiệu ứng <strong>Cộng hưởng (Rainbow)</strong> sẽ kích hoạt, cộng thêm lượng lớn chỉ số tương ứng với số thẻ cùng hệ đang trang bị.</li>
+        <li><strong>Tự động ưu tiên Kỹ năng Vàng:</strong> Nếu nhân vật đang sở hữu phiên bản <strong>Kỹ năng Vàng (Gold Skill)</strong> (có sẵn từ Pot hoặc từ thẻ khác), hệ thống sẽ tự động ẩn và bỏ qua phiên bản Kỹ năng Trắng cấp thấp tương ứng (ví dụ: đã có <em>Professor of Curvature</em> thì sẽ chỉ kích hoạt kỹ năng vàng này và không kích hoạt <em>Corner Adept</em>).</li>
       </ul>
 
-      <h4>Thức Tỉnh Kỹ Năng Vàng (Gold Awakening)</h4>
+      <h4>Thức Tỉnh Kỹ Năng Vàng (Gold Awakening) & Thẻ Guts Đa Năng</h4>
       <ul>
         <li>Khi một Uma đã có thẻ hỗ trợ đang gắn trên người, bạn có thể kéo một thẻ khác từ trên tay có <strong>cùng hệ chỉ số</strong> thả đè lên nhân vật đó để thực hiện <strong>Gold Awakening</strong>.</li>
         <li>Thẻ dùng làm nguyên liệu sẽ tiêu hao, và thẻ đang trang bị sẽ được nâng cấp vĩnh viễn từ Kỹ năng Trắng lên <strong>Kỹ năng Vàng (Gold Skill)</strong> tương ứng.</li>
@@ -125,7 +530,7 @@ const GAME_GUIDE_SECTIONS = [
       <h4>Thu Hồi Thẻ (Recall Card)</h4>
       <ul>
         <li>Đối với các thẻ đang trang bị nhưng <strong>chưa thức tỉnh Kỹ năng Vàng</strong>, bạn có thể nhấp chuột trái vào biểu tượng thẻ nhỏ trên nhân vật (hoặc kéo ngược về tay) để tháo thẻ ra.</li>
-        <li>Khi thu hồi thẻ, Kỹ năng Trắng đi kèm thẻ đó cũng sẽ được gỡ bỏ, cho phép bạn chuyển thẻ sang nhân vật khác hoặc dùng thẻ đó làm nguyên liệu nâng cấp. Các thẻ đã thức tỉnh Kỹ năng Vàng sẽ khóa cố định vào nhân vật.</li>
+        <li>Khi thu hồi thẻ, Kỹ năng Trắng đi kèm thẻ đó cũng sẽ được gỡ bỏ, cho phép bạn chuyển thẻ sang nhân vật khác để gom Rainbow hoặc dùng thẻ đó làm nguyên liệu nâng cấp. Các thẻ đã thức tỉnh Kỹ năng Vàng sẽ khóa cố định vào nhân vật.</li>
       </ul>
 
       <div class="guide-diff-box">
@@ -144,36 +549,48 @@ const GAME_GUIDE_SECTIONS = [
       <h4>Sự Kiện Toàn Cục (Lượt 3, Lượt 6, Lượt 9)</h4>
       <ul>
         <li>Vào đúng các lượt 3, 6 và 9 của mỗi năm, một <strong>Sự kiện Hỗ trợ Toàn cục (Global Event)</strong> sẽ xuất hiện đồng thời cho cả hai người chơi.</li>
-        <li>Mỗi sự kiện cung cấp 3 phương án lựa chọn với định hướng khác nhau: hồi phục thể lực và tâm trạng cho toàn đội, gia tăng mạnh chỉ số kèm rủi ro, hoặc rút thêm thẻ bài và nhận vật phẩm vào túi đồ.</li>
+        <li>Mỗi sự kiện cung cấp 3 phương án lựa chọn với định hướng khác nhau: hồi phục thể lực và tăng Mood cho toàn đội, gia tăng mạnh chỉ số kèm rủi ro tăng Fail Rate, hoặc rút thêm thẻ bài và nhận vật phẩm vào túi đồ.</li>
       </ul>
 
       <h4>Túi Vật Phẩm (Inventory)</h4>
       <ul>
-        <li>Mỗi người chơi có tối đa <strong>3 ô chứa vật phẩm</strong>. Người chơi khởi đầu trận đấu với 1 vật phẩm và có thể nhận thêm thông qua các lựa chọn trong Sự kiện Toàn cục.</li>
-        <li>Sử dụng vật phẩm <strong>không tiêu tốn lượt huấn luyện</strong>.</li>
-        <li>Đối với vật phẩm tác động lên một nhân vật đơn lẻ (như nước uống xóa Fail Rate, bánh ngọt tăng Mood, sổ tay tăng chỉ số), bạn <strong>kéo thả trực tiếp vật phẩm vào Uma mục tiêu</strong>. Đối với vật phẩm tác động lên lượt huấn luyện chung (như Loa phóng thanh nhân 1.5 lần hiệu quả tập luyện), bạn chỉ cần nhấp chuột vào vật phẩm để kích hoạt.</li>
+        <li>Mỗi người chơi có tối đa <strong>3 ô chứa vật phẩm</strong>. Khi bắt đầu Năm 1, mỗi người chơi được cấp sẵn 1 lọ <strong>Royal Bitter Juice</strong> (xóa toàn bộ Fail Rate cho 1 Uma) và có thể nhận thêm vật phẩm qua các Sự kiện Toàn cục.</li>
+        <li>Sử dụng vật phẩm <strong>không tiêu tốn lượt huấn luyện</strong> và có thể dùng bất cứ lúc nào trong lượt.</li>
+        <li><strong>Cách sử dụng:</strong> Đối với vật phẩm tác động lên một nhân vật đơn lẻ (như nước uống xóa Fail Rate, bánh ngọt tăng Mood, thịt nướng, sổ tay tăng chỉ số), bạn <strong>kéo thả trực tiếp vật phẩm vào Uma mục tiêu</strong>. Đối với vật phẩm tác động lên toàn đội hoặc lượt huấn luyện chung (như Tượng Nữ Thần hoặc Loa phóng thanh nhân 1.5 lần hiệu quả tập luyện tiếp theo), bạn chỉ cần nhấp chuột vào vật phẩm để kích hoạt.</li>
       </ul>
     `
   },
   {
     id: 'racing',
     menuTitle: '6. Cơ Chế Đường Đua',
-    heading: 'Giai Đoạn Đua, Bậc Thích Nghi & Vận Hành Kỹ Năng',
+    heading: 'Giai Đoạn Đua, Bậc Thích Nghi, Kỹ Năng & Trạng Thái Đường Đua',
     content: `
       <p>Khi bước vào giai đoạn đua cuối năm, 6 Uma của hai đội sẽ đứng trong cổng chờ xuất phát. Cuộc đua bắt đầu ngay khi cả hai người chơi nhấn xác nhận sẵn sàng hoặc tự động mở cổng sau 10 giây đếm ngược.</p>
 
-      <h4>Tác Động Thực Tế Của Bậc Thích Nghi (S đến G)</h4>
+      <h4>Tác Động Thực Tế Của Bậc Thích Nghi (S đến G) & Đổi Chiến Thuật</h4>
       <ul>
-        <li><strong>Thích nghi Cự ly (Sprint / Mile / Medium / Long):</strong> Tác động trực tiếp lên tốc độ di chuyển và tốc độ bứt phá cuối chặng. Đưa nhân vật có bậc thích nghi thấp (từ D đến G) vào cự ly không phù hợp sẽ làm suy giảm nghiêm trọng tốc độ nền.</li>
-        <li><strong>Thích nghi Mặt sân (Turf / Dirt):</strong> Tác động trực tiếp lên khả năng tăng tốc (Power) và mức tiêu hao thể lực. Chạy trên mặt sân không phù hợp khiến nhân vật tăng tốc chậm và tiêu tốn thể lực nhanh hơn bình thường.</li>
-        <li><strong>Thích nghi Chiến thuật (Front / Pace / Late / End):</strong> Tác động trực tiếp lên khả năng đọc trận đấu (Wit) và <strong>tỷ lệ kích hoạt kỹ năng</strong>. Ngoài ra, bạn có thể nhấp chuột phải vào Uma của mình trên bàn đấu để chuyển đổi chiến thuật chạy bất cứ lúc nào trước khi bước vào kỳ đua.</li>
+        <li><strong>Đổi chiến thuật chạy linh hoạt:</strong> Trước khi bước vào kỳ đua, bạn có thể nhấp chuột phải vào bất kỳ Uma nào của mình trên bàn đấu để chuyển đổi chiến thuật chạy giữa <strong>Front, Pace, Late và End</strong>.</li>
+        <li><strong>Thích nghi Cự ly (Sprint / Mile / Medium / Long):</strong> Tác động trực tiếp lên tốc độ di chuyển và tốc độ nước rút. Đưa nhân vật có bậc thích nghi thấp (từ D đến G) vào cự ly không phù hợp sẽ làm suy giảm nghiêm trọng tốc độ nền.</li>
+        <li><strong>Thích nghi Mặt sân (Turf / Dirt):</strong> Tác động trực tiếp lên khả năng tăng tốc (Power) và mức tiêu hao thể lực. Chạy trên mặt sân không phù hợp khiến nhân vật tăng tốc chậm và đốt thể lực nhanh hơn bình thường.</li>
+        <li><strong>Thích nghi Chiến thuật (Front / Pace / Late / End):</strong> Tác động trực tiếp lên chỉ số Wit thực chiến, <strong>tỷ lệ kích hoạt kỹ năng</strong> và nguy cơ bị mất bình tĩnh trên đường đua.</li>
       </ul>
 
-      <h4>Quy Tắc Kích Hoạt Kỹ Năng Trên Đường Đua</h4>
+      <h4>Phân Loại Kỹ Năng & Điều Kiện Kích Hoạt</h4>
       <ul>
-        <li><strong>Ràng buộc đúng Chiến thuật và Cự ly:</strong> Các kỹ năng chuyên biệt của từng lối chạy (ví dụ kỹ năng dành riêng cho Front Runner hoặc Late Surger) và từng cự ly sẽ <strong>chỉ kích hoạt khi nhân vật đang thi đấu đúng chiến thuật và cự ly đó</strong>.</li>
-        <li><strong>Nhóm Kỹ năng Xanh lá (Passive):</strong> Kiểm tra điều kiện tương thích (mùa giải, hướng rẽ trái/phải, cự ly chuẩn/phi chuẩn, tình trạng mặt sân) ngay khi mở cổng xuất phát. Nếu vượt qua kiểm định Wit, kỹ năng sẽ cộng thẳng chỉ số cố định tồn tại xuyên suốt cả chặng đua.</li>
-        <li><strong>Nhóm Kỹ năng Chủ động:</strong> Bao gồm kỹ năng phản xạ cổng (ngăn ngừa xuất phát chậm), kỹ năng hồi phục thể lực giữa chặng, kỹ năng gia tốc và kỹ năng nâng trần tốc độ ở giai đoạn nước rút.</li>
+        <li><strong>Ràng buộc Chiến thuật, Cự ly và Mặt sân:</strong> Các kỹ năng có ký hiệu <strong>(Front / Pace / Late / End)</strong>, <strong>(Sprint / Mile / Medium / Long)</strong> hoặc <strong>(Dirt)</strong> chỉ kích hoạt khi nhân vật đang thi đấu đúng chiến thuật, cự ly và mặt sân đó.</li>
+        <li><strong>Kỹ năng Xanh lá (Passive) & Xuất phát (Gate):</strong> Kiểm tra điều kiện (mùa giải, hướng rẽ, cự ly chuẩn/phi chuẩn, mặt sân) ngay lúc mở cổng (0.0s). Nếu thành công sẽ cộng thẳng chỉ số cố định suốt cả trận hoặc miễn nhiễm xuất phát chậm (Late Start).</li>
+        <li><strong>Kỹ năng Khúc cua (Corner) & Đoạn thẳng (Straight):</strong> Chỉ kích hoạt khi nhân vật đang thực sự chạy trong phạm vi khúc cua hoặc đoạn thẳng của sân đua (bao gồm cả các kỹ năng gia tốc đặc trưng như <em>Let's Pump Some Iron!</em> chỉ bật ở khúc cua hay <em>Straightaway Spurt</em> chỉ bật ở đoạn thẳng cuối).</li>
+        <li><strong>Kỹ năng Tăng tốc (Velo•Mid) & Hồi thể lực (Heal / Heal•Debuff):</strong> Kích hoạt ở giai đoạn Giữa chặng (Middle Leg) để cải thiện vị trí và duy trì cây thể lực.</li>
+        <li><strong>Kỹ năng Gia tốc không ràng buộc địa hình (Accel•Final Leg):</strong> Kích hoạt ngay khi bước vào mốc 2/3 quãng đường (Final Leg), giúp nhân vật đạt vận tốc nước rút tối đa nhanh nhất có thể.</li>
+      </ul>
+
+      <h4>Các Trạng Thái Đặc Biệt Trong Lúc Đua</h4>
+      <ul>
+        <li><strong>LATE START (Xuất phát chậm):</strong> Nhân vật bị khựng lại một nhịp ngay khi mở cổng, làm mất lợi thế chọn vị trí đầu chặng (chỉ số Wit cao hoặc có kỹ năng <em>Focus / Concentration</em> sẽ khắc phục tình trạng này).</li>
+        <li><strong>RUSHED (Hăng máu / Kakari):</strong> Nhân vật mất bình tĩnh ở giữa chặng, tự ý đôn tốc độ lên sớm nhưng tiêu hao thể lực gấp rưỡi bình thường (dễ xảy ra nếu chỉ số Wit thấp hoặc chạy chiến thuật có bậc thích nghi từ D đến G).</li>
+        <li><strong>SPOT STRUGGLE & DUEL! (Đọ sức):</strong> Khi các Front Runner bám sát nhau ở đầu trận (Spot Struggle) hoặc khi các nhân vật kè vai nhau trên đường thẳng cuối (Duel / Oikurabe), các nhân vật sẽ bứt tốc mạnh mẽ dựa trên chỉ số Guts.</li>
+        <li><strong>BLOCKED (Bị chắn đường):</strong> Bị các nhân vật phía trước vây kín ở giai đoạn cuối khiến không thể tăng tốc tối đa (chỉ số Power cao hoặc kích hoạt kỹ năng tăng gia tốc giúp dễ dàng thoát khỏi thế bị chặn).</li>
+        <li><strong>NO STA (Cạn kiệt thể lực):</strong> Khi thanh thể lực (HP) giảm về 0 trước vạch đích, nhân vật sẽ bị tụt giảm tốc độ nghiêm trọng.</li>
       </ul>
     `
   }
@@ -187,7 +604,6 @@ function setLobbyDiscordVisible(isVisible) {
 }
 
 function initLobbyGuideSystem() {
-  // 1. Chèn CSS cho Modal Hướng dẫn và Nút ở Sảnh chính
   if (!document.getElementById('twinkle-guide-styles')) {
     const styleEl = document.createElement('style');
     styleEl.id = 'twinkle-guide-styles';
@@ -223,9 +639,9 @@ function initLobbyGuideSystem() {
         padding: 20px;
       }
       .guide-modal-container {
-        width: 920px;
+        width: 940px;
         max-width: 96vw;
-        height: 600px;
+        height: 620px;
         max-height: 88vh;
         background: #0f172a;
         border: 1px solid #334155;
@@ -361,7 +777,6 @@ function initLobbyGuideSystem() {
     document.head.appendChild(styleEl);
   }
 
-  // 2. Chèn Nút Hướng Dẫn vào Sảnh Chính (#lobby-screen)
   const lobbyScreen = document.getElementById('lobby-screen');
   if (lobbyScreen && !document.getElementById('btn-open-game-guide')) {
     const lobbyCard = lobbyScreen.querySelector('.lobby-box, .card, div') || lobbyScreen;
@@ -373,7 +788,6 @@ function initLobbyGuideSystem() {
     lobbyCard.appendChild(guideBtn);
   }
 
-  // 3. Khởi tạo Modal Hướng Dẫn có Menu bên trái
   if (!document.getElementById('guide-modal-overlay')) {
     const overlay = document.createElement('div');
     overlay.id = 'guide-modal-overlay';
@@ -400,7 +814,6 @@ function initLobbyGuideSystem() {
     };
   }
 
-  // 4. Chèn Huy hiệu Liên hệ Discord (cafe_1710) trực tiếp vào document.body ở góc dưới bên trái
   if (!document.getElementById('lobby-discord-contact')) {
     const discordBadge = document.createElement('div');
     discordBadge.id = 'lobby-discord-contact';
@@ -502,14 +915,57 @@ function showToast(msg, isError = false) {
 socket.on('action_error', (msg) => showToast('[ERROR] ' + msg, true));
 
 function openCardZoom(card) {
+  const wMeta = getSkillGameToraMeta(card.whiteSkill, card.whiteSkillData || card.whiteMechanics);
+  const gMeta = getSkillGameToraMeta(card.goldSkill, card.goldSkillData || card.goldMechanics);
+
   document.getElementById('zoom-img').src = card.icon;
   document.getElementById('zoom-title').innerText = card.name;
   document.getElementById('zoom-type').innerHTML = `${renderStatIconHTML(card.type, 22)} <span>SSR ${card.type} Support</span>`;
-  document.getElementById('zoom-white').innerText = card.whiteSkill;
-  document.getElementById('zoom-gold').innerText = card.goldSkill;
-  document.getElementById('zoom-desc').innerText = card.desc || 'Kéo thả vào Uma để Trang bị hoặc thực hiện Gold Awakening.';
+  document.getElementById('zoom-white').innerHTML = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
+  document.getElementById('zoom-gold').innerHTML = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+  document.getElementById('zoom-desc').innerHTML = `
+    <div style="margin-bottom:4px;">• <b>White:</b> ${wMeta.tooltip.split('\n')[1]?.replace('• ', '') || ''}</div>
+    <div>• <b style="color:#facc15;">Gold:</b> ${gMeta.tooltip.split('\n')[1]?.replace('• ', '') || ''}</div>
+  `;
   document.getElementById('card-zoom-modal').style.display = 'flex';
 }
+
+function enhanceUmaDetailModalSkills(uma) {
+  if (!uma) return;
+  const modal = document.getElementById('uma-detail-modal');
+  if (!modal) return;
+
+  const allSkills = [...(uma.potSkills || []), ...(uma.skills || [])];
+  const seen = new Set();
+
+  allSkills.forEach(sk => {
+    if (!sk || !sk.name || seen.has(sk.name)) return;
+    seen.add(sk.name);
+    const meta = getSkillGameToraMeta(sk.name, sk.mechanics);
+
+    modal.querySelectorAll('span, div, li, b, strong').forEach(el => {
+      if (el.children.length === 0 && el.textContent && el.textContent.includes(sk.name) && !el.dataset.gtEnhanced) {
+        el.dataset.gtEnhanced = '1';
+        el.title = meta.tooltip;
+        if (!el.textContent.includes(meta.roleShort)) {
+          el.innerHTML = `${el.textContent} <span style="color:#f472b6; font-weight:bold;">${meta.parenText}</span> <span style="color:${meta.roleColor}; font-size:10px; font-weight:bold;">[${meta.roleShort}]</span>`;
+        }
+      }
+    });
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof window.openUmaDetailModal === 'function' && !window.openUmaDetailModal._gtHooked) {
+    const origOpenUmaModal = window.openUmaDetailModal;
+    window.openUmaDetailModal = function (u, idx, isMyBoard) {
+      const res = origOpenUmaModal.apply(this, arguments);
+      setTimeout(() => enhanceUmaDetailModalSkills(u), 20);
+      return res;
+    };
+    window.openUmaDetailModal._gtHooked = true;
+  }
+});
 
 // =========================================================================
 // HIỆU ỨNG LẬT MỞ TỪNG MAP KỊCH TÍNH (1 -> 7) KÈM MÙA GIẢI (SEASON)
@@ -749,6 +1205,10 @@ function renderDeckBuilderUI() {
         e.preventDefault();
         openCardZoom(card);
       };
+
+      const wHtml = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
+      const gHtml = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+
       div.innerHTML = `
         <div class="card-thumb-wrap">
           <img class="support-card-icon" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
@@ -756,8 +1216,9 @@ function renderDeckBuilderUI() {
         </div>
         <div style="min-width:0;">
           <div style="font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${card.name}</div>
-          <div style="color:#facc15; font-size:10px;">[GOLD] ${card.goldSkill}</div>
-          <div style="color:${isSelected ? '#4ade80' : '#94a3b8'}; font-size:10px;">${isSelected ? 'Đã chọn trong Deck' : 'Click để thêm'}</div>
+          <div style="color:#cbd5e1; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">[W] ${wHtml}</div>
+          <div style="color:#facc15; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">[G] ${gHtml}</div>
+          <div style="color:${isSelected ? '#4ade80' : '#94a3b8'}; font-size:9.5px;">${isSelected ? 'Đã chọn trong Deck' : 'Click để thêm'}</div>
         </div>
       `;
       container.appendChild(div);
@@ -794,6 +1255,9 @@ function openCardActionModal(card, uma, umaIndex, eligibleTargets) {
   const modal = document.getElementById('card-choice-modal');
   document.getElementById('choice-modal-header').innerText = `Sử dụng Support Card lên ${uma.name}`;
 
+  const wHtml = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
+  const gHtml = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+
   document.getElementById('choice-dragged-card-preview').innerHTML = `
     <div class="card-thumb-wrap">
       <img class="support-card-icon" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
@@ -802,8 +1266,8 @@ function openCardActionModal(card, uma, umaIndex, eligibleTargets) {
     <div style="font-size:12px;">
       <strong style="color:#facc15; font-size:14px;">${card.name}</strong>
       <span style="color:#94a3b8;">(${card.type === 'Guts' ? 'Guts - Wildcard' : card.type})</span><br>
-      <span class="skill-tag-label tag-white">WHITE</span><b>${card.whiteSkill}</b> | 
-      <span class="skill-tag-label tag-gold">GOLD</span><b style="color:#facc15;">${card.goldSkill}</b>
+      <span class="skill-tag-label tag-white">WHITE</span><b>${wHtml}</b><br>
+      <span class="skill-tag-label tag-gold">GOLD</span><b style="color:#facc15;">${gHtml}</b>
     </div>
   `;
 
@@ -820,7 +1284,7 @@ function openCardActionModal(card, uma, umaIndex, eligibleTargets) {
     equipDesc.innerHTML = `<span style="color:#f43f5e;">${uma.name} đã trang bị thẻ [${card.name}] rồi.</span>`;
     btnEquip.disabled = true;
   } else {
-    equipDesc.innerHTML = `Gắn vào ô Hỗ trợ (${eqCards.length + 1}/5) để nhận kỹ năng <b>${card.whiteSkill}</b> và +1 Rainbow ${renderStatIconHTML(card.type, 14)}.`;
+    equipDesc.innerHTML = `Gắn vào ô Hỗ trợ (${eqCards.length + 1}/5) để nhận kỹ năng <b>${wHtml}</b> và +1 Rainbow ${renderStatIconHTML(card.type, 14)}.`;
     btnEquip.disabled = false;
     btnEquip.onclick = () => {
       modal.style.display = 'none';
@@ -837,6 +1301,7 @@ function openCardActionModal(card, uma, umaIndex, eligibleTargets) {
   const listEl = document.getElementById('choice-eligible-list');
   listEl.innerHTML = '';
   eligibleTargets.forEach(targetCard => {
+    const targetGoldHtml = formatSkillInlineHTML(targetCard.goldSkill, targetCard.goldSkillData || targetCard.goldMechanics, true);
     const item = document.createElement('div');
     item.className = 'eligible-target-item';
     item.innerHTML = `
@@ -848,7 +1313,7 @@ function openCardActionModal(card, uma, umaIndex, eligibleTargets) {
         <div style="font-size:12px;">
           <strong>${targetCard.name}</strong><br>
           <span style="color:#94a3b8; text-decoration:line-through;">${targetCard.whiteSkill}</span>
-          <span style="color:#facc15; font-weight:bold;"> -> [GOLD] ${targetCard.goldSkill}</span>
+          <span style="color:#facc15; font-weight:bold;"> -> [GOLD] ${targetGoldHtml}</span>
         </div>
       </div>
       <button style="width:auto; padding:7px 14px; background:linear-gradient(90deg,#ca8a04,#eab308); color:#000; margin:0; font-size:12px;">
@@ -973,10 +1438,15 @@ function renderPreGameUI() {
         e.preventDefault();
         if (typeof openUmaDetailModal === 'function') {
           openUmaDetailModal(u, null, false);
+          setTimeout(() => enhanceUmaDetailModalSkills(u), 25);
         }
       };
 
-      const goldPots = (u.potSkills || []).filter(p => p.isGold).map(p => p.name).join(' • ');
+      const goldPots = (u.potSkills || [])
+        .filter(p => p.isGold)
+        .map(p => formatSkillInlineHTML(p.name, p.mechanics, true))
+        .join(' • ');
+
       const aptBar = typeof renderCompactAptitudesBar === 'function'
         ? renderCompactAptitudesBar(u.aptitudes)
         : `Turf ${u.aptitudes.Turf} | Dirt ${u.aptitudes.Dirt}`;
@@ -1022,7 +1492,7 @@ function renderPreGameUI() {
     });
 
     card.innerHTML = `
-      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px; cursor:context-menu;" title="Chuột phải để xem chi tiết Uma" oncontextmenu="event.preventDefault(); if(typeof openUmaDetailModal==='function') openUmaDetailModal(umaPool.find(x=>x.id==='${u.id}'), null, false);">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px; cursor:context-menu;" title="Chuột phải để xem chi tiết Uma" oncontextmenu="event.preventDefault(); if(typeof openUmaDetailModal==='function'){ const uObj = umaPool.find(x=>x.id==='${u.id}'); openUmaDetailModal(uObj, null, false); setTimeout(()=>enhanceUmaDetailModalSkills(uObj), 25); }">
         <img class="uma-avatar" style="width:40px; height:40px;" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
         <div>
           <strong>Uma ${idx + 1}: ${u.name}</strong><br>
@@ -1134,6 +1604,7 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
       e.preventDefault();
       if (typeof openUmaDetailModal === 'function') {
         openUmaDetailModal(u, idx, isMyBoard);
+        setTimeout(() => enhanceUmaDetailModalSkills(u), 25);
       }
     };
 
@@ -1174,6 +1645,8 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
       ? renderCompactAptitudesBar(u.aptitudes)
       : `Sân: <b>${u.aptitudes.Turf}/${u.aptitudes.Dirt}</b>`;
 
+    const uqHtml = formatSkillInlineHTML(u.uniqueSkill, u.uniqueSkillData, true);
+
     div.innerHTML = `
       <div>
         <div class="uma-board-top">
@@ -1183,7 +1656,7 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
               <strong style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${u.name}</strong>
               ${renderMoodBadgeHTML(u.mood || 'Normal')}
             </div>
-            <div class="unique-skill-badge" title="Unique Skill">[UNIQUE] ${u.uniqueSkill}</div>
+            <div class="unique-skill-badge" title="Unique Skill">[UNIQUE] ${uqHtml}</div>
             <div style="font-size:9.5px; color:#cbd5e1; margin-top:2px; display:flex; justify-content:space-between; align-items:center;">
               <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${aptBar}</span>
               <span style="color:${failColor}; font-weight:bold; flex-shrink:0; margin-left:4px;">Fail: ${u.failRate || 0}%</span>
@@ -1197,7 +1670,14 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
 
         <div class="skills-list-mini">
           ${(() => {
-            const learnedCardSkills = skills.filter(s => !s.fromPot);
+            const ownedGoldSet = new Set();
+            skills.forEach(s => {
+              if (s && s.name && (s.isGold || String(s.name).includes('◎'))) {
+                ownedGoldSet.add(normalizeSkillBaseNameUI(s.name));
+              }
+            });
+
+            const learnedCardSkills = skills.filter(s => !s.fromPot && (s.isGold || !isWhiteSupersededByOwnedGoldUI(s.name, ownedGoldSet)));
             const goldPotSkills = skills.filter(s => s.fromPot && s.isGold);
             const displaySkills = [...learnedCardSkills, ...goldPotSkills];
 
@@ -1206,12 +1686,14 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
             }
 
             return displaySkills.map(s => {
+              const skMeta = getSkillGameToraMeta(s.name, s.mechanics);
+              const skFormatted = formatSkillInlineHTML(s.name, s.mechanics, true);
               if (!s.fromPot) {
-                return `<span class="skill-pill ${s.isGold ? 'gold' : ''}" style="${!s.isGold ? 'border-color:#38bdf8; color:#bae6fd; background:#0c4a6e;' : ''}">
-                  ${s.isGold ? '[GOLD★] ' : '[CARD] '}${s.name}
+                return `<span class="skill-pill ${s.isGold ? 'gold' : ''}" title="${skMeta.tooltip.replace(/"/g, '&quot;')}" style="${!s.isGold ? 'border-color:#38bdf8; color:#bae6fd; background:#0c4a6e;' : ''}">
+                  ${s.isGold ? '[GOLD★] ' : '[CARD] '}${skFormatted}
                 </span>`;
               }
-              return `<span class="skill-pill gold" style="opacity:0.92;">[POT★] ${s.name}</span>`;
+              return `<span class="skill-pill gold" title="${skMeta.tooltip.replace(/"/g, '&quot;')}" style="opacity:0.92;">[POT★] ${skFormatted}</span>`;
             }).join('');
           })()}
         </div>
@@ -1368,6 +1850,9 @@ function updateGameState(data) {
       openCardZoom(card);
     };
 
+    const wHtml = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
+    const gHtml = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+
     cardDiv.innerHTML = `
       <div class="card-thumb-wrap">
         <img class="support-card-icon" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
@@ -1375,8 +1860,8 @@ function updateGameState(data) {
       </div>
       <div style="flex:1; min-width:0;">
         <div style="font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${card.name}</div>
-        <div style="color:#cbd5e1; margin-top:2px;"><span class="skill-tag-label tag-white">W</span>${card.whiteSkill}</div>
-        <div style="color:#facc15; margin-top:1px;"><span class="skill-tag-label tag-gold">G</span>${card.goldSkill}</div>
+        <div style="color:#cbd5e1; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span class="skill-tag-label tag-white">W</span>${wHtml}</div>
+        <div style="color:#facc15; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span class="skill-tag-label tag-gold">G</span>${gHtml}</div>
       </div>
     `;
     handEl.appendChild(cardDiv);
