@@ -1,10 +1,11 @@
-// public/js/audio.js - Hệ thống Âm thanh & Nhạc nền theo từng Năm (Year 1/2/3, Summer Camp & Tie-Break)
+// public/js/audio.js - Hệ thống Âm thanh & Nhạc nền theo từng Năm (Đặt gọn trên thanh Header cạnh mã phòng, không che nút)
 
 const SoundManager = (() => {
   let ctx = null;
   let isMuted = localStorage.getItem('twinkle_audio_muted') === 'true';
   let bgmVolume = parseFloat(localStorage.getItem('twinkle_bgm_vol') ?? '0.35');
   let sfxVolume = parseFloat(localStorage.getItem('twinkle_sfx_vol') ?? '0.65');
+  let isPanelExpanded = false;
 
   let currentBgmKey = null;
   let synthTimer = null;
@@ -44,16 +45,16 @@ const SoundManager = (() => {
   const missingMp3Cache = {};
 
   const TRACK_LABELS = {
-    lobby:   '🎵 Sảnh Học Viện Tracen',
-    pregame: '🎵 Lựa Chọn Đội Hình (Pre-game)',
-    train:   '🎵 Huấn Luyện Năm 1 (Junior Year)',
-    train2:  '🎵 Huấn Luyện Năm 2 (Classic Year)',
-    train3:  '🎵 Huấn Luyện Năm 3 (Senior Year)',
-    summer:  '🌴 Trại Hè (Summer Camp)',
-    race:    '🏇 Giải Đua Năm 1 (Map 1 - 2)',
-    race2:   '🏇 Giải Đua Năm 2 (Map 3 - 4)',
-    race3:   '🏇 Giải Đua Năm 3 (Map 5 - 6)',
-    tb:      '🔥 Quyết Chiến Tie-Break (Map 7)'
+    lobby:   'Sảnh Học Viện Tracen',
+    pregame: 'Chiến Thuật Đội Hình (Pre-game)',
+    train:   'Huấn Luyện Năm 1 (Junior Year)',
+    train2:  'Huấn Luyện Năm 2 (Classic Year)',
+    train3:  'Huấn Luyện Năm 3 (Senior Year)',
+    summer:  'Trại Hè Quốc Gia (Summer Camp)',
+    race:    'Giải Đua Năm 1 (Map 1 - 2)',
+    race2:   'Giải Đua Năm 2 (Map 3 - 4)',
+    race3:   'Giải Đua Năm 3 (Map 5 - 6)',
+    tb:      'Quyết Chiến Tie-Break (Map 7)'
   };
 
   function ensureContext() {
@@ -269,7 +270,6 @@ const SoundManager = (() => {
   function playBgm(trackKey) {
     if (!trackKey) return;
 
-    // Nếu cùng 1 bản BGM đang chạy (VD: chuyển từ Map 1 sang Map 2 trong cùng Năm 1) -> Giữ mạch nhạc liên tục
     if (currentBgmKey === trackKey && (synthTimer || activeHtmlAudio)) {
       if (activeHtmlAudio && activeHtmlAudio.paused && !isMuted) {
         activeHtmlAudio.play().catch(() => {});
@@ -279,7 +279,7 @@ const SoundManager = (() => {
 
     currentBgmKey = trackKey;
     stopCurrentBgm();
-    updateMixerTrackLabel();
+    updateMixerUIState();
 
     const customUrl = CUSTOM_BGM_PATHS[trackKey];
     if (customUrl && !missingMp3Cache[customUrl]) {
@@ -307,7 +307,6 @@ const SoundManager = (() => {
     }
   }
 
-  // Xác định đúng bài nhạc Huấn luyện theo Năm (Year 1 / 2 / 3) và Trại Hè
   function getTrainingBgmKey(year, turn) {
     const y = Number(year) || 1;
     const t = Number(turn) || 1;
@@ -317,7 +316,6 @@ const SoundManager = (() => {
     return 'train';
   }
 
-  // Xác định đúng bài nhạc Đua theo Năm (race / race2 / race3) hoặc Tie-break (tb)
   function getRaceBgmKey(racePacket) {
     const slot = String(racePacket?.map?.slot || '').toLowerCase();
     if (slot.includes('tie')) return 'tb';
@@ -332,61 +330,228 @@ const SoundManager = (() => {
   }
 
   // =========================================================================
-  // 3. THANH ĐIỀU KHIỂN ÂM LƯỢNG NỔI (MINI AUDIO MIXER)
+  // 3. GIAO DIỆN ÂM LƯỢNG THU GỌN (ĐẶT Ở KHOẢNG TRỐNG CẠNH NÚT COPY MÃ PHÒNG)
   // =========================================================================
-  function updateMixerTrackLabel() {
+  function updateSliderTrackVisual(sliderEl, val, activeColor) {
+    if (!sliderEl) return;
+    const pct = Math.max(0, Math.min(100, Math.round(val * 100)));
+    sliderEl.style.setProperty(
+      'background',
+      `linear-gradient(to right, ${activeColor} 0%, ${activeColor} ${pct}%, #334155 ${pct}%, #334155 100%)`,
+      'important'
+    );
+  }
+
+  function updateMixerUIState() {
     const lbl = document.getElementById('uma-audio-track-label');
     if (lbl) {
-      lbl.innerText = isMuted ? '🔇 Đang tắt tiếng' : (TRACK_LABELS[currentBgmKey] || '🎵 Twinkle Audio Ready');
+      lbl.innerText = isMuted
+        ? 'Đang tắt tiếng (Muted)'
+        : (TRACK_LABELS[currentBgmKey] || 'Twinkle Audio Ready');
     }
+
+    const miniIcon = document.getElementById('uma-audio-mini-icon');
+    const miniText = document.getElementById('uma-audio-mini-text');
+    const miniPill = document.getElementById('uma-audio-collapsed-pill');
+    if (miniIcon) miniIcon.innerText = isMuted ? '🔇' : '🔊';
+    if (miniText) {
+      const bgmPct = isMuted ? 0 : Math.round(bgmVolume * 100);
+      miniText.innerText = isMuted ? 'Tắt' : `${bgmPct}%`;
+    }
+    if (miniPill) {
+      miniPill.style.borderColor = isMuted ? '#ef4444' : '#38bdf8';
+    }
+
     const muteBtn = document.getElementById('uma-audio-mute-btn');
     if (muteBtn) {
-      muteBtn.innerText = isMuted ? '🔇' : '🔊';
+      muteBtn.innerText = isMuted ? '🔇 Đang Tắt Tiếng (Bấm để Bật)' : '🔊 Đang Bật Tiếng (Bấm để Tắt)';
       muteBtn.style.background = isMuted ? '#ef4444' : '#0284c7';
     }
+
+    const bgmSlider = document.getElementById('uma-bgm-slider');
+    const sfxSlider = document.getElementById('uma-sfx-slider');
+    const bgmPctLabel = document.getElementById('uma-bgm-pct-val');
+    const sfxPctLabel = document.getElementById('uma-sfx-pct-val');
+
+    if (bgmSlider) {
+      bgmSlider.value = String(bgmVolume);
+      updateSliderTrackVisual(bgmSlider, isMuted ? 0 : bgmVolume, '#38bdf8');
+    }
+    if (sfxSlider) {
+      sfxSlider.value = String(sfxVolume);
+      updateSliderTrackVisual(sfxSlider, isMuted ? 0 : sfxVolume, '#facc15');
+    }
+    if (bgmPctLabel) bgmPctLabel.innerText = `${Math.round(bgmVolume * 100)}%`;
+    if (sfxPctLabel) sfxPctLabel.innerText = `${Math.round(sfxVolume * 100)}%`;
+  }
+
+  function setMixerExpanded(expanded) {
+    isPanelExpanded = Boolean(expanded);
+    const panel = document.getElementById('uma-audio-expanded-panel');
+    const miniArrow = document.getElementById('uma-audio-mini-arrow');
+    if (panel) panel.style.display = isPanelExpanded ? 'flex' : 'none';
+    if (miniArrow) miniArrow.innerText = isPanelExpanded ? '▲' : '▾';
   }
 
   function injectAudioControllerUI() {
     if (document.getElementById('uma-audio-mixer-widget')) return;
 
+    if (!document.getElementById('uma-audio-mixer-styles')) {
+      const styleEl = document.createElement('style');
+      styleEl.id = 'uma-audio-mixer-styles';
+      styleEl.innerHTML = `
+        #uma-audio-mixer-widget {
+          position: fixed;
+          top: 12px;
+          left: 172px;
+          z-index: 9999;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          font-family: sans-serif;
+          user-select: none;
+        }
+        #uma-audio-collapsed-pill {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background: rgba(15, 23, 42, 0.94);
+          border: 1.5px solid #38bdf8;
+          border-radius: 999px;
+          padding: 4px 11px;
+          color: #f8fafc;
+          font-size: 11px;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(6px);
+          transition: all 0.15s ease;
+        }
+        #uma-audio-collapsed-pill:hover {
+          background: #1e293b;
+          transform: translateY(-1px);
+        }
+        #uma-audio-expanded-panel {
+          margin-top: 6px;
+          width: 245px;
+          background: rgba(15, 23, 42, 0.97);
+          border: 1px solid #38bdf8;
+          border-radius: 12px;
+          padding: 12px 14px;
+          display: none;
+          flex-direction: column;
+          gap: 10px;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(8px);
+          color: #f8fafc;
+        }
+        input[type="range"].uma-vol-slider {
+          -webkit-appearance: none !important;
+          appearance: none !important;
+          width: 100% !important;
+          min-width: 0 !important;
+          height: 6px !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          border: none !important;
+          border-radius: 999px !important;
+          outline: none !important;
+          box-sizing: border-box !important;
+          cursor: pointer !important;
+        }
+        input[type="range"].uma-vol-slider::-webkit-slider-runnable-track {
+          height: 6px !important;
+          border-radius: 999px !important;
+          background: transparent !important;
+        }
+        input[type="range"].uma-vol-slider::-webkit-slider-thumb {
+          -webkit-appearance: none !important;
+          appearance: none !important;
+          width: 15px !important;
+          height: 15px !important;
+          border-radius: 50% !important;
+          background: #ffffff !important;
+          border: 2px solid #0284c7 !important;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.7) !important;
+          margin-top: -4.5px !important;
+          cursor: pointer !important;
+        }
+        input[type="range"].uma-vol-slider::-moz-range-thumb {
+          width: 15px !important;
+          height: 15px !important;
+          border-radius: 50% !important;
+          background: #ffffff !important;
+          border: 2px solid #0284c7 !important;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.7) !important;
+          cursor: pointer !important;
+        }
+      `;
+      document.head.appendChild(styleEl);
+    }
+
     const widget = document.createElement('div');
     widget.id = 'uma-audio-mixer-widget';
-    widget.style.cssText = `
-      position: fixed;
-      bottom: 12px;
-      right: 12px;
-      z-index: 9999;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid #38bdf8;
-      border-radius: 10px;
-      padding: 6px 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.65);
-      color: #f8fafc;
-      font-size: 11px;
-      backdrop-filter: blur(6px);
-    `;
 
     widget.innerHTML = `
-      <button id="uma-audio-mute-btn" title="Bật / Tắt âm thanh" style="width:28px; height:28px; padding:0; margin:0; border-radius:6px; border:none; cursor:pointer; background:${isMuted ? '#ef4444' : '#0284c7'}; color:#fff; font-size:14px;">
-        ${isMuted ? '🔇' : '🔊'}
-      </button>
-      <div style="display:flex; flex-direction:column; gap:2px; min-width:155px;">
-        <div id="uma-audio-track-label" style="font-weight:bold; color:#38bdf8; font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:170px;">
-          🎵 Twinkle Audio Ready
+      <div id="uma-audio-collapsed-pill" title="Bấm để mở / thu gọn bảng điều chỉnh âm lượng">
+        <span id="uma-audio-mini-icon">${isMuted ? '🔇' : '🔊'}</span>
+        <span id="uma-audio-mini-text">${isMuted ? 'Tắt' : `${Math.round(bgmVolume * 100)}%`}</span>
+        <span id="uma-audio-mini-arrow" style="font-size:10px; color:#94a3b8;">▾</span>
+      </div>
+
+      <div id="uma-audio-expanded-panel" onclick="event.stopPropagation()">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; padding-bottom:6px;">
+          <div style="font-size:10.5px; font-weight:800; color:#38bdf8; letter-spacing:0.4px;">ĐIỀU CHỈNH ÂM THANH</div>
+          <button id="uma-audio-close-panel" style="width:auto; margin:0; padding:2px 8px; font-size:10px; background:#1e293b; color:#cbd5e1; border:1px solid #475569; border-radius:4px; cursor:pointer;">
+            Thu nhỏ ▲
+          </button>
         </div>
-        <div style="display:flex; align-items:center; gap:6px; font-size:9.5px; color:#cbd5e1;">
-          <span>BGM</span>
-          <input id="uma-bgm-slider" type="range" min="0" max="1" step="0.05" value="${bgmVolume}" style="width:52px; accent-color:#38bdf8; cursor:pointer;">
-          <span>SFX</span>
-          <input id="uma-sfx-slider" type="range" min="0" max="1" step="0.05" value="${sfxVolume}" style="width:52px; accent-color:#facc15; cursor:pointer;">
+
+        <div id="uma-audio-track-label" style="font-size:10.5px; color:#e2e8f0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          Twinkle Audio Ready
         </div>
+
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:#cbd5e1;">
+            <span>Nhạc nền (BGM)</span>
+            <strong id="uma-bgm-pct-val" style="color:#38bdf8;">${Math.round(bgmVolume * 100)}%</strong>
+          </div>
+          <input id="uma-bgm-slider" class="uma-vol-slider" type="range" min="0" max="1" step="0.01" value="${bgmVolume}">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:#cbd5e1;">
+            <span>Hiệu ứng (SFX)</span>
+            <strong id="uma-sfx-pct-val" style="color:#facc15;">${Math.round(sfxVolume * 100)}%</strong>
+          </div>
+          <input id="uma-sfx-slider" class="uma-vol-slider" type="range" min="0" max="1" step="0.01" value="${sfxVolume}">
+        </div>
+
+        <button id="uma-audio-mute-btn" style="width:100%; margin:2px 0 0 0; padding:7px 10px; border-radius:6px; border:none; cursor:pointer; background:${isMuted ? '#ef4444' : '#0284c7'}; color:#fff; font-size:11.5px; font-weight:bold;">
+          ${isMuted ? '🔇 Đang Tắt Tiếng (Bấm để Bật)' : '🔊 Đang Bật Tiếng (Bấm để Tắt)'}
+        </button>
       </div>
     `;
 
     document.body.appendChild(widget);
+    updateMixerUIState();
+
+    document.getElementById('uma-audio-collapsed-pill').onclick = (e) => {
+      e.stopPropagation();
+      ensureContext();
+      setMixerExpanded(!isPanelExpanded);
+    };
+
+    document.getElementById('uma-audio-close-panel').onclick = (e) => {
+      e.stopPropagation();
+      setMixerExpanded(false);
+    };
+
+    document.addEventListener('click', (e) => {
+      if (isPanelExpanded && !widget.contains(e.target)) {
+        setMixerExpanded(false);
+      }
+    });
 
     document.getElementById('uma-audio-mute-btn').onclick = () => {
       ensureContext();
@@ -398,13 +563,17 @@ const SoundManager = (() => {
           activeHtmlAudio.play().catch(() => {});
         }
       }
-      updateMixerTrackLabel();
+      updateMixerUIState();
       if (!isMuted) playSfx('click');
     };
 
     document.getElementById('uma-bgm-slider').oninput = (e) => {
       ensureContext();
       bgmVolume = parseFloat(e.target.value);
+      if (bgmVolume > 0 && isMuted) {
+        isMuted = false;
+        localStorage.setItem('twinkle_audio_muted', 'false');
+      }
       localStorage.setItem('twinkle_bgm_vol', String(bgmVolume));
       if (activeHtmlAudio) {
         activeHtmlAudio.volume = isMuted ? 0 : bgmVolume;
@@ -412,12 +581,21 @@ const SoundManager = (() => {
           activeHtmlAudio.play().catch(() => {});
         }
       }
+      updateMixerUIState();
     };
 
     document.getElementById('uma-sfx-slider').oninput = (e) => {
       ensureContext();
       sfxVolume = parseFloat(e.target.value);
+      if (sfxVolume > 0 && isMuted) {
+        isMuted = false;
+        localStorage.setItem('twinkle_audio_muted', 'false');
+      }
       localStorage.setItem('twinkle_sfx_vol', String(sfxVolume));
+      updateMixerUIState();
+    };
+
+    document.getElementById('uma-sfx-slider').onchange = () => {
       playSfx('click');
     };
   }
@@ -437,7 +615,7 @@ const SoundManager = (() => {
       }
 
       const btn = e.target.closest('button, .filter-btn, .roster-item, .deck-pool-card, .map-item');
-      if (btn && btn.id !== 'uma-audio-mute-btn') {
+      if (btn && !btn.id.startsWith('uma-audio-')) {
         playSfx('click');
       }
     });
@@ -448,13 +626,11 @@ const SoundManager = (() => {
         playBgm('pregame');
       });
 
-      // Ngay khi sự kiện đua bắt đầu (đếm ngược 10s): Phát nhạc đua tương ứng Năm 1 / 2 / 3 hoặc Tie-break
       socket.on('race_started', (racePacket) => {
         isInRaceEventPhase = true;
         playBgm(getRaceBgmKey(racePacket));
       });
 
-      // Khi cả 2 người chơi ấn xác nhận kết thúc kỳ đua để sang năm tiếp theo -> Chuyển về nhạc Train của năm mới
       socket.on('close_race_modal', () => {
         isInRaceEventPhase = false;
         const nextYear = Number(window.latestGameState?.year) || 1;
@@ -476,7 +652,6 @@ const SoundManager = (() => {
           playBgm(getTrainingBgmKey(data.year, data.turn));
         }
 
-        // Chỉ phát SFX cho Huấn luyện, Nghỉ ngơi, Thu hồi/Bỏ bài và Dùng Item (Đã bỏ SFX nhận skill trắng/vàng)
         if (data.actionToast) {
           const t = String(data.actionToast).toUpperCase();
           if (t.includes('TRAINING FAILED')) {
