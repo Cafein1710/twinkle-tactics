@@ -128,89 +128,161 @@ function resolveCanonicalRaceAndSeason(map) {
 }
 
 function sanitizeAndFixMapsPool(rawMaps) {
-  const fixedMaps = (rawMaps || []).map(m => {
-    const track = String(m.trackName || (m.name ? m.name.split(' ')[0] : 'Tokyo')).trim();
-    let len = Number(m.length) || 2000;
-    let name = String(m.name || `${track} ${len}m`);
-    let courseTag = m.courseTag || m.courseVariant || '';
+  // Bảng mã trường đua chuẩn theo đúng cơ sở dữ liệu gốc của Uma Musume (Cygames / GameTora)
+  // 103 = Niigata, 104 = Fukushima, 105 = Nakayama (Rẽ phải), 106 = Tokyo (Rẽ trái)
+  const TRACK_BY_PREFIX = {
+    101: { trackName: 'Sapporo', turnCode: 1, turn: 'Right' },
+    102: { trackName: 'Hakodate', turnCode: 1, turn: 'Right' },
+    103: { trackName: 'Niigata', turnCode: 2, turn: 'Left' },
+    104: { trackName: 'Fukushima', turnCode: 1, turn: 'Right' },
+    105: { trackName: 'Nakayama', turnCode: 1, turn: 'Right' },
+    106: { trackName: 'Tokyo', turnCode: 2, turn: 'Left' },
+    107: { trackName: 'Chukyo', turnCode: 2, turn: 'Left' },
+    108: { trackName: 'Kyoto', turnCode: 1, turn: 'Right' },
+    109: { trackName: 'Hanshin', turnCode: 1, turn: 'Right' },
+    110: { trackName: 'Kokura', turnCode: 1, turn: 'Right' },
+    111: { trackName: 'Oi', turnCode: 1, turn: 'Right' },
+    112: { trackName: 'Oi', turnCode: 1, turn: 'Right' }
+  };
 
-    // Nếu một map Nakayama bị ghi nhầm là 2400m hoặc mang tên Arima Kinen nhưng lệch số mét -> Đưa về đúng chuẩn Nakayama 2500m (Inner)
-    if (
-      (track === 'Nakayama' && m.surface === 'Turf' && len === 2400) ||
-      (String(m.famousRace || '').toLowerCase().includes('arima kinen') && track === 'Nakayama' && len !== 2500)
-    ) {
-      len = 2500;
-      courseTag = 'Inner';
-      name = 'Nakayama 2500m (Inner)';
-      m.phases = { openingEnd: 417, middleEnd: 1667, finalEnd: 2083 };
+  // Loại bỏ bản map giả (courseId 10506 có straight[0].end === 350) nếu có
+  const cleanRaw = (rawMaps || []).filter(m => {
+    if (m.courseId === 10506 && m.straights && m.straights[0] && m.straights[0].end === 350) {
+      return false;
+    }
+    return true;
+  });
+
+  const fixedMaps = cleanRaw.map(m => {
+    const cid = Number(m.courseId) || 0;
+    const prefix = Math.floor(cid / 100);
+    const meta = TRACK_BY_PREFIX[prefix];
+
+    // 1. Khôi phục độ dài thực tế (length) dựa trên điểm kết thúc của đoạn đường cuối cùng
+    const maxSegEnd = Math.max(
+      0,
+      ...(m.straights || []).map(s => Number(s.end) || 0),
+      ...(m.corners || []).map(c => Number(c.end) || 0)
+    );
+    const trueLen = (maxSegEnd >= 1000) ? maxSegEnd : (Number(m.length) || 2000);
+
+    // 2. Xác định đúng tên trường đua và hướng rẽ từ courseId gốc
+    const track = meta ? meta.trackName : String(m.trackName || 'Tokyo').trim();
+    let tCode = meta ? meta.turnCode : (Number(m.turnCode) || 1);
+    let turnStr = meta ? meta.turn : (tCode === 2 ? 'Left' : 'Right');
+    if (track === 'Niigata' && trueLen === 1000) {
+      tCode = 4;
+      turnStr = 'Straight';
     }
 
-    const distType = getCanonicalDistanceType(len);
+    // 3. Khôi phục địa hình gốc chuẩn GameTora cho Nakayama 2500m (105xx) và Tokyo 2500m (106xx)
+    if (track === 'Nakayama' && m.surface === 'Turf' && trueLen === 2500) {
+      m.corners = [
+        { start: 100, end: 248, cornerNumber: 3 },
+        { start: 248, end: 498, cornerNumber: 4 },
+        { start: 875, end: 1125, cornerNumber: 1 },
+        { start: 1125, end: 1375, cornerNumber: 2 },
+        { start: 1700, end: 1950, cornerNumber: 3 },
+        { start: 1950, end: 2190, cornerNumber: 4 }
+      ];
+      m.straights = [
+        { start: 498, end: 875 },
+        { start: 1375, end: 1700 },
+        { start: 2190, end: 2500 }
+      ];
+      m.slopes = [
+        { start: 621, end: 731, slope: 19200 },
+        { start: 825, end: 1025, slope: 11700 },
+        { start: 1125, end: 1525, slope: -10800 },
+        { start: 2325, end: 2435, slope: 22400 }
+      ];
+      m.thresholdStats = ['Stamina', 'Guts'];
+    } else if (track === 'Tokyo' && m.surface === 'Turf' && trueLen === 2500) {
+      m.corners = [
+        { start: 425, end: 675, cornerNumber: 1 },
+        { start: 675, end: 1000, cornerNumber: 2 },
+        { start: 1450, end: 1725, cornerNumber: 3 },
+        { start: 1725, end: 1975, cornerNumber: 4 }
+      ];
+      m.straights = [
+        { start: 0, end: 425 },
+        { start: 1000, end: 1450 },
+        { start: 1975, end: 2500 }
+      ];
+      m.slopes = [
+        { start: 0, end: 140, slope: 15000 },
+        { start: 1225, end: 1300, slope: 20000 },
+        { start: 1350, end: 1600, slope: -15000 },
+        { start: 2050, end: 2200, slope: 15000 }
+      ];
+      m.thresholdStats = ['Stamina'];
+    }
+
+    // 4. Xác định chính xác vòng sân Inner / Outer
+    let courseTag = '';
+    if (m.surface === 'Turf') {
+      if (track === 'Nakayama') {
+        courseTag = [1200, 1600, 2200].includes(trueLen) ? 'Outer' : 'Inner';
+      } else if (track === 'Kyoto') {
+        if ([1200, 2000].includes(trueLen)) courseTag = 'Inner';
+        else if ([1800, 2200, 2400, 3000, 3200].includes(trueLen)) courseTag = 'Outer';
+        else {
+          const lastSt = (m.straights || [])[m.straights.length - 1];
+          const lastStLen = lastSt ? (lastSt.end - lastSt.start) : 350;
+          courseTag = lastStLen >= 380 ? 'Outer' : 'Inner';
+        }
+      } else if (track === 'Hanshin') {
+        courseTag = [1600, 1800, 2400, 2600].includes(trueLen) ? 'Outer' : 'Inner';
+      } else if (track === 'Niigata') {
+        if (trueLen === 1000) courseTag = 'Straight';
+        else if ([1600, 1800].includes(trueLen)) courseTag = 'Outer';
+        else if (trueLen === 2000) {
+          const lastSt = (m.straights || [])[m.straights.length - 1];
+          const lastStLen = lastSt ? (lastSt.end - lastSt.start) : 400;
+          courseTag = lastStLen >= 500 ? 'Outer' : 'Inner';
+        } else {
+          courseTag = 'Inner';
+        }
+      }
+    }
+
+    // 5. Tạo tên hiển thị chuẩn xác
+    const surfSuffix = m.surface === 'Dirt' ? ' (Dirt)' : '';
+    const tagSuffix = (courseTag && courseTag !== 'Main') ? ` (${courseTag})` : '';
+    const cleanName = `${track} ${trueLen}m${tagSuffix}${surfSuffix}`;
+
+    const distType = getCanonicalDistanceType(trueLen);
     const canonicalInfo = resolveCanonicalRaceAndSeason({
       ...m,
       trackName: track,
-      length: len,
+      length: trueLen,
       courseTag
     });
 
-    const tCode = Number(m.turnCode) || 1;
-    const turnStr = m.turn || (tCode === 2 ? 'Left' : (tCode === 4 ? 'Straight' : 'Right'));
+    const phases = {
+      openingEnd: Math.round(trueLen / 6),
+      middleEnd: Math.round((trueLen * 2) / 3),
+      finalEnd: Math.round((trueLen * 5) / 6)
+    };
+    const isFinalCorner = (m.corners || []).some(c => phases.middleEnd >= c.start && phases.middleEnd <= c.end);
 
     return {
       ...m,
       trackName: track,
-      name,
-      length: len,
+      name: cleanName,
+      length: trueLen,
       distanceType: distType,
       courseTag,
       courseVariant: courseTag || 'Main',
       turnCode: tCode,
       turn: turnStr,
+      phases,
+      lateStartSegment: isFinalCorner ? 'Corner' : 'Straight',
       famousRace: canonicalInfo.race,
       season: canonicalInfo.season,
       isCurated: canonicalInfo.isCurated
     };
   });
-
-  // Đảm bảo luôn có sân Nakayama 2500m (Inner) - Arima Kinen (G1) chuẩn trong Pool
-  const hasArimaKinen = fixedMaps.some(m => m.trackName === 'Nakayama' && m.surface === 'Turf' && m.length === 2500);
-  if (!hasArimaKinen) {
-    fixedMaps.push({
-      courseId: 10506,
-      trackName: 'Nakayama',
-      name: 'Nakayama 2500m (Inner)',
-      famousRace: 'Arima Kinen (G1)',
-      surface: 'Turf',
-      distanceType: 'Long',
-      length: 2500,
-      courseTag: 'Inner',
-      courseVariant: 'Inner',
-      turnCode: 1,
-      turn: 'Right',
-      season: 'Winter',
-      isCurated: true,
-      thresholdStats: ['Stamina', 'Power'],
-      phases: { openingEnd: 417, middleEnd: 1667, finalEnd: 2083 },
-      corners: [
-        { start: 350, end: 650, cornerNumber: 1 },
-        { start: 650, end: 950, cornerNumber: 2 },
-        { start: 1750, end: 1970, cornerNumber: 3 },
-        { start: 1970, end: 2190, cornerNumber: 4 }
-      ],
-      straights: [
-        { start: 0, end: 350 },
-        { start: 950, end: 1400 },
-        { start: 2190, end: 2500 }
-      ],
-      slopes: [
-        { start: 180, end: 310, slope: 22000 },
-        { start: 1600, end: 1850, slope: -14000 },
-        { start: 2280, end: 2460, slope: 24000 }
-      ],
-      lateStartSegment: 'Corner',
-      lateStartOnUphill: false
-    });
-  }
 
   return fixedMaps;
 }

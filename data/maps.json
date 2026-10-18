@@ -13,22 +13,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -72,9 +59,9 @@
     "id": 10502,
     "courseId": "10502",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 1600m (Outer)",
-    "famousRace": "Yasuda Kinen (G1)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 1600m (Outer)",
+    "famousRace": "New Zealand Trophy (G2)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1600,
@@ -84,22 +71,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -152,7 +126,7 @@
     ],
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
-    "isCurated": true,
+    "isCurated": false,
     "courseVariant": "Outer",
     "turn": "Right",
     "season": "Spring"
@@ -161,9 +135,9 @@
     "id": 10504,
     "courseId": "10504",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 2000m (Inner)",
-    "famousRace": "Tenno Sho (Autumn) (G1)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 2000m (Inner)",
+    "famousRace": "Satsuki Sho (G1)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2000,
@@ -173,22 +147,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -279,15 +240,15 @@
     "isCurated": true,
     "courseVariant": "Inner",
     "turn": "Right",
-    "season": "Fall"
+    "season": "Spring"
   },
   {
     "id": 10506,
     "courseId": "10506",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 2500m (Inner)",
-    "famousRace": "Meguro Kinen (G2)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 2500m (Inner)",
+    "famousRace": "Arima Kinen (G1)",
     "surface": "Turf",
     "distanceType": "Long",
     "length": 2500,
@@ -298,119 +259,76 @@
       "Guts"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 417
-      },
-      "mid": {
-        "start": 417,
-        "end": 1667
-      },
-      "late": {
-        "start": 1667,
-        "end": 2083
-      },
-      "spurt": {
-        "start": 2083,
-        "end": 2500
-      }
+      "openingEnd": 417,
+      "middleEnd": 1667,
+      "finalEnd": 2083
     },
     "corners": [
       {
-        "index": 1,
-        "cornerNumber": 3,
         "start": 100,
-        "length": 146,
-        "end": 246
+        "end": 248,
+        "cornerNumber": 3
       },
       {
-        "index": 2,
-        "cornerNumber": 4,
-        "start": 246,
-        "length": 250,
-        "end": 496
+        "start": 248,
+        "end": 498,
+        "cornerNumber": 4
       },
       {
-        "index": 3,
-        "cornerNumber": 1,
         "start": 875,
-        "length": 250,
-        "end": 1125
+        "end": 1125,
+        "cornerNumber": 1
       },
       {
-        "index": 4,
-        "cornerNumber": 2,
         "start": 1125,
-        "length": 250,
-        "end": 1375
+        "end": 1375,
+        "cornerNumber": 2
       },
       {
-        "index": 5,
-        "cornerNumber": 3,
         "start": 1700,
-        "length": 250,
-        "end": 1950
+        "end": 1950,
+        "cornerNumber": 3
       },
       {
-        "index": 6,
-        "cornerNumber": 4,
         "start": 1950,
-        "length": 240,
-        "end": 2190
+        "end": 2190,
+        "cornerNumber": 4
       }
     ],
     "straights": [
       {
-        "index": 1,
-        "start": 496,
-        "end": 875,
-        "length": 379
+        "start": 498,
+        "end": 875
       },
       {
-        "index": 2,
         "start": 1375,
-        "end": 1700,
-        "length": 325
+        "end": 1700
       },
       {
-        "index": 3,
         "start": 2190,
-        "end": 2500,
-        "length": 310
+        "end": 2500
       }
     ],
     "slopes": [
       {
         "start": 621,
-        "length": 110,
         "end": 731,
-        "slopePerMil": 20000,
-        "slopePercent": 2,
-        "type": "uphill"
+        "slope": 19200
       },
       {
         "start": 825,
-        "length": 200,
         "end": 1025,
-        "slopePerMil": 15000,
-        "slopePercent": 1.5,
-        "type": "uphill"
+        "slope": 11700
       },
       {
         "start": 1125,
-        "length": 400,
         "end": 1525,
-        "slopePerMil": -15000,
-        "slopePercent": -1.5,
-        "type": "downhill"
+        "slope": -10800
       },
       {
         "start": 2325,
-        "length": 110,
         "end": 2435,
-        "slopePerMil": 20000,
-        "slopePercent": 2,
-        "type": "uphill"
+        "slope": 22400
       }
     ],
     "lateStartSegment": "Straight",
@@ -418,15 +336,15 @@
     "isCurated": true,
     "courseVariant": "Inner",
     "turn": "Right",
-    "season": "Spring"
+    "season": "Winter"
   },
   {
     "id": 10511,
     "courseId": "10511",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 2500m (Dirt)",
-    "famousRace": "Tokyo Long Championship (2500m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 2500m (Dirt)",
+    "famousRace": "Nakayama Long Championship (2500m)",
     "surface": "Dirt",
     "distanceType": "Long",
     "length": 2500,
@@ -434,22 +352,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 417
-      },
-      "mid": {
-        "start": 417,
-        "end": 1667
-      },
-      "late": {
-        "start": 1667,
-        "end": 2083
-      },
-      "spurt": {
-        "start": 2083,
-        "end": 2500
-      }
+      "openingEnd": 417,
+      "middleEnd": 1667,
+      "finalEnd": 2083
     },
     "corners": [
       {
@@ -533,9 +438,9 @@
     "id": 10601,
     "courseId": "10601",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 1400m",
-    "famousRace": "Nakayama Sprint Championship (1400m)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 1400m",
+    "famousRace": "Keio Hai Spring Cup (G2)",
     "surface": "Turf",
     "distanceType": "Sprint",
     "length": 1400,
@@ -546,22 +451,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -630,9 +522,9 @@
     "id": 10602,
     "courseId": "10602",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 1600m",
-    "famousRace": "New Zealand Trophy (G2)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 1600m",
+    "famousRace": "Yasuda Kinen (G1)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1600,
@@ -643,22 +535,9 @@
       "Guts"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -718,7 +597,7 @@
     ],
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
-    "isCurated": false,
+    "isCurated": true,
     "courseVariant": "Main",
     "turn": "Left",
     "season": "Spring"
@@ -727,9 +606,9 @@
     "id": 10604,
     "courseId": "10604",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 2000m",
-    "famousRace": "Satsuki Sho (G1)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 2000m",
+    "famousRace": "Tenno Sho (Autumn) (G1)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2000,
@@ -737,22 +616,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -822,25 +688,25 @@
     "isCurated": true,
     "courseVariant": "Main",
     "turn": "Left",
-    "season": "Spring"
+    "season": "Fall"
   },
   {
     "id": 10606,
     "courseId": "10606",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 2500m (Inner)",
-    "famousRace": "Arima Kinen (G1)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 2400m",
+    "famousRace": "Tokyo Yushun - Japanese Derby (G1)",
     "surface": "Turf",
-    "distanceType": "Long",
-    "length": 2500,
-    "courseTag": "Inner",
+    "distanceType": "Medium",
+    "length": 2400,
+    "courseTag": "",
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "openingEnd": 417,
-      "middleEnd": 1667,
-      "finalEnd": 2083
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -929,9 +795,9 @@
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
     "isCurated": true,
-    "courseVariant": "Inner",
+    "courseVariant": "Main",
     "turn": "Left",
-    "season": "Winter"
+    "season": "Spring"
   },
   {
     "id": 10701,
@@ -947,22 +813,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -1035,22 +888,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -1149,22 +989,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -1237,22 +1064,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -1331,22 +1145,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -1427,22 +1228,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -1544,22 +1332,9 @@
       "Wit"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 500
-      },
-      "mid": {
-        "start": 500,
-        "end": 2000
-      },
-      "late": {
-        "start": 2000,
-        "end": 2500
-      },
-      "spurt": {
-        "start": 2500,
-        "end": 3000
-      }
+      "openingEnd": 500,
+      "middleEnd": 2000,
+      "finalEnd": 2500
     },
     "corners": [
       {
@@ -1702,22 +1477,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -1788,22 +1550,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -1876,22 +1625,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -1964,22 +1700,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 367
-      },
-      "mid": {
-        "start": 367,
-        "end": 1467
-      },
-      "late": {
-        "start": 1467,
-        "end": 1833
-      },
-      "spurt": {
-        "start": 1833,
-        "end": 2200
-      }
+      "openingEnd": 367,
+      "middleEnd": 1467,
+      "finalEnd": 1833
     },
     "corners": [
       {
@@ -2086,22 +1809,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 433
-      },
-      "mid": {
-        "start": 433,
-        "end": 1733
-      },
-      "late": {
-        "start": 1733,
-        "end": 2167
-      },
-      "spurt": {
-        "start": 2167,
-        "end": 2600
-      }
+      "openingEnd": 433,
+      "middleEnd": 1733,
+      "finalEnd": 2167
     },
     "corners": [
       {
@@ -2210,22 +1920,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -2299,22 +1996,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -2390,22 +2074,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -2479,22 +2150,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -2588,22 +2246,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -2668,22 +2313,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -2776,22 +2408,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -2884,22 +2503,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -2983,9 +2589,9 @@
     "id": 10302,
     "courseId": "10302",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1200m (Inner)",
-    "famousRace": "Fukushima Sprint Championship (1200m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1200m (Inner)",
+    "famousRace": "Niigata Sprint Championship (1200m)",
     "surface": "Turf",
     "distanceType": "Sprint",
     "length": 1200,
@@ -2993,22 +2599,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -3052,9 +2645,9 @@
     "id": 10303,
     "courseId": "10303",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1400m (Inner)",
-    "famousRace": "Fukushima Sprint Championship (1400m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1400m (Inner)",
+    "famousRace": "Niigata Sprint Championship (1400m)",
     "surface": "Turf",
     "distanceType": "Sprint",
     "length": 1400,
@@ -3062,22 +2655,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -3121,9 +2701,9 @@
     "id": 10304,
     "courseId": "10304",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1600m (Outer)",
-    "famousRace": "Fukushima Mile Championship (1600m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1600m (Outer)",
+    "famousRace": "Niigata Mile Championship (1600m)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1600,
@@ -3131,22 +2711,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -3207,9 +2774,9 @@
     "id": 10305,
     "courseId": "10305",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1800m (Outer)",
-    "famousRace": "Fukushima Mile Championship (1800m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1800m (Outer)",
+    "famousRace": "Niigata Mile Championship (1800m)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1800,
@@ -3219,22 +2786,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -3295,9 +2849,9 @@
     "id": 10306,
     "courseId": "10306",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 2000m (Inner)",
-    "famousRace": "Fukushima Medium Championship (2000m)",
+    "trackName": "Niigata",
+    "name": "Niigata 2000m (Inner)",
+    "famousRace": "Niigata Medium Championship (2000m)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2000,
@@ -3308,22 +2862,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -3387,9 +2928,9 @@
     "id": 10307,
     "courseId": "10307",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 2000m (Outer)",
-    "famousRace": "Fukushima Medium Championship (2000m)",
+    "trackName": "Niigata",
+    "name": "Niigata 2000m (Outer)",
+    "famousRace": "Niigata Medium Championship (2000m)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2000,
@@ -3400,22 +2941,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -3476,9 +3004,9 @@
     "id": 10308,
     "courseId": "10308",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 2200m (Inner)",
-    "famousRace": "Fukushima Medium Championship (2200m)",
+    "trackName": "Niigata",
+    "name": "Niigata 2200m (Inner)",
+    "famousRace": "Niigata Medium Championship (2200m)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2200,
@@ -3488,22 +3016,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 367
-      },
-      "mid": {
-        "start": 367,
-        "end": 1467
-      },
-      "late": {
-        "start": 1467,
-        "end": 1833
-      },
-      "spurt": {
-        "start": 1833,
-        "end": 2200
-      }
+      "openingEnd": 367,
+      "middleEnd": 1467,
+      "finalEnd": 1833
     },
     "corners": [
       {
@@ -3567,9 +3082,9 @@
     "id": 10309,
     "courseId": "10309",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 2400m (Inner)",
-    "famousRace": "Fukushima Medium Championship (2400m)",
+    "trackName": "Niigata",
+    "name": "Niigata 2400m (Inner)",
+    "famousRace": "Niigata Medium Championship (2400m)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2400,
@@ -3577,22 +3092,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -3656,9 +3158,9 @@
     "id": 10310,
     "courseId": "10310",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1200m (Dirt)",
-    "famousRace": "Fukushima Sprint Championship (1200m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1200m (Dirt)",
+    "famousRace": "Niigata Sprint Championship (1200m)",
     "surface": "Dirt",
     "distanceType": "Sprint",
     "length": 1200,
@@ -3666,22 +3168,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -3725,9 +3214,9 @@
     "id": 10311,
     "courseId": "10311",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 1800m (Dirt)",
-    "famousRace": "Fukushima Mile Championship (1800m)",
+    "trackName": "Niigata",
+    "name": "Niigata 1800m (Dirt)",
+    "famousRace": "Niigata Mile Championship (1800m)",
     "surface": "Dirt",
     "distanceType": "Mile",
     "length": 1800,
@@ -3737,22 +3226,9 @@
       "Wit"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -3816,9 +3292,9 @@
     "id": 10312,
     "courseId": "10312",
     "trackId": 10003,
-    "trackName": "Fukushima",
-    "name": "Fukushima 2500m (Dirt)",
-    "famousRace": "Fukushima Long Championship (2500m)",
+    "trackName": "Niigata",
+    "name": "Niigata 2500m (Dirt)",
+    "famousRace": "Niigata Long Championship (2500m)",
     "surface": "Dirt",
     "distanceType": "Long",
     "length": 2500,
@@ -3826,22 +3302,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 417
-      },
-      "mid": {
-        "start": 417,
-        "end": 1667
-      },
-      "late": {
-        "start": 1667,
-        "end": 2083
-      },
-      "spurt": {
-        "start": 2083,
-        "end": 2500
-      }
+      "openingEnd": 417,
+      "middleEnd": 1667,
+      "finalEnd": 2083
     },
     "corners": [
       {
@@ -3925,9 +3388,9 @@
     "id": 10401,
     "courseId": "10401",
     "trackId": 10004,
-    "trackName": "Niigata",
-    "name": "Niigata 1200m",
-    "famousRace": "Niigata Sprint Championship (1200m)",
+    "trackName": "Fukushima",
+    "name": "Fukushima 1200m",
+    "famousRace": "Fukushima Sprint Championship (1200m)",
     "surface": "Turf",
     "distanceType": "Sprint",
     "length": 1200,
@@ -3935,22 +3398,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -4003,9 +3453,9 @@
     "id": 10402,
     "courseId": "10402",
     "trackId": 10004,
-    "trackName": "Niigata",
-    "name": "Niigata 1800m",
-    "famousRace": "Niigata Mile Championship (1800m)",
+    "trackName": "Fukushima",
+    "name": "Fukushima 1800m",
+    "famousRace": "Fukushima Mile Championship (1800m)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1800,
@@ -4015,22 +3465,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -4103,9 +3540,9 @@
     "id": 10403,
     "courseId": "10403",
     "trackId": 10004,
-    "trackName": "Niigata",
-    "name": "Niigata 2000m",
-    "famousRace": "Niigata Medium Championship (2000m)",
+    "trackName": "Fukushima",
+    "name": "Fukushima 2000m",
+    "famousRace": "Fukushima Medium Championship (2000m)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2000,
@@ -4115,22 +3552,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -4203,9 +3627,9 @@
     "id": 10407,
     "courseId": "10407",
     "trackId": 10004,
-    "trackName": "Niigata",
-    "name": "Niigata 2400m (Dirt)",
-    "famousRace": "Niigata Medium Championship (2400m)",
+    "trackName": "Fukushima",
+    "name": "Fukushima 2400m (Dirt)",
+    "famousRace": "Fukushima Medium Championship (2400m)",
     "surface": "Dirt",
     "distanceType": "Medium",
     "length": 2400,
@@ -4215,22 +3639,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -4314,9 +3725,9 @@
     "id": 10501,
     "courseId": "10501",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 1200m (Outer)",
-    "famousRace": "Tokyo Sprint Championship (1200m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 1200m (Outer)",
+    "famousRace": "Sprinters Stakes (G1)",
     "surface": "Turf",
     "distanceType": "Sprint",
     "length": 1200,
@@ -4324,22 +3735,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -4385,18 +3783,18 @@
     ],
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
-    "isCurated": false,
+    "isCurated": true,
     "courseVariant": "Outer",
     "turn": "Right",
-    "season": "Spring"
+    "season": "Fall"
   },
   {
     "id": 10503,
     "courseId": "10503",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 1800m (Inner)",
-    "famousRace": "Mainichi Okan (G2)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 1800m (Inner)",
+    "famousRace": "Nakayama Kinen (G2)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1800,
@@ -4404,22 +3802,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -4510,15 +3895,15 @@
     "isCurated": false,
     "courseVariant": "Inner",
     "turn": "Right",
-    "season": "Fall"
+    "season": "Spring"
   },
   {
     "id": 10505,
     "courseId": "10505",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 2200m (Outer)",
-    "famousRace": "Tokyo Medium Championship (2200m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 2200m (Outer)",
+    "famousRace": "All Comers (G2)",
     "surface": "Turf",
     "distanceType": "Medium",
     "length": 2200,
@@ -4529,22 +3914,9 @@
       "Guts"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 367
-      },
-      "mid": {
-        "start": 367,
-        "end": 1467
-      },
-      "late": {
-        "start": 1467,
-        "end": 1833
-      },
-      "spurt": {
-        "start": 1833,
-        "end": 2200
-      }
+      "openingEnd": 367,
+      "middleEnd": 1467,
+      "finalEnd": 1833
     },
     "corners": [
       {
@@ -4629,15 +4001,15 @@
     "isCurated": false,
     "courseVariant": "Outer",
     "turn": "Right",
-    "season": "Spring"
+    "season": "Fall"
   },
   {
     "id": 10508,
     "courseId": "10508",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 1200m (Dirt)",
-    "famousRace": "Tokyo Sprint Championship (1200m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 1200m (Dirt)",
+    "famousRace": "Capella Stakes (G3 Dirt)",
     "surface": "Dirt",
     "distanceType": "Sprint",
     "length": 1200,
@@ -4647,22 +4019,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -4717,15 +4076,15 @@
     "isCurated": false,
     "courseVariant": "Main",
     "turn": "Right",
-    "season": "Spring"
+    "season": "Winter"
   },
   {
     "id": 10509,
     "courseId": "10509",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 1800m (Dirt)",
-    "famousRace": "Tokyo Mile Championship (1800m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 1800m (Dirt)",
+    "famousRace": "March Stakes (G3 Dirt)",
     "surface": "Dirt",
     "distanceType": "Mile",
     "length": 1800,
@@ -4735,22 +4094,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -4838,7 +4184,7 @@
     ],
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
-    "isCurated": false,
+    "isCurated": true,
     "courseVariant": "Main",
     "turn": "Right",
     "season": "Spring"
@@ -4847,9 +4193,9 @@
     "id": 10510,
     "courseId": "10510",
     "trackId": 10005,
-    "trackName": "Tokyo",
-    "name": "Tokyo 2400m (Dirt)",
-    "famousRace": "Tokyo Medium Championship (2400m)",
+    "trackName": "Nakayama",
+    "name": "Nakayama 2400m (Dirt)",
+    "famousRace": "Nakayama Medium Championship (2400m)",
     "surface": "Dirt",
     "distanceType": "Medium",
     "length": 2400,
@@ -4859,22 +4205,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -4958,9 +4291,9 @@
     "id": 10603,
     "courseId": "10603",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 1800m",
-    "famousRace": "Nakayama Kinen (G2)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 1800m",
+    "famousRace": "Mainichi Okan (G2)",
     "surface": "Turf",
     "distanceType": "Mile",
     "length": 1800,
@@ -4970,22 +4303,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -5055,15 +4375,15 @@
     "isCurated": false,
     "courseVariant": "Main",
     "turn": "Left",
-    "season": "Spring"
+    "season": "Fall"
   },
   {
     "id": 10607,
     "courseId": "10607",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 2500m",
-    "famousRace": "Arima Kinen (G1)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 2500m",
+    "famousRace": "Meguro Kinen (G2)",
     "surface": "Turf",
     "distanceType": "Long",
     "length": 2500,
@@ -5073,105 +4393,66 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 417
-      },
-      "mid": {
-        "start": 417,
-        "end": 1667
-      },
-      "late": {
-        "start": 1667,
-        "end": 2083
-      },
-      "spurt": {
-        "start": 2083,
-        "end": 2500
-      }
+      "openingEnd": 417,
+      "middleEnd": 1667,
+      "finalEnd": 2083
     },
     "corners": [
       {
-        "index": 1,
-        "cornerNumber": 1,
         "start": 425,
-        "length": 250,
-        "end": 675
+        "end": 675,
+        "cornerNumber": 1
       },
       {
-        "index": 2,
-        "cornerNumber": 2,
         "start": 675,
-        "length": 325,
-        "end": 1000
+        "end": 1000,
+        "cornerNumber": 2
       },
       {
-        "index": 3,
-        "cornerNumber": 3,
         "start": 1450,
-        "length": 275,
-        "end": 1725
+        "end": 1725,
+        "cornerNumber": 3
       },
       {
-        "index": 4,
-        "cornerNumber": 4,
         "start": 1725,
-        "length": 250,
-        "end": 1975
+        "end": 1975,
+        "cornerNumber": 4
       }
     ],
     "straights": [
       {
-        "index": 1,
         "start": 0,
-        "end": 425,
-        "length": 425
+        "end": 425
       },
       {
-        "index": 2,
         "start": 1000,
-        "end": 1450,
-        "length": 450
+        "end": 1450
       },
       {
-        "index": 3,
         "start": 1975,
-        "end": 2500,
-        "length": 525
+        "end": 2500
       }
     ],
     "slopes": [
       {
         "start": 0,
-        "length": 140,
         "end": 140,
-        "slopePerMil": 15000,
-        "slopePercent": 1.5,
-        "type": "uphill"
+        "slope": 15000
       },
       {
         "start": 1225,
-        "length": 75,
         "end": 1300,
-        "slopePerMil": 20000,
-        "slopePercent": 2,
-        "type": "uphill"
+        "slope": 20000
       },
       {
         "start": 1350,
-        "length": 250,
         "end": 1600,
-        "slopePerMil": -15000,
-        "slopePercent": -1.5,
-        "type": "downhill"
+        "slope": -15000
       },
       {
         "start": 2050,
-        "length": 150,
         "end": 2200,
-        "slopePerMil": 15000,
-        "slopePercent": 1.5,
-        "type": "uphill"
+        "slope": 15000
       }
     ],
     "lateStartSegment": "Corner",
@@ -5179,15 +4460,15 @@
     "isCurated": true,
     "courseVariant": "Main",
     "turn": "Left",
-    "season": "Winter"
+    "season": "Spring"
   },
   {
     "id": 10610,
     "courseId": "10610",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 1400m (Dirt)",
-    "famousRace": "Nakayama Sprint Championship (1400m)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 1400m (Dirt)",
+    "famousRace": "Negishi Stakes (G3 Dirt)",
     "surface": "Dirt",
     "distanceType": "Sprint",
     "length": 1400,
@@ -5197,22 +4478,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -5267,15 +4535,15 @@
     "isCurated": false,
     "courseVariant": "Main",
     "turn": "Left",
-    "season": "Spring"
+    "season": "Winter"
   },
   {
     "id": 10611,
     "courseId": "10611",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 1600m (Dirt)",
-    "famousRace": "Nakayama Mile Championship (1600m)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 1600m (Dirt)",
+    "famousRace": "February Stakes (G1 Dirt)",
     "surface": "Dirt",
     "distanceType": "Mile",
     "length": 1600,
@@ -5286,22 +4554,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -5353,43 +4608,30 @@
     ],
     "lateStartSegment": "Corner",
     "lateStartOnUphill": false,
-    "isCurated": false,
+    "isCurated": true,
     "courseVariant": "Main",
     "turn": "Left",
-    "season": "Spring"
+    "season": "Winter"
   },
   {
     "id": 10613,
     "courseId": "10613",
     "trackId": 10006,
-    "trackName": "Nakayama",
-    "name": "Nakayama 2400m (Dirt)",
-    "famousRace": "Nakayama Medium Championship (2400m)",
+    "trackName": "Tokyo",
+    "name": "Tokyo 2848m (Dirt)",
+    "famousRace": "Tokyo Long Championship (2848m)",
     "surface": "Dirt",
-    "distanceType": "Medium",
-    "length": 2400,
+    "distanceType": "Long",
+    "length": 2848,
     "courseTag": "",
     "turnCode": 2,
     "thresholdStats": [
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 475,
+      "middleEnd": 1899,
+      "finalEnd": 2373
     },
     "corners": [
       {
@@ -5470,22 +4712,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -5558,22 +4787,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -5651,22 +4867,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -5767,22 +4970,9 @@
       "Stamina"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 367
-      },
-      "mid": {
-        "start": 367,
-        "end": 1467
-      },
-      "late": {
-        "start": 1467,
-        "end": 1833
-      },
-      "spurt": {
-        "start": 1833,
-        "end": 2200
-      }
+      "openingEnd": 367,
+      "middleEnd": 1467,
+      "finalEnd": 1833
     },
     "corners": [
       {
@@ -5889,22 +5079,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -5958,22 +5135,9 @@
     "turnCode": 2,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -6044,22 +5208,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -6130,22 +5281,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -6226,22 +5364,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -6314,22 +5439,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -6422,22 +5534,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 367
-      },
-      "mid": {
-        "start": 367,
-        "end": 1467
-      },
-      "late": {
-        "start": 1467,
-        "end": 1833
-      },
-      "spurt": {
-        "start": 1833,
-        "end": 2200
-      }
+      "openingEnd": 367,
+      "middleEnd": 1467,
+      "finalEnd": 1833
     },
     "corners": [
       {
@@ -6536,22 +5635,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 533
-      },
-      "mid": {
-        "start": 533,
-        "end": 2133
-      },
-      "late": {
-        "start": 2133,
-        "end": 2667
-      },
-      "spurt": {
-        "start": 2667,
-        "end": 3200
-      }
+      "openingEnd": 533,
+      "middleEnd": 2133,
+      "finalEnd": 2667
     },
     "corners": [
       {
@@ -6694,22 +5780,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -6780,22 +5853,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -6866,22 +5926,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -6974,22 +6021,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 267
-      },
-      "mid": {
-        "start": 267,
-        "end": 1067
-      },
-      "late": {
-        "start": 1067,
-        "end": 1333
-      },
-      "spurt": {
-        "start": 1333,
-        "end": 1600
-      }
+      "openingEnd": 267,
+      "middleEnd": 1067,
+      "finalEnd": 1333
     },
     "corners": [
       {
@@ -7062,22 +6096,9 @@
       "Guts"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -7186,22 +6207,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -7310,22 +6318,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 500
-      },
-      "mid": {
-        "start": 500,
-        "end": 2000
-      },
-      "late": {
-        "start": 2000,
-        "end": 2500
-      },
-      "spurt": {
-        "start": 2500,
-        "end": 3000
-      }
+      "openingEnd": 500,
+      "middleEnd": 2000,
+      "finalEnd": 2500
     },
     "corners": [
       {
@@ -7452,22 +6447,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -7538,22 +6520,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 233
-      },
-      "mid": {
-        "start": 233,
-        "end": 933
-      },
-      "late": {
-        "start": 933,
-        "end": 1167
-      },
-      "spurt": {
-        "start": 1167,
-        "end": 1400
-      }
+      "openingEnd": 233,
+      "middleEnd": 933,
+      "finalEnd": 1167
     },
     "corners": [
       {
@@ -7624,22 +6593,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -7741,22 +6697,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -7854,31 +6797,18 @@
     "courseId": "10914",
     "trackId": 10009,
     "trackName": "Hanshin",
-    "name": "Hanshin 3200m (Out→In)",
+    "name": "Hanshin 3200m (Inner)",
     "famousRace": "Hanshin Long Championship (3200m)",
     "surface": "Turf",
     "distanceType": "Long",
     "length": 3200,
-    "courseTag": "Out→In",
+    "courseTag": "Inner",
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 533
-      },
-      "mid": {
-        "start": 533,
-        "end": 2133
-      },
-      "late": {
-        "start": 2133,
-        "end": 2667
-      },
-      "spurt": {
-        "start": 2667,
-        "end": 3200
-      }
+      "openingEnd": 533,
+      "middleEnd": 2133,
+      "finalEnd": 2667
     },
     "corners": [
       {
@@ -7987,7 +6917,7 @@
     "lateStartSegment": "Straight",
     "lateStartOnUphill": false,
     "isCurated": false,
-    "courseVariant": "Out→In",
+    "courseVariant": "Inner",
     "turn": "Right",
     "season": "Spring"
   },
@@ -8007,22 +6937,9 @@
       "Speed"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -8085,22 +7002,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
@@ -8185,22 +7089,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 333
-      },
-      "mid": {
-        "start": 333,
-        "end": 1333
-      },
-      "late": {
-        "start": 1333,
-        "end": 1667
-      },
-      "spurt": {
-        "start": 1667,
-        "end": 2000
-      }
+      "openingEnd": 333,
+      "middleEnd": 1333,
+      "finalEnd": 1667
     },
     "corners": [
       {
@@ -8283,22 +7174,9 @@
     "turnCode": 1,
     "thresholdStats": [],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 400
-      },
-      "mid": {
-        "start": 400,
-        "end": 1600
-      },
-      "late": {
-        "start": 1600,
-        "end": 2000
-      },
-      "spurt": {
-        "start": 2000,
-        "end": 2400
-      }
+      "openingEnd": 400,
+      "middleEnd": 1600,
+      "finalEnd": 2000
     },
     "corners": [
       {
@@ -8395,22 +7273,9 @@
       "Wit"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 200
-      },
-      "mid": {
-        "start": 200,
-        "end": 800
-      },
-      "late": {
-        "start": 800,
-        "end": 1000
-      },
-      "spurt": {
-        "start": 1000,
-        "end": 1200
-      }
+      "openingEnd": 200,
+      "middleEnd": 800,
+      "finalEnd": 1000
     },
     "corners": [
       {
@@ -8466,22 +7331,9 @@
       "Power"
     ],
     "phases": {
-      "early": {
-        "start": 0,
-        "end": 300
-      },
-      "mid": {
-        "start": 300,
-        "end": 1200
-      },
-      "late": {
-        "start": 1200,
-        "end": 1500
-      },
-      "spurt": {
-        "start": 1500,
-        "end": 1800
-      }
+      "openingEnd": 300,
+      "middleEnd": 1200,
+      "finalEnd": 1500
     },
     "corners": [
       {
