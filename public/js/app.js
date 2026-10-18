@@ -1,4 +1,4 @@
-// public/js/app.js - Điều khiển luồng trận đấu, Cẩm nang Hướng dẫn, Tag Kỹ năng GameTora & Liên hệ Discord
+// public/js/app.js - Giao diện Chuẩn Khung 3 Dòng (Không tràn viền, Gom nhóm Thích nghi 1 hàng & Phân vùng Bàn đấu)
 
 const socket = io();
 let currentRoomCode = '';
@@ -24,6 +24,59 @@ if (!sessionToken) {
 }
 
 const RANKS = ['G', 'F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+const TYPE_THEME_COLORS = {
+  Speed:   { main: '#38bdf8', bg: 'rgba(14, 165, 233, 0.12)', border: 'rgba(56, 189, 248, 0.45)', short: 'SPD' },
+  Stamina: { main: '#fb7185', bg: 'rgba(244, 63, 94, 0.12)',  border: 'rgba(251, 113, 133, 0.45)', short: 'STA' },
+  Power:   { main: '#fbbf24', bg: 'rgba(245, 158, 11, 0.12)', border: 'rgba(251, 191, 36, 0.45)',  short: 'POW' },
+  Guts:    { main: '#f472b6', bg: 'rgba(236, 72, 153, 0.12)', border: 'rgba(244, 114, 182, 0.45)', short: 'GUT' },
+  Wit:     { main: '#34d399', bg: 'rgba(16, 185, 129, 0.12)', border: 'rgba(52, 211, 153, 0.45)',  short: 'WIT' }
+};
+
+function splitEntityNameAndTitle(rawName) {
+  const str = String(rawName || '').trim();
+  const match = str.match(/^([^\(\[]+)[\(\[]([^\)\]]+)[\)\]]$/);
+  if (match) {
+    return { mainName: match[1].trim(), subTitle: match[2].trim() };
+  }
+  return { mainName: str, subTitle: '' };
+}
+
+// Gom nhóm Thích nghi thành đúng 3 Cụm gọn trên 1 dòng duy nhất (Mặt sân • Cự ly • Chiến thuật) để không bao giờ bị tràn khung
+function renderStrongAptitudeBadges(aptitudes) {
+  if (!aptitudes) return '';
+  const shortMap = {
+    Turf: 'Turf', Dirt: 'Dirt',
+    Sprint: 'Spr', Mile: 'Mile', Medium: 'Med', Long: 'Long',
+    Front: 'Front', Pace: 'Pace', Late: 'Late', End: 'End'
+  };
+
+  const buildGroupChip = (keys, bg, border, textCol) => {
+    const sList = keys.filter(k => aptitudes[k] === 'S').map(k => shortMap[k]);
+    const aList = keys.filter(k => aptitudes[k] === 'A').map(k => shortMap[k]);
+    const bList = keys.filter(k => aptitudes[k] === 'B').map(k => shortMap[k]);
+
+    const parts = [];
+    if (sList.length > 0) {
+      parts.push(`${sList.join('/')} <b style="color:#facc15;">S</b>`);
+    }
+    if (aList.length > 0) {
+      parts.push(`${aList.join('/')} <b style="color:#fb7185;">A</b>`);
+    }
+    if (parts.length === 0 && bList.length > 0) {
+      parts.push(`${bList.join('/')} <b style="color:#cbd5e1;">B</b>`);
+    }
+    if (parts.length === 0) return '';
+
+    return `<span class="apt-compact-chip" style="background:${bg}; border-color:${border}; color:${textCol};">${parts.join(' • ')}</span>`;
+  };
+
+  const surfChip = buildGroupChip(['Turf', 'Dirt'], 'rgba(16, 185, 129, 0.14)', 'rgba(16, 185, 129, 0.4)', '#6ee7b7');
+  const distChip = buildGroupChip(['Sprint', 'Mile', 'Medium', 'Long'], 'rgba(56, 189, 248, 0.14)', 'rgba(56, 189, 248, 0.4)', '#bae6fd');
+  const styleChip = buildGroupChip(['Front', 'Pace', 'Late', 'End'], 'rgba(168, 85, 247, 0.14)', 'rgba(168, 85, 247, 0.4)', '#e9d5ff');
+
+  return [surfChip, distChip, styleChip].filter(Boolean).join('');
+}
 
 const GOLD_TO_WHITE_PAIRS_UI = {
   'professor of curvature': 'corner adept',
@@ -393,16 +446,593 @@ function findSkillMechanicsByName(skillName) {
 function formatSkillInlineHTML(skillName, mechanicsObj, showRoleBadge = true) {
   const meta = getSkillGameToraMeta(skillName, mechanicsObj || findSkillMechanicsByName(skillName));
   const parenSpan = meta.parenText
-    ? ` <span style="color:#f472b6; font-weight:700; font-size:0.92em;">${meta.parenText}</span>`
+    ? ` <span class="gt-cond-tag">${meta.parenText}</span>`
     : '';
   const roleSpan = showRoleBadge
-    ? ` <span style="display:inline-block; padding:0px 4px; border-radius:3px; background:rgba(15,23,42,0.75); border:1px solid ${meta.roleColor}; color:${meta.roleColor}; font-size:8.5px; font-weight:700; vertical-align:middle;">${meta.roleShort}</span>`
+    ? ` <span class="gt-role-tag" style="border-color:${meta.roleColor}66; color:${meta.roleColor};">${meta.roleShort}</span>`
     : '';
   return `<span title="${meta.tooltip.replace(/"/g, '&quot;')}">${meta.name}${parenSpan}${roleSpan}</span>`;
 }
 
+function formatCleanSkillRowHTML(badgeHtml, skillName, mechanicsObj) {
+  const meta = getSkillGameToraMeta(skillName, mechanicsObj || findSkillMechanicsByName(skillName));
+  const parenSpan = meta.parenText ? ` <span class="gt-cond-tag">${meta.parenText}</span>` : '';
+  return `
+    <div class="clean-skill-row" title="${meta.tooltip.replace(/"/g, '&quot;')}">
+      <div class="clean-skill-left">
+        ${badgeHtml}
+        <span class="clean-skill-name">${meta.name}${parenSpan}</span>
+      </div>
+      <span class="gt-role-tag" style="border-color:${meta.roleColor}66; color:${meta.roleColor};">${meta.roleShort}</span>
+    </div>
+  `;
+}
+
 // =========================================================================
-// HỆ THỐNG CẨM NANG HƯỚNG DẪN TOÀN DIỆN (VĂN PHONG TỰ NHIÊN, RÕ RÀNG)
+// GIAO DIỆN PHÂN VÙNG MÀU SẮC & CHỐNG TRÀN KHUNG TUYỆT ĐỐI
+// =========================================================================
+function injectModernTrainingTheme() {
+  if (document.getElementById('twinkle-modern-training-theme')) return;
+  const st = document.createElement('style');
+  st.id = 'twinkle-modern-training-theme';
+  st.innerHTML = `
+    /* 1. TỔNG THỂ MÀN HÌNH ĐẤU & PHÂN VÙNG 4 KHU VỰC RÕ RỆT */
+    #game-screen {
+      background: #070b14 !important;
+      gap: 10px !important;
+      padding: 8px 10px !important;
+    }
+
+    .zone-opponent-board {
+      background: linear-gradient(180deg, rgba(76, 5, 25, 0.38) 0%, rgba(15, 23, 42, 0.88) 100%) !important;
+      border: 1px solid rgba(244, 63, 94, 0.38) !important;
+      border-top: 3px solid #f43f5e !important;
+      border-radius: 12px !important;
+      padding: 8px 10px !important;
+      box-shadow: inset 0 1px 16px rgba(244, 63, 94, 0.08), 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    .zone-player-board {
+      background: linear-gradient(180deg, rgba(6, 78, 59, 0.32) 0%, rgba(12, 74, 110, 0.28) 50%, rgba(15, 23, 42, 0.94) 100%) !important;
+      border: 1.5px solid rgba(16, 185, 129, 0.48) !important;
+      border-top: 3px solid #10b981 !important;
+      border-radius: 12px !important;
+      padding: 8px 10px !important;
+      box-shadow: inset 0 1px 22px rgba(16, 185, 129, 0.10), 0 8px 24px rgba(0, 0, 0, 0.55) !important;
+    }
+
+    .zone-left-maps {
+      background: linear-gradient(180deg, #0b1120 0%, #090d16 100%) !important;
+      border: 1px solid #1e293b !important;
+      border-top: 3px solid #38bdf8 !important;
+      border-radius: 12px !important;
+      padding: 8px !important;
+    }
+
+    .zone-right-energy {
+      background: linear-gradient(145deg, rgba(120, 53, 15, 0.34) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
+      border: 1px solid rgba(245, 158, 11, 0.45) !important;
+      border-left: 4px solid #f59e0b !important;
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+    }
+    .zone-right-inventory {
+      background: linear-gradient(145deg, rgba(6, 78, 59, 0.30) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
+      border: 1px solid rgba(16, 185, 129, 0.40) !important;
+      border-left: 4px solid #10b981 !important;
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+    }
+    .zone-right-hand {
+      background: linear-gradient(180deg, rgba(30, 27, 75, 0.38) 0%, rgba(9, 13, 22, 0.96) 100%) !important;
+      border: 1px solid rgba(99, 102, 241, 0.40) !important;
+      border-top: 3px solid #6366f1 !important;
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+    }
+
+    /* Nhãn gom nhóm Thích nghi 1 dòng siêu gọn */
+    .apt-compact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      font-size: 9px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.25;
+    }
+
+    .gt-cond-tag {
+      color: #f472b6;
+      font-weight: 700;
+      font-size: 9.5px;
+      margin-left: 2px;
+    }
+    .gt-role-tag {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(9, 13, 22, 0.9);
+      border: 1px solid #38bdf866;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+
+    .clean-skill-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
+      margin-top: 2px;
+    }
+    .clean-skill-left {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      flex: 1;
+    }
+    .clean-skill-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+
+    /* 2. THẺ UMA TRONG BÀN ĐẤU */
+    #ui-opp-umas, #ui-my-umas {
+      gap: 10px !important;
+    }
+    .uma-card-mini {
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      overflow: hidden !important;
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease !important;
+    }
+    .uma-card-mini.my-team-card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(9, 14, 26, 0.98) 100%) !important;
+      border: 1px solid rgba(52, 211, 153, 0.35) !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+    }
+    .uma-card-mini.opp-team-card {
+      background: linear-gradient(180deg, rgba(24, 16, 28, 0.88) 0%, rgba(13, 14, 24, 0.95) 100%) !important;
+      border: 1px solid rgba(244, 63, 94, 0.28) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    }
+    .uma-card-mini.my-team-card:hover {
+      border-color: #34d399 !important;
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.22) !important;
+    }
+    .uma-card-mini.drop-target-hover {
+      border: 2px dashed #facc15 !important;
+      background: rgba(250, 204, 21, 0.10) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    .uma-header-modern {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .uma-avatar-modern {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      object-fit: cover;
+      background: #090d16;
+      border: 1.5px solid #475569;
+      flex-shrink: 0;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    }
+    .uma-title-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .uma-name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+    .uma-name-text {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .uma-submeta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3px;
+      gap: 4px;
+    }
+    .uma-style-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(14, 165, 233, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #bae6fd;
+      font-size: 9px;
+      font-weight: 700;
+    }
+    .uma-fail-pill {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .uma-apt-strip {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      background: rgba(9, 13, 22, 0.7);
+      border: 1px solid rgba(51, 65, 85, 0.45);
+      border-radius: 6px;
+      padding: 3px 6px;
+      margin-bottom: 5px;
+    }
+
+    .uma-slots-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(9, 13, 22, 0.65);
+      border: 1px solid rgba(30, 41, 59, 0.95);
+      border-radius: 7px;
+      padding: 3px 7px;
+      margin-bottom: 5px;
+    }
+    .uma-slots-label {
+      font-size: 9px;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.3px;
+    }
+    .uma-slots-grid {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .uma-empty-slot {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      border: 1px dashed #334155;
+      background: rgba(15, 23, 42, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .uma-skills-box {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 5px;
+      max-height: 70px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+    .uma-skill-row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 10px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    .uma-skill-row-item.uq-row {
+      background: linear-gradient(90deg, rgba(168, 85, 247, 0.18) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border-color: rgba(192, 132, 252, 0.45);
+      color: #f3e8ff;
+    }
+    .uma-skill-row-item.gold-row {
+      background: linear-gradient(90deg, rgba(234, 179, 8, 0.16) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border-color: rgba(250, 204, 21, 0.45);
+      color: #fef08a;
+    }
+    .uma-skill-row-item.white-row {
+      background: rgba(12, 74, 110, 0.28);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #e0f2fe;
+    }
+    .sk-dot-uq {
+      font-size: 8px;
+      font-weight: 800;
+      padding: 0px 3.5px;
+      border-radius: 3px;
+      background: #9333ea;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .sk-dot-gold { color: #facc15; font-size: 10px; flex-shrink: 0; }
+    .sk-dot-white { color: #38bdf8; font-size: 9px; flex-shrink: 0; }
+
+    .stat-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-top: auto;
+    }
+    .stat-box-modern {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 3px 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+    }
+    .stat-box-modern strong {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.1;
+    }
+    .stat-box-modern.st-spd { border-top: 2.5px solid #38bdf8; }
+    .stat-box-modern.st-sta { border-top: 2.5px solid #fb7185; }
+    .stat-box-modern.st-pow { border-top: 2.5px solid #fbbf24; }
+    .stat-box-modern.st-gut { border-top: 2.5px solid #f472b6; }
+    .stat-box-modern.st-wit { border-top: 2.5px solid #34d399; }
+
+    /* 3. CỘT MAP BÊN TRÁI */
+    .map-item {
+      background: rgba(15, 23, 42, 0.85) !important;
+      border: 1px solid #1e293b !important;
+      border-left: 3px solid #475569 !important;
+      border-radius: 8px !important;
+      padding: 7px 9px !important;
+      margin-bottom: 6px !important;
+      transition: all 0.15s ease !important;
+    }
+    .map-item.active-year-map {
+      background: linear-gradient(90deg, rgba(234, 179, 8, 0.14) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border: 1px solid rgba(250, 204, 21, 0.55) !important;
+      border-left: 4px solid #facc15 !important;
+      box-shadow: 0 4px 12px rgba(250, 204, 21, 0.12) !important;
+    }
+    .map-item.completed-map {
+      opacity: 0.62;
+      border-left-color: #10b981 !important;
+    }
+    .map-item.tiebreak {
+      border-left-color: #f43f5e !important;
+    }
+    .map-item:hover {
+      opacity: 1;
+      background: #1e293b !important;
+      transform: translateX(2px);
+    }
+    .map-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .map-mini-pill {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #090d16;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+    }
+
+    /* 4. BƯỚC 1 (CHỌN UMA) & BƯỚC 3 (CHỌN SUPPORT CARD): CỐ ĐỊNH 3 DÒNG GỌN TRONG KHUNG, KHÔNG TRÀN VIỀN */
+    #uma-pool-container {
+      grid-auto-rows: auto !important;
+      align-items: stretch !important;
+      gap: 9px !important;
+    }
+    .roster-item {
+      height: auto !important;
+      min-height: 68px !important;
+      max-height: none !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.86) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+      border: 1px solid rgba(71, 85, 105, 0.55) !important;
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+      transition: all 0.15s ease !important;
+      position: relative !important;
+    }
+    .roster-item:hover {
+      border-color: #38bdf8 !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    }
+    .roster-item.selected {
+      background: linear-gradient(145deg, rgba(6, 78, 59, 0.52) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+      border: 2px solid #10b981 !important;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+    }
+
+    /* Bước 3: Kho Thẻ Support SSR */
+    #deck-pool-container {
+      grid-auto-rows: auto !important;
+      align-items: stretch !important;
+      gap: 9px !important;
+    }
+    .deck-pool-card {
+      height: auto !important;
+      min-height: 70px !important;
+      max-height: none !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      border-radius: 10px !important;
+      padding: 8px 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+      transition: all 0.14s ease !important;
+      position: relative !important;
+    }
+    .deck-pool-card.card-theme-Speed {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.14) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.38) !important;
+      border-left: 4px solid #38bdf8 !important;
+    }
+    .deck-pool-card.card-theme-Stamina {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.14) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+      border: 1px solid rgba(251, 113, 133, 0.38) !important;
+      border-left: 4px solid #fb7185 !important;
+    }
+    .deck-pool-card.card-theme-Power {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+      border: 1px solid rgba(251, 191, 36, 0.38) !important;
+      border-left: 4px solid #fbbf24 !important;
+    }
+    .deck-pool-card.card-theme-Guts {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.14) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+      border: 1px solid rgba(244, 114, 182, 0.38) !important;
+      border-left: 4px solid #f472b6 !important;
+    }
+    .deck-pool-card.card-theme-Wit {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+      border: 1px solid rgba(52, 211, 153, 0.38) !important;
+      border-left: 4px solid #34d399 !important;
+    }
+    .deck-pool-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+    .deck-pool-card.in-deck {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+      border: 2px solid #4ade80 !important;
+      box-shadow: 0 0 14px rgba(74, 222, 128, 0.25) !important;
+    }
+
+    /* Thẻ bài trên tay (Hand) */
+    .support-card-item {
+      border-radius: 9px !important;
+      padding: 7px 9px !important;
+      margin-bottom: 6px !important;
+      border: 1px solid #334155 !important;
+      border-left-width: 4px !important;
+      overflow: hidden !important;
+      transition: transform 0.14s ease, box-shadow 0.14s ease !important;
+    }
+    .support-card-item:hover {
+      transform: translateX(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    }
+    .support-card-item.type-Speed {
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border-left-color: #38bdf8 !important;
+    }
+    .support-card-item.type-Stamina {
+      background: linear-gradient(90deg, rgba(244, 63, 94, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border-left-color: #fb7185 !important;
+    }
+    .support-card-item.type-Power {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border-left-color: #fbbf24 !important;
+    }
+    .support-card-item.type-Guts {
+      background: linear-gradient(90deg, rgba(236, 72, 153, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border-left-color: #f472b6 !important;
+    }
+    .support-card-item.type-Wit {
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border-left-color: #34d399 !important;
+    }
+
+    #bottom-left-discard-zone {
+      padding: 8px 10px !important;
+      border-radius: 9px !important;
+      background: rgba(120, 53, 15, 0.22) !important;
+      border: 1.5px dashed #f59e0b !important;
+    }
+    #draggable-rest-token {
+      background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%) !important;
+      border: 1px solid #38bdf8 !important;
+      color: #e0f2fe !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.3px !important;
+      padding: 8px 12px !important;
+      text-align: center !important;
+      cursor: grab !important;
+    }
+    #draggable-rest-token:hover {
+      background: #0284c7 !important;
+      color: #ffffff !important;
+    }
+  `;
+  document.head.appendChild(st);
+}
+
+function applyDistinctZoneClasses() {
+  const oppUmas = document.getElementById('ui-opp-umas');
+  if (oppUmas && oppUmas.parentElement) {
+    oppUmas.parentElement.classList.add('zone-opponent-board');
+  }
+
+  const myUmas = document.getElementById('ui-my-umas');
+  if (myUmas && myUmas.parentElement) {
+    myUmas.parentElement.classList.add('zone-player-board');
+  }
+
+  const mapList = document.getElementById('ui-map-list');
+  if (mapList) {
+    mapList.classList.add('zone-left-maps');
+  }
+
+  const energyEl = document.getElementById('ui-current-energy');
+  if (energyEl && energyEl.parentElement) {
+    energyEl.parentElement.classList.add('zone-right-energy');
+  }
+
+  const invEl = document.getElementById('ui-inventory-slots');
+  if (invEl && invEl.parentElement) {
+    invEl.parentElement.classList.add('zone-right-inventory');
+  }
+
+  const handEl = document.getElementById('ui-hand-list');
+  if (handEl && handEl.parentElement) {
+    handEl.parentElement.classList.add('zone-right-hand');
+  }
+}
+
+// =========================================================================
+// HỆ THỐNG CẨM NANG HƯỚNG DẪN TOÀN DIỆN & LIÊN HỆ DISCORD
 // =========================================================================
 const GAME_GUIDE_SECTIONS = [
   {
@@ -602,8 +1232,10 @@ function setLobbyDiscordVisible(isVisible) {
   }
 }
 
-// Tự động cập nhật nhãn các nút tĩnh trong index.html để câu chữ tự nhiên, chuẩn xác
 function normalizeStaticDomLabels() {
+  injectModernTrainingTheme();
+  applyDistinctZoneClasses();
+
   const restBtn = document.getElementById('draggable-rest-token');
   if (restBtn) {
     restBtn.innerText = 'REST (Kéo thả vào Uma)';
@@ -614,6 +1246,15 @@ function normalizeStaticDomLabels() {
       btn.innerText = 'Chọn Nhanh 40 Thẻ (8 Thẻ / Hệ)';
     }
   });
+
+  const dz = document.getElementById('bottom-left-discard-zone');
+  if (dz && !dz.dataset.cleaned) {
+    dz.dataset.cleaned = '1';
+    dz.innerHTML = `
+      <div style="font-size:11px; font-weight:800; color:#facc15; letter-spacing:0.3px;">ĐỔI HỆ NĂNG LƯỢNG</div>
+      <div style="font-size:10px; color:#94a3b8; margin-top:2px;">Thả 1 thẻ bài vào đây để đổi hệ Train</div>
+    `;
+  }
 }
 
 function initLobbyGuideSystem() {
@@ -995,7 +1636,7 @@ function startDramaticMapReveal(maps) {
   const leftPreGameList = document.getElementById('pregame-map-list');
 
   container.innerHTML = '';
-  leftPreGameList.innerHTML = '<div style="font-size:10.5px; color:#38bdf8; text-align:center;">Click / Chuột phải vào Map để mở Map Helper</div>';
+  leftPreGameList.innerHTML = '<div style="font-size:10px; color:#64748b; text-align:center; font-weight:600;">Click vào sân đua để mở Map Helper</div>';
   overlay.style.display = 'flex';
 
   maps.forEach((m, idx) => {
@@ -1033,7 +1674,7 @@ function startDramaticMapReveal(maps) {
 
       const cardEl = document.getElementById(`reveal-card-${idx}`);
       if (cardEl) cardEl.classList.add('revealed');
-      appendSingleMapToPanel('pregame-map-list', m);
+      appendSingleMapToPanel('pregame-map-list', m, idx);
     }, idx * 700 + 200);
     revealTimers.push(t);
   });
@@ -1051,11 +1692,24 @@ function finishMapReveal(maps) {
   renderMapList('pregame-map-list', maps);
 }
 
-function appendSingleMapToPanel(containerId, m) {
+function appendSingleMapToPanel(containerId, m, idx = 0) {
   const el = document.getElementById(containerId);
   if (!el) return;
+
+  const curYear = latestGameState ? Number(latestGameState.year) : 0;
+  const isCurrentYearMap = containerId === 'ui-map-list' && !m.raceResult && (
+    (curYear === 1 && (idx === 0 || idx === 1)) ||
+    (curYear === 2 && (idx === 2 || idx === 3)) ||
+    (curYear === 3 && (idx === 4 || idx === 5))
+  );
+  const isCompleted = Boolean(m.raceResult);
+
   const div = document.createElement('div');
-  div.className = 'map-item slam-anim' + (m.slot === 'Tie break' ? ' tiebreak' : '');
+  div.className = 'map-item slam-anim'
+    + (m.slot === 'Tie break' ? ' tiebreak' : '')
+    + (isCurrentYearMap ? ' active-year-map' : '')
+    + (isCompleted ? ' completed-map' : '');
+
   div.title = 'Click hoặc Chuột phải để mở Map Helper';
   div.onclick = () => openMapBlueprintModal(m);
   div.oncontextmenu = (e) => {
@@ -1064,20 +1718,30 @@ function appendSingleMapToPanel(containerId, m) {
   };
 
   const seasonLabel = m.season || 'Spring';
+  const surfCol = m.surface === 'Turf' ? '#4ade80' : '#fb923c';
+  const condCol = m.condition === '???' ? '#94a3b8' : '#facc15';
+
+  const activeBadge = isCurrentYearMap
+    ? `<span style="font-size:8.5px; background:#facc15; color:#090d16; padding:1px 5px; border-radius:3px; font-weight:800; letter-spacing:0.2px;">NĂM NAY</span>`
+    : `<span style="font-size:9px; background:#090d16; border:1px solid #334155; color:#38bdf8; padding:1px 5px; border-radius:4px; font-weight:700; flex-shrink:0;">${seasonLabel}</span>`;
+
   const resultHtml = m.raceResult
-    ? `<div style="font-size:10px; color:#4ade80; margin-top:3px; font-weight:bold; border-top:1px solid #1e293b; padding-top:2px;">
-         #1: ${m.raceResult.winnerName} (${m.raceResult.ownerName})
+    ? `<div style="font-size:10px; color:#4ade80; margin-top:4px; font-weight:bold; border-top:1px solid #1e293b; padding-top:3px;">
+         Hạng 1: ${m.raceResult.winnerName} (${m.raceResult.ownerName})
        </div>`
     : '';
 
   div.innerHTML = `
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <strong>${m.slot}: ${m.name}</strong>
-      <span style="font-size:9.5px; background:#1e293b; color:#38bdf8; padding:1px 5px; border-radius:4px;">${seasonLabel}</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:4px;">
+      <strong style="font-size:11.5px; color:${isCurrentYearMap ? '#fef08a' : '#f8fafc'};">${m.slot}: ${m.name}</strong>
+      ${activeBadge}
     </div>
-    <div style="font-size:10px; color:#cbd5e1; margin:1px 0;">${m.famousRace || ''}</div>
-    <span style="color:#94a3b8;">${m.surface} | ${m.distanceType} (${m.length}m)</span> | 
-    <span style="color:#facc15;">Sân: ${m.condition}</span>
+    <div style="font-size:10px; color:#94a3b8; margin:2px 0;">${m.famousRace || ''} • Mùa ${seasonLabel}</div>
+    <div class="map-meta-pills">
+      <span class="map-mini-pill" style="color:${surfCol}; border-color:${surfCol}44;">${m.surface}</span>
+      <span class="map-mini-pill">${m.distanceType} ${m.length}m</span>
+      <span class="map-mini-pill" style="color:${condCol};">Sân: ${m.condition}</span>
+    </div>
     ${resultHtml}
   `;
   el.appendChild(div);
@@ -1087,8 +1751,8 @@ function renderMapList(containerId, maps) {
   currentMapsList = maps || [];
   const el = document.getElementById(containerId);
   if (!el) return;
-  el.innerHTML = '<div style="font-size:10.5px; color:#38bdf8; text-align:center; margin-bottom:2px;">Chuột phải / Click vào Map để mở Map Helper</div>';
-  maps.forEach(m => appendSingleMapToPanel(containerId, m));
+  el.innerHTML = '<div style="font-size:10px; color:#64748b; text-align:center; margin-bottom:4px; font-weight:600;">Click vào sân đua để mở Map Helper</div>';
+  maps.forEach((m, idx) => appendSingleMapToPanel(containerId, m, idx));
 }
 
 // =========================================================================
@@ -1173,6 +1837,9 @@ function applyDeckPreset(presetType) {
   renderDeckBuilderUI();
 }
 
+// =========================================================================
+// BƯỚC 3 PRE-GAME: CHỌN 40 THẺ SUPPORT SSR
+// =========================================================================
 function renderDeckBuilderUI() {
   normalizeStaticDomLabels();
   document.getElementById('deck-selected-count').innerText = selectedDeckUids.length;
@@ -1183,9 +1850,12 @@ function renderDeckBuilderUI() {
   });
 
   document.getElementById('deck-type-breakdown').innerHTML = `
-    Kho thẻ: <b>${supportPool.length} SSR</b> | Đã chọn: 
-    Speed: <b>${counts.Speed}/12</b> | Stamina: <b>${counts.Stamina}/12</b> | 
-    Power: <b>${counts.Power}/12</b> | Guts: <b>${counts.Guts}/12</b> | Wit: <b>${counts.Wit}/12</b>
+    Kho thẻ: <b>${supportPool.length} SSR</b> &nbsp;•&nbsp; Đã chọn: 
+    <span style="color:#38bdf8;">Speed <b>${counts.Speed}/12</b></span> &nbsp;|&nbsp;
+    <span style="color:#fb7185;">Stamina <b>${counts.Stamina}/12</b></span> &nbsp;|&nbsp;
+    <span style="color:#fbbf24;">Power <b>${counts.Power}/12</b></span> &nbsp;|&nbsp;
+    <span style="color:#f472b6;">Guts <b>${counts.Guts}/12</b></span> &nbsp;|&nbsp;
+    <span style="color:#34d399;">Wit <b>${counts.Wit}/12</b></span>
   `;
 
   const filterBar = document.getElementById('card-filter-bar');
@@ -1197,7 +1867,7 @@ function renderDeckBuilderUI() {
     }
     const totalOfType = supportPool.filter(c => c.type === t).length;
     return `<button class="filter-btn ${isActive}" onclick="setCardTypeFilter('${t}')">
-      ${renderStatIconHTML(t, 16)} <span>${t} (${counts[t]}/12 — ${totalOfType} SSR)</span>
+      ${renderStatIconHTML(t, 16)} <span>${t} (${counts[t]}/12 — ${totalOfType})</span>
     </button>`;
   }).join('');
 
@@ -1207,8 +1877,13 @@ function renderDeckBuilderUI() {
     .filter(c => currentCardTypeFilter === 'ALL' || c.type === currentCardTypeFilter)
     .forEach(card => {
       const isSelected = selectedDeckUids.includes(card.uid);
+      const theme = TYPE_THEME_COLORS[card.type] || TYPE_THEME_COLORS.Speed;
+      const { mainName, subTitle } = splitEntityNameAndTitle(card.name);
+
       const div = document.createElement('div');
-      div.className = 'deck-pool-card' + (isSelected ? ' in-deck' : '');
+      div.className = `deck-pool-card card-theme-${card.type}` + (isSelected ? ' in-deck' : '');
+      div.title = `${card.name}\n• Click trái: Thêm / Bỏ khỏi Bộ bài\n• Chuột phải: Xem chi tiết thẻ`;
+
       div.onclick = () => {
         if (isSelected) {
           selectedDeckUids = selectedDeckUids.filter(id => id !== card.uid);
@@ -1224,19 +1899,33 @@ function renderDeckBuilderUI() {
         openCardZoom(card);
       };
 
-      const wHtml = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
-      const gHtml = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+      const wRow = formatCleanSkillRowHTML(
+        `<span class="skill-tag-label tag-white" style="margin:0;">W</span>`,
+        card.whiteSkill,
+        card.whiteSkillData || card.whiteMechanics
+      );
+      const gRow = formatCleanSkillRowHTML(
+        `<span class="skill-tag-label tag-gold" style="margin:0;">G</span>`,
+        card.goldSkill,
+        card.goldSkillData || card.goldMechanics
+      );
+
+      const statusBadge = isSelected
+        ? `<span style="background:#10b981; color:#052e16; font-size:9px; font-weight:800; padding:1px 6px; border-radius:4px; flex-shrink:0;">✓ ĐÃ CHỌN</span>`
+        : `<span style="background:rgba(15,23,42,0.8); border:1px solid ${theme.border}; color:${theme.main}; font-size:9px; font-weight:800; padding:1px 5px; border-radius:4px; flex-shrink:0;">${theme.short}</span>`;
 
       div.innerHTML = `
         <div class="card-thumb-wrap">
-          <img class="support-card-icon" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
+          <img class="support-card-icon" style="width:44px; height:44px; border-radius:8px; border:1.5px solid ${isSelected ? '#4ade80' : theme.main};" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
           ${renderStatIconHTML(card.type, 15, 'card-type-corner')}
         </div>
-        <div style="min-width:0;">
-          <div style="font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${card.name}</div>
-          <div style="color:#cbd5e1; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">[W] ${wHtml}</div>
-          <div style="color:#facc15; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">[G] ${gHtml}</div>
-          <div style="color:${isSelected ? '#4ade80' : '#94a3b8'}; font-size:9.5px;">${isSelected ? 'Đã chọn trong bộ bài' : 'Click để thêm'}</div>
+        <div style="min-width:0; flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+            <div style="font-weight:800; font-size:11.5px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${subTitle}">${mainName}</div>
+            ${statusBadge}
+          </div>
+          <div style="color:#e2e8f0;">${wRow}</div>
+          <div style="color:#facc15;">${gRow}</div>
         </div>
       `;
       container.appendChild(div);
@@ -1422,6 +2111,9 @@ socket.on('enter_pregame', (data) => {
   }
 });
 
+// =========================================================================
+// BƯỚC 1 & BƯỚC 2 PRE-GAME: CHỌN 3 UMA (CỐ ĐỊNH 3 DÒNG TRONG KHUNG, KHÔNG TRÀN VIỀN)
+// =========================================================================
 function renderPreGameUI() {
   document.getElementById('selected-count').innerText = selectedUmaIds.length;
   const searchVal = (document.getElementById('uma-search-input')?.value || '').trim().toLowerCase();
@@ -1432,7 +2124,7 @@ function renderPreGameUI() {
     if (searchVal && !u.name.toLowerCase().includes(searchVal)) return false;
     if (currentUmaFilter === 'ALL') return true;
     const rank = u.aptitudes[currentUmaFilter];
-    return rank === 'A' || rank === 'B';
+    return rank === 'A' || rank === 'B' || rank === 'S';
   });
 
   if (filteredUmas.length === 0) {
@@ -1441,10 +2133,13 @@ function renderPreGameUI() {
     </div>`;
   } else {
     filteredUmas.forEach(u => {
-      const isSel = selectedUmaIds.includes(u.id);
+      const selIndex = selectedUmaIds.indexOf(u.id);
+      const isSel = selIndex !== -1;
+      const { mainName, subTitle } = splitEntityNameAndTitle(u.name);
+
       const item = document.createElement('div');
       item.className = 'roster-item' + (isSel ? ' selected' : '');
-      item.title = 'Click trái để Chọn | Chuột phải để xem Full Thông tin & Pot Skills';
+      item.title = `${u.name}\n• Click trái: Chọn / Bỏ chọn Uma\n• Chuột phải: Xem toàn bộ chỉ số & kỹ năng`;
 
       item.onclick = () => {
         if (isSel) selectedUmaIds = selectedUmaIds.filter(id => id !== u.id);
@@ -1461,64 +2156,105 @@ function renderPreGameUI() {
         }
       };
 
-      const goldPots = (u.potSkills || [])
-        .filter(p => p.isGold)
-        .map(p => formatSkillInlineHTML(p.name, p.mechanics, true))
-        .join(' • ');
+      const goldPotNames = (u.potSkills || []).filter(p => p.isGold).map(p => p.name);
+      const goldPotsLine = goldPotNames.length > 0
+        ? `★ ${goldPotNames.join(' • ')}`
+        : '★ Standard Pot';
 
-      const aptBar = typeof renderCompactAptitudesBar === 'function'
-        ? renderCompactAptitudesBar(u.aptitudes)
-        : `Turf ${u.aptitudes.Turf} | Dirt ${u.aptitudes.Dirt}`;
+      const strongAptPills = renderStrongAptitudeBadges(u.aptitudes);
+      const selBadge = isSel
+        ? `<span style="background:#10b981; color:#052e16; font-size:8.5px; font-weight:800; padding:1px 5px; border-radius:4px; flex-shrink:0;">#${selIndex + 1}</span>`
+        : '';
 
       item.innerHTML = `
-        <img class="uma-avatar" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
-        <div style="min-width:0;">
-          <div style="font-weight:bold; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${u.name}</div>
-          <div style="font-size:9.5px; color:#facc15; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="Kỹ năng Vàng có sẵn trong Pot">[POT★] ${goldPots || 'Standard Pot'}</div>
-          <div style="font-size:9px; color:#cbd5e1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${aptBar}</div>
+        <img class="uma-avatar" style="width:44px; height:44px; border-radius:9px; border:2px solid ${isSel ? '#10b981' : '#475569'}; flex-shrink:0; object-fit:cover;" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
+        <div style="min-width:0; flex:1; display:flex; flex-direction:column; gap:3px;">
+          <!-- Dòng 1: Tên chính + Phụ đề trang phục + Nhãn chọn -->
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:4px;">
+            <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              <strong style="font-size:12px; color:#ffffff;">${mainName}</strong>
+              ${subTitle ? `<span style="font-size:9px; color:#94a3b8; margin-left:4px;">${subTitle}</span>` : ''}
+            </div>
+            ${selBadge}
+          </div>
+          <!-- Dòng 2: 3 Nhãn Thích nghi gộp gọn trên 1 hàng duy nhất -->
+          <div style="display:flex; align-items:center; gap:4px; flex-wrap:nowrap; overflow:hidden;">
+            ${strongAptPills}
+          </div>
+          <!-- Dòng 3: Kỹ năng Vàng có sẵn trong Pot trên 1 hàng duy nhất -->
+          <div style="font-size:9.5px; color:#facc15; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+            ${goldPotsLine}
+          </div>
         </div>
       `;
       poolEl.appendChild(item);
     });
   }
 
+  // Bước 2: Phân bổ 18 Spark Hồng
   const sparkEl = document.getElementById('spark-editor-container');
   sparkEl.innerHTML = '';
+  const APT_GROUPS = [
+    { label: 'MẶT SÂN (SURFACE)', keys: ['Turf', 'Dirt'], color: '#34d399' },
+    { label: 'CỰ LY (DISTANCE)', keys: ['Sprint', 'Mile', 'Medium', 'Long'], color: '#38bdf8' },
+    { label: 'CHIẾN THUẬT (STYLE)', keys: ['Front', 'Pace', 'Late', 'End'], color: '#c084fc' }
+  ];
+
   selectedUmaIds.forEach((id, idx) => {
     const u = umaPool.find(x => x.id === id);
     if (!u) return;
     const used = getUsedSparks(u.id);
+    const { mainName, subTitle } = splitEntityNameAndTitle(u.name);
+
     const card = document.createElement('div');
     card.className = 'spark-card';
-    let aptRowsHTML = '';
+    card.style.cssText = 'background:linear-gradient(180deg, rgba(30,41,59,0.85) 0%, rgba(15,23,42,0.96) 100%); border:1px solid #334155; border-top:3px solid #f472b6; border-radius:12px; padding:12px;';
 
-    Object.entries(u.aptitudes).forEach(([aptKey, baseRank]) => {
-      const sparks = (allocatedSparks[u.id] && allocatedSparks[u.id][aptKey]) || 0;
-      const finalRank = computeRankFromSparks(baseRank, sparks);
-      const inheritChance = sparks * 8;
+    let groupsHTML = '';
+    APT_GROUPS.forEach(grp => {
+      let rowsHTML = '';
+      grp.keys.forEach(aptKey => {
+        const baseRank = u.aptitudes[aptKey] || 'G';
+        const sparks = (allocatedSparks[u.id] && allocatedSparks[u.id][aptKey]) || 0;
+        const finalRank = computeRankFromSparks(baseRank, sparks);
+        const inheritChance = sparks * 8;
 
-      aptRowsHTML += `
-        <div class="apt-row">
-          <span><b>${aptKey}</b> <span style="color:#94a3b8; font-size:10px;">(Gốc ${baseRank})</span></span>
-          <div style="display:flex; align-items:center; gap:4px;">
-            <span style="font-size:10px; color:#f472b6;">${sparks} Spark (Tỉ lệ kế thừa: ${inheritChance}%)</span>
-            <span class="rank-badge rank-${finalRank}">${finalRank}</span>
-            <button class="apt-btn" onclick="adjustSparkCount('${u.id}','${aptKey}',-1)">-</button>
-            <button class="apt-btn" onclick="adjustSparkCount('${u.id}','${aptKey}',1)">+</button>
+        rowsHTML += `
+          <div class="apt-row" style="padding:3px 6px; border-radius:5px; background:${sparks > 0 ? 'rgba(244, 114, 182, 0.12)' : 'transparent'};">
+            <span><b>${aptKey}</b> <span style="color:#64748b; font-size:10px;">(Gốc ${baseRank})</span></span>
+            <div style="display:flex; align-items:center; gap:5px;">
+              <span style="font-size:10px; color:${sparks > 0 ? '#f472b6' : '#64748b'}; font-weight:${sparks > 0 ? '700' : '400'};">${sparks} Spark (${inheritChance}%)</span>
+              <span class="rank-badge rank-${finalRank}">${finalRank}</span>
+              <button class="apt-btn" onclick="adjustSparkCount('${u.id}','${aptKey}',-1)">-</button>
+              <button class="apt-btn" onclick="adjustSparkCount('${u.id}','${aptKey}',1)">+</button>
+            </div>
           </div>
+        `;
+      });
+
+      groupsHTML += `
+        <div style="margin-top:8px; background:rgba(9,13,22,0.55); border:1px solid #1e293b; border-radius:8px; padding:6px 8px;">
+          <div style="font-size:9.5px; font-weight:800; color:${grp.color}; letter-spacing:0.4px; margin-bottom:4px;">${grp.label}</div>
+          ${rowsHTML}
         </div>
       `;
     });
 
     card.innerHTML = `
-      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px; cursor:context-menu;" title="Chuột phải để xem chi tiết Uma" oncontextmenu="event.preventDefault(); if(typeof openUmaDetailModal==='function'){ const uObj = umaPool.find(x=>x.id==='${u.id}'); openUmaDetailModal(uObj, null, false); setTimeout(()=>enhanceUmaDetailModalSkills(uObj), 25); }">
-        <img class="uma-avatar" style="width:40px; height:40px;" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
-        <div>
-          <strong>Uma ${idx + 1}: ${u.name}</strong><br>
-          <span style="font-size:11px; color:#f472b6;">Spark Hồng còn lại: <strong>${18 - used}/18</strong></span>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding-bottom:8px; border-bottom:1px solid #1e293b; cursor:context-menu;" title="Chuột phải để xem chi tiết Uma" oncontextmenu="event.preventDefault(); if(typeof openUmaDetailModal==='function'){ const uObj = umaPool.find(x=>x.id==='${u.id}'); openUmaDetailModal(uObj, null, false); setTimeout(()=>enhanceUmaDetailModalSkills(uObj), 25); }">
+        <div style="display:flex; align-items:center; gap:9px; min-width:0;">
+          <img class="uma-avatar" style="width:44px; height:44px; border-radius:10px; border:2px solid #f472b6;" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
+          <div style="min-width:0;">
+            <strong style="font-size:13px; color:#fff;">Uma ${idx + 1}: ${mainName}</strong>
+            ${subTitle ? `<div style="font-size:10px; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${subTitle}</div>` : ''}
+          </div>
+        </div>
+        <div style="background:rgba(244,114,182,0.16); border:1px solid #f472b6; border-radius:6px; padding:4px 8px; text-align:right; flex-shrink:0;">
+          <div style="font-size:9px; color:#fbcfe8; font-weight:700;">SPARK CÒN LẠI</div>
+          <strong style="font-size:13px; color:#f472b6;">${18 - used} / 18</strong>
         </div>
       </div>
-      ${aptRowsHTML}
+      ${groupsHTML}
     `;
     sparkEl.appendChild(card);
   });
@@ -1596,7 +2332,7 @@ discardZone.ondrop = (e) => {
 };
 
 // =========================================================================
-// RENDER BÀN ĐẤU CHÍNH (3 UMA CỦA MÌNH & 3 UMA ĐỐI THỦ)
+// RENDER BÀN ĐẤU CHÍNH (PHÂN VÙNG RÕ RỆT & SẠCH ĐẸP)
 // =========================================================================
 socket.on('match_start', (data) => {
   finishMapReveal(data.maps || []);
@@ -1619,8 +2355,11 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
 
   umas.forEach((u, idx) => {
     const div = document.createElement('div');
-    div.className = 'uma-card-mini' + (isMyBoard && lastAnimatedUmaIndex === idx ? ' slam-anim' : '');
-    div.title = 'Chuột phải vào Uma để xem Full Thông tin, Pot Skills & Đổi Style chạy';
+    const teamClass = isMyBoard ? 'my-team-card' : 'opp-team-card';
+    const { mainName, subTitle } = splitEntityNameAndTitle(u.name);
+
+    div.className = `uma-card-mini ${teamClass}` + (isMyBoard && lastAnimatedUmaIndex === idx ? ' slam-anim' : '');
+    div.title = 'Chuột phải vào Uma để xem chi tiết chỉ số, kỹ năng & đổi chiến thuật chạy';
 
     div.oncontextmenu = (e) => {
       if (e.target.classList.contains('mini-eq-icon')) return;
@@ -1661,116 +2400,147 @@ function renderUmasToContainer(containerId, umas, isMyBoard) {
       };
     }
 
-    const failColor = u.failRate >= 25 ? '#f43f5e' : u.failRate > 0 ? '#facc15' : '#4ade80';
+    const fRate = u.failRate || 0;
+    const failBg = fRate >= 25 ? 'rgba(244, 63, 94, 0.2)' : (fRate > 0 ? 'rgba(250, 204, 21, 0.18)' : 'rgba(74, 222, 128, 0.15)');
+    const failBorder = fRate >= 25 ? '#f43f5e' : (fRate > 0 ? '#facc15' : '#4ade80');
+    const failColor = fRate >= 25 ? '#fda4af' : (fRate > 0 ? '#fef08a' : '#86efac');
+
     const eqCards = u.equippedCards || [];
     const skills = u.skills || [];
-    const aptBar = typeof renderCompactAptitudesBar === 'function'
-      ? renderCompactAptitudesBar(u.aptitudes)
-      : `Sân: <b>${u.aptitudes.Turf}/${u.aptitudes.Dirt}</b>`;
+    const activeStyle = u.activeStyle || 'Pace';
+    const activeStyleRank = (u.aptitudes && u.aptitudes[activeStyle]) || 'A';
 
-    const uqHtml = formatSkillInlineHTML(u.uniqueSkill, u.uniqueSkillData, true);
+    const strongAptPills = renderStrongAptitudeBadges(u.aptitudes);
+    const uqMeta = getSkillGameToraMeta(u.uniqueSkill, u.uniqueSkillData);
+    const uqParen = uqMeta.parenText ? ` <span class="gt-cond-tag">${uqMeta.parenText}</span>` : '';
+
+    const ownedGoldSet = new Set();
+    skills.forEach(s => {
+      if (s && s.name && (s.isGold || String(s.name).includes('◎'))) {
+        ownedGoldSet.add(normalizeSkillBaseNameUI(s.name));
+      }
+    });
+    const learnedCardSkills = skills.filter(s => !s.fromPot && (s.isGold || !isWhiteSupersededByOwnedGoldUI(s.name, ownedGoldSet)));
+    const goldPotSkills = skills.filter(s => s.fromPot && s.isGold);
+    const displaySkills = [...learnedCardSkills, ...goldPotSkills];
+
+    const subSkillsRowsHTML = displaySkills.map(s => {
+      const meta = getSkillGameToraMeta(s.name, s.mechanics);
+      const pSpan = meta.parenText ? ` <span class="gt-cond-tag">${meta.parenText}</span>` : '';
+      const rowCls = s.isGold ? 'gold-row' : 'white-row';
+      const dotHtml = s.isGold
+        ? `<span class="sk-dot-gold">★</span>`
+        : `<span class="sk-dot-white">●</span>`;
+      return `
+        <div class="uma-skill-row-item ${rowCls}" title="${meta.tooltip.replace(/"/g, '&quot;')}">
+          <div class="clean-skill-left">
+            ${dotHtml}
+            <span class="clean-skill-name">${meta.name}${pSpan}</span>
+          </div>
+          <span class="gt-role-tag" style="border-color:${meta.roleColor}66; color:${meta.roleColor};">${meta.roleShort}</span>
+        </div>
+      `;
+    }).join('');
 
     div.innerHTML = `
       <div>
-        <div class="uma-board-top">
-          <img class="uma-board-avatar" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
-          <div style="flex:1; min-width:0;">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:4px;">
-              <strong style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${u.name}</strong>
+        <div class="uma-header-modern">
+          <img class="uma-avatar-modern" style="border-color:${isMyBoard ? '#10b981' : '#f43f5e'};" src="${u.icon}" onerror="if(this.src!=='${u.fallbackIcon||''}' && '${u.fallbackIcon||''}'){this.src='${u.fallbackIcon}';}else{this.src='${fallbackAvatar(u.name, u.color)}';}">
+          <div class="uma-title-col">
+            <div class="uma-name-row">
+              <span class="uma-name-text" title="${u.name}">${mainName}</span>
               ${renderMoodBadgeHTML(u.mood || 'Normal')}
             </div>
-            <div class="unique-skill-badge" title="Unique Skill">[UNIQUE] ${uqHtml}</div>
-            <div style="font-size:9.5px; color:#cbd5e1; margin-top:2px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${aptBar}</span>
-              <span style="color:${failColor}; font-weight:bold; flex-shrink:0; margin-left:4px;">Fail: ${u.failRate || 0}%</span>
+            <div class="uma-submeta-row">
+              <span class="uma-style-pill" title="Chiến thuật chạy hiện tại (Chuột phải vào Uma để đổi)">
+                Chạy: ${activeStyle} (${activeStyleRank})
+              </span>
+              <span class="uma-fail-pill" style="background:${failBg}; border:1px solid ${failBorder}66; color:${failColor};">
+                Fail ${fRate}%
+              </span>
             </div>
           </div>
         </div>
 
-        <div class="equipped-strip" id="eq-strip-${containerId}-${idx}">
-          <span style="font-size:9.5px; color:#64748b;">Support (${eqCards.length}/5):</span>
+        <div class="uma-apt-strip">
+          ${strongAptPills}
         </div>
 
-        <div class="skills-list-mini">
-          ${(() => {
-            const ownedGoldSet = new Set();
-            skills.forEach(s => {
-              if (s && s.name && (s.isGold || String(s.name).includes('◎'))) {
-                ownedGoldSet.add(normalizeSkillBaseNameUI(s.name));
-              }
-            });
+        <div class="uma-slots-bar">
+          <span class="uma-slots-label">THẺ HỖ TRỢ (${eqCards.length}/5)</span>
+          <div class="uma-slots-grid" id="eq-strip-${containerId}-${idx}"></div>
+        </div>
 
-            const learnedCardSkills = skills.filter(s => !s.fromPot && (s.isGold || !isWhiteSupersededByOwnedGoldUI(s.name, ownedGoldSet)));
-            const goldPotSkills = skills.filter(s => s.fromPot && s.isGold);
-            const displaySkills = [...learnedCardSkills, ...goldPotSkills];
-
-            if (displaySkills.length === 0) {
-              return '<span style="font-size:9.5px; color:#64748b;">Chưa có kỹ năng phụ</span>';
-            }
-
-            return displaySkills.map(s => {
-              const skMeta = getSkillGameToraMeta(s.name, s.mechanics);
-              const skFormatted = formatSkillInlineHTML(s.name, s.mechanics, true);
-              if (!s.fromPot) {
-                return `<span class="skill-pill ${s.isGold ? 'gold' : ''}" title="${skMeta.tooltip.replace(/"/g, '&quot;')}" style="${!s.isGold ? 'border-color:#38bdf8; color:#bae6fd; background:#0c4a6e;' : ''}">
-                  ${s.isGold ? '[GOLD★] ' : '[CARD] '}${skFormatted}
-                </span>`;
-              }
-              return `<span class="skill-pill gold" title="${skMeta.tooltip.replace(/"/g, '&quot;')}" style="opacity:0.92;">[POT★] ${skFormatted}</span>`;
-            }).join('');
-          })()}
+        <div class="uma-skills-box">
+          <div class="uma-skill-row-item uq-row" title="${uqMeta.tooltip.replace(/"/g, '&quot;')}">
+            <div class="clean-skill-left">
+              <span class="sk-dot-uq">UQ</span>
+              <span class="clean-skill-name">${uqMeta.name}${uqParen}</span>
+            </div>
+            <span class="gt-role-tag" style="border-color:${uqMeta.roleColor}66; color:${uqMeta.roleColor};">${uqMeta.roleShort}</span>
+          </div>
+          ${subSkillsRowsHTML}
         </div>
       </div>
 
-      <div class="stat-grid-mini">
-        <div class="stat-cell" title="Speed">${renderStatIconHTML('Speed', 19)}<strong>${u.baseStats.spd}</strong></div>
-        <div class="stat-cell" title="Stamina">${renderStatIconHTML('Stamina', 19)}<strong>${u.baseStats.sta}</strong></div>
-        <div class="stat-cell" title="Power">${renderStatIconHTML('Power', 19)}<strong>${u.baseStats.pow}</strong></div>
-        <div class="stat-cell" title="Guts">${renderStatIconHTML('Guts', 19)}<strong>${u.baseStats.gut}</strong></div>
-        <div class="stat-cell" title="Wit">${renderStatIconHTML('Wit', 19)}<strong>${u.baseStats.wit}</strong></div>
+      <div class="stat-grid-modern">
+        <div class="stat-box-modern st-spd" title="Speed">${renderStatIconHTML('Speed', 16)}<strong>${u.baseStats.spd}</strong></div>
+        <div class="stat-box-modern st-sta" title="Stamina">${renderStatIconHTML('Stamina', 16)}<strong>${u.baseStats.sta}</strong></div>
+        <div class="stat-box-modern st-pow" title="Power">${renderStatIconHTML('Power', 16)}<strong>${u.baseStats.pow}</strong></div>
+        <div class="stat-box-modern st-gut" title="Guts">${renderStatIconHTML('Guts', 16)}<strong>${u.baseStats.gut}</strong></div>
+        <div class="stat-box-modern st-wit" title="Wit">${renderStatIconHTML('Wit', 16)}<strong>${u.baseStats.wit}</strong></div>
       </div>
     `;
     container.appendChild(div);
 
     const stripEl = document.getElementById(`eq-strip-${containerId}-${idx}`);
-    eqCards.forEach(eq => {
-      const wrap = document.createElement('div');
-      const canRecall = isMyBoard && !eq.isGoldAwakened;
-      wrap.className = 'mini-eq-wrapper' + (canRecall ? ' recallable' : '');
+    for (let slotIdx = 0; slotIdx < 5; slotIdx++) {
+      const eq = eqCards[slotIdx];
+      if (eq) {
+        const wrap = document.createElement('div');
+        const canRecall = isMyBoard && !eq.isGoldAwakened;
+        wrap.className = 'mini-eq-wrapper' + (canRecall ? ' recallable' : '');
 
-      const tipText = canRecall
-        ? `${eq.name}\n• Click trái (hoặc kéo về Tay): Thu hồi thẻ về lại trên tay\n• Chuột phải: Xem chi tiết thẻ`
-        : `${eq.name} (Đã nâng cấp Kỹ năng Vàng — Chuột phải xem chi tiết thẻ)`;
+        const tipText = canRecall
+          ? `${eq.name}\n• Click trái (hoặc kéo về Tay): Thu hồi thẻ về lại trên tay\n• Chuột phải: Xem chi tiết thẻ`
+          : `${eq.name} (Đã nâng cấp Kỹ năng Vàng — Chuột phải xem chi tiết thẻ)`;
 
-      wrap.innerHTML = `
-        <img class="mini-eq-icon ${eq.isGoldAwakened ? 'gold-awakened' : ''}" src="${eq.icon}" onerror="this.src='${fallbackAvatar(eq.type, '#475569')}'" title="${tipText}">
-        ${renderStatIconHTML(eq.type, 13, 'mini-eq-type-badge')}
-      `;
+        wrap.innerHTML = `
+          <img class="mini-eq-icon ${eq.isGoldAwakened ? 'gold-awakened' : ''}" src="${eq.icon}" onerror="this.src='${fallbackAvatar(eq.type, '#475569')}'" title="${tipText}">
+          ${renderStatIconHTML(eq.type, 12, 'mini-eq-type-badge')}
+        `;
 
-      if (canRecall) {
-        wrap.onclick = (e) => {
+        if (canRecall) {
+          wrap.onclick = (e) => {
+            e.stopPropagation();
+            socket.emit('unequip_card_from_uma', {
+              roomCode: currentRoomCode,
+              sessionToken,
+              umaIndex: idx,
+              cardUid: eq.uid
+            });
+          };
+          wrap.draggable = true;
+          wrap.ondragstart = (e) => {
+            draggedPayload = { kind: 'recall_card', umaIndex: idx, cardUid: eq.uid };
+            e.dataTransfer.setData('text/plain', eq.uid);
+          };
+        }
+
+        wrap.oncontextmenu = (e) => {
+          e.preventDefault();
           e.stopPropagation();
-          socket.emit('unequip_card_from_uma', {
-            roomCode: currentRoomCode,
-            sessionToken,
-            umaIndex: idx,
-            cardUid: eq.uid
-          });
+          openCardZoom(eq);
         };
-        wrap.draggable = true;
-        wrap.ondragstart = (e) => {
-          draggedPayload = { kind: 'recall_card', umaIndex: idx, cardUid: eq.uid };
-          e.dataTransfer.setData('text/plain', eq.uid);
-        };
+        stripEl.appendChild(wrap);
+      } else {
+        const emptySlot = document.createElement('div');
+        emptySlot.className = 'uma-empty-slot';
+        emptySlot.title = 'Ô trang bị thẻ hỗ trợ còn trống';
+        emptySlot.innerText = '+';
+        stripEl.appendChild(emptySlot);
       }
-
-      wrap.oncontextmenu = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openCardZoom(eq);
-      };
-      stripEl.appendChild(wrap);
-    });
+    }
   });
 }
 
@@ -1801,12 +2571,12 @@ function updateGameState(data) {
   }
 
   const lvLabel = data.year === 1 ? 'Lv.1' : (data.year === 2 ? 'Lv.3' : 'Lv.5 MAX');
-  let specialTag = ` | [Training ${lvLabel}]`;
-  if ([3, 6, 9].includes(data.turn)) specialTag += ' | [GLOBAL EVENT]';
-  if (data.year >= 2 && [7, 8].includes(data.turn)) specialTag += ' | [SUMMER CAMP x1.5]';
+  let specialTag = ` • Training ${lvLabel}`;
+  if ([3, 6, 9].includes(data.turn)) specialTag += ' • SỰ KIỆN TOÀN CỤC';
+  if (data.year >= 2 && [7, 8].includes(data.turn)) specialTag += ' • TRẠI HÈ x1.5';
 
   document.getElementById('ui-stage-title').innerText =
-    `Giai đoạn: Năm ${data.year} - Lượt ${data.turn}/10${specialTag}`;
+    `Năm ${data.year} — Lượt ${data.turn}/10${specialTag}`;
 
   const orb = document.getElementById('ui-current-energy');
   if (data.energyUsed) {
@@ -1860,6 +2630,9 @@ function updateGameState(data) {
   handEl.innerHTML = '';
   data.myHand.forEach(card => {
     const cardDiv = document.createElement('div');
+    const theme = TYPE_THEME_COLORS[card.type] || TYPE_THEME_COLORS.Speed;
+    const { mainName, subTitle } = splitEntityNameAndTitle(card.name);
+
     cardDiv.className = `support-card-item type-${card.type}`;
     cardDiv.draggable = true;
 
@@ -1874,18 +2647,29 @@ function updateGameState(data) {
       openCardZoom(card);
     };
 
-    const wHtml = formatSkillInlineHTML(card.whiteSkill, card.whiteSkillData || card.whiteMechanics, true);
-    const gHtml = formatSkillInlineHTML(card.goldSkill, card.goldSkillData || card.goldMechanics, true);
+    const wRow = formatCleanSkillRowHTML(
+      `<span class="skill-tag-label tag-white" style="margin:0;">W</span>`,
+      card.whiteSkill,
+      card.whiteSkillData || card.whiteMechanics
+    );
+    const gRow = formatCleanSkillRowHTML(
+      `<span class="skill-tag-label tag-gold" style="margin:0;">G</span>`,
+      card.goldSkill,
+      card.goldSkillData || card.goldMechanics
+    );
 
     cardDiv.innerHTML = `
       <div class="card-thumb-wrap">
-        <img class="support-card-icon" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
-        ${renderStatIconHTML(card.type, 17, 'card-type-corner')}
+        <img class="support-card-icon" style="border:1.5px solid ${theme.main};" src="${card.icon}" onerror="this.src='${fallbackAvatar(card.type, '#475569')}'">
+        ${renderStatIconHTML(card.type, 16, 'card-type-corner')}
       </div>
       <div style="flex:1; min-width:0;">
-        <div style="font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${card.name}</div>
-        <div style="color:#cbd5e1; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span class="skill-tag-label tag-white">W</span>${wHtml}</div>
-        <div style="color:#facc15; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span class="skill-tag-label tag-gold">G</span>${gHtml}</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:2px;">
+          <div style="font-weight:800; font-size:11.5px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${subTitle}">${mainName}</div>
+          <span style="font-size:8.5px; font-weight:800; color:${theme.main}; background:rgba(9,13,22,0.8); border:1px solid ${theme.border}; padding:0px 4px; border-radius:3px; flex-shrink:0;">${theme.short}</span>
+        </div>
+        <div style="color:#cbd5e1;">${wRow}</div>
+        <div style="color:#facc15;">${gRow}</div>
       </div>
     `;
     handEl.appendChild(cardDiv);
