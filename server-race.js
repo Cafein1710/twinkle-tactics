@@ -1,4 +1,4 @@
-// server-race.js - Engine Mô phỏng Đua 6 Uma (Chuẩn hóa Accel Corner/Straight, Stamina Siphon & Ưu tiên Gold Skill)
+// server-race.js - Engine Mô phỏng Đua 6 Uma (Văn phong bình luận tự nhiên, chuẩn xác)
 
 const DIST_APT_SPEED_MOD = { S: 1.10, A: 1.00, B: 0.90, C: 0.80, D: 0.60, E: 0.40, F: 0.20, G: 0.10 };
 const DIST_BASE_SPEED_PENALTY = { S: 1.015, A: 1.000, B: 0.985, C: 0.960, D: 0.920, E: 0.870, F: 0.820, G: 0.760 };
@@ -42,8 +42,6 @@ const RUNNING_STYLE_CODE = { Front: 1, Pace: 2, Late: 3, End: 4 };
 const DIST_TYPE_CODE = { Sprint: 1, Mile: 2, Medium: 3, Long: 4 };
 const SEASON_CODE = { Spring: 1, Summer: 2, Fall: 3, Autumn: 3, Winter: 4 };
 
-// BẢNG ĐỐI CHIẾU CẶP KỸ NĂNG VÀNG (GOLD) <-> TRẮNG (WHITE) CHUẨN GAMETORA
-// Nếu Uma sở hữu kỹ năng Vàng, kỹ năng Trắng tương ứng sẽ bị khóa để chỉ kích hoạt bản Vàng
 const GOLD_TO_WHITE_PAIRS = {
   'professor of curvature': 'corner adept',
   'beeline burst': 'straightaway adept',
@@ -111,9 +109,7 @@ function normalizeSkillBaseName(name) {
 function isWhiteSupersededByOwnedGold(whiteSkillName, ownedGoldBaseNamesSet) {
   const wNorm = normalizeSkillBaseName(whiteSkillName);
   if (!wNorm) return false;
-  // 1. Nếu trùng tên gốc (VD: bản ◎ đè bản ◯)
   if (ownedGoldBaseNamesSet.has(wNorm)) return true;
-  // 2. Tra trong từ điển Gold -> White
   for (const goldKey of ownedGoldBaseNamesSet) {
     const mappedWhite = GOLD_TO_WHITE_PAIRS[goldKey];
     if (mappedWhite && (wNorm === mappedWhite || wNorm.includes(mappedWhite) || mappedWhite.includes(wNorm))) {
@@ -127,19 +123,17 @@ function pickRandomLine(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// 1. NHẬN DIỆN ĐIỀU KIỆN STYLE CHẠY, CỰ LY & MẶT SÂN CỦA KỸ NĂNG CHUẨN GAMETORA
 function inferSkillRestrictions(skillName, condStr, precondStr) {
   const lower = String(skillName || '').toLowerCase();
   const fullCond = `${precondStr || ''}&${condStr || ''}`;
 
-  // Slipstream & Playtime's Over! / Perfect Spot là kỹ năng chung (Generic), không giới hạn Style/Distance
   if (lower.includes('slipstream') || lower.includes('playtime\'s over') || lower.includes('perfect spot')) {
     return { reqStyleCode: null, reqDistCode: null, reqSurfaceCode: null };
   }
 
   let reqStyleCode = null;
   let reqDistCode = null;
-  let reqSurfaceCode = null; // 1: Turf, 2: Dirt
+  let reqSurfaceCode = null;
 
   const styleMatch = fullCond.match(/running_style==(\d)/);
   if (styleMatch) reqStyleCode = Number(styleMatch[1]);
@@ -160,7 +154,7 @@ function inferSkillRestrictions(skillName, condStr, precondStr) {
       lower.includes('sparkly☆stardom') || lower.includes('taking the lead') || lower.includes('keep the lead') ||
       lower.includes('second wind') || lower.includes('frontline') || lower.includes('dodging danger')
     ) {
-      reqStyleCode = 1; // Front
+      reqStyleCode = 1;
     } else if (
       lower.includes('pace chaser') || lower.includes('gourmand') || lower.includes('hydrate') ||
       lower.includes('speed star') || lower.includes('prepare to pass') || lower.includes('prepared to pass') ||
@@ -169,7 +163,7 @@ function inferSkillRestrictions(skillName, condStr, precondStr) {
       lower.includes('duty of dignity') || lower.includes('blue rose closer') || lower.includes('u=ma2') ||
       lower.includes('victoria por plancha') || lower.includes('stalker') || lower.includes('head-on')
     ) {
-      reqStyleCode = 2; // Pace
+      reqStyleCode = 2;
     } else if (
       lower.includes('late surger') || lower.includes('on your left') || lower.includes('slick surge') ||
       lower.includes('rising dragon') || lower.includes('sharp gaze') || lower.includes('sharp streak') ||
@@ -180,7 +174,7 @@ function inferSkillRestrictions(skillName, condStr, precondStr) {
       lower.includes('between the lines') || lower.includes('outer swell') || lower.includes('1,500,000 cc') ||
       lower.includes('relax')
     ) {
-      reqStyleCode = 3; // Late
+      reqStyleCode = 3;
     } else if (
       lower.includes('end closer') || lower.includes('encroaching shadow') || lower.includes('straightaway spurt') ||
       lower.includes('go-home specialist') || lower.includes('after-school stroll') || lower.includes('sleeping lion') ||
@@ -188,7 +182,7 @@ function inferSkillRestrictions(skillName, condStr, precondStr) {
       lower.includes('strong heart') || lower.includes('visionary') || lower.includes('masterful gambit') ||
       lower.includes('stormy seas')
     ) {
-      reqStyleCode = 4; // End
+      reqStyleCode = 4;
     }
   }
 
@@ -198,42 +192,40 @@ function inferSkillRestrictions(skillName, condStr, precondStr) {
       lower.includes('poise and preparation') || lower.includes('plan x') || lower.includes('countermeasure') ||
       lower.includes('huge lead') || lower.includes('breathless') || lower.includes('blinding flash')
     ) {
-      reqDistCode = 1; // Sprint
+      reqDistCode = 1;
     } else if (
       lower.includes('mile ') || lower.includes('miler') || lower.includes('mile maven') ||
       lower.includes('gear shift') || lower.includes('speed eater') || lower.includes('changing gears') ||
       lower.includes('shifting gears') || lower.includes('furious feat') || lower.includes('updrafters')
     ) {
-      reqDistCode = 2; // Mile
+      reqDistCode = 2;
     } else if (
       lower.includes('medium ') || lower.includes('clairvoyance') || lower.includes('mystifying murmur') ||
       lower.includes('thunderbolt step') || lower.includes('lightning step') || lower.includes('tempest')
     ) {
-      reqDistCode = 3; // Medium
+      reqDistCode = 3;
     } else if (
       lower.includes('long ') || lower.includes('stayer') || lower.includes('cooldown') ||
       lower.includes('deep breaths') || lower.includes('vanguard spirit') || lower.includes('lead the charge') ||
       lower.includes('inward experience') || lower.includes('passing pro') || lower.includes('pressure')
     ) {
-      reqDistCode = 4; // Long
+      reqDistCode = 4;
     }
   }
 
   if (!reqSurfaceCode) {
     if (lower.includes('dirt') || lower.includes('sand') || lower.includes('dancer in the dirt') || lower.includes('mud')) {
-      reqSurfaceCode = 2; // Dirt
+      reqSurfaceCode = 2;
     }
   }
 
   return { reqStyleCode, reqDistCode, reqSurfaceCode };
 }
 
-// 2. PHÂN LOẠI TÁC DỤNG & ĐỊA HÌNH KÍCH HOẠT CHUẨN XÁC
 function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
   const lower = String(skillName || '').toLowerCase();
   const sCond = String(condStr || '');
 
-  // A. STAMINA SIPHON / STAMINA EATER: Heal 0.035 (3.5%) bản thân + Debuff -0.05 (5.0%) Stamina đối thủ ở Mid-Race
   if (lower.includes('stamina siphon') || lower.includes('stamina eater') || lower.includes('siphon')) {
     return {
       category: 'siphon',
@@ -245,7 +237,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // B. NHÓM VELOCITY MID-RACE CỐ ĐỊNH (Slipstream, Perfect Spot, Playtime's Over!, Fast & Furious, Position Pilfer, Sharp Streak, Sharp Gaze, Ramp Up, It's On!)
   if (
     lower.includes('slipstream') || lower.includes('playtime\'s over') || lower.includes('perfect spot') ||
     lower.includes('fast & furious') || lower.includes('fast and furious') || lower.includes('position pilfer') ||
@@ -266,7 +257,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // Nhận diện yêu cầu địa hình (Corner / Straight / Final Straight / Uphill / Downhill)
   let terrainReq = null;
   if (
     lower.includes('homestretch') || lower.includes('in body and mind') ||
@@ -296,7 +286,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     terrainReq = 'downhill';
   }
 
-  // C. NHÓM KỸ NĂNG XANH LÁ (PASSIVE SKILLS - Cộng thẳng Stat lúc mở cổng 0.0s)
   const passiveStatEffects = (rawEffects || []).filter(e => [1, 2, 3, 4, 5].includes(Number(e.typeCode)));
   const isGreenByKeyword =
     lower.includes('runner ◯') || lower.includes('runner ◎') ||
@@ -337,12 +326,10 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     return { category: 'passive', terrainReq: null, statBonuses, speedBoost: 0, accelBoost: 0, healRatio: 0 };
   }
 
-  // D. NHÓM KỸ NĂNG CỔNG XUẤT PHÁT: FOCUS / CONCENTRATION / GATE
   if (lower.includes('focus') || lower.includes('concentration') || lower.includes('gate')) {
     return { category: 'gate', terrainReq: null, speedBoost: 0, accelBoost: isGold ? 1.6 : 0.9, healRatio: 0 };
   }
 
-  // E. KỸ NĂNG ĐẶC THÙ ĐẦU TRẬN: UMA STAN / EARLY LEAD / TAKING THE LEAD
   if (
     lower.includes('uma stan') || lower.includes('superfan') ||
     lower.includes('early lead') || lower.includes('taking the lead') ||
@@ -358,12 +345,10 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // F. KỸ NĂNG GACHA THỂ LỰC: NOTHING VENTURED / DAREDEVIL / CAREFREE
   if (lower.includes('nothing ventured') || lower.includes('daredevil') || lower.includes('carefree')) {
     return { category: 'gacha_boost', terrainReq, speedBoost: isGold ? 0.78 : 0.45, accelBoost: isGold ? 0.50 : 0.28, healRatio: 0 };
   }
 
-  // G. KỸ NĂNG ĐỐT THỂ LỰC ĐỂ BỨT TỐC (RECOIL BOOST)
   const hpEffect = (rawEffects || []).find(e => e.stat === 'healHpRatio' || e.typeCode === 9);
   const hasPositiveMove = (rawEffects || []).some(e => (e.stat === 'targetSpeed' || e.stat === 'acceleration' || e.typeCode === 27 || e.typeCode === 31) && Number(e.value) > 0);
 
@@ -383,7 +368,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // H. KỸ NĂNG HỒI PHỤC THỂ LỰC (HEAL)
   const isTrueHealCode = hpEffect && Number(hpEffect.value) > 0;
   if (
     isTrueHealCode ||
@@ -405,7 +389,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // I. KỸ NĂNG DEBUFF ĐỐI THỦ
   const hasNegativeSpeed = (rawEffects || []).some(e => (e.stat === 'targetSpeed' || e.typeCode === 27) && Number(e.value) < 0);
   if (hasNegativeSpeed || lower.includes('murmur') || lower.includes('tether') || lower.includes('hesitant') || lower.includes('flustered') || lower.includes('subdue') || lower.includes('dazzling')) {
     return {
@@ -418,7 +401,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // J. KỸ NĂNG GIA TỐC (ACCELERATION) - Giữ nguyên đặc trưng terrainReq ('corner', 'straight', 'final_straight') nếu có!
   const hasAccelCode = (rawEffects || []).some(e => (e.stat === 'acceleration' || e.typeCode === 31) && Number(e.value) > 0);
   const hasVeloCode = (rawEffects || []).some(e => (e.stat === 'targetSpeed' || e.typeCode === 27) && Number(e.value) > 0);
   if (
@@ -442,7 +424,6 @@ function classifySkillAction(skillName, isUnique, isGold, rawEffects, condStr) {
     };
   }
 
-  // K. KỸ NĂNG TỐC ĐỘ (VELOCITY)
   let forceMidRaceVelo = false;
   if (
     sCond.includes('change_order') || sCond.includes('overtake') ||
@@ -497,7 +478,6 @@ function checkPassiveGreenCondition(sk, runner, mapObj) {
   return true;
 }
 
-// 3. CHỌN MỐC KÍCH HOẠT (TRIGGER MARK) TÔN TRỌNG TUYỆT ĐỐI RÀNG BUỘC CORNER / STRAIGHT
 function pickRandomMeterInSegments(segments, minM, maxM, fallbackMinM, fallbackMaxM) {
   const validRanges = [];
   (segments || []).forEach(seg => {
@@ -529,21 +509,17 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
   if (category === 'early_boost') return Math.round(D * (0.03 + Math.random() * 0.08));
   if (category === 'gacha_boost') return Math.round(D * (0.67 + Math.random() * 0.12));
 
-  // A. Kỹ năng yêu cầu Đoạn thẳng cuối (Final Straight: Straightaway Spurt, Encroaching Shadow, Homestretch Haste...)
   if (terrainReq === 'final_straight') {
     const lastSt = straights.length > 0 ? straights[straights.length - 1] : { start: D * 0.72, end: D };
     const stStart = Math.max(lateStartM, Number(lastSt.start) || D * 0.72);
     const stEnd = Math.min(D * 0.92, Number(lastSt.end) || D * 0.92);
-    // Đặt ngay đầu đoạn thẳng cuối (hoặc đầu Final Leg nếu Final Leg đã nằm trên đoạn thẳng)
     return Math.round(stStart + Math.random() * Math.min(45, Math.max(10, (stEnd - stStart) * 0.35)));
   }
 
-  // B. Kỹ năng GIA TỐC (Accel): Phân biệt rõ có ràng buộc Corner / Straight hay không ràng buộc!
   if (category === 'accel') {
     if (s.includes('phase==0') || s.includes('phase_random==0')) {
       return Math.round(D * (0.03 + Math.random() * 0.08));
     }
-    // Accel chỉ bật ở Corner (VD: Pump Some Iron của Ryan, Get Moving của Dober, Angling & Scheming, Corner Connoisseur, Unrestrained...)
     if (terrainReq === 'corner') {
       const lateCorners = corners.filter(c => Number(c.end) > lateStartM);
       if (lateCorners.length > 0) {
@@ -552,10 +528,8 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
         const cEnd = Math.min(D * 0.92, Number(firstLateCorner.end) || (cStart + 80));
         return Math.round(cStart + Math.random() * Math.min(40, Math.max(8, (cEnd - cStart) * 0.35)));
       }
-      // Nếu từ 2/3 quãng đường trở đi không có khúc cua nào, lấy khúc cua gần nhất (nếu là Corner Acceleration chung)
       return pickRandomMeterInSegments(corners, D * 0.18, D * 0.92, lateStartM, D * 0.76);
     }
-    // Accel chỉ bật ở Straightaway (VD: Straightaway Acceleration, Rushing Gale!)
     if (terrainReq === 'straight') {
       const lateStraights = straights.filter(st => Number(st.end) > lateStartM);
       if (lateStraights.length > 0) {
@@ -566,12 +540,9 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
       }
       return pickRandomMeterInSegments(straights, D * 0.18, D * 0.92, lateStartM, D * 0.76);
     }
-    // Accel KHÔNG có ràng buộc địa hình (Nimble Navigator / No Stopping Me!, Slick Surge / On Your Left!, Updrafters / Furious Feat...):
-    // Luôn nổ ngay đầu Final Leg (Accel Zone 66.7% -> 74% D)
     return Math.round(D * (0.667 + Math.random() * 0.075));
   }
 
-  // C. Kỹ năng Velocity / Heal có ràng buộc Địa hình: Corner / Straight / Uphill / Downhill
   if (terrainReq === 'corner') {
     const minPhaseM = (s.includes('phase>=2') || s.includes('phase==2') || s.includes('is_finalcorner')) ? lateStartM : D * 0.167;
     const maxPhaseM = (s.includes('phase==1') || category === 'heal') ? lateStartM : D * 0.88;
@@ -594,7 +565,6 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
     return pickRandomMeterInSegments(downSlopes, D * 0.10, D * 0.90, D * 0.40, D * 0.70);
   }
 
-  // D. Kỹ năng Unique (Velocity)
   if (isUnique) {
     if (s.includes('phase==1') || s.includes('distance_rate<=50')) {
       return Math.round(D * (0.35 + Math.random() * 0.25));
@@ -602,7 +572,6 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
     return Math.round(D * (0.667 + Math.random() * 0.15));
   }
 
-  // E. Kỹ năng Siphon, Heal & Velocity Mid-Race (Slipstream, Fast & Furious, Sharp Streak, Ramp Up...):
   if (category === 'siphon' || category === 'heal' || action.forceMidRaceVelo) {
     return Math.round(D * (0.18 + Math.random() * 0.45));
   }
@@ -617,17 +586,13 @@ function assignSkillTriggerMark(condStr, mapObj, isUnique, action) {
   return Math.round(D * (0.20 + Math.random() * 0.44));
 }
 
-// 4. KIỂM TRA KÍCH HOẠT KỸ NĂNG TRONG ĐUA (GIỮ CHẶT ĐẶC TRƯNG CORNER / STRAIGHT CHO MỌI KỸ NĂNG CÓ RÀNG BUỘC)
 function checkSkillCondition(sk, state) {
-  // 1. Bắt buộc khớp 100% Style chạy, Cự ly và Mặt sân
   if (sk.reqStyleCode && sk.reqStyleCode !== state.styleCode) return false;
   if (sk.reqDistCode && sk.reqDistCode !== state.distTypeCode) return false;
   if (sk.reqSurfaceCode && sk.reqSurfaceCode !== state.surfaceCode) return false;
 
-  // 2. Chưa tới mốc mét triggerMarkM thì chưa xét
   if (state.pos < sk.triggerMarkM) return false;
 
-  // 3. Kiểm tra kỹ năng đầu trận & Gacha
   if (sk.category === 'early_boost') {
     return state.phase === 0;
   }
@@ -635,7 +600,6 @@ function checkSkillCondition(sk, state) {
     return state.phase >= 2;
   }
 
-  // 4. RÀNG BUỘC ĐỊA HÌNH NGHIÊM NGẶT (Tuyệt đối không cho nổ sai địa hình!)
   if (sk.terrainReq === 'corner') {
     if (!state.onCorner) return false;
   } else if (sk.terrainReq === 'straight') {
@@ -648,9 +612,6 @@ function checkSkillCondition(sk, state) {
     if (state.slopeCode !== 2) return false;
   }
 
-  // 5. Kỹ năng GIA TỐC (Accel):
-  // - Nếu có terrainReq ('corner', 'straight', 'final_straight'), ở bước 4 đã kiểm tra đúng địa hình, giờ kiểm tra đúng giai đoạn (Final Leg phase >= 2).
-  // - Nếu không có terrainReq (Nimble Navigator / No Stopping Me!, Slick Surge / On Your Left!...), nổ ngay khi vào Final Leg (phase >= 2).
   if (sk.category === 'accel') {
     const s = String(sk.condition || '');
     if (s.includes('phase==0') || s.includes('phase_random==0')) {
@@ -659,12 +620,10 @@ function checkSkillCondition(sk, state) {
     return state.phase >= 2;
   }
 
-  // 6. Kỹ năng SIPHON, HEAL & VELOCITY MID-RACE (Slipstream, Fast & Furious, Sharp Streak, Ramp Up...):
   if (sk.category === 'siphon' || sk.category === 'heal' || sk.forceMidRaceVelo) {
     return state.phase >= 1;
   }
 
-  // 7. Các kỹ năng Unique & Velocity cuối trận
   const s = String(sk.condition || '');
   if (s.includes('phase>=2') || s.includes('phase==2') || s.includes('is_lastspurt') || s.includes('is_finalcorner')) {
     return state.phase >= 2;
@@ -697,7 +656,6 @@ function simulateSixUmaRace(mapObj, player1, player2) {
   const distTypeCode = DIST_TYPE_CODE[mapObj.distanceType] || 3;
   const surfaceCode = mapObj.surface === 'Dirt' ? 2 : 1;
 
-  // 1. Khởi tạo 6 Uma
   const runners = rawParticipants.map((item, idx) => {
     const u = item.u;
     const apt = u.aptitudes || {};
@@ -730,7 +688,6 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     const skillBook = [];
     const seenSkillNames = new Set();
 
-    // Tập hợp tên chuẩn của toàn bộ Kỹ năng Vàng (Gold) mà Uma đang sở hữu để khóa các bản Trắng (White) tương ứng
     const ownedGoldBaseNames = new Set();
     (u.skills || []).forEach(sk => {
       if (sk && sk.name && (sk.isGold || String(sk.name).includes('◎'))) {
@@ -766,14 +723,12 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       });
     }
 
-    // Sắp xếp để nạp Kỹ năng Vàng vào trước, Kỹ năng Trắng vào sau
     const sortedInputSkills = [...(u.skills || [])].sort((a, b) => Number(Boolean(b?.isGold)) - Number(Boolean(a?.isGold)));
 
     sortedInputSkills.forEach((sk, sIdx) => {
       if (!sk || !sk.name || seenSkillNames.has(sk.name)) return;
       const isGold = Boolean(sk.isGold);
 
-      // NẾU LÀ KỸ NĂNG TRẮNG MÀ UMA ĐÃ CÓ BẢN VÀNG TƯƠNG ỨNG -> BỎ QUA KHÔNG NẠP ĐỂ ƯU TIÊN BẬT KỸ NĂNG VÀNG!
       if (!isGold && isWhiteSupersededByOwnedGold(sk.name, ownedGoldBaseNames)) {
         return;
       }
@@ -897,7 +852,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     });
   };
 
-  // 2. KÍCH HOẠT KỸ NĂNG XANH LÁ (PASSIVE CỘNG THẲNG STAT XUYÊN SUỐT TRẬN) LÚC MỞ CỔNG 0.0s
+  // 2. KÍCH HOẠT KỸ NĂNG XANH LÁ (PASSIVE) LÚC MỞ CỔNG 0.0s
   runners.forEach(r => {
     const passiveSkills = r.skillBook.filter(sk => sk.category === 'passive');
     passiveSkills.forEach(sk => {
@@ -920,7 +875,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
           pushLog(
             0.0,
             'BLV A',
-            `${r.name} bắt nhịp hoàn hảo với điều kiện sân thông qua kỹ năng "${sk.name}" (${bonusLabels.join(', ')}) xuyên suốt cả chặng đua!`,
+            `${r.name} kích hoạt kỹ năng bị động "${sk.name}" (${bonusLabels.join(', ')}) ngay từ vạch xuất phát.`,
             'skill',
             r.runnerId
           );
@@ -945,23 +900,23 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     pushLog(
       0.0,
       'BLV B',
-      `CỔNG XUẤT PHÁT ĐÃ BẬT MỞ CHO TRẬN TIE-BREAK SINH TỬ TẠI ${mapObj.name.toUpperCase()} (${D}m • Mùa ${season})! Ngay từ những bước chân đầu tiên, ${pmRunner.name} đã phóng vọt lên dẫn đầu đoàn đua!`,
+      `CỔNG XUẤT PHÁT ĐÃ MỞ CHO TRẬN TIE-BREAK QUYẾT ĐỊNH TẠI ${mapObj.name.toUpperCase()} (${D}m • Mùa ${season})! Ngay từ những bước chạy đầu tiên, ${pmRunner.name} đã vươn lên dẫn đầu đoàn đua!`,
       'phase'
     );
   } else {
     pushLog(
       0.0,
       'BLV B',
-      `VÀ CỔNG XUẤT PHÁT ĐÃ MỞ TẠI ${mapObj.name.toUpperCase()} (${mapObj.famousRace || `${D}m`} • Mùa ${season} • Sân ${cond})! ${pmRunner.name} lập tức vươn lên chiếm lĩnh vị trí dẫn nhịp đoàn đua!`,
+      `CỔNG XUẤT PHÁT ĐÃ MỞ TẠI ${mapObj.name.toUpperCase()} (${mapObj.famousRace || `${D}m`} • Mùa ${season} • Sân ${cond})! ${pmRunner.name} lập tức vươn lên dẫn nhịp đoàn đua!`,
       'phase'
     );
   }
 
   runners.forEach(r => {
     if (r.distRank === 'S' || r.surfRank === 'S' || r.styleRank === 'S') {
-      pushLog(0.1, 'BLV A', `Đáng chú ý! ${r.name} bước vào sân với độ thích nghi đạt cảnh giới Bậc S (${mapObj.surface}: ${r.surfRank} | ${mapObj.distanceType}: ${r.distRank} | ${r.style}: ${r.styleRank}), hứa hẹn một màn bứt tốc cực kỳ đáng gờm!`, 'gold', r.runnerId);
+      pushLog(0.1, 'BLV A', `${r.name} bước vào chặng đua với độ thích nghi Bậc S (${mapObj.surface}: ${r.surfRank} | ${mapObj.distanceType}: ${r.distRank} | ${r.style}: ${r.styleRank}), nhận lợi thế lớn trên sân hôm nay.`, 'gold', r.runnerId);
     } else if (['D', 'E', 'F', 'G'].includes(r.distRank) || ['D', 'E', 'F', 'G'].includes(r.surfRank) || ['D', 'E', 'F', 'G'].includes(r.styleRank)) {
-      pushLog(0.1, 'BLV A', `Một thử thách đầy cam go cho ${r.name} khi phải thi đấu trái sở trường (${mapObj.surface}: ${r.surfRank} | ${mapObj.distanceType}: ${r.distRank} | ${r.style}: ${r.styleRank}) trên mặt sân hôm nay!`, 'warning', r.runnerId);
+      pushLog(0.1, 'BLV A', `${r.name} gặp bất lợi khi phải thi đấu lệch sở trường (${mapObj.surface}: ${r.surfRank} | ${mapObj.distanceType}: ${r.distRank} | ${r.style}: ${r.styleRank}) ở chặng này.`, 'warning', r.runnerId);
     }
   });
 
@@ -983,7 +938,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
           remaining: 1.25,
           skillName: gateSkill.name
         });
-        pushLog(0.2, 'BLV A', `Phản xạ tuyệt vời! ${r.name} kích hoạt "${gateSkill.name}", lao ra khỏi cổng xuất phát mượt như một mũi tên!`, 'skill', r.runnerId);
+        pushLog(0.2, 'BLV A', `Phản xạ xuất phát rất tốt! ${r.name} kích hoạt "${gateSkill.name}", rời cổng xuất phát mượt mà!`, 'skill', r.runnerId);
       }
     }
 
@@ -991,7 +946,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       const lateChance = Math.max(2, 13 - (r.effWit / 95));
       if (Math.random() * 100 < lateChance) {
         r.speed = 1.2;
-        pushLog(0.3, 'BLV B', `Ối! ${r.name} vừa bị giật mình xuất phát chậm một nhịp (Late Start) ngay tại cổng! Liệu cô ấy có kịp lấy lại thế trận?`, 'warning', r.runnerId);
+        pushLog(0.3, 'BLV B', `${r.name} vừa bị xuất phát chậm một nhịp (Late Start) ngay tại cổng!`, 'warning', r.runnerId);
       }
     }
   });
@@ -1029,9 +984,9 @@ function simulateSixUmaRace(mapObj, player1, player2) {
             t,
             'BLV B',
             pickRandomLine([
-              `NGÔI ĐẦU ĐỔI CHỦ! ${r.name} đã bất ngờ tăng tốc vượt mặt ${overtakenRunner ? overtakenRunner.name : 'đối thủ'} để vươn lên chiếm lĩnh vị trí dẫn đầu đoàn đua!`,
-              `Không thể cản phá! ${r.name} lao lên như một cơn lốc, chính thức cướp lấy vị trí thứ nhất từ tay ${overtakenRunner ? overtakenRunner.name : 'đối thủ'}!`,
-              `Một pha bứt lên quá ấn tượng! ${r.name} đã vượt qua ${overtakenRunner ? overtakenRunner.name : 'nhóm đầu'} để độc chiếm ngôi đầu bảng!`
+              `ĐỔI NGÔI DẪN ĐẦU! ${r.name} đã bất ngờ vượt qua ${overtakenRunner ? overtakenRunner.name : 'đối thủ'} để vươn lên vị trí thứ nhất!`,
+              `${r.name} tăng tốc mạnh mẽ, chính thức vượt mặt ${overtakenRunner ? overtakenRunner.name : 'đối thủ'} để chiếm vị trí dẫn đầu đoàn đua!`,
+              `Một pha bứt lên rất ấn tượng! ${r.name} đã vượt qua ${overtakenRunner ? overtakenRunner.name : 'nhóm đầu'} để giành lấy ngôi đầu!`
             ]),
             'gold',
             r.runnerId
@@ -1042,9 +997,9 @@ function simulateSixUmaRace(mapObj, player1, player2) {
             t,
             'BLV A',
             pickRandomLine([
-              `${r.name} đã bất ngờ vượt lên giành lấy vị trí thứ ${newOrder} sau pha tăng tốc sắc bén!`,
-              `Bước chạy đầy uy lực! ${r.name} vừa lách qua ${overtakenRunner ? overtakenRunner.name : 'đối thủ'} để tiến vào Top ${newOrder}!`,
-              `Thứ hạng liên tục xáo trộn! ${r.name} đã vươn lên vị trí thứ ${newOrder} và đang bám sát nhóm dẫn đầu!`
+              `${r.name} đã bất ngờ vượt lên giành lấy vị trí thứ ${newOrder}!`,
+              `${r.name} vừa vượt qua ${overtakenRunner ? overtakenRunner.name : 'đối thủ'} để tiến vào Top ${newOrder}!`,
+              `Thứ hạng nhóm đầu thay đổi! ${r.name} đã vươn lên vị trí thứ ${newOrder} và đang bám sát người dẫn đầu!`
             ]),
             'info',
             r.runnerId
@@ -1063,7 +1018,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         t,
         'BLV A',
-        `Đoàn đua chính thức bước vào Giữa chặng (Middle Leg — ${Math.round(D / 6)}m). ${sortedByPos[0].name} vẫn đang làm chủ nhịp độ phía trước, trong khi các nhóm sau âm thầm tích lũy thể lực chờ thời cơ!`,
+        `Đoàn đua bước vào Giữa chặng (Middle Leg — ${Math.round(D / 6)}m). ${sortedByPos[0].name} vẫn đang duy trì nhịp độ ở phía trước, trong khi các nhóm sau giữ vị trí chờ thời cơ.`,
         'phase'
       );
     }
@@ -1072,7 +1027,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         t,
         'BLV A',
-        `ĐÃ CHẠM MỐC 2/3 QUÃNG ĐƯỜNG (${Math.round((D * 2) / 3)}m — Final Leg)! Mọi toan tính giữ sức đã khép lại, tất cả các Uma từ nhóm sau bắt đầu tung hết tốc lực tràn lên!`,
+        `ĐÃ CHẠM MỐC 2/3 QUÃNG ĐƯỜNG (${Math.round((D * 2) / 3)}m — Final Leg)! Giai đoạn giữ sức đã kết thúc, tất cả các Uma bắt đầu tăng tốc tiến lên!`,
         'phase'
       );
     }
@@ -1081,7 +1036,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         t,
         'BLV B',
-        `CHẶNG NƯỚC RÚT CUỐI CÙNG (LAST SPURT)! Chỉ còn chưa đầy ${Math.round(D / 6)} mét nữa thôi! Khán đài đang nổ tung trước màn nước rút tốc độ cực đại về phía vạch đích!`,
+        `CHẶNG NƯỚC RÚT CUỐI CÙNG (LAST SPURT)! Chỉ còn ${Math.round(D / 6)} mét cuối cùng, các Uma đang dồn toàn lực về phía vạch đích!`,
         'phase'
       );
     }
@@ -1096,7 +1051,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
         pushLog(
           t,
           'BLV B',
-          `Không ai chịu nhường ai! Hai Front Runner ${frontRunners[0].name} và ${frontRunners[1].name} đang lao vào thế giằng co quyết liệt (Spot Struggle) để tranh giành quyền dẫn đầu!`,
+          `Hai Front Runner ${frontRunners[0].name} và ${frontRunners[1].name} đang cạnh tranh trực tiếp (Spot Struggle) để giành vị trí dẫn đầu!`,
           'info'
         );
       }
@@ -1121,7 +1076,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
           pushLog(
             t,
             'BLV B',
-            `Nguy rồi! ${r.name} đang mất bình tĩnh và rơi vào trạng thái hăng máu (Rushed), tự ý lao vọt lên sớm nhưng đang đốt sạch thể lực!`,
+            `${r.name} rơi vào trạng thái Rushed (Kakari), tự ý tăng tốc sớm và tiêu hao nhiều thể lực hơn bình thường!`,
             'warning',
             r.runnerId
           );
@@ -1142,7 +1097,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
             pushLog(
               t,
               'BLV B',
-              `MÀN ĐỌ SỨC NGHẸT THỞ (OIKURABE)! ${r.name} và ${rival.name} đang kè sát vai nhau từng xăng-ti-mét cỏ trên đường thẳng cuối! Ai sẽ là người bứt lên?!`,
+              `ĐỌ SỨC ĐƯỜNG THẲNG CUỐI (OIKURABE)! ${r.name} và ${rival.name} đang so kè sát nút từng mét trên đường thẳng về đích!`,
               'gold',
               r.runnerId
             );
@@ -1180,7 +1135,6 @@ function simulateSixUmaRace(mapObj, player1, player2) {
             let commentaryText = '';
 
             if (sk.category === 'siphon') {
-              // STAMINA SIPHON: Hồi +3.5% HP bản thân & Rút -5.0% HP của đối thủ dẫn đầu
               const healPct = sk.healRatio || 0.035;
               const drainPct = sk.drainEnemyHpRatio || 0.050;
               r.hp = Math.min(r.maxHp, r.hp + r.maxHp * healPct);
@@ -1190,9 +1144,9 @@ function simulateSixUmaRace(mapObj, player1, player2) {
               const enemyTarget = sortedByPos.find(o => o.teamSlot !== r.teamSlot && !o.finished);
               if (enemyTarget) {
                 enemyTarget.hp = Math.max(10, enemyTarget.hp - enemyTarget.maxHp * drainPct);
-                commentaryText = `Một pha rút sức bền cực kỳ lợi hại! ${r.name} kích hoạt "${sk.name}", tự hồi phục +${(healPct * 100).toFixed(1)}% Thể lực đồng thời hút đi -${(drainPct * 100).toFixed(1)}% Thể lực của ${enemyTarget.name}!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}", hồi phục +${(healPct * 100).toFixed(1)}% Thể lực và làm giảm -${(drainPct * 100).toFixed(1)}% Thể lực của ${enemyTarget.name}!`;
               } else {
-                commentaryText = `${r.name} kích hoạt "${sk.name}", hồi phục +${(healPct * 100).toFixed(1)}% Thể lực và gây sức ép lên đối phương!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}", hồi phục +${(healPct * 100).toFixed(1)}% Thể lực!`;
               }
             } else if (sk.category === 'gacha_boost') {
               const gachaRoll = Math.random() * 100;
@@ -1205,13 +1159,13 @@ function simulateSixUmaRace(mapObj, player1, player2) {
               });
 
               if (gachaRoll < 60) {
-                commentaryText = `Canh bạc tất tay của ${r.name}! Cô ấy tung kỹ năng "${sk.name}" lao vút đi mà KHÔNG hề tiêu hao thêm chút thể lực nào (Trúng Gacha 60%)!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}" tăng tốc mạnh mẽ mà không tiêu hao thêm thể lực (60%)!`;
               } else if (gachaRoll < 90) {
                 r.hp = Math.max(0, r.hp - r.maxHp * 0.02);
-                commentaryText = `${r.name} quyết định chơi lớn với "${sk.name}", chấp nhận đánh đổi 2% Thể lực (Gacha 30%) để đổi lấy cú bứt tốc cực gắt ở Hạng ${r.order}!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}" tăng tốc ở Hạng ${r.order} (Tiêu hao -2% Thể lực)!`;
               } else {
                 r.hp = Math.max(0, r.hp - r.maxHp * 0.04);
-                commentaryText = `Một pha liều mạng thực sự! ${r.name} kích hoạt "${sk.name}" bứt tốc điên cuồng dù phải trả giá bằng 4% Thể lực (Gacha 10%)!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}" bứt tốc ở Hạng ${r.order} (Tiêu hao -4% Thể lực)!`;
               }
             } else if (sk.category === 'recoil_boost') {
               const costPct = sk.selfHpCostRatio || 0.02;
@@ -1223,23 +1177,23 @@ function simulateSixUmaRace(mapObj, player1, player2) {
                 remaining: sk.durationSec,
                 skillName: sk.name
               });
-              commentaryText = `${r.name} đốt cháy ${(costPct * 100).toFixed(0)}% Thể lực bằng kỹ năng "${sk.name}", đẩy tốc độ lên ngưỡng cực hạn!`;
+              commentaryText = `${r.name} tiêu hao ${(costPct * 100).toFixed(0)}% Thể lực để kích hoạt "${sk.name}", đẩy cao tốc độ!`;
             } else if (sk.category === 'heal') {
               r.hp = Math.min(r.maxHp, r.hp + r.maxHp * sk.healRatio);
               r.outOfStamina = false;
               r.activeBuffs.push({ stat: 'speed', value: sk.speedBoost, accelBonus: 0.10, remaining: 2.0, skillName: sk.name });
               commentaryText = pickRandomLine([
-                `Nhịp thở của ${r.name} đã ổn định trở lại nhờ "${sk.name}" (+${(sk.healRatio * 100).toFixed(1)}% Thể lực), sẵn sàng cho màn nước rút quyết định!`,
-                `Đúng vào thời điểm quan trọng, ${r.name} kích hoạt "${sk.name}" hồi phục nguồn thể lực dồi dào (+${(sk.healRatio * 100).toFixed(1)}% HP)!`
+                `${r.name} kích hoạt "${sk.name}" hồi phục +${(sk.healRatio * 100).toFixed(1)}% Thể lực, chuẩn bị cho giai đoạn nước rút!`,
+                `Đúng vào thời điểm quan trọng, ${r.name} kích hoạt "${sk.name}" hồi phục +${(sk.healRatio * 100).toFixed(1)}% Thể lực!`
               ]);
             } else if (sk.category === 'debuff') {
               const enemyTarget = sortedByPos.find(o => o.teamSlot !== r.teamSlot && !o.finished);
               if (enemyTarget) {
                 enemyTarget.hp = Math.max(10, enemyTarget.hp - enemyTarget.maxHp * 0.03);
                 enemyTarget.activeBuffs.push({ stat: 'speed', value: -sk.debuffSpeed, remaining: 2.8, skillName: sk.name });
-                commentaryText = `Đòn tâm lý chiến sắc lạnh! ${r.name} tung "${sk.name}" gây áp lực trực tiếp làm chùn bước chạy của ${enemyTarget.name}!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}", gây áp lực làm giảm tốc độ của ${enemyTarget.name}!`;
               } else {
-                commentaryText = `${r.name} tung kỹ năng "${sk.name}" gây sức ép lên đối thủ!`;
+                commentaryText = `${r.name} kích hoạt kỹ năng "${sk.name}" gây sức ép lên đối thủ!`;
               }
             } else if (sk.category === 'accel') {
               r.activeBuffs.push({
@@ -1250,11 +1204,11 @@ function simulateSixUmaRace(mapObj, player1, player2) {
                 skillName: sk.name
               });
               const accLoc = sk.terrainReq === 'corner'
-                ? 'ngay tại khúc cua quyết định'
+                ? 'ngay tại khúc cua'
                 : (sk.terrainReq === 'straight' || sk.terrainReq === 'final_straight' ? 'trên đoạn đường thẳng' : 'ở đầu Final Leg');
               commentaryText = pickRandomLine([
-                `Cú đạp đất bùng nổ ${accLoc}! ${r.name} kích hoạt "${sk.name}", gia tốc tăng vọt giúp cô ấy phóng lên như một viên đạn từ vị trí thứ ${r.order}!`,
-                `Thời cơ bứt phá đã điểm! ${r.name} bung kỹ năng gia tốc "${sk.name}" ${accLoc} và lập tức thu hẹp khoảng cách với nhóm dẫn đầu!`
+                `Pha tăng gia tốc rất đúng lúc ${accLoc}! ${r.name} kích hoạt "${sk.name}", nhanh chóng bứt lên từ vị trí thứ ${r.order}!`,
+                `${r.name} kích hoạt kỹ năng gia tốc "${sk.name}" ${accLoc}, lập tức thu hẹp khoảng cách với nhóm dẫn đầu!`
               ]);
             } else {
               r.activeBuffs.push({
@@ -1265,20 +1219,20 @@ function simulateSixUmaRace(mapObj, player1, player2) {
                 skillName: sk.name
               });
 
-              const locText = sk.terrainReq === 'corner' ? 'ngay tại khúc cua' : (sk.terrainReq === 'straight' || sk.terrainReq === 'final_straight' ? 'trên đoạn đường thẳng' : 'trên đường đua');
+              const locText = sk.terrainReq === 'corner' ? 'tại khúc cua' : (sk.terrainReq === 'straight' || sk.terrainReq === 'final_straight' ? 'trên đoạn đường thẳng' : 'trên đường đua');
 
               if (sk.isUnique) {
                 commentaryText = pickRandomLine([
-                  `TUYỆT KỸ ĐỘC QUYỀN BÙNG NỔ! Hào quang rực sáng quanh ${r.name} khi cô ấy tung ra "${sk.name}", xé gió lao thẳng về phía trước!`,
-                  `ĐÂY RỒI! "${sk.name}" đã được ${r.name} kích hoạt! Những sải chân thần tốc đang cuốn phăng mọi khoảng cách ${locText}!`
+                  `KỸ NĂNG ĐỘC QUYỀN KÍCH HOẠT! ${r.name} tung ra "${sk.name}", bứt tốc mạnh mẽ về phía trước!`,
+                  `ĐÂY RỒI! "${sk.name}" đã được ${r.name} kích hoạt, nhanh chóng rút ngắn khoảng cách ${locText}!`
                 ]);
               } else if (sk.isGold) {
                 commentaryText = pickRandomLine([
-                  `Ánh kim rực sáng! ${r.name} bung kỹ năng vàng "${sk.name}" ${locText}, guồng chân tăng tốc mạnh mẽ ở vị trí thứ ${r.order}!`,
-                  `Pha bứt tốc đẳng cấp từ ${r.name} với kỹ năng vàng "${sk.name}" ${locText}! Tốc độ của cô ấy đang tăng lên trông thấy!`
+                  `${r.name} kích hoạt kỹ năng vàng "${sk.name}" ${locText}, đẩy cao tốc độ ở vị trí thứ ${r.order}!`,
+                  `Pha tăng tốc ấn tượng từ ${r.name} với kỹ năng vàng "${sk.name}" ${locText}!`
                 ]);
               } else {
-                commentaryText = `${r.name} kích hoạt "${sk.name}" ${locText}, dồn lực tăng tốc bám đuổi quyết liệt ở vị trí thứ ${r.order}!`;
+                commentaryText = `${r.name} kích hoạt "${sk.name}" ${locText}, tăng tốc bám đuổi ở vị trí thứ ${r.order}!`;
               }
             }
 
@@ -1377,7 +1331,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
           pushLog(
             t,
             'BLV A',
-            `Không ổn rồi! ${r.name} đã cạn kiệt toàn bộ Thể lực ngay trước vạch đích, bước chạy đang chững lại thấy rõ!`,
+            `${r.name} đã cạn kiệt thể lực trước vạch đích, tốc độ đang giảm xuống rõ rệt!`,
             'warning',
             r.runnerId
           );
@@ -1485,7 +1439,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     pushLog(
       endTime,
       'BLV B',
-      `SO KÈ ĐẾN TỪNG MILI-GIÂY CUỐI CÙNG! VÀ ${winner.name.toUpperCase()} ĐÃ CÁN ĐÍCH Ở VỊ TRÍ THỨ NHẤTTTTTTTTTTT!!!! Chỉ nhỉnh hơn ${second.name} đúng một cái đầu mũi (${timeDiff.toFixed(2)}s)!`,
+      `BÁM ĐUỔI ĐẾN TỪNG MÉT CUỐI CÙNG! VÀ ${winner.name.toUpperCase()} ĐÃ CÁN ĐÍCH Ở VỊ TRÍ THỨ NHẤT! Chỉ nhỉnh hơn ${second.name} đúng ${timeDiff.toFixed(2)}s!`,
       'finish',
       winner.runnerId
     );
@@ -1493,7 +1447,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     pushLog(
       endTime,
       'BLV B',
-      `${winner.name.toUpperCase()} ĐÃ CÁN ĐÍCH Ở VỊ TRÍ THỨ NHẤTTTTTTTTTTT!!!! Một cú nước rút quá đỗi hoàn hảo để bỏ lại ${second.name} (Hạng 2) và ${third.name} (Hạng 3) phía sau!`,
+      `${winner.name.toUpperCase()} ĐÃ CÁN ĐÍCH Ở VỊ TRÍ THỨ NHẤT! Về thứ hai là ${second.name} và về thứ ba là ${third.name}!`,
       'finish',
       winner.runnerId
     );
@@ -1508,7 +1462,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
     pushLog(
       endTime,
       'BLV A',
-      `${winner.name} đã thành công giúp đội của ${winner.ownerName} lật ngược thế cờ và giành chiến thắng chung cuộc ở trận đấu Tie-break nghẹt thở!`,
+      `${winner.name} đã giúp đội của ${winner.ownerName} giành chiến thắng chung cuộc ở trận đấu Tie-break!`,
       'gold',
       winner.runnerId
     );
@@ -1521,7 +1475,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         endTime,
         'BLV A',
-        `MỘT CÚ LỘI NGƯỢC DÒNG LỊCH SỬ! ${winner.name} đã giúp đội của ${champ.name} lật ngược thế cờ, chính thức vượt mốc 25 điểm để đăng quang ngôi vô địch!`,
+        `LỘI NGƯỢC DÒNG THÀNH CÔNG! ${winner.name} đã giúp đội của ${champ.name} lật ngược thế cờ, chính thức vượt mốc 25 điểm để giành chiến thắng chung cuộc!`,
         'gold',
         winner.runnerId
       );
@@ -1544,7 +1498,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         endTime,
         'BLV A',
-        `Cục diện trận đấu đã đảo chiều! Nhờ màn tỏa sáng của ${winner.name}, đội của ${winner.ownerName} đã lật ngược thế cờ vươn lên dẫn điểm (${winTrainerAfter} - ${oppTrainerAfter})!`,
+        `Thế trận đã đảo chiều! Nhờ vị trí dẫn đầu của ${winner.name}, đội của ${winner.ownerName} đã vượt lên dẫn điểm (${winTrainerAfter} - ${oppTrainerAfter})!`,
         'info',
         winner.runnerId
       );
@@ -1552,7 +1506,7 @@ function simulateSixUmaRace(mapObj, player1, player2) {
       pushLog(
         endTime,
         'BLV A',
-        `Khép lại chặng ${mapObj.slot}, ${winner.name} mang về 4 điểm quý giá cho ${winner.ownerName} (Tỉ số hiện tại: ${player1.name} ${p1After} - ${p2After} ${player2.name}).`,
+        `Khép lại chặng ${mapObj.slot}, ${winner.name} mang về 4 điểm cho ${winner.ownerName} (Tỉ số hiện tại: ${player1.name} ${p1After} - ${p2After} ${player2.name}).`,
         'info',
         winner.runnerId
       );

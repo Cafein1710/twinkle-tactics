@@ -1087,7 +1087,7 @@ io.on('connection', (socket) => {
       player.hand.push(player.deck.shift());
     }
 
-    const toastMsg = `[ACTIVE REST] ${uma.name}: Fail về 0%, Mood lên [${uma.mood}] và rút thêm 1 thẻ`;
+    const toastMsg = `[REST] ${uma.name}: Fail về 0%, Mood lên [${uma.mood}] và rút thêm 1 thẻ`;
     broadcastRoomState(room, { [sessionToken]: toastMsg });
   });
 

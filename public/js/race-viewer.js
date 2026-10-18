@@ -86,17 +86,16 @@ function openRaceViewerModal(racePacket) {
   const lanesContainer = document.getElementById('rv-lanes-container');
   lanesContainer.innerHTML = '';
 
-  // Thanh Xác Nhận Mở Cổng Xuất Phát (10 giây tự động bắt đầu)
   const gateBanner = document.createElement('div');
   gateBanner.id = 'rv-pre-race-gate-banner';
   gateBanner.style.cssText = 'background:linear-gradient(90deg,#0f172a,#1e293b,#0f172a); border:2px solid #facc15; border-radius:10px; padding:10px 16px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 6px 20px rgba(0,0,0,0.6);';
   gateBanner.innerHTML = `
     <div>
       <div style="color:#facc15; font-weight:bold; font-size:14px;">
-        CẢ 6 UMA ĐÃ VÀO CỔNG XUẤT PHÁT!
+        CẢ 6 UMA ĐÃ VÀO CỔNG XUẤT PHÁT
       </div>
       <div style="color:#cbd5e1; font-size:12px; margin-top:2px;">
-        Cuộc đua sẽ bắt đầu ngay khi cả 2 Trainer bấm sẵn sàng hoặc tự động mở cổng sau <b id="rv-gate-timer" style="color:#38bdf8; font-size:14px;">10s</b>
+        Cuộc đua sẽ bắt đầu ngay khi cả 2 người chơi xác nhận hoặc tự động mở cổng sau <b id="rv-gate-timer" style="color:#38bdf8; font-size:14px;">10s</b>
       </div>
     </div>
     <button id="btn-gate-ready-start" style="width:250px; background:#f59e0b; color:#0f172a; font-weight:bold; font-size:13px; margin:0; padding:9px 14px;">
@@ -143,19 +142,18 @@ function openRaceViewerModal(racePacket) {
   document.getElementById('rv-commentary-feed').innerHTML = `
     <div class="rv-log-line log-phase">
       <span class="rv-speaker-badge blv-a">BLV A</span>
-      <span>Cả 6 Uma đã tiến vào cổng xuất phát tại ${m.name} (${D}m • Mùa ${m.season || 'Spring'}). Đang chờ tín hiệu mở cổng từ 2 Trainer...</span>
+      <span>Cả 6 Uma đã tiến vào cổng xuất phát tại ${m.name} (${D}m • Mùa ${m.season || 'Spring'}). Đang chờ tín hiệu mở cổng...</span>
     </div>
   `;
   modal.style.display = 'flex';
 
-  // Xử lý nút Sẵn Sàng Mở Cổng & Đếm ngược 10 giây
   const btnGateReady = document.getElementById('btn-gate-ready-start');
   if (btnGateReady) {
     btnGateReady.onclick = () => {
       btnGateReady.disabled = true;
       btnGateReady.style.background = '#64748b';
       btnGateReady.style.color = '#fff';
-      btnGateReady.innerText = 'Đã xác nhận! Chờ đối thủ...';
+      btnGateReady.innerText = 'Đã xác nhận, chờ đối thủ...';
       socket.emit('confirm_race_gate_start', { roomCode: currentRoomCode, sessionToken });
     };
   }
@@ -171,7 +169,6 @@ function openRaceViewerModal(racePacket) {
   }, 1000);
 }
 
-// Hàm chính thức mở cổng và bắt đầu chạy mô phỏng
 function startRacePlaybackNow() {
   if (hasRacePlaybackStarted || !currentRacePacket) return;
   hasRacePlaybackStarted = true;
@@ -208,7 +205,6 @@ function startRacePlaybackNow() {
   }, 85);
 }
 
-// Lắng nghe tín hiệu đồng bộ mở cổng từ Server
 if (typeof socket !== 'undefined') {
   socket.on('race_gate_ready_update', ({ readyCount, total }) => {
     const btn = document.getElementById('btn-gate-ready-start');
@@ -340,7 +336,7 @@ function showPostRaceSummary() {
           <div>
             <strong style="font-size:12px; color:${isMe ? '#38bdf8' : '#fda4af'};">${r.name}</strong>
             <span style="font-size:10.5px; color:#94a3b8;">(${r.ownerName} • ${r.style} [${r.styleRank}] • ${r.finishTime})</span>
-            <div style="font-size:9.5px; color:#facc15;">Skills nổ (${r.activatedSkills.length}): ${r.activatedSkills.join(', ') || 'Không có'}</div>
+            <div style="font-size:9.5px; color:#facc15;">Các kỹ năng đã kích hoạt (${r.activatedSkills.length}): ${r.activatedSkills.join(', ') || 'Không có'}</div>
           </div>
         </div>
         <div style="font-size:13px;">${ptsText}</div>
